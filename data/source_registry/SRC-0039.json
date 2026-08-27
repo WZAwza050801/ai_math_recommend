@@ -1,0 +1,21 @@
+{
+  "source_id": "SRC-0039",
+  "name": "Mathematics Genealogy Project",
+  "source_type": "encyclopedia",
+  "base_url": "https://www.genealogy.math.nd.edu/",
+  "access_method": "web_page",
+  "license": "站点条款（谨慎自动化）",
+  "attribution_required": true,
+  "refresh_policy": "static",
+  "trust_tier": "C",
+  "priority_tier": "P2",
+  "connector_version": "none",
+  "content_formats": [
+    "html"
+  ],
+  "allowed_usage": [
+    "metadata"
+  ],
+  "enabled": false,
+  "notes": "学术谱系辅助证据。"
+}

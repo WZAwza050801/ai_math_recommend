@@ -1,0 +1,21 @@
+{
+  "source_id": "SRC-0040",
+  "name": "Lean Zulip",
+  "source_type": "community_qa",
+  "base_url": "https://leanprover.zulipchat.com/",
+  "access_method": "web_page",
+  "license": "公共存档可读；谨慎自动化",
+  "attribution_required": true,
+  "refresh_policy": "weekly",
+  "trust_tier": "D",
+  "priority_tier": "P2",
+  "connector_version": "none",
+  "content_formats": [
+    "html"
+  ],
+  "allowed_usage": [
+    "source_link"
+  ],
+  "enabled": false,
+  "notes": ""
+}

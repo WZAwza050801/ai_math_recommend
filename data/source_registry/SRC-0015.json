@@ -1,0 +1,23 @@
+{
+  "source_id": "SRC-0015",
+  "name": "AIM Problem Lists",
+  "source_type": "problem_list",
+  "base_url": "https://aimath.org/aimnews/problemlists/",
+  "access_method": "web_page",
+  "license": "待核验（AIM 站点条款）",
+  "attribution_required": true,
+  "refresh_policy": "quarterly",
+  "trust_tier": "B",
+  "priority_tier": "P0",
+  "connector_version": "none",
+  "content_formats": [
+    "html",
+    "pdf"
+  ],
+  "allowed_usage": [
+    "statement",
+    "source_link"
+  ],
+  "enabled": true,
+  "notes": "跨代数/数论/分析/几何/组合的问题列表；不同列表格式不统一，逐列表核验。"
+}

@@ -1,0 +1,23 @@
+{
+  "source_id": "SRC-0037",
+  "name": "Scottish Book / Electronic Scottish Café",
+  "source_type": "problem_list",
+  "base_url": "https://kielich.amu.edu.pl/StefanBanach/e-scottish.html",
+  "access_method": "web_page",
+  "license": "历史资料引用",
+  "attribution_required": true,
+  "refresh_policy": "static",
+  "trust_tier": "B",
+  "priority_tier": "P2",
+  "connector_version": "none",
+  "content_formats": [
+    "html",
+    "pdf"
+  ],
+  "allowed_usage": [
+    "statement",
+    "source_link"
+  ],
+  "enabled": false,
+  "notes": "许多问题已有后续进展，状态须再核验。"
+}

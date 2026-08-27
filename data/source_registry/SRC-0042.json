@@ -1,0 +1,22 @@
+{
+  "source_id": "SRC-0042",
+  "name": "Internet Archive",
+  "source_type": "structured_repository",
+  "base_url": "https://archive.org/advancedsearch.php",
+  "access_method": "http_api",
+  "license": "公共域+各条目许可",
+  "attribution_required": true,
+  "refresh_policy": "manual",
+  "trust_tier": "C",
+  "priority_tier": "P2",
+  "connector_version": "none",
+  "content_formats": [
+    "json",
+    "pdf"
+  ],
+  "allowed_usage": [
+    "full_text_index"
+  ],
+  "enabled": false,
+  "notes": "历史专著/会议录/问题集。"
+}

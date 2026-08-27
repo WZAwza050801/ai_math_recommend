@@ -20,5 +20,6 @@
   "last_successful_sync": null,
   "owner": "curator",
   "notes": "只作导航与背景；不作为数学判断的终审证据。",
-  "enabled": false
+  "enabled": false,
+  "priority_tier": "observation"
 }

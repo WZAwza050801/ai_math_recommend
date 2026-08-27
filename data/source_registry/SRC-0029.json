@@ -1,0 +1,22 @@
+{
+  "source_id": "SRC-0029",
+  "name": "mathlib（Lean 4）",
+  "source_type": "structured_repository",
+  "base_url": "https://github.com/leanprover-community/mathlib4",
+  "access_method": "git",
+  "license": "Apache-2.0",
+  "attribution_required": true,
+  "refresh_policy": "monthly",
+  "trust_tier": "B",
+  "priority_tier": "P1",
+  "connector_version": "none",
+  "content_formats": [
+    "lean"
+  ],
+  "allowed_usage": [
+    "metadata",
+    "source_link"
+  ],
+  "enabled": false,
+  "notes": "作为 AI 友好性特征（形式化覆盖度），不直接产卡。"
+}

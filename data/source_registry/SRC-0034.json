@@ -1,0 +1,21 @@
+{
+  "source_id": "SRC-0034",
+  "name": "Mathstodon",
+  "source_type": "community_qa",
+  "base_url": "https://mathstodon.xyz/",
+  "access_method": "http_api",
+  "license": "Mastodon 公共 API 条款",
+  "attribution_required": true,
+  "refresh_policy": "weekly",
+  "trust_tier": "D",
+  "priority_tier": "observation",
+  "connector_version": "none",
+  "content_formats": [
+    "json"
+  ],
+  "allowed_usage": [
+    "source_link"
+  ],
+  "enabled": false,
+  "notes": "观察源。"
+}

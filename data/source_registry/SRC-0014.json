@@ -22,5 +22,6 @@
   "last_successful_sync": null,
   "owner": "curator",
   "notes": "已发表证明/反驳的一手记录（如 Hales 开普勒猜想、Tao Erdős 偏差）。",
-  "enabled": false
+  "enabled": false,
+  "priority_tier": "P1"
 }

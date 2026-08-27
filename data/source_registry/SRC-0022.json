@@ -1,0 +1,23 @@
+{
+  "source_id": "SRC-0022",
+  "name": "Semantic Scholar",
+  "source_type": "scholarly_graph",
+  "base_url": "https://api.semanticscholar.org/",
+  "access_method": "http_api",
+  "license": "API 条款（建议申请免费 Key）",
+  "attribution_required": true,
+  "refresh_policy": "weekly",
+  "trust_tier": "C",
+  "priority_tier": "P1",
+  "connector_version": "none",
+  "content_formats": [
+    "json"
+  ],
+  "allowed_usage": [
+    "metadata",
+    "citation_metrics"
+  ],
+  "enabled": false,
+  "notes": "",
+  "rate_limit_notes": "未认证 100 req/5min；申请 Key 后启用。"
+}

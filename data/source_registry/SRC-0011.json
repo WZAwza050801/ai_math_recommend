@@ -8,7 +8,7 @@
   "attribution_required": false,
   "refresh_policy": "weekly",
   "trust_tier": "B",
-  "connector_version": "none",
+  "connector_version": "0.1.0",
   "content_formats": [
     "json"
   ],
@@ -20,5 +20,7 @@
   "last_successful_sync": null,
   "owner": "curator",
   "notes": "引用指标（P5 引用指标管道）主数据源；DOI/arXiv/OpenAlex ID 对齐。",
-  "enabled": false
+  "enabled": true,
+  "priority_tier": "P0",
+  "connector_name": "OpenAlexConnector"
 }

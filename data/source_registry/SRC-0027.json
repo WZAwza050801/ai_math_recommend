@@ -1,0 +1,22 @@
+{
+  "source_id": "SRC-0027",
+  "name": "LMFDB",
+  "source_type": "structured_repository",
+  "base_url": "https://www.lmfdb.org/",
+  "access_method": "http_api",
+  "license": "CC BY-NC-SA 类（以站点为准）",
+  "attribution_required": true,
+  "refresh_policy": "monthly",
+  "trust_tier": "B",
+  "priority_tier": "P1",
+  "connector_version": "none",
+  "content_formats": [
+    "json"
+  ],
+  "allowed_usage": [
+    "metadata",
+    "source_link"
+  ],
+  "enabled": false,
+  "notes": "L-函数/模形式/椭圆曲线等对象库；反例与对象核验。"
+}

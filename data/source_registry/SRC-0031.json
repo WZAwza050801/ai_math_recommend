@@ -1,0 +1,21 @@
+{
+  "source_id": "SRC-0031",
+  "name": "IMU Fields Medal（官方）",
+  "source_type": "prize_problem_page",
+  "base_url": "https://www.mathunion.org/ims-prizes/fields-medal",
+  "access_method": "web_page",
+  "license": "官方网页引用",
+  "attribution_required": true,
+  "refresh_policy": "static",
+  "trust_tier": "B",
+  "priority_tier": "P1",
+  "connector_version": "none",
+  "content_formats": [
+    "html"
+  ],
+  "allowed_usage": [
+    "metadata"
+  ],
+  "enabled": false,
+  "notes": "奖项=谱系证据；荣誉不得直接转成重要性分（用户表六规则）。"
+}

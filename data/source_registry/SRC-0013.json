@@ -19,5 +19,6 @@
   "last_successful_sync": null,
   "owner": "curator",
   "notes": "2026-07 报道 LANA（Mochizuki IUT 形式化项目）失败，作为 abc 猜想争议证据之一。",
-  "enabled": false
+  "enabled": false,
+  "priority_tier": "observation"
 }

@@ -1,0 +1,21 @@
+{
+  "source_id": "SRC-0030",
+  "name": "ORCID",
+  "source_type": "encyclopedia",
+  "base_url": "https://pub.orcid.org/v3.0/",
+  "access_method": "http_api",
+  "license": "CC BY 4.0（公共 API）",
+  "attribution_required": true,
+  "refresh_policy": "quarterly",
+  "trust_tier": "C",
+  "priority_tier": "P1",
+  "connector_version": "none",
+  "content_formats": [
+    "json"
+  ],
+  "allowed_usage": [
+    "metadata"
+  ],
+  "enabled": false,
+  "notes": "作者身份对齐。"
+}

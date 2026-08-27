@@ -8,7 +8,7 @@
   "attribution_required": true,
   "refresh_policy": "weekly",
   "trust_tier": "A",
-  "connector_version": "none",
+  "connector_version": "0.1.0",
   "content_formats": [
     "lean",
     "markdown"
@@ -22,5 +22,7 @@
   "last_successful_sync": null,
   "owner": "curator",
   "notes": "A 级结构化猜想库（Lean 形式化）；含 Erdős 问题子集。",
-  "enabled": false
+  "enabled": true,
+  "priority_tier": "P0",
+  "connector_name": "FormalConjecturesConnector"
 }

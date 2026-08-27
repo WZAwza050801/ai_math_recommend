@@ -1,0 +1,21 @@
+{
+  "source_id": "SRC-0026",
+  "name": "Numdam",
+  "source_type": "journal",
+  "base_url": "https://numdam.org/",
+  "access_method": "web_page",
+  "license": "各期刊许可不一",
+  "attribution_required": true,
+  "refresh_policy": "quarterly",
+  "trust_tier": "C",
+  "priority_tier": "P1",
+  "connector_version": "none",
+  "content_formats": [
+    "pdf"
+  ],
+  "allowed_usage": [
+    "source_link"
+  ],
+  "enabled": false,
+  "notes": ""
+}

@@ -1,0 +1,24 @@
+{
+  "source_id": "SRC-0021",
+  "name": "Crossref",
+  "source_type": "scholarly_graph",
+  "base_url": "https://api.crossref.org/",
+  "access_method": "http_api",
+  "license": "公共 API（礼貌池，mailto 参数）",
+  "attribution_required": true,
+  "refresh_policy": "weekly",
+  "trust_tier": "C",
+  "priority_tier": "P0",
+  "connector_version": "0.1.0",
+  "content_formats": [
+    "json"
+  ],
+  "allowed_usage": [
+    "metadata",
+    "citation_metrics"
+  ],
+  "enabled": true,
+  "notes": "",
+  "rate_limit_notes": "礼貌池需 mailto 参数；建议 ≤1 req/s。",
+  "connector_name": "CrossrefConnector"
+}

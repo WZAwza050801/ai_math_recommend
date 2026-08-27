@@ -1,0 +1,21 @@
+{
+  "source_id": "SRC-0028",
+  "name": "House of Graphs",
+  "source_type": "structured_repository",
+  "base_url": "https://houseofgraphs.org/",
+  "access_method": "http_api",
+  "license": "学术用途（以站点条款为准）",
+  "attribution_required": true,
+  "refresh_policy": "quarterly",
+  "trust_tier": "B",
+  "priority_tier": "P1",
+  "connector_version": "none",
+  "content_formats": [
+    "json"
+  ],
+  "allowed_usage": [
+    "metadata"
+  ],
+  "enabled": false,
+  "notes": "极值图/反例图；图论反例搜索。"
+}

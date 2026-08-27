@@ -21,5 +21,6 @@
   "last_successful_sync": null,
   "owner": "curator",
   "notes": "D 级待核验；高票数学答案可作线索来源，须绑定可核验文献。",
-  "enabled": false
+  "enabled": true,
+  "priority_tier": "P0"
 }

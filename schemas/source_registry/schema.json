@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ai-math-recommend.dev/schemas/source_registry/v1.0.0/schema.json",
+  "$id": "https://ai-math-recommend.dev/schemas/source_registry/v1.1.0/schema.json",
   "title": "Source Registry Entry",
-  "description": "AI 数学抽卡系统 · 数据源登记条目模式 v1.0.0（设计规范 §8.2）。每个数据源必须先注册再允许采集；未登记来源的内容不得进入任何问题卡证据。",
+  "description": "AI 数学抽卡系统 · 数据源登记条目模式 v1.1.0。相对 v1.0.0 新增可选字段 priority_tier（接入优先级 P0/P1/P2/observation）与 connector_name（Connector 实现名）；v1.0.0 实例仍然合法。目录内 schema.json 恒为最新版。",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -57,6 +57,14 @@
     "trust_tier": {
       "enum": ["A", "B", "C", "D", "internal"],
       "description": "数据源分级（§8.1）。A=结构化人工维护问题库；B=专题问题集/专著/研讨会；C=论文正文；D=社区问答/博客；internal=课题组内部。"
+    },
+    "priority_tier": {
+      "enum": ["P0", "P1", "P2", "observation"],
+      "description": "接入优先级（2026-08-28 用户批准）。P0=第一版直接接入；P1=第二批；P2=按领域选择性；observation=仅发现线索，不能单独作为事实依据。"
+    },
+    "connector_name": {
+      "type": "string",
+      "description": "packages/connectors 中对应的 Connector 类名（无实现时省略）。"
     },
     "connector_version": {
       "type": "string",

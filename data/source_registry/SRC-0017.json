@@ -1,0 +1,22 @@
+{
+  "source_id": "SRC-0017",
+  "name": "FrontierMath: Open Problems",
+  "source_type": "problem_list",
+  "base_url": "https://frontiermath.org/",
+  "access_method": "web_page",
+  "license": "待核验（规模与许可需单独确认）",
+  "attribution_required": true,
+  "refresh_policy": "monthly",
+  "trust_tier": "B",
+  "priority_tier": "P1",
+  "connector_version": "none",
+  "content_formats": [
+    "html"
+  ],
+  "allowed_usage": [
+    "statement",
+    "source_link"
+  ],
+  "enabled": false,
+  "notes": "面向 AI 数学发现的可验证开放问题；批量访问与开放许可需单独确认后启用。"
+}

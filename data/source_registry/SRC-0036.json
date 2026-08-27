@@ -1,0 +1,22 @@
+{
+  "source_id": "SRC-0036",
+  "name": "Kourovka Notebook（群论）",
+  "source_type": "problem_list",
+  "base_url": "https://kourovka-notebook.org/",
+  "access_method": "pdf",
+  "license": "按版本发布",
+  "attribution_required": true,
+  "refresh_policy": "quarterly",
+  "trust_tier": "B",
+  "priority_tier": "P2",
+  "connector_version": "none",
+  "content_formats": [
+    "pdf"
+  ],
+  "allowed_usage": [
+    "statement",
+    "source_link"
+  ],
+  "enabled": false,
+  "notes": ""
+}

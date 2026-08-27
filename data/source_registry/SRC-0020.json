@@ -1,0 +1,25 @@
+{
+  "source_id": "SRC-0020",
+  "name": "zbMATH Open",
+  "source_type": "scholarly_graph",
+  "base_url": "https://api.zbmath.org/v1/",
+  "access_method": "http_api",
+  "license": "zbMATH Open 使用条款（署名，限额）",
+  "attribution_required": true,
+  "refresh_policy": "weekly",
+  "trust_tier": "C",
+  "priority_tier": "P0",
+  "connector_version": "0.1.0",
+  "content_formats": [
+    "json",
+    "bibtex"
+  ],
+  "allowed_usage": [
+    "metadata",
+    "citation_metrics"
+  ],
+  "enabled": true,
+  "notes": "",
+  "rate_limit_notes": "REST API；礼貌速率 ≤1 req/s，注明用途。",
+  "connector_name": "ZbMathConnector"
+}

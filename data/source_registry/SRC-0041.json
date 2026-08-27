@@ -1,0 +1,22 @@
+{
+  "source_id": "SRC-0041",
+  "name": "Oberwolfach/BIRS/ICERM/IPAM 报告",
+  "source_type": "problem_list",
+  "base_url": "https://www.mfo.de/",
+  "access_method": "pdf",
+  "license": "各中心条款",
+  "attribution_required": true,
+  "refresh_policy": "quarterly",
+  "trust_tier": "B",
+  "priority_tier": "P2",
+  "connector_version": "none",
+  "content_formats": [
+    "pdf"
+  ],
+  "allowed_usage": [
+    "statement",
+    "source_link"
+  ],
+  "enabled": false,
+  "notes": "专题会议问题与研究方向。"
+}

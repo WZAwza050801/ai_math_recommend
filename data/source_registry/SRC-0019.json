@@ -1,0 +1,27 @@
+{
+  "source_id": "SRC-0019",
+  "name": "GitHub（问题库/形式化仓库）",
+  "source_type": "structured_repository",
+  "base_url": "https://github.com/",
+  "access_method": "http_api",
+  "license": "平台条款+仓库各自许可（公共 REST/GraphQL）",
+  "attribution_required": true,
+  "refresh_policy": "weekly",
+  "trust_tier": "C",
+  "priority_tier": "P0",
+  "connector_version": "0.1.0",
+  "content_formats": [
+    "json",
+    "markdown",
+    "lean"
+  ],
+  "allowed_usage": [
+    "metadata",
+    "statement",
+    "source_link"
+  ],
+  "enabled": true,
+  "notes": "",
+  "rate_limit_notes": "公共 API 60 req/h（未认证）；仅采集公共仓库。",
+  "connector_name": "GitHubConnector"
+}

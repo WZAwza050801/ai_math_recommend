@@ -1,0 +1,23 @@
+{
+  "source_id": "SRC-0035",
+  "name": "TOPP（The Open Problems Project, 计算几何）",
+  "source_type": "problem_list",
+  "base_url": "https://topp.openproblem.net/",
+  "access_method": "web_page",
+  "license": "待核验",
+  "attribution_required": true,
+  "refresh_policy": "quarterly",
+  "trust_tier": "B",
+  "priority_tier": "P2",
+  "connector_version": "none",
+  "content_formats": [
+    "html",
+    "pdf"
+  ],
+  "allowed_usage": [
+    "statement",
+    "source_link"
+  ],
+  "enabled": false,
+  "notes": "部分条目年代较早。"
+}

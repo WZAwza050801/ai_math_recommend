@@ -1,0 +1,21 @@
+{
+  "source_id": "SRC-0033",
+  "name": "Gil Kalai 博客",
+  "source_type": "blog",
+  "base_url": "https://gilkalai.wordpress.com/",
+  "access_method": "web_page",
+  "license": "博客引用（署名）",
+  "attribution_required": true,
+  "refresh_policy": "weekly",
+  "trust_tier": "D",
+  "priority_tier": "observation",
+  "connector_version": "none",
+  "content_formats": [
+    "html"
+  ],
+  "allowed_usage": [
+    "source_link"
+  ],
+  "enabled": false,
+  "notes": "观察源：新问题/进展线索，不能单独作为状态依据。"
+}

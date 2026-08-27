@@ -1,0 +1,21 @@
+{
+  "source_id": "SRC-0038",
+  "name": "Wikidata",
+  "source_type": "encyclopedia",
+  "base_url": "https://www.wikidata.org/",
+  "access_method": "http_api",
+  "license": "CC0",
+  "attribution_required": true,
+  "refresh_policy": "monthly",
+  "trust_tier": "C",
+  "priority_tier": "P2",
+  "connector_version": "none",
+  "content_formats": [
+    "json"
+  ],
+  "allowed_usage": [
+    "metadata"
+  ],
+  "enabled": false,
+  "notes": "人物/机构实体对齐。"
+}

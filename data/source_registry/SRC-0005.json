@@ -21,5 +21,6 @@
   "last_successful_sync": null,
   "owner": "curator",
   "notes": "序列事实与验证记录（如 Brocard 问题已知解、3x+1 验证界）引用来源。",
-  "enabled": false
+  "enabled": false,
+  "priority_tier": "P1"
 }

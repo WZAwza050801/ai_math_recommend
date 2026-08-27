@@ -1,0 +1,22 @@
+{
+  "source_id": "SRC-0018",
+  "name": "AMR Problem Lists（Association for Mathematical Research）",
+  "source_type": "problem_list",
+  "base_url": "https://www.amermathres.org/",
+  "access_method": "web_page",
+  "license": "待核验",
+  "attribution_required": true,
+  "refresh_policy": "quarterly",
+  "trust_tier": "B",
+  "priority_tier": "P1",
+  "connector_version": "none",
+  "content_formats": [
+    "html"
+  ],
+  "allowed_usage": [
+    "statement",
+    "source_link"
+  ],
+  "enabled": false,
+  "notes": "跨领域开放问题集索引；是索引不是最终权威来源，须追到原始出处。"
+}

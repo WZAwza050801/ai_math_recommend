@@ -1,0 +1,23 @@
+{
+  "source_id": "SRC-0016",
+  "name": "AIM Workshop Problem Lists",
+  "source_type": "problem_list",
+  "base_url": "https://aimath.org/aimworkshops/",
+  "access_method": "web_page",
+  "license": "待核验（AIM 站点条款）",
+  "attribution_required": true,
+  "refresh_policy": "quarterly",
+  "trust_tier": "B",
+  "priority_tier": "P0",
+  "connector_version": "none",
+  "content_formats": [
+    "html",
+    "pdf"
+  ],
+  "allowed_usage": [
+    "statement",
+    "source_link"
+  ],
+  "enabled": true,
+  "notes": "AIM 专题研讨会问题集；状态更新频率不同。"
+}

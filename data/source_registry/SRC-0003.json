@@ -22,5 +22,6 @@
   "last_successful_sync": null,
   "owner": "curator",
   "notes": "作者为顶尖专家的博客；D 级默认但专家作者性强，如 Erdős 偏差问题解决公告。",
-  "enabled": false
+  "enabled": false,
+  "priority_tier": "observation"
 }

@@ -21,5 +21,6 @@
   "last_successful_sync": null,
   "owner": "curator",
   "notes": "Polymath 协作记录（如 Polymath8 素数间隙界 246）。",
-  "enabled": false
+  "enabled": false,
+  "priority_tier": "P2"
 }

@@ -20,5 +20,6 @@
   "last_successful_sync": null,
   "owner": "curator",
   "notes": "无同行评审预印本仓库。仅用于监测『声称已解决』的未核验样本；任何内容默认 unverified，不得翻转开放状态。",
-  "enabled": false
+  "enabled": false,
+  "priority_tier": "P1"
 }

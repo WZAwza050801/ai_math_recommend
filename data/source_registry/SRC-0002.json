@@ -8,7 +8,7 @@
   "attribution_required": true,
   "refresh_policy": "weekly",
   "trust_tier": "C",
-  "connector_version": "none",
+  "connector_version": "0.1.0",
   "content_formats": [
     "latex",
     "pdf",
@@ -24,5 +24,7 @@
   "last_successful_sync": null,
   "owner": "curator",
   "notes": "论文正文中的猜想为 C 级来源；预印本声称证明一律视为 unverified。",
-  "enabled": false
+  "enabled": true,
+  "priority_tier": "P0",
+  "connector_name": "ArxivConnector"
 }

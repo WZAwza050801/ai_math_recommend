@@ -1,0 +1,22 @@
+{
+  "source_id": "SRC-0023",
+  "name": "CORE",
+  "source_type": "scholarly_graph",
+  "base_url": "https://api.core.ac.uk/v3/",
+  "access_method": "http_api",
+  "license": "需免费 API Key",
+  "attribution_required": true,
+  "refresh_policy": "monthly",
+  "trust_tier": "C",
+  "priority_tier": "P1",
+  "connector_version": "none",
+  "content_formats": [
+    "json"
+  ],
+  "allowed_usage": [
+    "full_text_index"
+  ],
+  "enabled": false,
+  "notes": "",
+  "rate_limit_notes": "需 API Key。"
+}

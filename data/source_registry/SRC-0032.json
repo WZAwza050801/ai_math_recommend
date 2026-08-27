@@ -1,0 +1,21 @@
+{
+  "source_id": "SRC-0032",
+  "name": "Abel Prize（官方）",
+  "source_type": "prize_problem_page",
+  "base_url": "https://abelprize.no/",
+  "access_method": "web_page",
+  "license": "官方网页引用",
+  "attribution_required": true,
+  "refresh_policy": "static",
+  "trust_tier": "B",
+  "priority_tier": "P1",
+  "connector_version": "none",
+  "content_formats": [
+    "html"
+  ],
+  "allowed_usage": [
+    "metadata"
+  ],
+  "enabled": false,
+  "notes": ""
+}

@@ -21,5 +21,6 @@
   "last_successful_sync": null,
   "owner": "curator",
   "notes": "千禧奖七大问题官方页；陈述权威；仅作陈述与状态证据来源。",
-  "enabled": false
+  "enabled": false,
+  "priority_tier": "P1"
 }
