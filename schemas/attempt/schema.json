@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-math-recommend.dev/schemas/attempt/v1.0.0/schema.json",
+  "title": "Solver Attempt Record",
+  "description": "AI 数学抽卡系统 · 求解尝试记录模式 v1.0.0（设计规范 §14.3）。问题+模型+Harness+工具+预算缺一不可；没有真实分层求解结果前不得训练/发布成功概率（ADR-005）。外部运行记录必须经适配器转换为本 Schema（§17.3）。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "attempt_id",
+    "problem_id",
+    "model",
+    "harness",
+    "toolset",
+    "budget",
+    "result",
+    "verification"
+  ],
+  "properties": {
+    "attempt_id": {
+      "type": "string",
+      "pattern": "^ATT-[0-9]{6}$"
+    },
+    "problem_id": { "type": "string", "pattern": "^OP-[0-9]{6}$" },
+    "model": { "type": "string", "description": "模型名称。" },
+    "model_version": { "type": "string", "description": "精确模型版本/快照。" },
+    "harness": { "type": "string", "description": "执行框架（deepseek-harness / codex / local-script / lean 等）。" },
+    "harness_version": { "type": "string" },
+    "prompt_profile": { "type": "string", "description": "提示词档案版本。" },
+    "toolset": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "工具集清单（如 sagemath, lean, python-sympy, web-search）。"
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tokens": { "type": "integer", "minimum": 0 },
+        "wall_time_seconds": { "type": "number", "minimum": 0 },
+        "monetary_cost_usd": { "type": "number", "minimum": 0 },
+        "parallel_runs": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "result_type", "validity"],
+      "properties": {
+        "level": {
+          "enum": [
+            "full_proof",
+            "full_counterexample",
+            "improved_bound",
+            "special_case_solved",
+            "new_lemma_or_technique",
+            "credible_computational_evidence",
+            "structural_conjecture",
+            "no_progress",
+            "negative_result"
+          ],
+          "description": "对应 §3.8 Valid Hit 分级。"
+        },
+        "result_type": { "type": "string", "description": "产出物形态（证明文本/代码/数据）。" },
+        "validity": {
+          "enum": ["unverified", "self_verified", "externally_verified", "refuted"],
+          "description": "未核验结果不得对外发布（§19.3）。"
+        }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "confidence"],
+      "properties": {
+        "method": {
+          "enum": ["human_expert", "formal_proof_checker", "independent_replication", "none"],
+          "description": "核验方式。"
+        },
+        "reviewer": { "type": "string" },
+        "confidence": {
+          "enum": ["high", "moderate", "low", "none"]
+        },
+        "trace_ref": {
+          "type": "string",
+          "description": "可重放 trace 的存储引用（日志不可复现即失败，§19.3）。"
+        }
+      }
+    },
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    }
+  }
+}

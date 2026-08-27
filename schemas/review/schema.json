@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-math-recommend.dev/schemas/review/v1.0.0/schema.json",
+  "title": "Review Decision",
+  "description": "AI 数学抽卡系统 · 专家审核决定模式 v1.0.0（设计规范 §12 P7）。专家原始决定不可被后续 Agent 覆盖；界面只要求专家处理高价值判断（有限枚举），降低认知负担。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["review_id", "problem_id", "reviewer", "reviewed_at"],
+  "properties": {
+    "review_id": {
+      "type": "string",
+      "pattern": "^REV-[0-9]{6}$",
+      "description": "审核记录稳定 ID。"
+    },
+    "problem_id": { "type": "string", "pattern": "^OP-[0-9]{6}$" },
+    "reviewer": {
+      "type": "string",
+      "description": "审核者标识（human:xxx）。不得为 agent 账户。"
+    },
+    "reviewed_at": { "type": "string", "format": "date-time" },
+    "statement_verdict": {
+      "enum": ["accurate", "needs_modification", "cannot_judge"],
+      "description": "数学陈述是否忠实于原文。"
+    },
+    "open_status_verdict": {
+      "enum": ["confirm_open", "status_disputed", "already_resolved"],
+      "description": "开放状态核验结论。"
+    },
+    "importance_verdict": {
+      "enum": ["justified", "partially_justified", "not_justified"],
+      "description": "重要性理由是否成立。"
+    },
+    "ai_affordance_verdict": {
+      "enum": ["reasonable", "needs_modification"],
+      "description": "AI 友好性分析是否合理。"
+    },
+    "pairwise_preference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["preferred_problem_id", "compared_problem_id"],
+      "properties": {
+        "preferred_problem_id": { "type": "string", "pattern": "^OP-[0-9]{6}$" },
+        "compared_problem_id": { "type": "string", "pattern": "^OP-[0-9]{6}$" },
+        "notes": { "type": "string" }
+      },
+      "description": "成对比较：哪个更值得尝试（ADR-006 主标签形式）。"
+    },
+    "escalated": {
+      "type": "boolean",
+      "default": false,
+      "description": "是否升级到冲突升级队列。"
+    },
+    "modification_notes": {
+      "type": "string",
+      "description": "可选文字修改说明（不改原始陈述，只作用于规范化陈述的后续版本）。"
+    },
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "const": "1.0.0"
+    }
+  }
+}

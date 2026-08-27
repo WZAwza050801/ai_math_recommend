@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-math-recommend.dev/schemas/source_registry/v1.0.0/schema.json",
+  "title": "Source Registry Entry",
+  "description": "AI 数学抽卡系统 · 数据源登记条目模式 v1.0.0（设计规范 §8.2）。每个数据源必须先注册再允许采集；未登记来源的内容不得进入任何问题卡证据。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source_id",
+    "name",
+    "source_type",
+    "base_url",
+    "access_method",
+    "license",
+    "attribution_required",
+    "refresh_policy",
+    "trust_tier",
+    "connector_version",
+    "content_formats",
+    "allowed_usage",
+    "enabled"
+  ],
+  "properties": {
+    "source_id": {
+      "type": "string",
+      "pattern": "^SRC-[0-9]{4}$"
+    },
+    "name": { "type": "string", "minLength": 1 },
+    "source_type": {
+      "enum": [
+        "structured_repository",
+        "problem_list",
+        "prize_problem_page",
+        "preprint_server",
+        "journal",
+        "community_qa",
+        "blog",
+        "encyclopedia",
+        "internal_material"
+      ]
+    },
+    "base_url": { "type": "string", "format": "uri" },
+    "access_method": {
+      "enum": ["git", "http_api", "web_page", "pdf", "manual"],
+      "description": "Connector 访问方式。"
+    },
+    "license": {
+      "type": "string",
+      "description": "许可（Apache-2.0 / CC-BY / 未知等）。许可不允许的来源为硬失败。"
+    },
+    "attribution_required": { "type": "boolean" },
+    "refresh_policy": {
+      "enum": ["weekly", "monthly", "quarterly", "manual", "static"],
+      "description": "刷新策略（§12 P10）。"
+    },
+    "trust_tier": {
+      "enum": ["A", "B", "C", "D", "internal"],
+      "description": "数据源分级（§8.1）。A=结构化人工维护问题库；B=专题问题集/专著/研讨会；C=论文正文；D=社区问答/博客；internal=课题组内部。"
+    },
+    "connector_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$|^none$",
+      "description": "Connector 版本；Phase 0 无 Connector 时为 none。"
+    },
+    "content_formats": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "enum": ["json", "yaml", "html", "latex", "markdown", "pdf", "lean", "bibtex"] }
+    },
+    "allowed_usage": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "enum": ["metadata", "statement", "source_link", "full_text_index", "citation_metrics"]
+      }
+    },
+    "rate_limit_notes": {
+      "type": "string",
+      "description": "API 速率限制与礼貌采集要求（§8.3）。"
+    },
+    "last_successful_sync": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "上次成功同步日期；null=从未同步。"
+    },
+    "owner": { "type": "string", "description": "负责人。" },
+    "notes": { "type": "string" },
+    "enabled": {
+      "type": "boolean",
+      "description": "是否已通过人工批准启用（§12 P0 第 8 步）。"
+    }
+  }
+}

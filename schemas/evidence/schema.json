@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-math-recommend.dev/schemas/evidence/v1.0.0/schema.json",
+  "title": "Evidence Item",
+  "description": "AI 数学抽卡系统 · 证据条目模式 v1.0.0。任何评分、状态判断、关系判断与重要性理由都必须能展开为可定位证据（设计规范 §5.1、§11.2）。证据区分来源事实 / 程序计算 / Agent 推断 / 人类判断；未经核验的声称必须标记 verification_status=unverified，不得用于翻转开放状态。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["evidence_id", "kind", "description", "verification_status"],
+  "properties": {
+    "evidence_id": {
+      "type": "string",
+      "pattern": "^EV-[A-Za-z0-9][A-Za-z0-9._-]*$",
+      "description": "证据条目稳定 ID，卡片内唯一。"
+    },
+    "kind": {
+      "enum": [
+        "source_quote",
+        "document_link",
+        "computed_metric",
+        "program_output",
+        "model_inference",
+        "expert_judgment",
+        "unverified_claim"
+      ],
+      "description": "证据类型。source_quote=来源原文摘录；document_link=可定位文献/网页；computed_metric=程序计算的引用等指标；program_output=计算验证输出；model_inference=Agent 推断（非事实）；expert_judgment=人类专家判断；unverified_claim=外部未核验声称（如预印本证明声称，只可进矛盾队列，不得单独定论）。"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "description": "证据内容描述：该证据说明了什么、指向哪个判断。"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "可定位 URL（Clay/arXiv/期刊/仓库等）。"
+    },
+    "source_id": {
+      "type": "string",
+      "description": "引用 Source Registry 中登记的数据源 ID（SRC-xxxx）。"
+    },
+    "source_location": {
+      "type": "string",
+      "description": "精确定位：页码、章节、编号、HTML anchor、arXiv 编号、commit 哈希等。"
+    },
+    "quote": {
+      "type": "string",
+      "description": "原文关键句摘录（保留原语言，不得改写）。"
+    },
+    "tier": {
+      "enum": ["A", "B", "C", "D", "internal"],
+      "description": "数据源分级（设计规范 §8.1）；internal=课题组内部材料。"
+    },
+    "verification_status": {
+      "enum": ["verified", "unverified", "disputed", "contradicted", "superseded"],
+      "description": "核验状态。verified=已由可信来源或人工确认；unverified=未核验；disputed=社群存在争议；contradicted=已被后续证据反驳；superseded=已被更强证据取代。"
+    },
+    "retrieved_at": {
+      "type": "string",
+      "format": "date",
+      "description": "证据获取/检索日期（ISO 8601 date）。"
+    },
+    "notes": {
+      "type": "string",
+      "description": "补充说明（如：预印本声称证明但无期刊接受记录）。"
+    }
+  }
+}

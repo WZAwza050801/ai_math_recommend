@@ -1,0 +1,454 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-math-recommend.dev/schemas/problem_card/v1.0.0/schema.json",
+  "title": "Problem Card",
+  "description": "AI 数学抽卡系统 · 问题卡核心模式 v1.0.0（设计规范 §9.1）。问题卡是系统中的核心知识实体：可引用、可核验、可版本化。原始陈述不可覆盖（§9.2，ADR-004）；证据先于分数（§5.1）；未核验声称不得定论开放状态（§11.2）。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "problem_id",
+    "schema_version",
+    "identity",
+    "statements",
+    "classification",
+    "provenance",
+    "open_status",
+    "known_results",
+    "relationships",
+    "importance_assessment",
+    "ai_affordance_assessment",
+    "publication",
+    "audit"
+  ],
+  "$defs": {
+    "evidence_ref": {
+      "type": "array",
+      "items": { "$ref": "https://ai-math-recommend.dev/schemas/evidence/v1.0.0/schema.json" },
+      "description": "绑定证据列表（可为空，但发布门禁要求关键判断非空）。"
+    },
+    "relation_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target"],
+      "properties": {
+        "target": {
+          "type": "string",
+          "description": "目标：库内 problem_id（OP-xxxxxx）或外部问题名（external: 名称）。"
+        },
+        "evidence": { "$ref": "#/$defs/evidence_ref" },
+        "notes": { "type": "string" }
+      }
+    },
+    "relation_list": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/relation_item" }
+    }
+  },
+  "properties": {
+    "problem_id": {
+      "type": "string",
+      "pattern": "^OP-[0-9]{6}$",
+      "description": "问题卡稳定 ID。"
+    },
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "description": "本卡使用的核心 Schema 版本，当前 1.0.0。"
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "slug"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "aliases": { "type": "array", "items": { "type": "string" } },
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+          "description": "小写连字符 slug，用于 URL。"
+        },
+        "problem_family_id": {
+          "type": ["string", "null"],
+          "description": "所属问题族 ID（若已建立）。"
+        }
+      }
+    },
+    "statements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["original", "normalized", "reader_summary"],
+      "properties": {
+        "original": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["text", "source_id"],
+          "description": "原始陈述：不可变（§9.2）。text+latex 二选一必填由发布门禁进一步检查。",
+          "properties": {
+            "text": { "type": "string", "description": "原文陈述（保留来源语言，不改写）。" },
+            "latex": { "type": ["string", "null"], "description": "原文 LaTeX（若可得）。" },
+            "language": { "type": "string", "description": "BCP-47 语言标记，如 en / de / fr。" },
+            "source_id": { "type": "string", "description": "Source Registry 数据源 ID。" },
+            "source_location": { "type": "string", "description": "精确定位（页码/章节/anchor/commit）。" },
+            "immutable_content_hash": {
+              "type": ["string", "null"],
+              "description": "原始陈述内容哈希（sha256 hex），一旦写入不可变更。"
+            }
+          }
+        },
+        "normalized": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["text"],
+          "properties": {
+            "text": { "type": "string", "minLength": 1, "description": "规范化陈述（中文+LaTeX），含量词与假设的完整表述。" },
+            "latex": { "type": ["string", "null"] },
+            "assumptions": { "type": "array", "items": { "type": "string" }, "description": "全部显式与隐含假设。" },
+            "quantified_objects": { "type": "array", "items": { "type": "string" }, "description": "被量化的对象及其量词。" },
+            "normalization_notes": { "type": "array", "items": { "type": "string" }, "description": "规范化与原文的差异说明。" },
+            "semantic_risks": { "type": "array", "items": { "type": "string" }, "description": "可能改变数学语义的风险点（§5.2）。" }
+          }
+        },
+        "reader_summary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["one_sentence"],
+          "properties": {
+            "one_sentence": { "type": "string", "minLength": 1, "description": "20 秒层：一句话陈述（§15.2）。" },
+            "short_background": { "type": "string", "description": "2–3 分钟层：背景导览。" },
+            "why_it_matters": { "type": "string", "description": "为什么重要（重要性证据的通俗压缩）。" }
+          }
+        }
+      }
+    },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary_domain"],
+      "properties": {
+        "primary_domain": {
+          "type": "string",
+          "description": "一级数学大类，取值须在 data/taxonomies/domains.json 登记（§26.1）。"
+        },
+        "secondary_domains": { "type": "array", "items": { "type": "string" } },
+        "topics": { "type": "array", "items": { "type": "string" } },
+        "problem_types": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "existence",
+              "classification",
+              "bound_improvement",
+              "equivalence_or_implication",
+              "algorithmic_decidability",
+              "computational_determination",
+              "structural_characterization",
+              "counterexample_search"
+            ]
+          }
+        },
+        "expected_output_types": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "proof",
+              "disproof",
+              "counterexample",
+              "improved_bound",
+              "special_case",
+              "lemma",
+              "computational_evidence",
+              "structural_conjecture",
+              "classification"
+            ]
+          },
+          "description": "对应 §3.8 Valid Hit 分级。"
+        },
+        "mathematical_objects": { "type": "array", "items": { "type": "string" }, "description": "涉及的核心数学对象。" }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_urls", "discovered_at", "discovery_method"],
+      "properties": {
+        "original_proposer": { "type": "array", "items": { "type": "string" } },
+        "original_year": { "type": ["string", "integer"], "description": "提出年份或年代描述。" },
+        "original_work": { "type": "string", "description": "首次提出所在的著作/通信。" },
+        "exact_citation": { "type": "string", "description": "精确引用（作者、题名、年份、定位）。" },
+        "source_urls": { "type": "array", "minItems": 1, "items": { "type": "string", "format": "uri" } },
+        "discovery_method": {
+          "enum": ["manual_curation", "pipeline_extraction", "expert_submission", "bulk_import"],
+          "description": "候选发现方式（Phase 0 金标准卡为 manual_curation）。"
+        },
+        "discovered_at": { "type": "string", "format": "date" }
+      }
+    },
+    "open_status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "confidence_level", "last_checked_at", "supporting_evidence", "human_verified"],
+      "properties": {
+        "status": {
+          "enum": [
+            "confirmed_open",
+            "likely_open",
+            "status_uncertain",
+            "partially_resolved",
+            "resolved",
+            "withdrawn_or_malformed"
+          ],
+          "description": "开放状态（§10.1）。硬性规则：没有找到证明不等于仍然开放；未核验声称不得单独翻转状态。"
+        },
+        "confidence_level": {
+          "enum": ["high", "moderate", "limited", "none"],
+          "description": "对当前状态判断的证据置信度（§3.6）。"
+        },
+        "last_checked_at": { "type": "string", "format": "date" },
+        "supporting_evidence": { "$ref": "#/$defs/evidence_ref" },
+        "contradicting_evidence": { "$ref": "#/$defs/evidence_ref", "description": "反例/已解决声称等相反证据（含未核验声称，须标 unverified）。" },
+        "resolved_scope": { "type": ["string", "null"], "description": "若部分解决：已解决的范围（防止特殊情形冒充完整解决，§19.1 P0）。" },
+        "human_verified": { "type": "boolean", "description": "是否经数学专家人工核验（Phase 0 金标准卡一律 false，等待 P7）。" }
+      }
+    },
+    "known_results": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "special_cases": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["statement"],
+            "properties": {
+              "statement": { "type": "string" },
+              "status": { "enum": ["proven", "disproven", "conditional"] },
+              "evidence": { "$ref": "#/$defs/evidence_ref" }
+            }
+          }
+        },
+        "best_known_bounds": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["quantity", "bound"],
+            "properties": {
+              "quantity": { "type": "string" },
+              "bound": { "type": "string" },
+              "evidence": { "$ref": "#/$defs/evidence_ref" },
+              "notes": { "type": "string" }
+            }
+          }
+        },
+        "known_equivalences": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["statement"],
+            "properties": {
+              "statement": { "type": "string", "description": "等价/蕴含命题（Robin 判据、函数域类比等）。" },
+              "direction": { "enum": ["equivalent", "implies", "implied_by", "analogy"] },
+              "evidence": { "$ref": "#/$defs/evidence_ref" }
+            }
+          }
+        },
+        "attempted_methods": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["method", "outcome"],
+            "properties": {
+              "method": { "type": "string" },
+              "outcome": { "type": "string", "description": "该方法得到/未得到什么。" },
+              "evidence": { "$ref": "#/$defs/evidence_ref" }
+            }
+          }
+        },
+        "blocking_obstacles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["obstacle"],
+            "properties": {
+              "obstacle": { "type": "string" },
+              "evidence": { "$ref": "#/$defs/evidence_ref" }
+            }
+          }
+        }
+      }
+    },
+    "relationships": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "问题间关系（§12 P3）。严禁因文本相似或 embedding 高而自动合并；等价/蕴含必须带证据。",
+      "properties": {
+        "equivalent_to": { "$ref": "#/$defs/relation_list" },
+        "generalizes": { "$ref": "#/$defs/relation_list" },
+        "special_case_of": { "$ref": "#/$defs/relation_list" },
+        "implies": { "$ref": "#/$defs/relation_list" },
+        "implied_by": { "$ref": "#/$defs/relation_list" },
+        "related_to": { "$ref": "#/$defs/relation_list" }
+      }
+    },
+    "importance_assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence", "feature_values", "score_band", "rubric_version"],
+      "properties": {
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["dimension", "finding"],
+            "properties": {
+              "dimension": {
+                "enum": [
+                  "historical_persistence",
+                  "field_normalized_attention",
+                  "problem_genealogy",
+                  "downstream_impact",
+                  "explicit_expert_endorsement",
+                  "mathematical_substance"
+                ],
+                "description": "§13.4 六个重要性维度。"
+              },
+              "finding": { "type": "string" },
+              "evidence": { "$ref": "#/$defs/evidence_ref" }
+            }
+          }
+        },
+        "feature_values": {
+          "type": "object",
+          "description": "维度→0–100 连续值（后台保存，前端只展示等级，§13.2）。",
+          "additionalProperties": { "type": "number", "minimum": 0, "maximum": 100 }
+        },
+        "score_band": {
+          "enum": ["high", "medium_high", "medium", "medium_low", "low", "insufficient_evidence"]
+        },
+        "uncertainty": { "type": "string", "description": "不确定性说明（低/中/高及原因）。" },
+        "rubric_version": { "type": "string", "description": "如 importance-rubric-v0.1。" }
+      }
+    },
+    "ai_affordance_assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_for", "evidence_against", "unknowns", "score_band", "rubric_version"],
+      "properties": {
+        "evidence_for": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["claim"],
+            "properties": {
+              "claim": { "type": "string" },
+              "evidence": { "$ref": "#/$defs/evidence_ref" }
+            }
+          }
+        },
+        "evidence_against": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["claim"],
+            "properties": {
+              "claim": { "type": "string" },
+              "evidence": { "$ref": "#/$defs/evidence_ref" }
+            }
+          }
+        },
+        "unknowns": { "type": "array", "items": { "type": "string" }, "description": "未知项必须显式列出，不得补全（§5.7、§11.2-3）。" },
+        "feature_values": {
+          "type": "object",
+          "description": "§13.5 维度→0–100：statement_completeness, verifiability, finite_search, generation_verification_gap, decomposability, tool_support, context_size, ai_precedent, theory_dependency。",
+          "additionalProperties": { "type": "number", "minimum": 0, "maximum": 100 }
+        },
+        "score_band": {
+          "enum": ["high", "medium_high", "medium", "medium_low", "low", "insufficient_evidence"]
+        },
+        "uncertainty": { "type": "string" },
+        "rubric_version": { "type": "string", "description": "如 ai-affordance-rubric-v0.1。" }
+      }
+    },
+    "publication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lifecycle_state", "publishable", "visibility"],
+      "properties": {
+        "lifecycle_state": {
+          "enum": [
+            "candidate",
+            "normalized",
+            "dedup_review",
+            "status_review",
+            "scored",
+            "published",
+            "rejected",
+            "stale",
+            "resolved",
+            "archived"
+          ],
+          "description": "生命周期状态机（§10）。合法迁移由 packages/domain 状态机强制。"
+        },
+        "publishable": {
+          "type": "boolean",
+          "description": "是否满足发布门禁（§10.2）。Phase 0 金标准卡一律 false。"
+        },
+        "visibility": { "enum": ["internal", "group", "public"] },
+        "publish_blockers": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "当前阻止发布的原因（人工核验未完成等）。"
+        }
+      }
+    },
+    "audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["created_by", "created_at", "updated_at", "current_version", "model_runs", "human_reviews"],
+      "properties": {
+        "created_by": { "type": "string", "description": "创建者（agent:xxx / human:xxx）。" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "current_version": { "type": "integer", "minimum": 1 },
+        "model_runs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["task_name", "executed_at"],
+            "properties": {
+              "task_name": { "type": "string", "description": "对应 P1–P6 任务契约名。" },
+              "model": { "type": "string" },
+              "model_version": { "type": "string" },
+              "prompt_version": { "type": "string" },
+              "executed_at": { "type": "string", "format": "date-time" },
+              "notes": { "type": "string" }
+            }
+          }
+        },
+        "human_reviews": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["reviewer", "decision", "reviewed_at"],
+            "properties": {
+              "reviewer": { "type": "string" },
+              "decision": { "enum": ["approved", "needs_changes", "cannot_judge", "escalated"] },
+              "reviewed_at": { "type": "string", "format": "date-time" },
+              "notes": { "type": "string" }
+            }
+          },
+          "description": "专家原始决定不可被后续 Agent 覆盖（§12 P7）。"
+        }
+      }
+    }
+  }
+}
