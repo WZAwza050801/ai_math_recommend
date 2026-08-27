@@ -1,0 +1,342 @@
+{
+  "problem_id": "OP-000004",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "孪生素数猜想（Twin Prime Conjecture）",
+    "aliases": ["twin prime conjecture", "Polignac k=2 case"],
+    "slug": "twin-prime-conjecture",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "There are infinitely many primes p such that p+2 is also prime.",
+      "latex": "\\left| \\{ p \\in \\mathbb{P} : p + 2 \\in \\mathbb{P} \\} \\right| = \\infty",
+      "language": "en",
+      "source_id": "SRC-0009",
+      "source_location": "Open Problem Garden › Twin prime conjecture 条目",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "集合 {p : p 与 p+2 均为素数} 是无穷集（即存在无穷多个素数 p 使 p+2 也是素数）。",
+      "latex": "\\left| \\{ p : p \\text{ 素} \\wedge p+2 \\text{ 素} \\} \\right| = \\infty",
+      "assumptions": [
+        "素数按标准定义（大于 1 且正因数仅 1 与自身的自然数）",
+        "断言针对全体素数 p 全称量化后取基数；'无穷'指集合基数不是有限数"
+      ],
+      "quantified_objects": [
+        "集合 {p : p 与 p+2 均素}：其基数为无穷（对全体素数 p 的全称命题的存在性推论；'反例'形态不适用于无穷性断言，对应失败形态为该集合有限）"
+      ],
+      "normalization_notes": [
+        "原文为存在性口语表述（infinitely many primes p such that p+2 is also prime）；规范化改写为集合基数陈述，语义一致",
+        "本卡仅覆盖 k=2 情形；相邻素数间隙的有界性结果（Zhang/Maynard/Polymath8）是弱得多的已证定理，勿与孪生素数猜想本身混淆"
+      ],
+      "semantic_risks": [
+        "孪生素数（k=2）与 Polignac 一般形式（每个偶数间隙出现无穷次）是不同强度的命题；本卡别名 'Polignac k=2 case' 仅表明其在一般形式中的位置",
+        "'无穷多'是基数陈述，不能由任何有限计算证据替代（见 best_known_bounds 注记）"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "相差 2 的素数对（孪生素数）是否有无穷多——素数间隙问题的经典核心。",
+      "short_background": "de Polignac 1849 年提出的一般形式中 k=2 的情形。2013 年 Zhang 首次证明相邻素数间隙存在有限上界（7000 万），Maynard 以独立方法给出同类结果，Polymath8 协作把无条件界降到 246；但从'有限界'到 k=2 的最后一步仍无路线。当前无条件最好结果是相邻素数间隙的下极限不超过 246。",
+      "why_it_matters": "它是有界素数间隙纲领的终极目标；GPY–Zhang–Maynard–Polymath 谱系是当代解析数论筛法进步的缩影，其解决将终结这一纲领的核心悬念。"
+    }
+  },
+  "classification": {
+    "primary_domain": "number-theory",
+    "topics": ["素数分布", "解析数论"],
+    "problem_types": ["existence"],
+    "expected_output_types": ["proof"],
+    "mathematical_objects": ["素数间隙", "相邻素数对"]
+  },
+  "provenance": {
+    "original_proposer": ["Alphonse de Polignac（一般形式）"],
+    "original_year": "1849",
+    "original_work": "de Polignac, Note sur la théorie des nombres (1849)；欧几里得时代即有的素数无穷性的加性类比",
+    "exact_citation": "de Polignac, Note sur la théorie des nombres (1849)（一般形式；k=2 即孪生素数情形）",
+    "source_urls": [
+      "https://www.openproblemgarden.org/op/twin_prime_conjecture",
+      "https://en.wikipedia.org/wiki/Twin_prime"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "high",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000004-1",
+        "kind": "document_link",
+        "description": "Open Problem Garden 的 Twin prime conjecture 条目（权威综述）将孪生素数猜想列为开放。",
+        "url": "https://www.openproblemgarden.org/op/twin_prime_conjecture",
+        "source_id": "SRC-0009",
+        "tier": "A",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      },
+      {
+        "evidence_id": "EV-000004-2",
+        "kind": "document_link",
+        "description": "当前最佳无条件结果：相邻素数间隙不超过 246 无穷多次（Polymath8B, 2014）；弱于孪生素数猜想本身，与问题开放状态一致。",
+        "url": "https://arxiv.org/abs/1407.4897",
+        "source_id": "SRC-0002",
+        "tier": "C",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      },
+      {
+        "evidence_id": "EV-000004-3",
+        "kind": "source_quote",
+        "description": "里程碑：Zhang Yitang (2013) 首次证明相邻素数间隙存在有限上界（7000 万），发表于 Annals of Mathematics 2014。",
+        "source_id": "SRC-0014",
+        "source_location": "Annals of Mathematics 2014",
+        "tier": "B",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      },
+      {
+        "evidence_id": "EV-000004-4",
+        "kind": "document_link",
+        "description": "Maynard (2013) 以独立方法（多维筛法）给出相邻素数间隙有限上界。",
+        "url": "https://arxiv.org/abs/1311.4600",
+        "source_id": "SRC-0002",
+        "tier": "C",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "有界素数间隙：相邻素数间隙的下极限有限——liminf(p_{n+1} − p_n) ≤ 246（Zhang 2013 首证有限界 7000 万；Maynard 2013 独立证明；Polymath8B 2014 降至 246。证据条目见 open_status.supporting_evidence）。",
+        "status": "proven",
+        "evidence": []
+      }
+    ],
+    "best_known_bounds": [
+      {
+        "quantity": "相邻素数间隙的下极限 liminf(p_{n+1} − p_n)",
+        "bound": "≤ 246（无条件；Zhang / Maynard / Polymath8B）",
+        "evidence": [
+          {
+            "evidence_id": "EV-000004-5",
+            "kind": "document_link",
+            "description": "Polymath8B：相邻素数间隙 ≤ 246 无穷多次（arXiv:1407.4897）。",
+            "url": "https://arxiv.org/abs/1407.4897",
+            "source_id": "SRC-0002",
+            "tier": "C",
+            "verification_status": "verified",
+            "retrieved_at": "2026-08-28"
+          }
+        ]
+      },
+      {
+        "quantity": "相邻素数间隙的下极限 liminf(p_{n+1} − p_n)（条件结果）",
+        "bound": "≤ 12（在 Elliott–Halberstam 假设下）",
+        "evidence": [],
+        "notes": "条件结果：依赖 Elliott–Halberstam 分布假设，非无条件定理。"
+      }
+    ],
+    "known_equivalences": [],
+    "attempted_methods": [
+      {
+        "method": "GPY 筛法（2005）",
+        "outcome": "证明间隙 o(log n) 的素数对无穷多次出现，但未能给出有限间隙界。",
+        "evidence": []
+      },
+      {
+        "method": "Zhang 的平滑素数分布",
+        "outcome": "首次证明相邻素数间隙有限上界（7000 万，后经 Polymath8 降至 246）。",
+        "evidence": []
+      },
+      {
+        "method": "Maynard 多维筛法",
+        "outcome": "独立给出有限间隙界，并支撑 Polymath8 协作的界限改进。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "从'有限界 246'到 k=2 需要超出当前筛法+分布定理水平的素数分布控制（Elliott–Halberstam 假设之外的新输入）。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [
+      {
+        "target": "external:Polignac 猜想（每个偶数间隙出现无穷次）",
+        "evidence": [],
+        "notes": "孪生素数猜想即 k=2 情形。"
+      }
+    ],
+    "implies": [],
+    "implied_by": [],
+    "related_to": [
+      {
+        "target": "OP-000002",
+        "evidence": [],
+        "notes": "同为加性素数经典问题，互不蕴含。"
+      }
+    ]
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "1849 年一般形式提出（de Polignac），思想可追溯至素数无穷性的古典时代。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "Zhang 2013 里程碑之后持续处于解析数论最高关注度行列（定性评定 92）。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "GPY–Zhang–Maynard–Polymath 构成完整且连续推进的问题谱系。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "相邻素数间隙问题的核心特例，有界间隙纲领的终点目标（定性评定 85）。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "权威综述与问题列表收录，教材级经典（定性评定 90）。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "筛法体系（GPY/Zhang/Maynard/Polymath）多年积累仍差最后一步（定性评定 88）。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 92,
+      "field_normalized_attention": 92,
+      "problem_genealogy": 88,
+      "downstream_impact": 85,
+      "explicit_expert_endorsement": 90,
+      "mathematical_substance": 88
+    },
+    "score_band": "high",
+    "uncertainty": "低：GPY–Zhang–Maynard–Polymath 谱系文献完备，各维度有直接支撑。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述精确、可完全形式化（基数陈述+素性判定）。",
+        "evidence": []
+      },
+      {
+        "claim": "筛法与计算基础设施成熟：大素数生成与素性检验工具完备。",
+        "evidence": []
+      },
+      {
+        "claim": "问题谱系提供了丰富的'中间目标'（间隙界逐级下降：7000 万 → 246 → …），适合渐进式推进。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "k=2 的最终一步需要新的素数分布定理，超出当前筛法+分布定理水平。",
+        "evidence": []
+      },
+      {
+        "claim": "数值证据（极大孪生素数对的持续发现）不能构成无穷性证明。",
+        "evidence": []
+      },
+      {
+        "claim": "上下文中等：主流尝试依赖解析数论筛法体系的完整工具箱。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [
+      "AI 在'猜测量级+筛法组合'类任务上的先例有限，可供性评定缺乏参照"
+    ],
+    "feature_values": {
+      "statement_completeness": 95,
+      "verifiability": 70,
+      "finite_search": 40,
+      "generation_verification_gap": 45,
+      "decomposability": 65,
+      "tool_support": 80,
+      "context_size": 60,
+      "ai_precedent": 45,
+      "theory_dependency": 50
+    },
+    "score_band": "medium",
+    "uncertainty": "中：工具与中间目标结构好，但最终步骤依赖未知的分布定理。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "从事实单抽取英文原始陈述与 OPG 条目来源定位。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "存在性表述改写为集合基数陈述，量词显式化并区分 k=2 与一般形式。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "special_case_of external:Polignac；related_to OP-000002（互不蕴含）。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "OPG 列为开放；246 无条件界、Zhang/Maynard 里程碑与 EH 条件界（≤12）分列入支撑证据与界。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维重要性按 importance-rubric-v0.1 评定（band high）。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "九维 AI 可供性按 ai-affordance-rubric-v0.1 评定（band medium）。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

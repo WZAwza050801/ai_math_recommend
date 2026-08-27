@@ -1,0 +1,300 @@
+{
+  "problem_id": "OP-000015",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "Jacobi 猜想（Jacobian Conjecture）",
+    "aliases": ["Jacobian conjecture", "Keller's problem（二元情形历史名）"],
+    "slug": "jacobian-conjecture",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "If the Jacobian determinant of a polynomial map F: C^n → C^n is a non-zero constant, then F is invertible with polynomial inverse.",
+      "latex": "\\det J(F) \\equiv c \\in \\mathbb{C}^{*} \\implies F \\text{ is invertible with polynomial inverse}",
+      "language": "en",
+      "source_id": "SRC-0006",
+      "source_location": "Jacobian conjecture 词条",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "对 $n$ 元复多项式映射 $F: \\mathbb{C}^n \\to \\mathbb{C}^n$，若其 Jacobi 行列式 $\\det J(F)$ 恒等于某个非零常数 $c \\neq 0$，则 $F$ 可逆，且其逆映射 $F^{-1}$ 也是多项式映射。",
+      "latex": "\\forall n \\ge 1,\\ \\forall F: \\mathbb{C}^n \\to \\mathbb{C}^n\\ (F \\text{ 为多项式映射}):\\ \\det J(F) \\equiv c \\in \\mathbb{C}^{*} \\implies \\exists G \\text{（多项式映射）}:\\ G \\circ F = F \\circ G = \\mathrm{id}",
+      "assumptions": [
+        "基域为复数域 $\\mathbb{C}$；$F$ 的每个分量均为多项式",
+        "$\\det J(F)$ 为非零常数：Jacobi 行列式恒等于某个 $c \\neq 0$（排除恒为零及非常数情形）",
+        "结论中的可逆指存在全局多项式映射 $G$ 使 $G \\circ F = F \\circ G = \\mathrm{id}$，即 $F$ 为多项式自同构"
+      ],
+      "quantified_objects": [
+        "对任意维数 $n \\ge 1$",
+        "对任意满足 det J(F) 为非零常数的多项式映射 F: C^n → C^n：F 具有多项式逆"
+      ],
+      "normalization_notes": [
+        "原文为现代标准英文表述；Keller (1939) 原始工作以 Cremona 变换语言论述（见 provenance 引文），现代形式与命名属 Grothendieck 传统",
+        "量词结构显式化：全称量词覆盖所有维数 n 与所有满足行列式条件的多项式映射",
+        "将 invertible with polynomial inverse 细化为存在全局多项式逆映射，与原文一致"
+      ],
+      "semantic_risks": [
+        "「非零常数」限定必须显式保留；若弱化为「常数行列式」会引入 det=0 的情形并改变命题内容",
+        "结论读作代数双射（存在多项式逆）；若读作仅集合论双射，命题内容不同，须按原文取前者"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "Jacobi 行列式恒为非零常数的多项式映射，是否必然具有多项式逆——一个悬置八十余年的代数基本问题。",
+      "short_background": "考虑复多项式映射 F: C^n → C^n。若其 Jacobi 行列式恒为非零常数，Jacobi 猜想断言 F 必有同为多项式的逆映射。n=1 平凡；小次数（deg ≤ 2）已证；已知若干归约定理（如三次情形蕴含一般情形，细节以综述复核为准）。正特征类比已被反例否定，阻碍朴素代数方法的直接迁移。问题 1939 年由 Keller 提出（二元情形历史名 Keller's problem），现代形式与命名属 Grothendieck 传统。",
+      "why_it_matters": "它直指多项式自同构群的结构刻画，连接交换代数与双有理几何；计算机代数工具（Singular/Macaulay2/SageMath）成熟、有限域计算可产生证据，但一般 n 是全称断言、缺乏有限搜索面。"
+    }
+  },
+  "classification": {
+    "primary_domain": "algebra",
+    "secondary_domains": ["algebraic-geometry"],
+    "topics": ["多项式动力学", "交换代数"],
+    "problem_types": ["structural_characterization"],
+    "expected_output_types": ["proof", "counterexample"],
+    "mathematical_objects": ["多项式映射 F:C^n→C^n", "Jacobi 行列式"]
+  },
+  "provenance": {
+    "original_proposer": ["Ott-Heinrich Keller（1939）"],
+    "original_year": "1939",
+    "original_work": "Keller, Ganze Cremona-Transformationen (1939)；现代形式与命名属 A. Grothendieck 传统（1960s 问题列表）",
+    "exact_citation": "Keller (1939), Monatshefte für Mathematik und Physik",
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Jacobian_conjecture"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "moderate",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000015-1",
+        "kind": "document_link",
+        "description": "Wikipedia 将 Jacobi 猜想列为开放问题（2026-08-28 检索确认词条仍以开放问题呈现）。",
+        "url": "https://en.wikipedia.org/wiki/Jacobian_conjecture",
+        "source_id": "SRC-0006",
+        "tier": "D",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      },
+      {
+        "evidence_id": "EV-000015-2",
+        "kind": "source_quote",
+        "description": "Hyman Bass 传统综述（1980s–90s）与 Moh 等的部分结果综述支撑开放状态与已知部分结果；出处无独立 URL 记录。",
+        "source_id": "SRC-0014",
+        "source_location": "Hyman Bass 综述（1980s–90s）与 Moh 部分结果综述（具体篇目以人工复核为准）",
+        "tier": "C",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "n=1（一元）情形平凡成立。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "小次数情形（deg F ≤ 2）已获证明。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "已知若干归约定理（如三次情形蕴含一般情形的 Magnus 型归约）；细节以综述复核为准。",
+        "status": "proven",
+        "evidence": []
+      }
+    ],
+    "attempted_methods": [
+      {
+        "method": "代数几何路线（双有理几何 / Cremona 群）",
+        "outcome": "提供主要框架；未解决一般 n。",
+        "evidence": []
+      },
+      {
+        "method": "归约定理（次数归约）",
+        "outcome": "缩小问题范围（如三次情形蕴含一般情形）；一般情形仍开放，细节以综述复核为准。",
+        "evidence": []
+      },
+      {
+        "method": "计算验证：有限域上的小规模系数证据",
+        "outcome": "产生支持性证据；既无反例，也不构成证明。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "正特征类比为假（存在反例），阻碍了代数方法的直接迁移。",
+        "evidence": []
+      },
+      {
+        "obstacle": "无不变量能区分「常数 Jacobian」与「可逆」。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": []
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "1939 年由 Keller 提出，至今近九十年未决；二元情形以 Keller's problem 之名历史悠久。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "有传统综述路线（Bass 等 1980s–90s；Moh 等部分结果综述）维持中等关注度。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "与 Cremona 群/双有理几何谱系及多项式自同构研究关联；已知归约定理构成内部结构。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "解决将确定多项式自同构群的结构面貌；归约定理与有限域计算证据已形成工具积累。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "百科与传统综述持续列为开放问题。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "正特征反例与「无不变量区分常数 Jacobian 与可逆」的困境表明问题触及多项式动力学的深层结构。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 87,
+      "field_normalized_attention": 60,
+      "problem_genealogy": 60,
+      "downstream_impact": 65,
+      "explicit_expert_endorsement": 60,
+      "mathematical_substance": 70
+    },
+    "score_band": "medium_high",
+    "uncertainty": "低：持久度与开放状态证据明确；关注度归一化沿用 v0.1 定性方法。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述完全形式化：多项式映射与 Jacobi 行列式均为标准代数对象，量词结构清晰。",
+        "evidence": []
+      },
+      {
+        "claim": "计算机代数（Singular/Macaulay2/SageMath）工具成熟，可支撑行列式条件与逆映射候选的符号计算。",
+        "evidence": []
+      },
+      {
+        "claim": "有限域上的计算可产生证据；小次数/小规模可枚举。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "正特征反例说明朴素代数类比失效，类比迁移策略需谨慎。",
+        "evidence": []
+      },
+      {
+        "claim": "一般 n 无有限搜索面：断言为全称命题，计算只覆盖小规模退化情形。",
+        "evidence": []
+      },
+      {
+        "claim": "上下文中等：需要交换代数与双有理几何双线背景。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [],
+    "feature_values": {
+      "statement_completeness": 90,
+      "verifiability": 75,
+      "finite_search": 45,
+      "generation_verification_gap": 50,
+      "decomposability": 45,
+      "tool_support": 80,
+      "context_size": 55,
+      "ai_precedent": 40,
+      "theory_dependency": 50
+    },
+    "score_band": "medium",
+    "uncertainty": "中：陈述与工具端强、有限搜索面弱，全称断言主导结果的不确定性。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "manual_curation 通道：从 Wikipedia 导航源抽取原始陈述与元数据。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "量词显式化与假设外提。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "事实单未指定关系；关系字段全部留空待人工补充。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "web 检索 2026-08-28：Wikipedia/综述列为开放；无矛盾声称记录。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维重要性评分与证据映射。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "AI 可行性九维评估与 unknowns 记录。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

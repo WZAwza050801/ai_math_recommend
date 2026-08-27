@@ -1,0 +1,302 @@
+{
+  "problem_id": "OP-000006",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "Erdős–Straus 猜想",
+    "aliases": ["Erdős–Straus conjecture", "4/n unit fraction conjecture"],
+    "slug": "erdos-straus-conjecture",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "For every integer n ≥ 2 there exist positive integers x, y, z such that 4/n = 1/x + 1/y + 1/z.",
+      "latex": "\\forall n \\in \\mathbb{Z}: \\; n \\ge 2 \\implies \\exists x, y, z \\in \\mathbb{Z}_{>0}: \\; \\frac{4}{n} = \\frac{1}{x} + \\frac{1}{y} + \\frac{1}{z}",
+      "language": "en",
+      "source_id": "SRC-0010",
+      "source_location": "Erdős Problems #? — 以站内搜索 'Erdős–Straus' 为准（不编造编号）",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "对任意整数 n ≥ 2，存在正整数 x, y, z 使得 4/n = 1/x + 1/y + 1/z。",
+      "latex": "\\forall n \\in \\mathbb{Z}: \\; n \\ge 2 \\implies \\exists x, y, z \\in \\mathbb{Z}_{>0}: \\; \\frac{4}{n} = \\frac{1}{x} + \\frac{1}{y} + \\frac{1}{z}",
+      "assumptions": [
+        "x, y, z 为正整数（≥ 1），即埃及分数（单位分数）表示；分母不允许为零或负数",
+        "n 为整数且 n ≥ 2（保证 4/n 良定义且小于 4）"
+      ],
+      "quantified_objects": [
+        "对任意整数 n ≥ 2：存在正整数 x, y, z 使 4/n = 1/x + 1/y + 1/z（∀n ∃x, y, z；反例形态为单个无表示的 n）"
+      ],
+      "normalization_notes": [
+        "原始陈述与规范化语义一致，仅将量词结构显式化（∀n ∃x,y,z）",
+        "已知结构背景（合数情形可归约、大量剩余类已证）列入 known_results.special_cases，不属于断言本身"
+      ],
+      "semantic_risks": [
+        "若放宽'正整数'为非负或任意整数将改变问题语义（除以零、平凡恒等式）；本卡严格取正整数，与原文一致",
+        "x, y, z 是否允许相等：原文未禁止，本卡按原文允许（取等不改变断言结构）"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "4/n 能否总拆成三个单位分数之和——Erdős 与 Straus 1948 年提出的埃及分数难题。",
+      "short_background": "对每个整数 n ≥ 2，是否存在正整数 x, y, z 使 4/n = 1/x + 1/y + 1/z。大量剩余类情形已被证明（Mordell 1969 及后续），合数情形可归约到素因子情形；计算搜索验证至 10^7 量级以上（具体最大界待人工复核）而未发现反例，但一般情形仍无统一方法。",
+      "why_it_matters": "它是单位分数（埃及分数）问题族的代表问题，剩余类归约结构使其成为逐情形方法的天然试验场。"
+    }
+  },
+  "classification": {
+    "primary_domain": "number-theory",
+    "topics": ["丢番图方程", "加性数论"],
+    "problem_types": ["existence"],
+    "expected_output_types": ["proof", "counterexample"],
+    "mathematical_objects": ["单位分数分解", "埃及分数"]
+  },
+  "provenance": {
+    "original_proposer": ["Paul Erdős", "Ernst G. Straus"],
+    "original_year": "1948",
+    "original_work": "Erdős–Straus 1948（口头/通信提出）；Mordell 1969 系统研究",
+    "exact_citation": "Erdős–Straus (1948) 提出；系统研究见 Mordell (1969)（出处定位以 erdosproblems.com 站内检索为准）",
+    "source_urls": [
+      "https://www.erdosproblems.com",
+      "https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93Straus_conjecture"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "moderate",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000006-1",
+        "kind": "document_link",
+        "description": "权威问题库（erdosproblems.com，辅以 Wikipedia 词条汇总）将 Erdős–Straus 猜想列为开放。",
+        "url": "https://www.erdosproblems.com",
+        "source_id": "SRC-0010",
+        "tier": "A",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "站内具体条目编号待人工检索确认（不编造编号）。"
+      },
+      {
+        "evidence_id": "EV-000006-2",
+        "kind": "source_quote",
+        "description": "已对大范围 n 计算验证（验证至 10^7 量级以上）未发现反例，与问题开放状态一致。",
+        "tier": "C",
+        "verification_status": "unverified",
+        "retrieved_at": "2026-08-28",
+        "notes": "具体最大验证界以文献为准，待人工复核；数值验证不构成证明。"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "n 为合数时可归约到素因子情形：若 d 是 n 的因子且 4/d 有单位分数表示，则由 4/d 的解可缩放得到 4/n 的解。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "大量剩余类情形已证：对许多剩余类模（如 n ≡ 2, 3 (mod 4) 等大量情形）猜想成立（Mordell 1969 及后续）。",
+        "status": "proven",
+        "evidence": []
+      }
+    ],
+    "best_known_bounds": [
+      {
+        "quantity": "数值验证范围（无反例）",
+        "bound": "已验证至 10^7 量级以上的 n（具体最大验证界以文献为准）",
+        "evidence": [],
+        "notes": "计算证据，不构成证明；与 open_status.supporting_evidence 中条目同源，具体界待人工复核。"
+      }
+    ],
+    "known_equivalences": [],
+    "attempted_methods": [
+      {
+        "method": "模算术分类（剩余类覆盖）",
+        "outcome": "覆盖大量剩余类（Mordell 1969 及后续），但覆盖仍不完整。",
+        "evidence": []
+      },
+      {
+        "method": "计算搜索",
+        "outcome": "验证至 10^7 量级以上未发现反例（具体界待复核）。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "剩余类覆盖不完整，剩余'稀疏'剩余类无统一方法。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": [
+      {
+        "target": "external:Sierpiński 单位分数猜想（5/n，同族问题，同样开放）",
+        "evidence": [],
+        "notes": "同族单位分数问题（4/n 与 5/n），同样开放。"
+      }
+    ]
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "1948 年提出，近 80 年未解。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "单位分数问题族中的代表性问题，关注度中等（定性评定 60）。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "单位分数/埃及分数问题族（与 5/n 的 Sierpiński 情形同族）。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "剩余类方法与计算搜索的天然试验场（定性评定 55）。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "收录于权威问题库（erdosproblems.com 等）（定性评定 65）。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "大量剩余类已证但一般情形停滞，逐情形方法的边界清晰（定性评定 60）。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 78,
+      "field_normalized_attention": 60,
+      "problem_genealogy": 70,
+      "downstream_impact": 55,
+      "explicit_expert_endorsement": 65,
+      "mathematical_substance": 60
+    },
+    "score_band": "medium",
+    "uncertainty": "低。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述初等、可完全形式化（三元一次不定方程+整性约束）。",
+        "evidence": []
+      },
+      {
+        "claim": "逐 n 检验完全可自动化：单点反例可即时核验。",
+        "evidence": []
+      },
+      {
+        "claim": "剩余类分解提供天然子目标结构（逐剩余类推进）。",
+        "evidence": []
+      },
+      {
+        "claim": "工具成熟：整数规划与组合搜索基础设施可直接使用。",
+        "evidence": []
+      },
+      {
+        "claim": "上下文小：不需要高深前置理论即可理解、形式化与搜索。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "一般性证明的已知路线（剩余类覆盖）在剩余'稀疏'剩余类上停滞。",
+        "evidence": []
+      },
+      {
+        "claim": "无穷多 n 的覆盖证明无机制：逐点核验不能升级为一般证明。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [],
+    "feature_values": {
+      "statement_completeness": 95,
+      "verifiability": 90,
+      "finite_search": 70,
+      "generation_verification_gap": 55,
+      "decomposability": 80,
+      "tool_support": 75,
+      "context_size": 90,
+      "ai_precedent": 45,
+      "theory_dependency": 55
+    },
+    "score_band": "medium_high",
+    "uncertainty": "中低",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "从事实单抽取英文原始陈述；erdosproblems.com 站内条目编号不编造、留待人工检索。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "量词显式化（∀n ∃x,y,z），正整数约束外提为假设。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "related_to external:Sierpiński 单位分数猜想（5/n，同族、同样开放）。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "问题库列为开放；10^7 量级验证界标注待人工复核（证据无 URL、tier C）。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维重要性按 importance-rubric-v0.1 评定（band medium）。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "九维 AI 可供性按 ai-affordance-rubric-v0.1 评定（band medium_high）。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

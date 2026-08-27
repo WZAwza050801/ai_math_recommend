@@ -1,0 +1,301 @@
+{
+  "problem_id": "OP-000007",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "奇完全数的存在（Odd Perfect Number Problem）",
+    "aliases": ["odd perfect number problem", "OPN problem"],
+    "slug": "odd-perfect-number-problem",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "There is no odd perfect number: no odd positive integer n satisfies σ(n) = 2n, where σ is the sum-of-divisors function.",
+      "latex": "\\nexists n \\in \\mathbb{Z}_{>0}: \\; n \\text{ 奇} \\wedge \\sigma(n) = 2n",
+      "language": "en",
+      "source_id": "SRC-0006",
+      "source_location": "Odd perfect number 词条（陈述与已知界汇总）",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "不存在奇正整数 n 满足 σ(n) = 2n（σ 为约数和函数），即奇完全数不存在。（结合已知结构结果：若奇完全数存在，则必为 Euler 形 n = q^α·m²，其中 q ≡ α ≡ 1 (mod 4)。）",
+      "latex": "\\nexists n \\in \\mathbb{Z}_{>0}: \\; \\left( 2 \\nmid n \\wedge \\sigma(n) = 2n \\right); \\quad \\text{若存在则 } n = q^{\\alpha} m^2,\\; q \\equiv \\alpha \\equiv 1 \\pmod 4",
+      "assumptions": [
+        "σ(n) = Σ_{d|n} d 为约数和函数（标准定义）；完全数指满足 σ(n) = 2n 的正整数",
+        "结构背景（Euler）：奇完全数若存在必为 n = q^α·m² 形，q ≡ α ≡ 1 (mod 4)——作为假设背景列出，非断言本身"
+      ],
+      "quantified_objects": [
+        "对全体奇正整数 n：均不满足 σ(n) = 2n（全称否定；'反例'形态为一个奇完全数的实际存在）"
+      ],
+      "normalization_notes": [
+        "原文为否定存在陈述（There is no odd perfect number）；规范化改写为对全体奇正整数的全称否定，语义一致",
+        "Euler 形结构结果按事实单建议写入 known_equivalences 与 assumptions，作为搜索空间约束背景而非猜想内容"
+      ],
+      "semantic_risks": [
+        "全称否定与'不存在'陈述的逻辑等价按标准一阶逻辑理解；边界情形（如 n = 1）的处理以 σ 的标准定义为准，待专家核验",
+        "'奇完全数 ⇔ Euler 形满足 σ 方程'的等价表述中，Euler 形是存在奇完全数的必要结构条件，等价记号的语义以专家核验为准"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "完全数是否只能是偶数——两千年的完全数研究中奇完全数存在与否仍悬而未决。",
+      "short_background": "完全数满足 σ(n) = 2n（约数和恰为自身的两倍）。偶完全数已由 Euclid–Euler 定理刻画，Euler 进一步证明奇完全数若存在必为 q^α·m² 形（q ≡ α ≡ 1 (mod 4)）。计算与结构排除极强：若奇完全数存在，则 n > 10^1500（Ochem–Rao 2012）且至少有 9 个不同素因子（Nielsen 2007）；但仍无存在或不存在的一般证明。",
+      "why_it_matters": "它是乘性数论纯排除性问题的代表：全部已知证据都是'若存在则极大且结构特殊'，缺少制造矛盾的上界侧机制。"
+    }
+  },
+  "classification": {
+    "primary_domain": "number-theory",
+    "topics": ["乘性数论", "计算数论"],
+    "problem_types": ["existence", "counterexample_search"],
+    "expected_output_types": ["proof", "counterexample"],
+    "mathematical_objects": ["完全数 σ(n)=2n", "Euler 形 n=q^α·m²"]
+  },
+  "provenance": {
+    "original_proposer": ["（可追溯至 Euclid–Euler 偶完全数刻画的自然补问题）"],
+    "original_year": "古典（19 世纪明确提出）",
+    "original_work": "Euler 证明奇完全数必为 q^α·m² 形",
+    "exact_citation": "作为 Euclid–Euler 偶完全数刻画的自然补问题；结构背景见 Euler 关于 q^α·m² 形的结果（陈述与已知界汇总见 SRC-0006 词条）",
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Odd_perfect_number",
+      "https://oeis.org"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "high",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000007-1",
+        "kind": "document_link",
+        "description": "标准数论教材与问题库（含 SRC-0006 词条汇总）将'奇完全数存在性'列为开放。",
+        "url": "https://en.wikipedia.org/wiki/Odd_perfect_number",
+        "source_id": "SRC-0006",
+        "tier": "D",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      },
+      {
+        "evidence_id": "EV-000007-2",
+        "kind": "source_quote",
+        "description": "结构性计算下界：若奇完全数 n 存在，则 n > 10^1500（Ochem–Rao 2012）且 n 至少有 9 个不同素因子（Nielsen 2007）。",
+        "source_location": "Ochem & Rao, J. Number Theory 2012；Nielsen, Integers 2007",
+        "tier": "C",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "排除性下界不构成存在或不存在的一般证明。"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [],
+    "best_known_bounds": [
+      {
+        "quantity": "奇完全数存在时的下界（排除性界）",
+        "bound": "n > 10^1500（Ochem–Rao 2012）且 n 至少有 9 个不同素因子（Nielsen 2007）",
+        "evidence": [
+          {
+            "evidence_id": "EV-000007-3",
+            "kind": "source_quote",
+            "description": "Ochem–Rao (2012) 与 Nielsen (2007) 的结构性/计算下界文献记录。",
+            "source_location": "Ochem & Rao, J. Number Theory 2012；Nielsen, Integers 2007",
+            "tier": "C",
+            "verification_status": "verified",
+            "retrieved_at": "2026-08-28"
+          }
+        ],
+        "notes": "排除性证据：搜索空间受限但无上界侧矛盾。"
+      }
+    ],
+    "known_equivalences": [
+      {
+        "statement": "奇完全数 ⇔ Euler 形 q^α·m² 满足 σ 方程（其中 q ≡ α ≡ 1 (mod 4)）——奇完全数若存在必为该形。",
+        "direction": "equivalent",
+        "evidence": []
+      }
+    ],
+    "attempted_methods": [
+      {
+        "method": "因子结构与同余排除",
+        "outcome": "素因子个数与大小约束持续加强（≥ 9 个不同素因子；n > 10^1500），未达矛盾。",
+        "evidence": []
+      },
+      {
+        "method": "大规模计算排除",
+        "outcome": "10^1500 以下无奇完全数。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "排除性证据全是'若存在则必极大且结构特殊'，无矛盾机制。",
+        "evidence": []
+      },
+      {
+        "obstacle": "缺乏上界侧的矛盾。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": []
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "古典问题，两千年脉络（可追溯至 Euclid–Euler 偶完全数刻画）；19 世纪明确提出奇数情形。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "标准数论教材与问题库常设议题（定性评定 70）。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "完全数理论谱系：Euclid–Euler 偶数刻画 + 奇数情形开放。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "推动约数和函数 σ 的结构性界研究（Ochem–Rao、Nielsen 等下界持续加强）（定性评定 50）。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "经典开放问题，教材级（定性评定 75）。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "结构约束（Euler 形）与计算下界（> 10^1500）双线推进仍无矛盾机制（定性评定 65）。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 92,
+      "field_normalized_attention": 70,
+      "problem_genealogy": 65,
+      "downstream_impact": 50,
+      "explicit_expert_endorsement": 75,
+      "mathematical_substance": 65
+    },
+    "score_band": "medium_high",
+    "uncertainty": "低。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述初等、可完全形式化（σ 函数+整除性约束）。",
+        "evidence": []
+      },
+      {
+        "claim": "计算排除管线成熟：因子化与同余筛可直接组合使用。",
+        "evidence": []
+      },
+      {
+        "claim": "结构约束（Euler 形 q^α·m²）强，搜索空间受限、可参数化分解。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "纯排除性问题的'证明不存在'难：无矛盾机制可依赖。",
+        "evidence": []
+      },
+      {
+        "claim": "10^1500 级下界说明朴素搜索不可达。",
+        "evidence": []
+      },
+      {
+        "claim": "反例若存在则超出计算范围：搜索永远无法排除极高处的存在性。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [],
+    "feature_values": {
+      "statement_completeness": 90,
+      "verifiability": 75,
+      "finite_search": 35,
+      "generation_verification_gap": 45,
+      "decomposability": 55,
+      "tool_support": 70,
+      "context_size": 85,
+      "ai_precedent": 35,
+      "theory_dependency": 55
+    },
+    "score_band": "medium",
+    "uncertainty": "中：计算排除管线强，但存在性证明侧无机制。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "从事实单抽取英文原始陈述；出处为自然补问题（无单一提出者），按事实单记录。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "否定存在改写为全称否定；Euler 形按事实单写入 known_equivalences 与 assumptions。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "事实单未指定关系，关系区留空。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "词条/教材列为开放；Ochem–Rao 与 Nielsen 下界入支撑证据（无 URL、tier C）。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维重要性按 importance-rubric-v0.1 评定（band medium_high）。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "九维 AI 可供性按 ai-affordance-rubric-v0.1 评定（band medium）。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

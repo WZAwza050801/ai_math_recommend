@@ -1,0 +1,311 @@
+{
+  "problem_id": "OP-000026",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "Navier–Stokes 方程的整体正则性（3D）",
+    "aliases": ["Navier–Stokes existence and smoothness", "Clay millennium problem: Navier–Stokes"],
+    "slug": "navier-stokes-global-regularity-3d",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "Prove or give a counterexample to the existence and smoothness of global-in-time solutions of the three-dimensional incompressible Navier–Stokes equations on R^3 (or T^3) for smooth initial data with finite energy.",
+      "latex": "\\partial_t u + (u \\cdot \\nabla) u = -\\nabla p + \\nu \\Delta u,\\quad \\nabla \\cdot u = 0 \\quad (u_0 \\in C^\\infty,\\ \\text{有限能量}) \\ \\overset{?}{\\Rightarrow} \\ u(t) \\text{ 全局光滑}",
+      "language": "en",
+      "source_id": "SRC-0001",
+      "source_location": "Clay Mathematics Institute: Navier–Stokes Equation 官方问题陈述（Fefferman 撰写）",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "对 \\mathbb{R}^3（或环面 \\mathbb{T}^3）上的三维不可压 Navier–Stokes 方程，取光滑且能量有限的初值：证明解对一切时间存在且光滑（整体正则性），或构造爆破反例。",
+      "latex": "\\forall u_0 \\in C^\\infty \\text{ 有限能量}:\\ \\bigl(u(t) \\text{ 全局存在且光滑}\\bigr) \\ \\vee \\ \\bigl(\\text{存在有限时间爆破反例}\\bigr)",
+      "assumptions": [
+        "方程为三维不可压 Navier–Stokes 方程（含粘性项与压力项，散度为零约束）",
+        "初值光滑且能量有限；区域取 \\mathbb{R}^3 或周期环面 \\mathbb{T}^3",
+        "\"光滑解\"指解在存在时间内保持无穷可微；命题允许\"证明存在性\"与\"构造反例\"两个方向的任一"
+      ],
+      "quantified_objects": [
+        "对任意光滑有限能量初值 u_0：其对应的解是否全局存在且光滑（全称量词覆盖初值类）；反例方向为存在量词（找到一个爆破初值）"
+      ],
+      "normalization_notes": [
+        "原文为 Clay 官方\"证明或给出反例\"的任务式表述；规范化拆为全称正命题与存在性反命题两条路径",
+        "区域 \\mathbb{R}^3 与 \\mathbb{T}^3 按官方陈述并列保留（两者在官方框架下均被接受）"
+      ],
+      "semantic_risks": [
+        "\"解\"的函数类需按 Clay 官方陈述的精确定义（强解/能量解的分层）理解；口语化的\"解存在且光滑\"不替代官方定义",
+        "2D 情形已整体正则，任何把\"Navier–Stokes 正则性\"泛化的表述都必须锚定在三维情形，否则命题为假问题"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "三维流体运动方程（Navier–Stokes）从任意光滑初值出发，是否永远不产生奇点——这是千禧奖七大问题中关于湍流数学基础的核心悬案。",
+      "short_background": "不可压 Navier–Stokes 方程描述粘性流体速度场的演化。二维情形整体正则性早已建立（Ladyzhenskaya 传统），三维情形则卡在超临界性：能量范数太小，控制不住非线性项。已知 Caffarelli–Kohn–Nirenberg 部分正则性（可能奇点集的一维 Hausdorff 测度有限）与小初值/短时间理论，但一般初值下的整体光滑性或爆破反例均未落地。",
+      "why_it_matters": "它是流体力学数学基础的分水岭问题：正则性成立则湍流数学模型自洽，反例则将改写对能量耗散与奇点形成的理解；其解法无论方向都会重塑偏微分方程分析工具箱。"
+    }
+  },
+  "classification": {
+    "primary_domain": "pde-and-numerics",
+    "secondary_domains": [],
+    "topics": ["抛物与流体方程", "解的整体存在性与爆破"],
+    "problem_types": ["existence", "bound_improvement"],
+    "expected_output_types": ["proof", "counterexample"],
+    "mathematical_objects": ["3D 不可压 Navier–Stokes", "能量解/正则解"]
+  },
+  "provenance": {
+    "original_proposer": ["Clay 数学研究所（2000 千禧奖）；方程属 Navier（1822）/Stokes（1845）"],
+    "original_year": "2000（千禧奖形式化）",
+    "original_work": "C. Fefferman, Existence and smoothness of the Navier–Stokes equation (Clay 官方陈述, 2000)",
+    "exact_citation": "C. Fefferman, Existence and smoothness of the Navier–Stokes equation, Clay Mathematics Institute 官方问题陈述（2000），SRC-0001。",
+    "source_urls": [
+      "https://www.claymath.org/millennium-problems/navier-stokes-equation"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "high",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000026-1",
+        "kind": "document_link",
+        "description": "Clay 数学研究所官方页将 Navier–Stokes 整体正则性列为未解决的千禧奖问题之一（2026-08 检索确认仍在列）。",
+        "url": "https://www.claymath.org/millennium-problems/navier-stokes-equation",
+        "source_id": "SRC-0001",
+        "source_location": "Clay Mathematics Institute: Navier–Stokes Equation 官方问题陈述（Fefferman 撰写）",
+        "tier": "A",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": ""
+      },
+      {
+        "evidence_id": "EV-000026-2",
+        "kind": "document_link",
+        "description": "独立追踪站点 navier-stokes.org 于 2026 年明确该问题\"仍开放\"，并系统列举历年错误解决声称。",
+        "url": "https://navier-stokes.org/navier-stokes-problem-solved/",
+        "tier": "D",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "独立追踪站点，不在 Source Registry（按事实单指示：source_id 省略）；URL 由事实单提供。"
+      }
+    ],
+    "contradicting_evidence": [
+      {
+        "evidence_id": "EV-000026-3",
+        "kind": "unverified_claim",
+        "description": "Zenodo 2026 年存在声称解决 3D Navier–Stokes 的预印本（标题如 \"Sovereign Regularity for the Three-Dimensional Navier-Stokes...\"），页面自标 [SUPERSEDED — DO NOT CITE]。",
+        "source_id": "SRC-0007",
+        "tier": "D",
+        "verification_status": "unverified",
+        "retrieved_at": "2026-08-28",
+        "notes": "连作者都标记 SUPERSEDED；按 TASK-401 纪律不翻转状态，仅作状态监控样本记录。"
+      }
+    ],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "二维情形已整体正则（Ladyzhenskaya 传统）：本卡命题的三维难度与 2D 形成对照（tier C 线索，evidence 留空待 P7 复核）。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "部分正则性：Caffarelli–Kohn–Nirenberg (1982) 证明可能奇点集的一维 Hausdorff 测度有限。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "小初值/短时间正则性（标准理论）：初值足够小或时间足够短时解存在且光滑。",
+        "status": "proven",
+        "evidence": []
+      }
+    ],
+    "attempted_methods": [
+      {
+        "method": "能量估计与涡度方法",
+        "outcome": "给出局部 well-posedness 与各类控制量，但能量范数超临界、估计无法闭合到整体。",
+        "evidence": []
+      },
+      {
+        "method": "正则性准则（Prodi–Serrin 型）",
+        "outcome": "把正则性归结为速度场在临界/次临界空间的时间可积性，条件在一般初值下无法验证。",
+        "evidence": []
+      },
+      {
+        "method": "爆破搜索（数值模拟）",
+        "outcome": "未找到可信的爆破反例；数值证据无法替代证明。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "超临界性：能量范数对 3D Navier–Stokes 是超临界的，已知估计无法闭合整体正则性。",
+        "evidence": []
+      },
+      {
+        "obstacle": "反例构造同样缺乏机制：没有任何已知途径稳定地集中能量到爆破。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": []
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "千禧奖 2000 年形式化；方程本身的研究史近 200 年（Navier 1822 / Stokes 1845）。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "PDE/流体力学方向关注度最高的开放问题之一；综述、教材与专门追踪站点持续覆盖。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "衍生出部分正则性、正则性准则、爆破准则等完整子问题谱系。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "支撑整个流体 PDE 纲领：能量方法、临界空间理论、湍流模型的数学基础。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "Clay 千禧奖 100 万美元悬赏（官方问题陈述由 Fefferman 撰写）。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "超临界障碍使现有分析工具全部失效于一般初值，难度结构定义了偏微分方程分析的边界。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 90,
+      "field_normalized_attention": 92,
+      "problem_genealogy": 75,
+      "downstream_impact": 85,
+      "explicit_expert_endorsement": 100,
+      "mathematical_substance": 90
+    },
+    "score_band": "high",
+    "uncertainty": "低：Clay 悬赏与领域关注度证据直接；谱系与下游维度含定性判断。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述完全精确：PDE、初值类与边界/区域条件（R^3 或 T^3）在官方陈述中全部给定。",
+        "evidence": []
+      },
+      {
+        "claim": "反例（爆破）可通过数值模拟搜索，且存在部分可验证的爆破准则。",
+        "evidence": []
+      },
+      {
+        "claim": "上下文紧凑：问题定义自包含，不依赖庞大文献背景即可陈述。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "超临界障碍是分析理论级的，属于工具缺失而非工程量问题。",
+        "evidence": []
+      },
+      {
+        "claim": "数值爆破搜索历史久未果，且数值不能证伪存在性命题。",
+        "evidence": []
+      },
+      {
+        "claim": "规范化证明（证明或反例的严格化）需要 PDE 分析的核心突破。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [],
+    "feature_values": {
+      "statement_completeness": 95,
+      "verifiability": 55,
+      "finite_search": 40,
+      "generation_verification_gap": 40,
+      "decomposability": 35,
+      "tool_support": 60,
+      "context_size": 85,
+      "ai_precedent": 25,
+      "theory_dependency": 30
+    },
+    "score_band": "medium_low",
+    "uncertainty": "中：陈述端与数值探索端信号强，理论依赖端信号弱；band 对\"爆破准则可否严格化\"敏感。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "按事实单抽取 Clay 官方陈述；navier-stokes.org URL 按指示入证据并省略 source_id。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "拆为全称正命题+存在性反例双路径；标注解的函数类风险。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "事实单未指定关系，relationships 全部留空。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "Zenodo SUPERSEDED 声称入 contradicting_evidence（unverified，不翻转状态）。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "Clay 悬赏与领域关注度支撑 high 段。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "陈述端强、理论端弱，判 medium_low 并在 uncertainty 说明。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

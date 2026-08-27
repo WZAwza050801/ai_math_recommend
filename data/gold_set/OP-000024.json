@@ -1,0 +1,289 @@
+{
+  "problem_id": "OP-000024",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "Hilbert 第十六问题第二部分：极限环的个数上界",
+    "aliases": ["Hilbert's 16th problem", "Hilbert's sixteenth problem (second part)"],
+    "slug": "hilbert-16th-limit-cycles",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "For each degree n, is there a finite uniform bound H(n) on the number of limit cycles of a polynomial vector field of degree n on the plane? Even H(2) is not determined.",
+      "latex": "\\sup_{X:\\ \\deg X = n} \\#\\{\\text{limit cycles of } X\\} = H(n) \\overset{?}{<} \\infty",
+      "language": "en",
+      "source_id": "SRC-0014",
+      "source_location": "D. Hilbert, Mathematische Probleme (1900), 问题 16（Paris 演讲）；第二部分为极限环问题",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "对每个正整数 n，平面上 n 次多项式向量场的极限环个数是否存在一致有限上界 H(n)（Hilbert 数），并求其值；当前连二次情形 H(2) 都未确定。",
+      "latex": "\\forall n \\ge 1:\\ \\exists H(n) < \\infty\\ \\text{使得任意 } n \\text{ 次平面多项式向量场 } X \\text{ 满足 } \\#\\{\\text{极限环}(X)\\} \\le H(n)",
+      "assumptions": [
+        "向量场为实平面 \\mathbb{R}^2 上的多项式向量场，\"次数 n\"指其分量多项式的最大次数",
+        "极限环按孤立周期轨道计；\"一致\"指界只依赖次数 n，不依赖具体向量场"
+      ],
+      "quantified_objects": [
+        "对每个次数 n：问是否存在 H(n) < \\infty，使得所有 n 次平面多项式向量场的极限环个数都 ≤ H(n)（对 n 全称、对向量场全称的存在性命题）"
+      ],
+      "normalization_notes": [
+        "原文为问句形式；规范化拆为\"一致界的存在性\"与\"界的求值\"两层命题",
+        "原文附带\"Even H(2) is not determined\"的现状注记，保留为当前知识状态而非命题本身",
+        "Hilbert 第十六问题的第一部分（代数曲线分支数的 Harnack 界）不属于本卡命题"
+      ],
+      "semantic_risks": [
+        "极限环计数的细节约定（如重数是否合并计数）在文献中存在差异；本卡按\"孤立极限环个数\"理解",
+        "若把\"次数\"理解为分量次数的最大值而非总次数，命题等价但表述不同；本卡采用通常的分量最大次数约定"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "n 次平面多项式向量场最多能有多少个极限环？是否存在只依赖次数 n 的有限上界——这是 Hilbert 1900 年提出的第十六问题后半部分，连二次情形都还没有答案。",
+      "short_background": "极限环是平面动力系统中孤立的周期轨道。Hilbert 第十六问题第二部分问：把向量场限制为 n 次多项式，极限环个数是否有一个只依赖 n 的有限上界 H(n)。已知单个向量场的极限环只有有限个（Écalle–Ilyashenko 的工作），但这个界无法对次数一致化；二次系统（n=2）的确切最大环数至今未定，历史上 Petrovskii–Landis 在 1950 年代给出的错误结果后被推翻。",
+      "why_it_matters": "它是 Hilbert 问题列表中悬置最久的部分之一，其困难刻画了定性理论（分支、正规化形）对\"一致界\"这类定量命题的根本局限；进展会直接推动动力系统与常微分方程基础理论。"
+    }
+  },
+  "classification": {
+    "primary_domain": "pde-and-numerics",
+    "secondary_domains": ["analysis"],
+    "topics": ["常微分方程与动力系统", "解的整体存在性与爆破"],
+    "problem_types": ["bound_improvement", "existence"],
+    "expected_output_types": ["proof"],
+    "mathematical_objects": ["多项式向量场", "极限环", "Hilbert 数 H(n)"]
+  },
+  "provenance": {
+    "original_proposer": ["David Hilbert"],
+    "original_year": "1900",
+    "original_work": "Hilbert 1900 年巴黎演讲《数学问题》第 16 号",
+    "exact_citation": "D. Hilbert, Mathematische Probleme (1900), Problem 16（Paris 演讲）；第二部分为极限环问题（转引自 SRC-0014 学术文献与 SRC-0006 导航）。",
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Hilbert%27s_sixteenth_problem"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "high",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000024-1",
+        "kind": "document_link",
+        "description": "标准综述（Ilyashenko–Panov 等）与 Wikipedia 词条均将 Hilbert 第十六问题第二部分列为开放；现状注记\"Even H(2) is not determined\"。",
+        "url": "https://en.wikipedia.org/wiki/Hilbert%27s_sixteenth_problem",
+        "source_id": "SRC-0006",
+        "source_location": "Hilbert's sixteenth problem 词条（第二部分/极限环部分）",
+        "tier": "D",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "导航级来源佐证状态；综述（Ilyashenko–Panov 等）的具体定位留待 P7 复核后补入。"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "Hilbert 第十六问题第一部分已解决：代数曲线分支数的 Harnack 界（tier C 线索，evidence 留空待 P7 复核）。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "单个多项式向量场的极限环只有有限个（非聚集性质）：已由 Écalle 与 Ilyashenko 解决（与 1994 年 Fields 奖相关工作相联系）；这是对\"每个固定向量场\"的有限性，不是对次数一致的一致界。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "二次系统（n=2）的确切最大极限环数仍未确定；Petrovskii–Landis 在 1950 年代曾给出错误结果，后被推翻（历史警示：本领域存在\"声称解决后翻车\"的先例）。",
+        "evidence": []
+      }
+    ],
+    "attempted_methods": [
+      {
+        "method": "复分析路线：超渐近展开/正规化族（Écalle–Ilyashenko）",
+        "outcome": "解决了单系统的有限性（非聚集），但未给出对次数一致的一致界 H(n)。",
+        "evidence": []
+      },
+      {
+        "method": "抽象分歧理论",
+        "outcome": "处理局部分支（环性/cyclicity）层面的结果，未达到一致界。",
+        "evidence": []
+      },
+      {
+        "method": "数值搜索二次系统的多环构型",
+        "outcome": "提供构型存在的数值线索，无法构成证明或定界。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "一致界（对次数一致）的机制完全缺失：现有定性理论只能给出逐系统的有限性。",
+        "evidence": []
+      },
+      {
+        "obstacle": "二次情形的极端刚性问题：连 n=2 的确切值都无法确定。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": []
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "1900 年提出，悬置 126 年；第二部分至今连 H(2) 都未确定。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "动力系统与常微分方程领域的标志性开放问题，综述持续覆盖。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "Hilbert 问题列表第 16 号的一部分；其部分结果（有限性定理）构成 1994 年 Fields 奖相关工作。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "属动力系统基础理论：一致界的存在性将重塑平面多项式系统的定性理论框架。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "Hilbert 问题列表的原始成员；学界长期以之为定性理论的试金石。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "历史上的错误证明（Petrovskii–Landis）与半世纪方法积累均未闭合问题，难度结构定义了该方向的边界。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 95,
+      "field_normalized_attention": 65,
+      "problem_genealogy": 70,
+      "downstream_impact": 60,
+      "explicit_expert_endorsement": 85,
+      "mathematical_substance": 90
+    },
+    "score_band": "high",
+    "uncertainty": "低：历史谱系与专家背书证据直接；关注度归一化含定性判断。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述可形式化：次数 n、极限环个数均可形式定义。",
+        "evidence": []
+      },
+      {
+        "claim": "二次/低次子情形可做数值实验（环数构型搜索）。",
+        "evidence": []
+      },
+      {
+        "claim": "上下文中等：命题本身自包含，背景理论范围有限。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "历史上的错误先例（Petrovskii–Landis 结果被推翻）说明难度极高，易诱导错误\"解决\"。",
+        "evidence": []
+      },
+      {
+        "claim": "一致界需要定性理论的新机制，现有方法（超渐近/分歧理论）只覆盖局部或逐系统层面。",
+        "evidence": []
+      },
+      {
+        "claim": "计算只能探索构型、不能定界，验证端对证明无帮助。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [],
+    "feature_values": {
+      "statement_completeness": 80,
+      "verifiability": 55,
+      "finite_search": 35,
+      "generation_verification_gap": 35,
+      "decomposability": 40,
+      "tool_support": 55,
+      "context_size": 50,
+      "ai_precedent": 25,
+      "theory_dependency": 25
+    },
+    "score_band": "medium_low",
+    "uncertainty": "中：形式化与数值实验端有正信号，但一致界机制缺失与错误先例构成强负信号，band 对\"低次子问题可否单独推进\"敏感。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "按事实单抽取 Hilbert 1900 原始陈述与元数据。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "问句拆为一致界存在性+求值两层；第一部分排除出命题。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "事实单未指定关系，relationships 全部留空。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "维持 confirmed_open；部分结果（有限性定理）记入 special_cases 防止冒充完整解决。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "Hilbert 谱系与 126 年悬置支撑 high 段。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "理论依赖强、无计算定界路径，判 medium_low。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

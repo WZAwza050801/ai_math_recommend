@@ -104,18 +104,25 @@ notes:
 
 登记条目在证据链中的位置：证据条目通过 `tier` 字段携带来源分级、通过 `source_id` 字段引用登记条目 `SRC-xxxx`（见《docs/02_DOMAIN_MODEL_AND_SCHEMA.md》§3.3）；结合 Schema"未登记来源的内容不得进入任何问题卡证据"的约束，登记是采集与用证的前置条件，对应 §2"先注册，再采集"。
 
-### 4.2 Phase 0 登记现状（写作时已实际检查该目录）
+### 4.2 Phase 0 登记现状（2026-08-28 过夜执行后更新）
 
-`data/source_registry/` 目录已建立，但当前为空：**尚无任何已登记条目文件**。因此本文不列出任何"已注册数据源"，任何来源在完成 P0 登记前均不得视为已注册。
+`data/source_registry/` 已登记 **14 个种子源**（SRC-0001..SRC-0014，逐条符合 source_registry Schema v1.0.0）：
 
-本任务简报中提到的候选种子数据源清单——Clay 数学研究所千禧问题、arXiv、Tao 博客、Polymath wiki、OEIS、Wikipedia、Zenodo（仅拟用于监测未核验声称）、DeepMind formal-conjectures、Open Problem Garden、erdosproblems.com——**均未登记**，不代表任何注册决策。其中 formal-conjectures 与 Open Problem Garden 同时是设计规范 §8.1 的 A 级示例；其余候选是否采纳、各自 `trust_tier`、许可核验结果与 `source_type` 归类，须逐项执行 P0 后确定。
+| 分级 | 已登记条目 |
+|---|---|
+| A | SRC-0001 Clay 千禧问题 · SRC-0008 formal-conjectures 仓库 · SRC-0009 Open Problem Garden |
+| B | SRC-0010 erdosproblems.com · SRC-0011 OpenAlex · SRC-0014 学术期刊 |
+| C | SRC-0002 arXiv · SRC-0005 OEIS |
+| D | SRC-0003 Tao 博客 · SRC-0004 Polymath wiki · SRC-0006 Wikipedia · SRC-0007 Zenodo（限定"仅监测未核验声称"）· SRC-0012 MathOverflow · SRC-0013 Naukas |
+
+登记决策与理由见 `docs/adr/ADR-011-first-14-seed-sources.md`。**全部条目 `enabled: false`**：登记≠启用，启用须 P0 人工逐源批准（第 8 步）。因此当前仍无任何来源被授权采集；金标准卡对上述来源的引用属于"登记源引用"，不触发采集。
 
 ---
 
 ## 5. 待裁决问题
 
-以下问题在拆分时发现，未自行决策：
+以下问题在拆分时发现；其中第 1 项已由 ADR-011 裁决，第 2/3 项转 ADR Backlog（`docs/adr/BACKLOG.md` B-11）：
 
-1. 种子数据源尚未登记：`data/source_registry/` 为空，§4.2 候选清单需按 P0 逐项确认来源身份、许可与访问限制后才能登记启用；执行顺序、负责人与批准人待裁决。
-2. `internal` 信任等级空白：仓库 Schema 的 `trust_tier` 允许 `internal`（课题组内部材料，与 evidence 条目 `tier` 枚举一致），而设计规范 §8.1 分级表仅定义 A–D 四级；`internal` 级来源的采集要求原文未覆盖。
-3. "仅用于监测"如何表达：候选源 Zenodo 拟限定"仅用于监测未核验声称"，但 Schema 的 `allowed_usage` 枚举（`metadata / statement / source_link / full_text_index / citation_metrics`）没有对应的"仅监测、不采证"取值，该限制如何机器表达待裁决。
+1. ~~种子数据源尚未登记~~ → **已裁决（ADR-011）**：14 个种子源登记完毕，全部 `enabled:false` 待人工批准；批准流程（顺序/负责人/批准人）属 P0 人工环节，留待人工执行。
+2. `internal` 信任等级空白：仓库 Schema 的 `trust_tier` 允许 `internal`（课题组内部材料，与 evidence 条目 `tier` 枚举一致），而设计规范 §8.1 分级表仅定义 A–D 四级。**Phase 0 裁定**（并入 ADR-011 后果）：`internal` 仅用于系统内部派生数据（computed_metric 类），不用于外部来源；本批 14 源未使用。
+3. "仅用于监测"如何表达：Zenodo 的"仅监测未核验声称"限制暂以条目 `notes` + `usage_restrictions` 文本承载；`allowed_usage` 枚举扩展（如 `unverified_claim_monitoring`）记入 Backlog B-11，Phase 1 裁决。

@@ -1,0 +1,289 @@
+{
+  "problem_id": "OP-000025",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "切片–带状猜想（Slice–Ribbon Conjecture）",
+    "aliases": ["slice-ribbon conjecture"],
+    "slug": "slice-ribbon-conjecture",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "Every slice knot is ribbon: if a knot bounds a properly embedded disk in the four-dimensional ball, then it bounds an embedded disk in B^4 without local maxima (equivalently, a ribbon disk in S^3).",
+      "latex": "\\text{slice} \\Rightarrow \\text{ribbon}: \\quad K \\subset S^3 \\text{ bounds a properly embedded disk in } B^4 \\Rightarrow K \\text{ bounds a ribbon disk}",
+      "language": "en",
+      "source_id": "SRC-0006",
+      "source_location": "Slice–ribbon conjecture 词条；原始出处为 Kirby 1978 问题列表 Problem 1.19",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "每个切片纽结都是带状纽结：若纽结 K \\subset S^3 在四维球体 B^4 中围出适当嵌入圆盘（即 K 是切片的），则 K 在 B^4 中围出无局部极大值的嵌入圆盘（等价地，在 S^3 中围出带状圆盘）。",
+      "latex": "\\forall K \\subset S^3:\\ \\bigl(K \\text{ 是切片纽结}\\bigr) \\Rightarrow \\bigl(K \\text{ 是带状纽结}\\bigr)",
+      "assumptions": [
+        "\"切片\"指点 K \\subset S^3 在 B^4 中围出适当嵌入（properly embedded）的圆盘",
+        "\"带状\"指在 B^4 中围出无局部极大值的嵌入圆盘，等价于 S^3 中的带状圆盘描述"
+      ],
+      "quantified_objects": [
+        "对任意纽结 K \\subset S^3：若 K 切片，则 K 带状（全称量词覆盖全部纽结；反向\"带状 ⇒ 切片\"是已知平凡方向，不在本卡命题内）"
+      ],
+      "normalization_notes": [
+        "原文给出的两个等价刻画（B^4 中无局部极大值圆盘 / S^3 中带状圆盘）在规范化文本中合并为\"带状\"的定义",
+        "原始出处按事实单注明为 Kirby 1978 问题列表 Problem 1.19，卡内 source 取 Wikipedia 词条（SRC-0006）为定位来源"
+      ],
+      "semantic_risks": [
+        "切片性依赖光滑/拓扑范畴的选择：光滑切片与拓扑局部平坦切片不同，本卡按原始陈述的通常（光滑）理解",
+        "\"ribbon disk in S^3\" 的等价性依赖带状呈现（band presentation）标准定义，读者需按低维拓扑惯例理解"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "能在四维球里\"摊平\"成圆盘的纽结（切片纽结），是否一定都属于更特殊的\"带状\"类？——这是低维拓扑悬置近半个世纪的方向性问题。",
+      "short_background": "带状纽结可以通过在 S^3 中加环带的方式解结，显然是切片的；切片–带状猜想断言反过来也成立。该猜想出现在 Kirby 1978 年低维拓扑问题列表（Problem 1.19）。大量纽结类已被验证（如 2-桥纽结类中切片与带状等价），高符号差等不变量筛除了多数候选反例，但一般命题与反例均未落地。",
+      "why_it_matters": "切片与带状的差别深植于四维光滑结构；猜想的任何一侧解决都会为光滑四维拓扑与纽结不变量（Heegaard Floer 理论等）提供新的窗口。"
+    }
+  },
+  "classification": {
+    "primary_domain": "topology",
+    "secondary_domains": [],
+    "topics": ["纽结理论", "四维流形"],
+    "problem_types": ["structural_characterization"],
+    "expected_output_types": ["proof", "counterexample"],
+    "mathematical_objects": ["切片纽结", "带状纽结", "符号差/不变量"]
+  },
+  "provenance": {
+    "original_proposer": ["Robion Kirby（问题列表）；Fox 的 ribbon 概念传统"],
+    "original_year": "1978（Kirby 问题列表）",
+    "original_work": "R. Kirby, Problems in low-dimensional topology (1978), Problem 1.19",
+    "exact_citation": "R. Kirby, Problems in low-dimensional topology (1978), Problem 1.19；转引自 Wikipedia \"Slice–ribbon conjecture\" 词条（SRC-0006）。",
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Slice_ribbon_conjecture"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "moderate",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000025-1",
+        "kind": "document_link",
+        "description": "Wikipedia \"Slice–ribbon conjecture\" 词条将其列为开放问题；低维拓扑综述（Kirby 问题列表传统）同列。",
+        "url": "https://en.wikipedia.org/wiki/Slice_ribbon_conjecture",
+        "source_id": "SRC-0006",
+        "source_location": "Slice–ribbon conjecture 词条",
+        "tier": "D",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "导航级来源佐证状态；Kirby 1978 Problem 1.19 为原始出处。"
+      },
+      {
+        "evidence_id": "EV-000025-2",
+        "kind": "source_quote",
+        "description": "大量纽结类已验证：2-桥纽结类中切片 ⇔ 带状（Lisca 2000 年前后的透镜空间/代数纽结系列工作）；高符号差候选被不变量筛除多数。",
+        "source_id": "SRC-0014",
+        "source_location": "Lisca, On lens spaces and the slice-ribbon conjecture 等系列（2007 前后）",
+        "tier": "C",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "保守处理：文献线索未经人工复核，具体篇目与年份以 P7 核验为准；故不附 URL。"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "2-桥纽结与代数纽结类：切片 ⇔ 带状已验证（Lisca 系列，2007 年前后）。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "交替纽结存在部分结果（具体范围与陈述待人工复核后补充）。",
+        "evidence": []
+      }
+    ],
+    "attempted_methods": [
+      {
+        "method": "不变量筛（符号差、Ozsváth–Szabó τ、Heegaard Floer 校正项）",
+        "outcome": "筛除大量候选反例（如高符号差纽结），既未产出反例也未证明猜想。",
+        "evidence": []
+      },
+      {
+        "method": "构造性反例搜索（L-space/锐度型候选）",
+        "outcome": "未果：多年搜索未找到反例。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "切片与带状的差别深植于光滑四维结构，现有不变量无法直接分辨两类圆盘。",
+        "evidence": []
+      },
+      {
+        "obstacle": "无系统化的反例生成机制，候选搜索呈点状尝试。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": []
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "1978 年列入 Kirby 问题列表（Fox 的 ribbon 概念传统更早），悬置至今。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "低维拓扑与纽结理论综述持续覆盖；2-桥/代数纽结等验证性工作形成稳定产出。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "属于 Kirby 低维拓扑问题列表谱系；与切片/带状判据研究网络相连。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "是观察光滑四维拓扑现象的窗口；解决将直接影响纽结不变量的判别力评估。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "Kirby 问题列表收录；Heegaard Floer 学派的系列工作以其为背景动机。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "大量类验证与筛除工作定义了问题边界：已知不变量足以排除多数候选，却不足以判定。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 78,
+      "field_normalized_attention": 60,
+      "problem_genealogy": 65,
+      "downstream_impact": 65,
+      "explicit_expert_endorsement": 60,
+      "mathematical_substance": 70
+    },
+    "score_band": "medium_high",
+    "uncertainty": "低：六维证据一致；关注度归一化含定性判断。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述可形式化：切片性/带状性均有标准数学定义。",
+        "evidence": []
+      },
+      {
+        "claim": "纽结不变量计算工具成熟（SnapPy、knotinfo 数据库），候选可程序化筛选。",
+        "evidence": []
+      },
+      {
+        "claim": "候选纽结空间可系统化枚举（按交叉数等参数逐层筛）。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "四维光滑结构障碍属深度理论，超出计算可及范围。",
+        "evidence": []
+      },
+      {
+        "claim": "构造性反例搜索多年未果，说明候选空间中\"真反例\"（若存在）难以命中。",
+        "evidence": []
+      },
+      {
+        "claim": "上下文中等偏大：需要 Floer 理论与四维拓扑背景才能评估候选。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [],
+    "feature_values": {
+      "statement_completeness": 85,
+      "verifiability": 65,
+      "finite_search": 45,
+      "generation_verification_gap": 45,
+      "decomposability": 55,
+      "tool_support": 70,
+      "context_size": 50,
+      "ai_precedent": 30,
+      "theory_dependency": 40
+    },
+    "score_band": "medium",
+    "uncertainty": "中：筛选工具端强（可枚举、可计算验证），但生成端（反例构造或一般证明）历史未果，两端拉扯。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "按事实单抽取陈述；source 记 SRC-0006，Kirby 1978 Problem 1.19 记入定位。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "合并两种带状刻画为定义；标注光滑/拓扑范畴风险。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "事实单未指定关系，relationships 全部留空。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "维持 confirmed_open/moderate；Lisca 类验证记为 conservative 文献线索。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "Kirby 列表谱系与光滑 4 维窗口支撑 medium_high。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "筛选端强/生成端弱，判 medium 并在 uncertainty 说明拉扯。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

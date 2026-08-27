@@ -1,0 +1,308 @@
+{
+  "problem_id": "OP-000005",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "abc 猜想（abc Conjecture）",
+    "aliases": ["abc conjecture", "Oesterlé–Masser conjecture"],
+    "slug": "abc-conjecture",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "For every ε>0 there exists a constant K_ε such that for all coprime positive integers a,b,c with a+b=c, c < K_ε · rad(abc)^{1+ε}.",
+      "latex": "\\forall \\varepsilon > 0: \\; \\exists K_\\varepsilon: \\; \\forall a,b,c \\in \\mathbb{Z}_{>0}: \\; \\left( a + b = c \\wedge \\gcd(a,b,c) \\text{ 互素} \\right) \\implies c < K_\\varepsilon \\cdot \\operatorname{rad}(abc)^{1+\\varepsilon}",
+      "language": "en",
+      "source_id": "SRC-0002",
+      "source_location": "J. Oesterlé (1988) 与 D. W. Masser (1984) 各自提出；标准陈述见各类综述（如 Wikipedia 词条汇总）",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "对任意 ε > 0，存在常数 K_ε，使得对满足 a + b = c 的两两互素正整数三元组 (a, b, c)，均有 c ≤ K_ε · rad(abc)^{1+ε}，其中 rad(n) 为 n 的不同素因子之积。",
+      "latex": "\\forall \\varepsilon > 0: \\; \\exists K_\\varepsilon > 0: \\; \\forall (a,b,c) \\in \\mathbb{Z}_{>0}^3: \\; \\left( a+b=c \\wedge a,b,c \\text{ 两两互素} \\right) \\implies c \\le K_\\varepsilon \\cdot \\operatorname{rad}(abc)^{1+\\varepsilon}",
+      "assumptions": [
+        "a, b, c 为两两互素的正整数（原文 coprime 按事实单规范化为两两互素）",
+        "rad(m) 定义为 m 的不同素因子之积（fact sheet 对象定义）",
+        "ε > 0 任意给定；常数 K_ε 允许依赖 ε（对每个 ε 各取一个常数）"
+      ],
+      "quantified_objects": [
+        "对任意 ε > 0：存在 K_ε，使得对满足 a+b=c 的两两互素正整数三元组 (a,b,c) 均有 c ≤ K_ε · rad(abc)^{1+ε}（∀ε ∃K_ε ∀(a,b,c)）",
+        "被量化的三元组整体：例外形态为使不等式对所有常数选择失效的三元组族"
+      ],
+      "normalization_notes": [
+        "原文用严格不等号 c < K_ε · rad(abc)^{1+ε}；规范化按事实单采用 ≤，两种形式相差常数因子层面的表述差异，其语义等价性待专家核验",
+        "原文 coprime 的量化范围按事实单显式化为'两两互素'，量词顺序 ∀ε ∃K_ε ∀(a,b,c) 显式写出"
+      ],
+      "semantic_risks": [
+        "coprime 存在'整体互素'与'两两互素'两种读法；本卡按事实单取两两互素，该选择的语义后果待专家核验",
+        "严格/非严格不等号（< 与 ≤）在 K_ε 存在性陈述中的差异需专家确认是否影响等价刻画"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "互素三数组 a+b=c 中，c 是否总被 rad(abc) 的 (1+ε) 次幂控制——丢番图方程有效界的枢纽猜想。",
+      "short_background": "Masser (1984) 与 Oesterlé (1988) 独立提出。它蕴含（修正形式的）Szpiro 猜想与 Fermat 大定理的有效版本，并与 Mordell 有效猜想族密切相关。Mochizuki 提出 IUT（宇宙际 Teichmüller）理论并声称证明，论文约 500+ 页于 2021 年在 PRIMS 正式发表，但 Scholze–Stix (2018) 指出 III.3.12 节存在缺口，社群未形成接受共识；2026-07，试图形式化该证明的项目 LANA 宣告失败。本卡按'声称已解决但未获认可'的争议开放状态处理。",
+      "why_it_matters": "若成立将一次性给出大量丢番图方程的有效界；其证明声称的长期争议也使其成为'超长数学证明可验证性'的标志性案例。"
+    }
+  },
+  "classification": {
+    "primary_domain": "number-theory",
+    "topics": ["代数数论", "丢番图方程"],
+    "problem_types": ["bound_improvement", "equivalence_or_implication"],
+    "expected_output_types": ["proof"],
+    "mathematical_objects": ["rad(n)=n 的不同素因子积", "椭圆曲线/Szpiro 比"]
+  },
+  "provenance": {
+    "original_proposer": ["Joseph Oesterlé", "David Masser"],
+    "original_year": "1984–1988",
+    "original_work": "Masser (1984) 与 Oesterlé (1988) 独立提出",
+    "exact_citation": "J. Oesterlé (1988) 与 D. W. Masser (1984) 各自提出；标准陈述见各类综述（如 Wikipedia 词条汇总）",
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Abc_conjecture"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "status_uncertain",
+    "confidence_level": "limited",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000005-1",
+        "kind": "source_quote",
+        "description": "Mochizuki 的 IUT 理论系列论文（PRIMS 2021 正式发表，约 500+ 页）存在重大验证争议：Scholze–Stix (2018) 指出 III.3.12 节的证明存在不可修复的缺口，数学社群未形成接受共识（争议报道经 SRC-0006 核验）。",
+        "source_id": "SRC-0006",
+        "tier": "D",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "参见 Scholze–Stix, Why abc is still a conjecture（2018 手稿，广为流传）。"
+      },
+      {
+        "evidence_id": "EV-000005-2",
+        "kind": "document_link",
+        "description": "2026-07：试图形式化 Mochizuki 证明的项目 LANA 宣告失败，进一步确认该证明声称未获独立确认。",
+        "url": "https://francis.naukas.com/2026/07/21/fracasa-el-proyecto-lana-que-formaliza-la-supuesta-prueba-de-la-conjetura-abc-de-mochizuki/",
+        "source_id": "SRC-0013",
+        "tier": "D",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      }
+    ],
+    "contradicting_evidence": [
+      {
+        "evidence_id": "EV-000005-3",
+        "kind": "unverified_claim",
+        "description": "Mochizuki 的 IUT 证明声称：PRIMS 2021 正式发表，作者自认定证明完成。",
+        "source_id": "SRC-0006",
+        "tier": "D",
+        "verification_status": "disputed",
+        "retrieved_at": "2026-08-28",
+        "notes": "期刊发表但核心步骤受 Scholze–Stix 质疑且未获独立验证，按 TASK-401 纪律记为争议证据，不翻转状态。"
+      },
+      {
+        "evidence_id": "EV-000005-4",
+        "kind": "unverified_claim",
+        "description": "Zenodo 等平台存在其他声称证明 abc 猜想的预印本（未逐一登记，略）。",
+        "tier": "D",
+        "verification_status": "unverified",
+        "retrieved_at": "2026-08-28",
+        "notes": "均无期刊接受或社群核验记录；按 TASK-401 纪律不得用于翻转状态。"
+      }
+    ],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [],
+    "best_known_bounds": [],
+    "known_equivalences": [
+      {
+        "statement": "abc 猜想蕴含（修正形式的）Szpiro 猜想与 Fermat 大定理的有效版本。",
+        "direction": "implies",
+        "evidence": []
+      },
+      {
+        "statement": "abc 猜想与 Mordell 有效猜想族密切相关（蕴含其有效版本族）。",
+        "direction": "implies",
+        "evidence": []
+      }
+    ],
+    "attempted_methods": [
+      {
+        "method": "IUT（宇宙际 Teichmüller）理论",
+        "outcome": "Mochizuki 声称证明并于 PRIMS 2021 发表，但核心步骤存在争议（Scholze–Stix 质疑 III.3.12 节），未获社群公认；2026-07 形式化项目 LANA 失败。",
+        "evidence": []
+      },
+      {
+        "method": "有效 Mordell 路线（IUT 之前）",
+        "outcome": "未达到 abc 猜想所需强度。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "声称证明的验证受阻于理论语言门槛与核心引理的独立可读性；争议本身成为认识论障碍。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": []
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "1984 年（Masser）提出，约 40 年未决，且处于证明声称争议中。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "2012–2026 持续高关注（定性评定 92）。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "Szpiro 猜想、有效 Mordell、Fermat 推论族构成完整谱系。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "解决即得大量丢番图方程的有效界（定性评定 92）。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "广受顶级数学家关注，但证明声称争议使认可状态复杂化（定性评定 85）。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "IUT 争议暴露了超长证明验证机制的边界；此前有效 Mordell 等路线积累深厚（定性评定 95）。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 75,
+      "field_normalized_attention": 92,
+      "problem_genealogy": 90,
+      "downstream_impact": 92,
+      "explicit_expert_endorsement": 85,
+      "mathematical_substance": 95
+    },
+    "score_band": "high",
+    "uncertainty": "中：关注度高但证明声称争议影响持久性/认可等维度的评定。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述本身初等精确（ε-界形式），不依赖高深语言即可完整表述。",
+        "evidence": []
+      },
+      {
+        "claim": "反例三元组可程序搜索检验（对给定 ε 与常数候选）。",
+        "evidence": []
+      },
+      {
+        "claim": "rad 计算平凡（素因子分解即可）。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "主流证明路线依赖极高深的 IUT 或全新的代数几何工具，生成端门槛极高。",
+        "evidence": []
+      },
+      {
+        "claim": "文献上下文巨大：IUT 系列约 500+ 页且语言自成体系。",
+        "evidence": []
+      },
+      {
+        "claim": "验证声称本身需要稀缺专家资源：社群多年未能完成独立核验（Scholze–Stix 质疑、LANA 形式化失败）。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [
+      "IUT 争议的最终裁决路径与时间表（无已知答案，直接影响可供性评定）"
+    ],
+    "feature_values": {
+      "statement_completeness": 90,
+      "verifiability": 65,
+      "finite_search": 40,
+      "generation_verification_gap": 40,
+      "decomposability": 40,
+      "tool_support": 55,
+      "context_size": 25,
+      "ai_precedent": 20,
+      "theory_dependency": 15
+    },
+    "score_band": "medium_low",
+    "uncertainty": "高：争议状态与理论语言门槛使可供性评定高度依赖 IUT 裁决路径。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "从事实单抽取英文原始陈述；来源为综述/词条汇总（SRC-0002），无独立原始文献 URL。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "量词链 ∀ε ∃K_ε ∀(a,b,c) 显式化；coprime 取两两互素并标注读法风险与不等号差异。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "事实单未指定库内/外部关系，关系区留空；Szpiro/Mordell 蕴含写入 known_equivalences。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "Mochizuki IUT 声称记为 unverified_claim/disputed 证据，不翻转状态；维持 status_uncertain/limited（LANA 形式化失败入支撑证据）。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维重要性按 importance-rubric-v0.1 评定（band high，争议影响部分维度）。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "九维 AI 可供性按 ai-affordance-rubric-v0.1 评定（band medium_low，uncertainty 高）。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

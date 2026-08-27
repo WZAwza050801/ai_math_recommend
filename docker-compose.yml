@@ -1,0 +1,27 @@
+# docker-compose.yml — Phase 1 起步骨架（当前仅声明，未接线）
+# 依据：ADR-003（PostgreSQL 主存储 + pgvector 辅助召回）
+# Phase 0 无任何服务依赖；此文件只是未来开发的锚点。
+
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: aimath_db
+    environment:
+      POSTGRES_USER: aimath
+      POSTGRES_PASSWORD: change_me_in_phase1
+      POSTGRES_DB: aimath_recommend
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aimath -d aimath_recommend"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Phase 1+: api (apps/api) 与 web (apps/web) 服务在实现后接入
+  # Phase 2+: worker (apps/worker) 采集/加工队列
+
+volumes:
+  pgdata:

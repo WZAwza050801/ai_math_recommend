@@ -1,0 +1,307 @@
+{
+  "problem_id": "OP-000008",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "Legendre 猜想（Legendre's Conjecture）",
+    "aliases": ["Legendre's conjecture", "prime between squares conjecture"],
+    "slug": "legendre-conjecture",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "For every positive integer n there is at least one prime between n² and (n+1)².",
+      "latex": "\\forall n \\in \\mathbb{Z}_{\\ge 1}: \\; \\exists \\text{ prime } p: \\; n^2 < p < (n+1)^2",
+      "language": "en",
+      "source_id": "SRC-0009",
+      "source_location": "Open Problem Garden › Legendre's conjecture",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "对每个正整数 n，在 n² 与 (n+1)² 之间存在至少一个素数 p。",
+      "latex": "\\forall n \\in \\mathbb{Z}_{\\ge 1}: \\; \\exists p \\in \\mathbb{P}: \\; n^2 < p < (n+1)^2",
+      "assumptions": [
+        "n 为正整数（n ≥ 1）",
+        "区间为开区间：严格不等式 n² < p < (n+1)²，端点不计入"
+      ],
+      "quantified_objects": [
+        "对任意正整数 n：存在素数 p 落在开区间 (n², (n+1)²) 内（∀n ∃p；反例形态为单个区间内无素数的 n）",
+        "相邻平方数区间 (n², (n+1)²) 全体构成被量化的区间族"
+      ],
+      "normalization_notes": [
+        "原文与规范化语义一致，仅将量词结构显式化（∀n ∈ Z≥1 ∃素数 p）",
+        "出处归属存在文献学不确定性（约 1798 传统 / 1808 年版两种说法），待人工复核（见 provenance）"
+      ],
+      "semantic_risks": [
+        "开/闭区间的差异会改变端点情形的语义；本卡严格按原文取开区间",
+        "Legendre 猜想是关于'每个平方区间'的命题，与相邻素数间隙的整体估计（如 O(x^0.525)）不同级：后者是平均/序列级结果，不能直接覆盖每个区间"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "相邻两个平方数之间是否总有素数——Legendre 提出的素数分布经典难题。",
+      "short_background": "对每个正整数 n，n² 与 (n+1)² 之间是否必有素数。目前最好的无条件素数间隙界为 O(x^0.525)（Baker–Harman–Pintz 2001 及后续），而 Legendre 猜想需要把间隙指数降到 0.5；即使 RH 也只给出 O(√x·log x) 的间隙，仍不足。数值验证已推进至极大 n（具体界以文献复核为准），但对无穷多 n 无证明力。",
+      "why_it_matters": "它是平方间隙问题族（与 Oppermann、Andrica、Brocard 猜想并列）的成员，攻克它需要素数短区间分布的实质性突破。"
+    }
+  },
+  "classification": {
+    "primary_domain": "number-theory",
+    "topics": ["素数分布"],
+    "problem_types": ["existence"],
+    "expected_output_types": ["proof"],
+    "mathematical_objects": ["相邻平方数区间", "素数间隙"]
+  },
+  "provenance": {
+    "original_proposer": ["Adrien-Marie Legendre"],
+    "original_year": "约 1798（Essai sur la théorie des nombres 时代的猜想传统）",
+    "original_work": "归于 Legendre（1808 年版《数论》相关传统；确切出处以文献学复核为准）",
+    "exact_citation": "归于 Adrien-Marie Legendre（约 1798 / 1808 年版《数论》传统；确切文献出处待文献学复核）",
+    "source_urls": [
+      "https://www.openproblemgarden.org/op/legendres_conjecture",
+      "https://en.wikipedia.org/wiki/Legendre%27s_conjecture"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "high",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000008-1",
+        "kind": "document_link",
+        "description": "Open Problem Garden 的 Legendre's conjecture 条目（权威问题列表）将该问题列为开放（2026-08-28 检索确认仍在列）。",
+        "url": "https://www.openproblemgarden.org/op/legendres_conjecture",
+        "source_id": "SRC-0009",
+        "tier": "A",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      },
+      {
+        "evidence_id": "EV-000008-2",
+        "kind": "source_quote",
+        "description": "最好无条件素数间隙指数仍在 x^{0.525} 附近（Baker–Harman–Pintz 2001 及后续改进），尚未达到 Legendre 所需的 0.5，与问题开放状态一致。",
+        "tier": "C",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [],
+    "best_known_bounds": [
+      {
+        "quantity": "相邻素数间隙 p_{n+1} − p_n（无条件界）",
+        "bound": "O(p_n^{0.525})（Baker–Harman–Pintz 2001 型）",
+        "evidence": [
+          {
+            "evidence_id": "EV-000008-3",
+            "kind": "source_quote",
+            "description": "Baker–Harman–Pintz 2001 及后续的间隙指数结果文献记录。",
+            "tier": "C",
+            "verification_status": "verified",
+            "retrieved_at": "2026-08-28"
+          }
+        ],
+        "notes": "Legendre 需要间隙 ~O(√x)，指数须降至 0.5 以下；RH 下为 O(√x·log x) 仍不足。"
+      },
+      {
+        "quantity": "数值验证范围（无反例）",
+        "bound": "对有限范围内极大的 n 数值验证成立（具体验证界以文献复核为准）",
+        "evidence": [],
+        "notes": "计算证据不构成证明，对无穷多 n 无效。"
+      }
+    ],
+    "known_equivalences": [],
+    "attempted_methods": [
+      {
+        "method": "筛法+指数和（间隙指数下降路线）",
+        "outcome": "间隙指数降至 O(x^{0.525})（Baker–Harman–Pintz 2001 及后续），尚未跨过 0.5。",
+        "evidence": []
+      },
+      {
+        "method": "RH 条件下的推论",
+        "outcome": "RH 给出间隙 O(√x·log x)，仍弱于 Legendre 所需。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "间隙指数从 0.525 到 0.5 的最后跨越无已知路线；RH 本身也不蕴含 Legendre。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [
+      {
+        "target": "external:Andrica 猜想",
+        "evidence": [],
+        "notes": "Andrica 猜想（√(p_{n+1}) − √(p_n) < 1）⇒ Legendre。"
+      }
+    ],
+    "related_to": [
+      {
+        "target": "OP-000001",
+        "evidence": [],
+        "notes": "RH 给出 O(√x log x) 间隙，接近但不足以推出 Legendre——related_but_distinct。"
+      }
+    ]
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "约 1798 年归于 Legendre，两百余年未解。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "素数间隙经典问题之一，关注度中等（定性评定 65）。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "与 Oppermann、Andrica、Brocard 猜想构成平方间隙问题族。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "素数短区间分布的标志性目标（定性评定 60）。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "权威问题列表与综述收录（定性评定 70）。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "间隙指数 0.525 → 0.5 的最后跨越悬而未决（定性评定 65）。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 90,
+      "field_normalized_attention": 65,
+      "problem_genealogy": 70,
+      "downstream_impact": 60,
+      "explicit_expert_endorsement": 70,
+      "mathematical_substance": 65
+    },
+    "score_band": "medium_high",
+    "uncertainty": "低。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述初等精确（区间+素性判定，量词结构简单）。",
+        "evidence": []
+      },
+      {
+        "claim": "区间素数检验工具成熟（素性检验与素数计数可直接使用）。",
+        "evidence": []
+      },
+      {
+        "claim": "可逐 n 数值验证（按区间并行推进）。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "证明需要素数短区间分布的实质性突破，生成端无已知路线。",
+        "evidence": []
+      },
+      {
+        "claim": "数值验证对无穷 n 无效：逐区间核验不能升级为一般证明。",
+        "evidence": []
+      },
+      {
+        "claim": "与 RH 的关系（RH 不蕴含）说明难度独立于主流条件结果，现有最强工具不适用。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [],
+    "feature_values": {
+      "statement_completeness": 95,
+      "verifiability": 80,
+      "finite_search": 45,
+      "generation_verification_gap": 50,
+      "decomposability": 60,
+      "tool_support": 75,
+      "context_size": 80,
+      "ai_precedent": 40,
+      "theory_dependency": 55
+    },
+    "score_band": "medium",
+    "uncertainty": "中：验证端可用，但证明依赖短区间分布突破。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "从事实单抽取英文原始陈述；provenance 归属的文献学不确定性按事实单保留。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "量词显式化（∀n ∃素数 p），开区间语义写入假设与语义风险。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "implied_by external:Andrica；related_to OP-000001（related_but_distinct，与库内既有卡互指一致）。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "OPG 列为开放；间隙指数 O(x^0.525) 界入支撑证据（保守表述、无 URL、tier C）。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维重要性按 importance-rubric-v0.1 评定（band medium_high）。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "九维 AI 可供性按 ai-affordance-rubric-v0.1 评定（band medium）。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

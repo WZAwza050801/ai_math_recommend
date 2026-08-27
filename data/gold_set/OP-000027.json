@@ -1,0 +1,277 @@
+{
+  "problem_id": "OP-000027",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "P versus NP（P 与 NP 问题）",
+    "aliases": ["P vs NP", "P=NP problem", "Clay millennium problem: P versus NP"],
+    "slug": "p-versus-np",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "Determine whether P = NP: whether every problem whose solution can be verified in polynomial time can also be solved in polynomial time.",
+      "latex": "P \\overset{?}{=} NP",
+      "language": "en",
+      "source_id": "SRC-0001",
+      "source_location": "Clay Mathematics Institute: P versus NP 官方问题陈述（Cook 撰写）",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "判定复杂性类 P 与 NP 是否相等：凡其解可在多项式时间内被验证的判定问题（NP），是否都存在多项式时间求解算法（即是否都属于 P）。",
+      "latex": "P \\overset{?}{=} NP \\quad\\Longleftrightarrow\\quad \\forall L \\in NP:\\ \\exists \\text{多项式时间算法判定 } L",
+      "assumptions": [
+        "P 指确定性图灵机多项式时间可判定的语言类；NP 指非确定性图灵机多项式时间可判定的语言类（等价地，证书可在多项式时间内验证）",
+        "问题按判定问题语言类表述；搜索/优化版本通过标准归约与本判定版本相联系，不在本卡命题内"
+      ],
+      "quantified_objects": [
+        "对 NP 中每个语言 L：问是否存在多项式时间确定性算法判定 L（全称量词覆盖全部 NP 语言；整个命题为 P 与 NP 两个类相等的判定）"
+      ],
+      "normalization_notes": [
+        "原文为 Clay 官方口语化表述；规范化以标准语言类定义重述",
+        "\"verified in polynomial time\" 显式化为 NP 的证书验证定义"
+      ],
+      "semantic_risks": [
+        "P=NP 是对确定性与非确定性计算模型（图灵机）而言的；在非标准计算模型（如量子、电路带前提）下相应问题为不同命题",
+        "\"能验证\"与\"能求解\"的对应依赖判定问题框架；把它直接读作任意\"生成型\"任务的断言属于过度推广"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "凡答案能被快速核对的问题，是否总能被快速解决？——这是理论计算机科学的中心问题，也是千禧奖问题之一。",
+      "short_background": "P 是确定性多项式时间可解问题的类，NP 是解可被多项式时间验证的问题的类。Cook–Levin 定理与 Karp 的 21 个 NP-完全问题建立了\"只要给 SAT 找到多项式算法，P=NP\"的枢纽结构。自 1971 年（Cook；Levin 1973 独立）提出以来主流共识是 P≠NP，但半个世纪的努力被三大证明障碍（相对化、自然证明、代数化）系统性地阻挡。",
+      "why_it_matters": "P=NP 的答案决定整个计算复杂性理论的走向：正面答案将颠覆密码学与\"高效求解\"的常识边界，反面证明则第一次严格刻画\"验证容易 ≠ 求解容易\"；它也是复杂性理论自身的奠基性试金石。"
+    }
+  },
+  "classification": {
+    "primary_domain": "logic-and-tcs",
+    "secondary_domains": [],
+    "topics": ["计算复杂性"],
+    "problem_types": ["structural_characterization"],
+    "expected_output_types": ["proof"],
+    "mathematical_objects": ["确定性多项式时间 P", "非确定性多项式时间 NP", "归约"]
+  },
+  "provenance": {
+    "original_proposer": ["Stephen Cook（1971 形式化）；Leonid Levin（1973 独立）；Jack Edmonds（1965 命名 P）与 Kurt Gödel（1956 信件预言）传统"],
+    "original_year": "1971",
+    "original_work": "S. Cook, The complexity of theorem-proving procedures (1971)；L. Levin (1973)",
+    "exact_citation": "S. A. Cook, The complexity of theorem-proving procedures, STOC 1971；L. A. Levin (1973, 独立)；千禧奖官方陈述：S. Cook, The P versus NP problem（Clay, SRC-0001）。",
+    "source_urls": [
+      "https://www.claymath.org/millennium-problems/p-vs-np-problem"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "high",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000027-1",
+        "kind": "document_link",
+        "description": "Clay 数学研究所官方页将 P versus NP 列为未解决的千禧奖问题之一（2026-08 检索确认仍在列）；主流共识为 P≠NP 但无证明，历年声称证明被社区持续收录并否决。",
+        "url": "https://www.claymath.org/millennium-problems/p-vs-np-problem",
+        "source_id": "SRC-0001",
+        "source_location": "Clay Mathematics Institute: P versus NP 官方问题陈述（Cook 撰写）",
+        "tier": "A",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "每年均有声称证明出现（社区页面持续收录并否决），按纪律不逐一登记为 contradicting 条目，以本 notes 记录现象。"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "known_equivalences": [
+      {
+        "statement": "NP-完全性枢纽（Cook–Levin 定理 + Karp 21 问题）：SAT 是 NP-完全的，故 P=NP ⇔ SAT ∈ P（即 SAT 存在多项式时间算法）。",
+        "direction": "equivalent",
+        "evidence": []
+      }
+    ],
+    "attempted_methods": [
+      {
+        "method": "对角化方法",
+        "outcome": "被 Baker–Gill–Solovay (1975) 相对化障碍阻挡：存在使 P^A=NP^A 与 P^A≠NP^A 的 oracle A，纯对角化论证无法分辨两者。",
+        "evidence": []
+      },
+      {
+        "method": "电路下界/自然证明",
+        "outcome": "被 Razborov–Rudich (1997) 自然证明障碍阻挡：满足自然性条件的证明技术会破坏伪随机函数的存在。",
+        "evidence": []
+      },
+      {
+        "method": "代数化方法",
+        "outcome": "被 Aaronson–Wigderson (2008) 代数化障碍阻挡：代数化论证同样在合适 oracle 下相对化。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "三大证明障碍（相对化、自然证明、代数化）系统性地表明现有证明技术路线不足以分离（或证明相等）P 与 NP。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": []
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "1971 年形式化（Gödel 1956 信件已含预言性雏形），悬置半个世纪以上。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "整个理论计算机科学关注度最高的问题，没有之一；教科书、综述与科普持续覆盖。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "复杂性理论的问题谱系以其为根节点：NP-完全性、复杂性类层级、去随机化等方向均与其相连。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "任何方向的解答都将重塑算法设计、密码学与优化理论的 foundations。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "Clay 千禧奖悬赏 + 全领域共识的核心地位（Cook 官方陈述）。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "三大障碍刻画了半个世纪方法论的失效面，难度结构本身已成为一个研究方向。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 92,
+      "field_normalized_attention": 100,
+      "problem_genealogy": 95,
+      "downstream_impact": 95,
+      "explicit_expert_endorsement": 100,
+      "mathematical_substance": 100
+    },
+    "score_band": "high",
+    "uncertainty": "低：Clay 悬赏与全领域共识证据直接。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述完全形式化，且有 Lean/Coq 形式化传统（复杂性理论定义可在证明助手中展开）。",
+        "evidence": []
+      },
+      {
+        "claim": "上下文自包含：命题不依赖庞杂文献背景即可完整陈述。",
+        "evidence": []
+      },
+      {
+        "claim": "障碍理论本身刻画了\"什么不奏效\"，为策略筛选提供了明确的负面地图。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "三大障碍直接说明现有技术不可达，需要证明理论层面的范式转移。",
+        "evidence": []
+      },
+      {
+        "claim": "非计算搜索型问题：既无有限搜索空间，也无计算证据可以积累。",
+        "evidence": []
+      },
+      {
+        "claim": "人类半个世纪努力未果；任何\"接近解决\"的信号都缺乏校准基准。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [
+      "证明技术将来自何方完全未知（障碍结果只排除、不指路）"
+    ],
+    "feature_values": {
+      "statement_completeness": 100,
+      "verifiability": 80,
+      "finite_search": 10,
+      "generation_verification_gap": 20,
+      "decomposability": 25,
+      "tool_support": 50,
+      "context_size": 75,
+      "ai_precedent": 20,
+      "theory_dependency": 15
+    },
+    "score_band": "low",
+    "uncertainty": "中：对\"AI 适合度\"的判断本身面临悖论——验证端强（证明可机检）、生成端历史性难（半个世纪无进展）；band 主要由生成端决定。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "按事实单抽取 Clay 官方陈述与 Cook/Levin 谱系。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "以标准语言类定义重述；标注计算模型与判定/搜索边界风险。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "事实单未指定关系，relationships 全部留空；SAT 等价入 known_equivalences。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "维持 confirmed_open；历年声称证明按事实单以 notes 记录现象、不逐条登记。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维近乎满格，Clay+共识支撑 high。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "生成端历史性难压倒验证端优势，判 low；悖论写入 uncertainty。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

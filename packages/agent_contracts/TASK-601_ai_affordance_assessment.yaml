@@ -18,6 +18,7 @@ forbidden_actions:
   - 不得输出任何概率语义的表述（"解决概率 X%"）
   - 不得混淆"可验证"与"可生成"（§19.2）
   - 不得无证据抬高或压低 band
+  - 不得覆盖不可变字段或删改已有证据记录（证据只增不删改）
 procedure:
   - 逐维评估 §13.5 九个维度，每维给出支持/反对证据
   - 汇总 evidence_for / evidence_against / unknowns（未知必须显式列出）

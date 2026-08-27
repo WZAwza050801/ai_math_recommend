@@ -1,0 +1,285 @@
+{
+  "problem_id": "OP-000023",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "五维接吻数的精确值（Kissing Number in Dimension 5）",
+    "aliases": ["kissing number problem dimension 5"],
+    "slug": "kissing-number-dimension-5",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "Determine the kissing number τ(5): the maximum number of non-overlapping unit spheres in R^5 that can simultaneously touch a central unit sphere. It is known that 40 ≤ τ(5) ≤ 45.",
+      "latex": "40 \\le \\tau(5) \\le 45",
+      "language": "en",
+      "source_id": "SRC-0006",
+      "source_location": "Kissing number problem 词条（各维数表）",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "求五维欧氏空间 \\mathbb{R}^5 中接吻数 \\tau(5) 的精确值：与一个中心单位球同时相切、且两两互不重叠（内部不交）的单位球的最大个数。当前已知 40 \\le \\tau(5) \\le 45，其中下界 40 由 D5 格构型给出，精确值未定。",
+      "latex": "40 \\le \\tau(5) \\le 45, \\qquad \\tau(5) = \\max \\{\\text{互不重叠且同时切于中心单位球的单位球个数}\\}",
+      "assumptions": [
+        "单位球指 \\mathbb{R}^5 中半径为 1 的球；\"相切\"指与中心单位球接触，\"互不重叠\"按通常惯例指两两内部不交（允许表面接触）",
+        "问题限定维数 n=5；其余维数的接吻数不在本卡命题内"
+      ],
+      "quantified_objects": [
+        "对 \\mathbb{R}^5 中任意一族与中心单位球相切且两两不交的单位球：其球数不超过 \\tau(5)；\\tau(5) 定义为所有此类构型球数的最大值（全称量词覆盖全部构型，外加对最大值的存在确定）"
+      ],
+      "normalization_notes": [
+        "原文以不等式 40 ≤ τ(5) ≤ 45 给出当前知识状态；规范化将\"求精确值\"这一任务与\"已知界\"这一背景分开表述",
+        "下界 40 的来源（D5 格）按事实单注记保留在文本中"
+      ],
+      "semantic_risks": [
+        "\\tau(5) 是一般（允许非格构型）接吻数，勿与格接吻数（lattice kissing number）混淆：D5 格只给出下界",
+        "\"non-overlapping\" 若被理解为\"连表面接触也不允许\"将改变问题语义；本卡按\"内部不交、允许表面接触\"的通行惯例理解"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "在五维空间里，最多能让多少个同样大小的球同时贴住一个中心球？目前只知道答案在 40 与 45 之间，精确值仍未确定。",
+      "short_background": "接吻数 \\tau(n) 问的是 \\mathbb{R}^n 中与中心单位球相切、两两不重叠的单位球的最大个数。维数 1、2、3、4、8、24 已精确解出（\\tau(3)=12、\\tau(4)=24、\\tau(8)=240、\\tau(24)=196560），而 5 维恰好落在已知方法的夹缝中：下界 40 来自 D5 格构造，上界停留在 45 附近。",
+      "why_it_matters": "它是接吻数维数谱系（1、2、3、4、8、24 已解）上一个显眼的空白；其解决将检验 LP/SDP 等上界工具在中等维数的极限，并与编码理论中的球填充码相联系。"
+    }
+  },
+  "classification": {
+    "primary_domain": "geometry",
+    "secondary_domains": ["combinatorics-and-graph-theory"],
+    "topics": ["填充与堆积", "凸几何与离散几何"],
+    "problem_types": ["computational_determination", "bound_improvement"],
+    "expected_output_types": ["proof", "computational_evidence"],
+    "mathematical_objects": ["单位球切点构型", "D5 格"]
+  },
+  "provenance": {
+    "original_proposer": ["Newton–Gregory 3 维对话传统的推广；具体维数问题的现代形式属编码/几何学界 20 世纪中叶"],
+    "original_year": "古典 3 维对话 (1694)；高维系统化 20 世纪",
+    "original_work": "Newton–Gregory 1694 年通信（3 维）；Levenshtein/Odlyzko–Schläfli 方法（8/24 维）",
+    "exact_citation": "Kissing number problem 词条（各维数表），Wikipedia（SRC-0006，导航级来源）；历史线索：Newton–Gregory 1694 年通信；8/24 维方法：Levenshtein / Odlyzko–Schläfli。",
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Kissing_number"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "high",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000023-1",
+        "kind": "document_link",
+        "description": "Wikipedia \"Kissing number problem\" 词条（各维数表）给出 τ(5) 的已知界 40 ≤ τ(5) ≤ 45，且未列出精确值。",
+        "url": "https://en.wikipedia.org/wiki/Kissing_number",
+        "source_id": "SRC-0006",
+        "source_location": "Kissing number problem 词条（各维数表）",
+        "tier": "D",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "导航级来源，只作状态与界的线索；文献中存在略优于 45 的上界声称（44.65 型），未经人工复核，暂不写入已确立界，以 P7 复核为准。"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "已解维数谱系：τ(1)=2、τ(2)=6、τ(3)=12（Schütte–van der Waerden, 1953）、τ(4)=24（Musin, 2003）、τ(8)=240（Levenshtein / Odlyzko–Rotach, 1979）、τ(24)=196560（同上；Leech 格最优性属 Cohn–Kumar–Miller–Radchenko–Viazovska 2016/2019 系工作）——这些维数的解决构成 5 维问题所处的谱系背景（tier C 线索，具体文献定位待 P7 复核）。",
+        "status": "proven",
+        "evidence": []
+      }
+    ],
+    "best_known_bounds": [
+      {
+        "quantity": "五维接吻数 τ(5)",
+        "bound": "40 ≤ τ(5) ≤ 45",
+        "evidence": [],
+        "notes": "下界 40 由 D5 格构造给出，上界 45 为经典界；文献中存在略优于 45 的数值声称（44.65 型），未经人工复核前不作为已确立界。"
+      }
+    ],
+    "attempted_methods": [
+      {
+        "method": "球面填充/LP 上界（Delsarte 方法）",
+        "outcome": "给出经典型上界，但在 5 维的精度不足以把上界压到 40。",
+        "evidence": []
+      },
+      {
+        "method": "格构造下界",
+        "outcome": "D5 格给出下界 40。",
+        "evidence": []
+      },
+      {
+        "method": "半定规划（Bachoc–Vallentin 改进框架）",
+        "outcome": "提供了改进上界的框架，但在 5 维尚未闭合区间。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "LP/SDP 上界方法在 5 维的精度不足，无法把上界压到下界 40。",
+        "evidence": []
+      },
+      {
+        "obstacle": "下界侧构型搜索的组合空间庞大，穷举/启发式搜索难以覆盖。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": []
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "接吻数问题源自 Newton–Gregory 3 维对话传统（1694），高维形式在 20 世纪中叶被系统化；5 维情形悬置至今。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "作为填充/离散几何的经典参数，教科书与综述持续覆盖；关注度中等偏上。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "维度谱系清晰：1、2、3、4、8、24 维已解，5 维是该谱系上的空白。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "与编码理论相联系（球填充码方向）。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "长期出现于离散几何综述与教材的问题列表中；属传统经典问题而非专门悬赏问题。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "LP/SDP 上界与构型搜索的相互作用刻画了该方向的工具边界。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 70,
+      "field_normalized_attention": 55,
+      "problem_genealogy": 70,
+      "downstream_impact": 45,
+      "explicit_expert_endorsement": 55,
+      "mathematical_substance": 60
+    },
+    "score_band": "medium",
+    "uncertainty": "低：六个维度的证据一致，评分主要受归一化方法（v0.1 定性判断）影响。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "完全有限的问题（单点数值确定）：目标状态明确——把 40 与 45 之间的间隙闭合。",
+        "evidence": []
+      },
+      {
+        "claim": "SDP/LP 工具成熟，且该类问题历史上由计算+凸规划路线解决（τ(4)=24 即 SDP 路线）。",
+        "evidence": []
+      },
+      {
+        "claim": "下界侧构型搜索可并行化，适合算力扫描。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "5 维 SDP 的数值精度与严格化（有理数校验）存在工程难度。",
+        "evidence": []
+      },
+      {
+        "claim": "上下界闭合可能需要新类型的不等式，超出现有 LP/SDP 框架。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [
+      "文献中略优上界声称（44.65 型）的确切状态与可复现性"
+    ],
+    "feature_values": {
+      "statement_completeness": 95,
+      "verifiability": 85,
+      "finite_search": 85,
+      "generation_verification_gap": 60,
+      "decomposability": 80,
+      "tool_support": 80,
+      "context_size": 85,
+      "ai_precedent": 75,
+      "theory_dependency": 55
+    },
+    "score_band": "high",
+    "uncertainty": "低：有限目标、成熟工具与 τ(3)、τ(4) 计算证明先例共同支撑评分。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "按事实单抽取原始陈述与元数据（Wikipedia 导航源）。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "量词显式化：最大化任务与已知界 40/45 分离表述。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "事实单未指定关系，relationships 全部留空。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "维持 confirmed_open；略优上界声称未经复核不入界字段、只入 notes。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维评分按事实单录入，证据数组留空待 P7。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "有限问题、成熟凸规划工具与 τ(3)/τ(4) 先例支撑 high 段评分。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

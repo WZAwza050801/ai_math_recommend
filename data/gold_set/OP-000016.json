@@ -1,0 +1,278 @@
+{
+  "problem_id": "OP-000016",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "Sendov 猜想（Sendov's Conjecture）",
+    "aliases": ["Sendov's conjecture", "Iliev's conjecture 历史"],
+    "slug": "sendov-conjecture",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "If all the zeros of a polynomial p of degree n ≥ 2 lie in the closed unit disk, then every zero of p has a critical point of p (a zero of p') within distance 1.",
+      "latex": "\\{z : p(z)=0\\} \\subseteq \\overline{\\mathbb{D}} \\implies \\forall z_0\\ (p(z_0)=0)\\ \\exists w\\ (p'(w)=0):\\ |z_0 - w| \\le 1",
+      "language": "en",
+      "source_id": "SRC-0006",
+      "source_location": "Sendov's conjecture 词条",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "设 $p$ 为 $n \\ge 2$ 次复系数多项式，其全部零点均落在闭单位圆盘 $\\{z : |z| \\le 1\\}$ 内。则对 $p$ 的每个零点 $z$，存在 $p'$（$p$ 的导数）的零点 $w$，使得 $|z - w| \\le 1$。",
+      "latex": "\\forall p \\in \\mathbb{C}[z],\\ \\deg p = n \\ge 2:\\ \\left(\\{z : p(z)=0\\} \\subseteq \\overline{\\mathbb{D}}\\right) \\implies \\forall z_0\\ (p(z_0)=0)\\ \\exists w\\ (p'(w)=0):\\ |z_0 - w| \\le 1",
+      "assumptions": [
+        "$p$ 为复系数多项式，次数 $n \\ge 2$",
+        "全部零点落在闭单位圆盘内（含边界 $|z| = 1$）",
+        "临界点指 $p'$ 的零点；允许临界点与该零点重合（重根情形）",
+        "距离为复平面上的通常欧氏距离"
+      ],
+      "quantified_objects": [
+        "对每个满足零点圆盘条件的 n ≥ 2 次多项式 p",
+        "对 p 的每个零点 z：存在临界点 w 使 |z − w| ≤ 1（∀零点、∃临界点）"
+      ],
+      "normalization_notes": [
+        "量词显式化：∀p、∀零点、∃临界点；临界点的存在量词逐零点独立",
+        "w 允许与 z 重合，覆盖重根退化情形，与原文 within distance 1 的表述一致"
+      ],
+      "semantic_risks": [
+        "within distance 1 读作 ≤ 1（闭）而非 < 1（开）；边界读法影响退化情形",
+        "重根零点本身即临界点，该情形自动满足；本卡采用此通行约定"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "若多项式的零点全部落在单位圆盘内，它的每个零点是否都在距离 1 之内有自己的临界点？",
+      "short_background": "Sendov 猜想断言：n ≥ 2 次复多项式若全部零点落在闭单位圆盘内，则每个零点在距离 ≤ 1 内必有导数的零点。低次数（n ≤ 8/9）已经计算与逐次情形证明验证；Tao (2019/2020) 证明充分高次数情形成立，剩余为中等次数区间。1958 年由 Sendov 提出（保加利亚学派），经 Hayes–Sendov 等传播，具体文献学出处待人工复核。",
+      "why_it_matters": "零点与临界点的几何关联是复多项式理论的基本问题；Gauss–Lucas 型恒等式与势论工具在此交汇，而剩余的中等次数区间需要精细估计而非计算。"
+    }
+  },
+  "classification": {
+    "primary_domain": "algebra",
+    "secondary_domains": [],
+    "topics": ["多项式零点与临界点"],
+    "problem_types": ["structural_characterization"],
+    "expected_output_types": ["proof", "counterexample"],
+    "mathematical_objects": ["多项式零点", "临界点（导数零点）"]
+  },
+  "provenance": {
+    "original_proposer": ["Blagovest Sendov"],
+    "original_year": "1958/1970s 传播",
+    "original_work": "Sendov 提出于保加利亚学派；经 Hayes–Sendov 等传播（具体出处以文献学复核为准）",
+    "exact_citation": "标准综述见 Bl. Sendov, V. Sendov 关于该猜想的总结文献（以人工复核为准）",
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Sendov%27s_conjecture"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "moderate",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000016-1",
+        "kind": "document_link",
+        "description": "权威综述/百科将 Sendov 猜想列为开放问题：重大部分进展存在，一般情形开放（2026-08-28 检索确认）。",
+        "url": "https://en.wikipedia.org/wiki/Sendov%27s_conjecture",
+        "source_id": "SRC-0006",
+        "tier": "D",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "低次数情形 n ≤ 8/9 已验证（多作者计算与逐次情形证明；细节以综述为准）。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "Tao (2019/2020)：充分大的次数 n 情形成立（T. Tao, Sendov's conjecture for sufficiently high degree polynomials；期刊/预印本出处待人工复核）。剩余为中等次数区间。",
+        "status": "proven",
+        "evidence": []
+      }
+    ],
+    "attempted_methods": [
+      {
+        "method": "几何函数论（共形映射）",
+        "outcome": "产出部分结果；未覆盖一般次数。",
+        "evidence": []
+      },
+      {
+        "method": "势论与零点关联恒等式（Tao 路线：Gauss–Lucas 型恒等式 + 阻尼牛顿流）",
+        "outcome": "证明充分高次数情形成立；其常数在低次数端失效。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "中等次数区间的零点—临界点几何控制不足。",
+        "evidence": []
+      },
+      {
+        "obstacle": "Tao 方法的常数在低次数端失效。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": []
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "1958 年前后提出（1970s 经 Hayes–Sendov 等传播），至今近七十年未决；文献学出处待复核。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "Tao (2019/2020) 充分高次数结果带动关注；整体中等热度。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "属零点—临界点几何关联谱系（Gauss–Lucas 传统）；低次数验证与高次数结果构成阶梯。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "与几何函数论、势论工具相互滋养；下游直接依赖有限。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "权威综述列为开放；Tao 的参与是显性背书信号。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "Tao 方法的常数在低次数端失效，表明剩余区域需要新的估计机制。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 68,
+      "field_normalized_attention": 55,
+      "problem_genealogy": 55,
+      "downstream_impact": 50,
+      "explicit_expert_endorsement": 60,
+      "mathematical_substance": 65
+    },
+    "score_band": "medium",
+    "uncertainty": "低：开放状态与部分结果证据明确；文献学出处待复核不直接影响评分。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述完全精确、可形式化：零点/临界点/距离条件均为初等对象。",
+        "evidence": []
+      },
+      {
+        "claim": "逐多项式数值检验成熟：候选反例可程序核验。",
+        "evidence": []
+      },
+      {
+        "claim": "参数空间（零点构型）可采样搜索；上下文小。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "全称断言（所有满足条件的多项式）无有限搜索面。",
+        "evidence": []
+      },
+      {
+        "claim": "已有密集的人类理论工作，剩余中等次数区域需要精细估计而非计算。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [
+      "Tao (2019/2020) 结果的确切覆盖界（常数多大）待复核"
+    ],
+    "feature_values": {
+      "statement_completeness": 95,
+      "verifiability": 80,
+      "finite_search": 55,
+      "generation_verification_gap": 50,
+      "decomposability": 55,
+      "tool_support": 75,
+      "context_size": 80,
+      "ai_precedent": 45,
+      "theory_dependency": 50
+    },
+    "score_band": "medium",
+    "uncertainty": "中：形式化与数值检验端强，剩余区域属精细估计型困难。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "manual_curation 通道：从 Wikipedia 导航源抽取原始陈述与元数据。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "量词显式化与假设外提。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "事实单未指定关系；关系字段全部留空待人工补充。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "web 检索 2026-08-28：权威综述列为开放；低次数与 Tao 高次数部分结果记入 special_cases，出处待人工复核。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维重要性评分与证据映射。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "AI 可行性九维评估与 unknowns 记录。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

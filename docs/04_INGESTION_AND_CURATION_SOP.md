@@ -277,15 +277,15 @@ undo
 
 - **契约的机器可校验版本**位于 `packages/agent_contracts/`：契约以 YAML 编写，须符合 `schemas/agent_task_contract/schema.json`（`$id: https://ai-math-recommend.dev/schemas/agent_task_contract/v1.0.0/schema.json`）。§1.1 模板是人工基线，Schema 是其机器校验对应物（Agent 输出必须通过 Schema 校验，即 §1.2 第 8 条）。
 - **提示词目录**：`prompts/extraction`（对应 P1 Extraction Agent）、`prompts/normalization`（对应 P2 Normalization Agent）、`prompts/status_verification`（对应 P4 Status Verification Agent）、`prompts/assessment`（评估类任务提示词）。
-- **落地现状**（写作时已核实）：`packages/agent_contracts/` 与上述四个 prompts 子目录均已建立，但均为空目录，尚无任何契约 YAML 或提示词文件；P1/P2/P4/P5/P6 所依赖的契约与提示词均待创建。
+- **落地现状**（2026-08-28 过夜执行后更新）：`packages/agent_contracts/` 已落盘 **11 份契约 YAML**（TASK-000、TASK-101/201/301/401/501/601、TASK-701/801/901、TASK-1001），全部通过 agent_task_contract Schema v1.0.0 校验，覆盖 P0–P10 全部阶段（tests/contract 锁定覆盖完整性）。提示词已落盘 5 份：`prompts/extraction/PROMPT.md`（extraction-v0.1）、`prompts/normalization/PROMPT.md`（normalization-v0.1）、`prompts/status_verification/PROMPT.md`（status_verification-v0.1）、`prompts/assessment/importance_rubric.md`（importance-rubric-v0.1）、`prompts/assessment/ai_affordance_rubric.md`（ai-affordance-rubric-v0.1）。
 - 状态机与问题卡 Schema 的落地位置见《docs/02_DOMAIN_MODEL_AND_SCHEMA.md》§3；数据源登记的落地位置见《docs/03_DATA_SOURCE_REGISTRY.md》§4。
 
 ---
 
 ## 4. 待裁决问题
 
-以下问题在拆分时发现，未自行决策：
+以下问题在拆分时发现；第 1 项已随 Phase 0 执行解决，第 2/3 项转 ADR Backlog（`docs/adr/BACKLOG.md` B-12/B-13）：
 
-1. 契约与提示词尚未落地：P1/P2/P4/P5/P6 所需的契约 YAML 与提示词文件均未创建；先补哪些阶段、由谁审校批准，待裁决。
-2. 提示词目录覆盖范围空白：P3 Relation Agent、P5 Metrics Pipeline 与 Importance Evidence Agent 的提示词归属哪个目录，原文未规定；`prompts/assessment` 的准确覆盖范围（P5、P6 还是两者）亦未明示。
-3. §1.1 模板字段与 `schemas/agent_task_contract` 之间的字段级对照表尚未建立，`quality_checks`、`logging_requirements` 等模板字段在机器契约中的表达方式待裁决。
+1. ~~契约与提示词尚未落地~~ → **已解决**：11 份契约 + 5 份提示词全部落盘并通过机器校验（见 §3 落地现状）；后续修改须同步更新本文件与 docs/06。
+2. 提示词目录覆盖范围空白：P3 Relation Agent 的提示词归属（建议 `prompts/relation/`）、以及 P5 证据采集与 P6 rubric 评估的提示词拆分粒度，记入 Backlog B-12，Phase 2 落地。
+3. §1.1 模板字段与 `schemas/agent_task_contract` 的字段级对照表：当前实现中模板语义字段映射到 `purpose/inputs/allowed_sources/allowed_tools/forbidden_actions/procedure/hard_failures/quality_checks/logging_requirements/retry_policy`；正式对照表记入 Backlog B-13，Phase 1 补齐。
