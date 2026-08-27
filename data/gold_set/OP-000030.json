@@ -1,0 +1,279 @@
+{
+  "problem_id": "OP-000030",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "开普勒猜想（Kepler Conjecture）",
+    "aliases": ["Kepler conjecture", "sphere packing in dimension 3"],
+    "slug": "kepler-conjecture",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "The densest packing of congruent spheres in three-dimensional Euclidean space has density π/(3√2) ≈ 0.74048, attained by the face-centered cubic (and hexagonal close) packing.",
+      "latex": "\\Delta_{\\mathbb{R}^3} = \\frac{\\pi}{3\\sqrt{2}} \\approx 0.74048 \\quad (\\text{FCC/HCP 堆积达到})",
+      "language": "en",
+      "source_id": "SRC-0014",
+      "source_location": "T. Hales, S. Ferguson 等，Discrete & Computational Geometry 36 (2006) 系列论文（开普勒猜想特刊）",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "三维欧氏空间中等球（全等球）堆积的密度上确界为 \\pi/\\sqrt{18} \\approx 0.740480，且该上确界由面心立方（FCC）与六方密堆积（HCP）型堆积达到。开普勒 1611 年猜想，Hales–Ferguson 1998 年完成证明。",
+      "latex": "\\sup_{\\text{等球堆积 } \\mathcal{P}} \\rho(\\mathcal{P}) = \\frac{\\pi}{\\sqrt{18}} \\approx 0.740480, \\quad \\text{由 FCC/HCP 型堆积达到}",
+      "assumptions": [
+        "堆积指全等球的两两内部不交族；密度按大球极限密度（渐近密度）定义",
+        "命题覆盖一切（包括非格）等球堆积；FCC 与 HCP 为达到最优密度的典型代表（存在大量非周期最优堆积形态）"
+      ],
+      "quantified_objects": [
+        "对三维欧氏空间中任意等球堆积（全称量词覆盖全部堆积，含非格堆积）：其渐近密度不超过 \\pi/\\sqrt{18}",
+        "存在性断言：FCC/HCP 型堆积达到该上确界"
+      ],
+      "normalization_notes": [
+        "原始陈述以 FCC 的标准密度常数 \\pi/(3\\sqrt{2}) 表述；规范化同时给出等价形式 \\pi/\\sqrt{18} 与小数近似",
+        "命题含\"上界 + 达到\"两层：最优密度的确定与最优堆积的存在性/形态描述",
+        "问题\"解决\"状态的载体是 Hales–Ferguson 证明的正式发表（DCG 36 (2006)）与 Flyspeck 形式化验证（2014 宣布完成）"
+      ],
+      "semantic_risks": [
+        "\"堆积密度\"必须按渐近（大区域极限）定义理解；对有限容器内最大球数断言属于不同命题",
+        "Hilbert 第 18 问题的\"堆积部分\"传统上指本问题所属方向，但 18 问题本身范围更大，不得混同"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "【已解决对照样本】等大的球在三维空间里最密能堆到密度的 π/√18 ≈ 0.7405（水果摊式的 FCC/HCP 堆法）——Hales–Ferguson 1998 年证明、2014 年形式化验证关闭了这个 387 年的猜想；本卡作为对照样本展示\"计算辅助证明 + 形式化验证\"的完整生命周期。",
+      "short_background": "开普勒在 1611 年《六角雪花》中猜想：等球三维堆积的最优密度即面心立方/六方密堆积的 π/√18。Hilbert 第 18 问题的堆积传统包含它。Hales–Ferguson 于 1998 年完成证明：把空间约化为有限类局部构型，用大规模区间算术线性规划逐一验证；经多年审稿后 2006 年正式发表于 Discrete & Computational Geometry 36 特刊（Annals 审稿阶段审稿团曾声明\"99% 确信\"）。2014 年 Flyspeck 项目以 HOL Light/Isabelle 完成形式化验证，2017 年正式发表（出处待人工复核），证明正式关闭。",
+      "why_it_matters": "作为方法论对照样本，它是对本系统最直接的参照：区间算术+计算机辅助证明+形式化验证的完整链条定义了\"可信计算证据\"与\"验证分级\"的黄金标准；同族的 8 维与 24 维球堆积问题也在 2016 年被 Viazovska 系方法解决（Fields 2022），显示该谱系的方法论迁移价值。"
+    }
+  },
+  "classification": {
+    "primary_domain": "geometry",
+    "secondary_domains": [],
+    "topics": ["填充与堆积"],
+    "problem_types": ["bound_improvement", "structural_characterization"],
+    "expected_output_types": ["proof"],
+    "mathematical_objects": ["等球堆积密度", "面心立方 FCC/HCP"]
+  },
+  "provenance": {
+    "original_proposer": ["Johannes Kepler（1611 年提出）"],
+    "original_year": "1611",
+    "original_work": "Kepler, De nive sexangula (1611)；Hilbert 第 18 问题的一部分传统",
+    "exact_citation": "J. Kepler, De nive sexangula (1611)；证明：T. Hales, S. Ferguson 等，Discrete & Computational Geometry 36 (2006) 系列论文（开普勒猜想特刊），SRC-0014。",
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Kepler_conjecture"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "resolved",
+    "confidence_level": "high",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000030-1",
+        "kind": "source_quote",
+        "description": "Hales–Ferguson 证明的正式发表：T. Hales, S. Ferguson 等的系列论文见 Discrete & Computational Geometry 36 (2006) 开普勒猜想特刊。",
+        "source_id": "SRC-0014",
+        "source_location": "Discrete & Computational Geometry 36 (2006)（开普勒猜想特刊系列论文）",
+        "tier": "B",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "同行评议期刊发表记录；Annals 审稿历程（2003–2005，审稿团声明\"99% 确信\"）为历史背景；Flyspeck 形式化验证 2014-08 宣布完成（出处待 P7 复核）、2017 年 Forum of Mathematics π 正式发表形式化证明（出处待复核，故不单设证据条目）。"
+      },
+      {
+        "evidence_id": "EV-000030-2",
+        "kind": "document_link",
+        "description": "Wikipedia \"Kepler conjecture\" 词条记载：Hales–Ferguson 证明经审稿后于 DCG 36 (2006) 发表，Flyspeck 形式化验证完成使证明正式关闭。",
+        "url": "https://en.wikipedia.org/wiki/Kepler_conjecture",
+        "source_id": "SRC-0006",
+        "source_location": "Kepler conjecture 词条（证明与形式化验证部分）",
+        "tier": "D",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "导航级来源，与 EV-000030-1 的期刊证据互为印证。"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": "完全解决：Hales–Ferguson 1998 完成证明（Annals 审稿 2003–2005 发表，审稿团声明\"99% 确信\"）；2014 年 Flyspeck 项目完成 HOL Light/Isabelle 形式化验证，正式关闭（2017 年 Forum of Mathematics π 正式发表形式化证明——出处待复核）。",
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "二维情形：等圆堆积最优密度为 Thue 1910 型结果（二维开普勒问题已解）。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "8 维与 24 维球堆积问题由 Viazovska 系方法解决（2016，Fields 2022）——同族高维突破，作为谱系背景（evidence 留空待 P7 复核）。",
+        "status": "proven",
+        "evidence": []
+      }
+    ],
+    "attempted_methods": [
+      {
+        "method": "局部密度估计 + 大规模线性规划区间算术（Hales 路线）",
+        "outcome": "把无限问题约化为有限类局部构型逐一验证，完成 1998 年证明（2006 年正式发表）。",
+        "evidence": []
+      },
+      {
+        "method": "形式化验证（Flyspeck：HOL Light/Isabelle）",
+        "outcome": "2014 年宣布完成对全部证明的形式化（约 21 万行级形式证明，待复核），正式关闭证明的可靠性问题。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [],
+    "known_equivalences": [],
+    "best_known_bounds": []
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": [
+      {
+        "target": "external:高维球堆积（8/24 维 Viazovska 系，同族已解）",
+        "evidence": [],
+        "notes": "事实单注明：同族高维突破（2016），与本卡三维命题不同维数，作谱系对照。"
+      }
+    ]
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "1611 年提出，1998 年证明完成，悬置 387 年。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "离散几何/堆积理论最著名问题之一；审稿与形式化过程本身广受关注。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "属 Hilbert 第 18 问题的堆积传统；与 8/24 维 Viazovska 系（2016）同族。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "局部构型约化+区间算术方法成为计算证明的范式；形式化验证推动证明技术工程化。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "Hilbert 问题传统收录；Annals 审稿与 DCG 特刊发表构成机构级背书。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "证明横跨几何组合、优化与形式化验证，是跨方法实质性成果。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 98,
+      "field_normalized_attention": 85,
+      "problem_genealogy": 80,
+      "downstream_impact": 65,
+      "explicit_expert_endorsement": 85,
+      "mathematical_substance": 90
+    },
+    "score_band": "high",
+    "uncertainty": "低：387 年历史、Hilbert 传统与特刊发表证据直接。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述完全可计算验证：命题归约为单一密度常数的确认。",
+        "evidence": []
+      },
+      {
+        "claim": "区间算术工具链成熟，且有直接历史先例（Hales 路线即靠它完成证明）。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "已解决：作为\"待尝试问题\"已无剩余面。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [],
+    "feature_values": {
+      "statement_completeness": 100,
+      "verifiability": 95,
+      "finite_search": 75,
+      "generation_verification_gap": 75,
+      "decomposability": 85,
+      "tool_support": 85,
+      "context_size": 85,
+      "ai_precedent": 95,
+      "theory_dependency": 60
+    },
+    "score_band": "high",
+    "uncertainty": "低；需说明：本卡的 ai_affordance 属方法论对照性质——它是\"区间算术 + 计算辅助证明 + 形式化验证\"完整生命周期的范式案例，对本系统 Attempt Schema 与验证分级是最直接参照，而非剩余求解空间。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "按事实单抽取原始陈述；source 记 SRC-0014（DCG 36 特刊）。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "拆出上界+达到两层；标注渐近密度定义风险。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "按事实单建立 related_to 外部高维球堆积（Viazovska 系）。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "判 resolved：DCG 36 (2006) 特刊 verified 证据支撑；Flyspeck/Forum of Mathematics π 出处待复核，按事实单入 notes。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "387 年历史 + Hilbert 传统 + 特刊发表支撑 high。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "方法论对照定位写入 uncertainty；计算+形式化先例支撑 high band。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

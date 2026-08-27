@@ -1,0 +1,293 @@
+{
+  "problem_id": "OP-000020",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "孤独跑者猜想（Lonely Runner Conjecture）",
+    "aliases": ["lonely runner conjecture", "Wills/Cusick 独立提出传统"],
+    "slug": "lonely-runner-conjecture",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "Suppose k runners with distinct constant speeds run laps on a unit circle. Then there is a time t at which every runner is at distance at least 1/(k+1) from the start.",
+      "latex": "\\forall v_1,\\dots,v_k \\text{ 两两不同}:\\ \\exists t > 0:\\ \\|v_j t\\| \\ge \\tfrac{1}{k+1}\\ (\\forall j),\\quad \\|x\\| = \\min_{m \\in \\mathbb{Z}} |x-m|",
+      "language": "en",
+      "source_id": "SRC-0006",
+      "source_location": "Lonely runner conjecture 词条",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "设 $k$ 名跑者在单位圆周上以两两不同的恒定速度 $v_1, \\dots, v_k$ 跑圈。则存在时刻 $t > 0$，使得每个跑者离起点的（圆周）距离都至少为 $\\tfrac{1}{k+1}$，即对每个 $j$ 有 $\\|v_j t\\| \\ge \\tfrac{1}{k+1}$，其中 $\\|\\cdot\\|$ 表示到最近整数的距离。",
+      "latex": "\\forall k \\ge 1,\\ \\forall v_1,\\dots,v_k \\text{ 两两不同}:\\ \\exists t > 0:\\ \\forall j \\in \\{1,\\dots,k\\},\\ \\|v_j t\\| \\ge \\tfrac{1}{k+1},\\quad \\|x\\| := \\min_{m \\in \\mathbb{Z}} |x - m|",
+      "assumptions": [
+        "速度 $v_1, \\dots, v_k$ 为两两不同的实常数",
+        "跑者位置按模 1 计算，$\\|x\\|$ 为到最近整数的距离（圆周弧长以周长 1 归一）",
+        "要求 $t > 0$（排除 $t = 0$ 时全体在起点的平凡点）",
+        "$k \\ge 1$"
+      ],
+      "quantified_objects": [
+        "对每个 k 与每组两两不同速度 v_1,…,v_k：存在时刻 t > 0，使每个跑者离起点距离 ≥ 1/(k+1)（∀速度组、∃t、∀j）"
+      ],
+      "normalization_notes": [
+        "按原文 every runner 将条件展开为逐跑者全称形式：∀j: ‖v_j t‖ ≥ 1/(k+1)（等价于 min_j ‖v_j t‖ ≥ 1/(k+1)）；事实单紧凑记法写作 max_j ‖v_j t‖，为避免歧义本卡不采用该记法",
+        "t = 0 时全体跑者位于起点、条件不满足，故存在量词限定 t > 0"
+      ],
+      "semantic_risks": [
+        "「distance from the start」为圆周上最短弧（无向）；若误读为有向位移则语义不同",
+        "「每个跑者至少 1/(k+1)」为逐跑者下界；若误读为「存在某跑者」则命题平凡化"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "圆周上速度互不相同的 k 名跑者，是否总存在某时刻大家都离起点至少 1/(k+1)？",
+      "short_background": "孤独跑者猜想：存在时刻 t 使每个跑者离起点距离 ≥ 1/(k+1)（‖·‖ 为到最近整数的距离）。Wills (1967) 自数论视角提出，Cusick (1973) 以 view-obstruction 视角独立提出，Betke–Wills 给出命名。已知 k ≤ 7 成立（Barajas–Serra 2008）；更大 k 依赖 Diophantine 逼近、Fourier 分析与逐 k 数值验证。2026 年前后存在声称证明的预印本（无同行评审，按纪律不翻转状态）。",
+      "why_it_matters": "k 逐级递增的阶梯子目标结构清晰、逐速度组可数值检验；但 k → k+1 缺乏归纳机制，几何—数论混合障碍使 k ≤ 7 之后的理论跳跃悬而未决。"
+    }
+  },
+  "classification": {
+    "primary_domain": "combinatorics-and-graph-theory",
+    "secondary_domains": ["number-theory"],
+    "topics": ["离散几何", "算术组合"],
+    "problem_types": ["existence"],
+    "expected_output_types": ["proof", "counterexample"],
+    "mathematical_objects": ["圆周上跑者位置", "距离 max_j ||v_j t||"]
+  },
+  "provenance": {
+    "original_proposer": ["Jochen Wills (1967)", "T. W. Cusick (1973 视角问题)"],
+    "original_year": "1967/1973",
+    "original_work": "Wills (1967) 数论视角；Cusick (1973) view-obstruction；Betke–Wills 命名",
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Lonely_runner_conjecture"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "likely_open",
+    "confidence_level": "moderate",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000020-1",
+        "kind": "document_link",
+        "description": "Wikipedia 将孤独跑者猜想列为开放问题（2026-08-28 检索确认）。",
+        "url": "https://en.wikipedia.org/wiki/Lonely_runner_conjecture",
+        "source_id": "SRC-0006",
+        "tier": "D",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      }
+    ],
+    "contradicting_evidence": [
+      {
+        "evidence_id": "EV-000020-2",
+        "kind": "unverified_claim",
+        "description": "2026 年前后 Zenodo/Cambridge Engage 存在声称证明该猜想的预印本（如「Spectral Regularization of the Lonely Runner Conjecture...」）。",
+        "source_id": "SRC-0007",
+        "source_location": "Zenodo/Cambridge Engage 预印本（2026 年前后；无独立 URL 记录）",
+        "tier": "D",
+        "verification_status": "unverified",
+        "retrieved_at": "2026-08-28",
+        "notes": "无同行评审；按 TASK-401 纪律不翻转状态。"
+      }
+    ],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "k ≤ 7（至多 7 名跑者）情形成立（Barajas & Serra, The lonely runner conjecture with few runners, 2008；出处待人工复核）。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "速度结构受限的若干类成立（保守表述，细节以文献复核为准）。",
+        "status": "proven",
+        "evidence": []
+      }
+    ],
+    "attempted_methods": [
+      {
+        "method": "数论（Diophantine 逼近/混合性）",
+        "outcome": "支撑 k ≤ 7（Barajas–Serra 2008）；一般 k 未突破。",
+        "evidence": []
+      },
+      {
+        "method": "Fourier 分析",
+        "outcome": "提供工具；未建立 k → k+1 的归纳机制。",
+        "evidence": []
+      },
+      {
+        "method": "逐 k 计算验证",
+        "outcome": "大 k 数值支持存在；不构成证明。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "递归结构（k → k+1）无归纳机制。",
+        "evidence": []
+      },
+      {
+        "obstacle": "几何—数论混合障碍。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": []
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "Wills (1967) / Cusick (1973) 独立提出传统，至今近六十年。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "中等关注度；Barajas–Serra (2008) 小 k 结果为主要节点。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "与 view-obstruction、距离图色数谱系关联。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "下游直接影响有限；k 逐级阶梯结构为组合数论问题提供测试面。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "百科/综述列为开放；存在未核验声称，无强背书信号。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "k ≤ 7 之后无归纳机制、几何—数论混合障碍构成实质困难。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 72,
+      "field_normalized_attention": 55,
+      "problem_genealogy": 60,
+      "downstream_impact": 50,
+      "explicit_expert_endorsement": 55,
+      "mathematical_substance": 60
+    },
+    "score_band": "medium",
+    "uncertainty": "中：存在未核验声称（状态噪声）。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述精确可形式化：速度组与圆周距离均为有限算术对象。",
+        "evidence": []
+      },
+      {
+        "claim": "逐速度组可数值检验；k 逐级递增的阶梯子目标结构清晰。",
+        "evidence": []
+      },
+      {
+        "claim": "上下文小。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "全称断言（全部速度组）无有限搜索面。",
+        "evidence": []
+      },
+      {
+        "claim": "k ≤ 7 之后的理论跳跃缺乏机制。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [
+      "Zenodo 声称证明的核验状态"
+    ],
+    "feature_values": {
+      "statement_completeness": 95,
+      "verifiability": 80,
+      "finite_search": 60,
+      "generation_verification_gap": 55,
+      "decomposability": 70,
+      "tool_support": 70,
+      "context_size": 90,
+      "ai_precedent": 45,
+      "theory_dependency": 55
+    },
+    "score_band": "medium_high",
+    "uncertainty": "中：阶梯结构利于分解，但全称断言与理论跳跃风险并存。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "manual_curation 通道：从 Wikipedia 导航源抽取原始陈述与元数据。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "量词显式化与假设外提；max_j 记法按原文 every runner 展开为逐跑者下界。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "事实单未指定关系；关系字段全部留空待人工补充。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "web 检索 2026-08-28：Wikipedia 列为开放；Zenodo 声称证明入 contradicting（unverified），按纪律不翻转状态。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维重要性评分与证据映射。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "AI 可行性九维评估与 unknowns 记录。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

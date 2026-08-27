@@ -1,0 +1,273 @@
+{
+  "problem_id": "OP-000028",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "连续统假设（Continuum Hypothesis）",
+    "aliases": ["continuum hypothesis", "CH", "Hilbert's first problem"],
+    "slug": "continuum-hypothesis",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "The continuum hypothesis: there is no set whose cardinality is strictly between that of the integers and that of the real numbers. It is independent of ZFC: neither CH nor its negation is provable in Zermelo–Fraenkel set theory with Choice.",
+      "latex": "\\nexists\\ S:\\ \\aleph_0 < |S| < 2^{\\aleph_0}; \\qquad \\mathrm{ZFC} \\nvdash \\mathrm{CH} \\ \\wedge\\ \\mathrm{ZFC} \\nvdash \\neg\\mathrm{CH}",
+      "language": "en",
+      "source_id": "SRC-0006",
+      "source_location": "Continuum hypothesis 词条（独立性结果部分）",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "连续统假设（CH）：不存在基数严格介于整数基数 \\aleph_0 与实数基数 2^{\\aleph_0} 之间的集合。本卡的\"解决\"形式为其在 ZFC 中的独立性：CH 与其否定在 Zermelo–Fraenkel 集合论（含选择公理）中都不可证明。",
+      "latex": "\\mathrm{CH}:\\ \\nexists S\\ (\\aleph_0 < |S| < 2^{\\aleph_0}); \\qquad \\text{已证：} \\mathrm{Con(ZF)} \\Rightarrow \\mathrm{Con(ZFC+CH)} \\ \\wedge\\ \\mathrm{Con(ZF)} \\Rightarrow \\mathrm{Con(ZFC+\\neg CH)}",
+      "assumptions": [
+        "基数比较在 ZFC（Zermelo–Fraenkel 集合论 + 选择公理）框架内进行",
+        "\"解决\"指公理系统层面的独立性结果，不是对\"CH 是否为真\"的判定"
+      ],
+      "quantified_objects": [
+        "对任意集合 S：不存在 S 满足 \\aleph_0 < |S| < 2^{\\aleph_0}（CH 本体命题，全称量词覆盖全部集合）",
+        "对 ZFC 的全部证明：既无 CH 的证明亦无 ¬CH 的证明（在 Con(ZF) 相对一致性假设下，由 Gödel–Cohen 定理给出）"
+      ],
+      "normalization_notes": [
+        "原始陈述同时包含 CH 的内容与独立性结果；规范化把 CH 作为本体命题、独立性作为已解决的元命题分开表述",
+        "许多大众问题列表仍把 CH 误列为\"未解决\"；本卡命题锚定在\"ZFC 内不可判定\"这一已证明结果上"
+      ],
+      "semantic_risks": [
+        "独立性 ≠ 为真或为假：把\"CH 独立于 ZFC\"读成\"CH 被证明\"或\"CH 被证伪\"都会改变语义",
+        "独立性结论依赖 Con(ZF) 的相对一致性假设；无条件的\"CH 不可判定\"表述是过度简化"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "【已解决对照样本】连续统假设在 ZFC 公理系统内不可判定——既未被证明也未被否证，而是被 Gödel 与 Cohen 的独立性定理永久关闭；许多大众列表仍误把它当作\"未解决问题\"，本卡正是这一误判的对照样本。",
+      "short_background": "CH 说：不存在大小严格介于整数与实数之间的无穷集合。Cantor 1878 年提出，Hilbert 1900 年列为第 1 问题。Gödel (1940) 用可构成宇宙 L 证明 ZFC+CH 的相对一致性；Cohen (1963/1964) 用力迫法证明 ZFC+¬CH 的相对一致性，并因此获 1966 年 Fields 奖。两者合流为：CH 独立于 ZFC。",
+      "why_it_matters": "作为对照样本，它展示\"已解决\"的第三种形态：问题不被证明或不被否证，而是在公理层面被证明不可判定——状态核查系统必须把这类\"独立性关闭\"与\"仍然开放\"区分开，这正是本卡入库的价值。"
+    }
+  },
+  "classification": {
+    "primary_domain": "logic-and-tcs",
+    "secondary_domains": ["analysis"],
+    "topics": ["集合论与独立性", "模型论"],
+    "problem_types": ["algorithmic_decidability"],
+    "expected_output_types": ["proof"],
+    "mathematical_objects": ["连续统基数 2^{ℵ0}", "ZFC 公理系统"]
+  },
+  "provenance": {
+    "original_proposer": ["Georg Cantor（1878 提出）"],
+    "original_year": "1878",
+    "original_work": "Cantor (1878)；Hilbert (1900) 列为第 1 问题",
+    "exact_citation": "G. Cantor (1878)；Hilbert, Mathematische Probleme (1900), Problem 1；独立性结果：Gödel (1940)、Cohen (1963/1964)；定位转引自 Wikipedia \"Continuum hypothesis\" 词条（SRC-0006）。",
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Continuum_hypothesis"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "resolved",
+    "confidence_level": "high",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000028-1",
+        "kind": "source_quote",
+        "description": "K. Gödel, The Consistency of the Continuum Hypothesis (Princeton University Press, 1940)：证明 Con(ZF) ⇒ Con(ZFC+CH)（可构成宇宙 L）。",
+        "source_id": "SRC-0014",
+        "source_location": "K. Gödel, The Consistency of the Continuum Hypothesis, Princeton University Press (1940)",
+        "tier": "B",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "已出版专著，属权威期刊/出版源证据；无 URL（纸质/出版文献）。"
+      },
+      {
+        "evidence_id": "EV-000028-2",
+        "kind": "source_quote",
+        "description": "P. J. Cohen, The Independence of the Continuum Hypothesis（PNAS 50 (1963) 与 51 (1964)）：用力迫法证明 Con(ZF) ⇒ Con(ZFC+¬CH)。",
+        "source_id": "SRC-0014",
+        "source_location": "Proc. Natl. Acad. Sci. USA 50 (1963) 1143–1148; 51 (1964) 105–110",
+        "tier": "B",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "经同行评议期刊发表；Cohen 因此获 1966 年 Fields Medal。"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": "在 ZFC 内不可判定（Gödel 1940：Con(ZF)⇒Con(ZFC+CH)；Cohen 1963：Con(ZF)⇒Con(ZFC+¬CH)，力迫法）。这不是\"CH 为真\"的判定，而是公理系统层面的独立性证明——许多大众列表仍误将 CH 列为\"未解决\"，本卡即该误判的对照样本。",
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "可构成宇宙 L 中 CH 成立（Gödel 1940）：ZFC+CH 相对一致。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "力迫法产生 ¬CH 模型（Cohen 1963/1964）：ZFC+¬CH 相对一致。",
+        "status": "proven",
+        "evidence": []
+      }
+    ],
+    "attempted_methods": [
+      {
+        "method": "内模型方法（可构成宇宙 L）",
+        "outcome": "给出 ZFC+CH 的相对一致性（Gödel 1940）。",
+        "evidence": []
+      },
+      {
+        "method": "力迫法（forcing）",
+        "outcome": "给出 ZFC+¬CH 的相对一致性（Cohen）；与内模型方法合流为完整的独立性证明。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [],
+    "known_equivalences": [],
+    "best_known_bounds": []
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": []
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "1878 年提出（Cantor），1900 年列为 Hilbert 第 1 问题，1963/1964 年由 Cohen 关闭。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "集合论与数理逻辑的中心问题之一，独立性结果后仍是新公理研究的参照点。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "其解决催生力迫法，重塑了整个集合论的技术谱系。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "力迫法成为集合论独立性研究的标准工具，影响后续大量独立性结果。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "Hilbert 第 1 问题 + Cohen 1966 年 Fields Medal 的双重背书。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "内模型与力迫两大方法的合流本身就是 20 世纪数理逻辑的实质性成果。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 98,
+      "field_normalized_attention": 80,
+      "problem_genealogy": 85,
+      "downstream_impact": 80,
+      "explicit_expert_endorsement": 90,
+      "mathematical_substance": 95
+    },
+    "score_band": "high",
+    "uncertainty": "低：Hilbert 第 1 问题、Fields 1966 与力迫法的谱系证据直接。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述与\"解决\"（独立性）都可完全形式化；力迫的形式化在证明助手中存在系统性工作（具体覆盖度待复核）。",
+        "evidence": []
+      },
+      {
+        "claim": "上下文紧凑：命题与独立性证明的框架均可自包含陈述。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "已解决：作为\"待尝试问题\"无剩余工作面，本卡价值在对照而非求解。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [
+      "力迫/独立性证明在 Mizar/Coq/Isabelle 等证明助手中的具体形式化覆盖度待复核"
+    ],
+    "feature_values": {
+      "statement_completeness": 100,
+      "verifiability": 90,
+      "finite_search": 20,
+      "generation_verification_gap": 30,
+      "decomposability": 40,
+      "tool_support": 60,
+      "context_size": 70,
+      "ai_precedent": 40,
+      "theory_dependency": 60
+    },
+    "score_band": "medium_low",
+    "uncertainty": "中：AI 友好性评估对象是\"若作为问题\"的属性；其对照价值（已解决但易被误标为开放）高于求解价值。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "按事实单抽取 CH 陈述（含独立性结果）。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "把 CH 本体命题与独立性元命题分开；标注 Con(ZF) 相对性风险。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "事实单未指定关系，relationships 全部留空。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "判 resolved：Gödel 1940（Princeton UP）与 Cohen PNAS 1963/1964 两条 verified 出版证据支撑；resolved_scope 写明独立性范围。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "Hilbert 第 1 问题 + Fields 1966 支撑 high。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "无剩余工作面，判 medium_low；形式化覆盖度入 unknowns。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

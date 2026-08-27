@@ -252,10 +252,10 @@ withdrawn_or_malformed
 
 ## 4. 待裁决问题
 
-以下问题在拆分时发现，未自行决策：
+以下问题在拆分时发现；第 1/2/3/5 项已随 Phase 0 执行与 ADR-009 裁决（标注如下），第 4 项转 ADR Backlog（B-08）：
 
-1. 状态命名书写不一致：设计规范 §10 mermaid 使用大驼峰（`Candidate`…），§9.1 示例与问题卡 Schema 使用小写下划线（`candidate`…）。两者状态集合一致，仅书写约定不同，需裁决唯一规范写法。
-2. 终态边界空白：mermaid 中 `Rejected` 与 `Archived` 均无出边，但原文未声明二者是否绝对终态（例如被拒卡经人工复核重开是否允许）。
-3. 发布前发现已解决的路径空白：状态机仅定义 `Published --> Resolved`；`Scored` 及更早阶段若发现问题已解决，如何流转原文未规定。
-4. 设计规范 §26 第 10 条（何时将 `likely_open` 自动降级为 `Stale`）为上游已登记的开放设计问题，本文不裁决，仅登记关联。
-5. `packages/domain` 当前仅有目录骨架（`src/ai_math_domain` 为空），状态机强制执行代码尚未落地；落地前，合法迁移以本文 §2 为准。
+1. 状态命名书写不一致 → **已裁决（ADR-009）**：以问题卡 Schema 的小写下划线写法（`candidate`…）为唯一规范；mermaid 大驼峰到规范的映射表见 `packages/domain/src/ai_math_domain/enums.py` 的 `PASCAL_TO_LOWER`。
+2. 终态边界空白 → **已裁定（ADR-009 附注）**：`rejected` 与 `archived` 按绝对终态实现（`state_machine.py` 的 `TERMINAL_STATES`）；如需软恢复，走"新建卡 + 关系回指"并在新 ADR 中放开（Backlog B-14）。
+3. 发布前发现已解决的路径空白 → **已裁定（保守策略）**：任何非 `published` 状态不得直接迁移到 `resolved`；此类发现由 P7 人工裁决处理（见 `state_machine.py` 模块注释与 ADR-009）。
+4. 设计规范 §26 第 10 条（何时将 `likely_open` 自动降级为 `Stale`）为上游已登记的开放设计问题，本文不裁决，仅登记关联（Backlog B-08）。
+5. ~~`packages/domain` 状态机代码未落地~~ → **已落地**（2026-08-28）：`packages/domain/src/ai_math_domain/state_machine.py` 的 `TRANSITIONS` 逐边转录 §2 mermaid 图（12 条合法边，`Rejected`/`Archived` 终态），非法迁移抛 `LifecycleError`，测试逐边锁定（tests/unit/test_state_machine.py）；另有 `publish_gate.py` 实现 §3 发布门禁（含 ADR-012 的 gate-p7 人工批准硬闸）与 Pydantic 镜像 `models.py`。

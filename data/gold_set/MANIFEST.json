@@ -1,0 +1,345 @@
+{
+  "manifest_version": "1.0.0",
+  "generated_at": "2026-08-28",
+  "total_cards": 30,
+  "discipline": {
+    "lifecycle_state": "全部为 scored（Phase 0 纪律，禁止发布）",
+    "human_verified": "全部 false",
+    "publishable": "全部 false"
+  },
+  "category_counts": {
+    "confirmed_open_reference": 10,
+    "resolved_misjudge_trap": 3,
+    "special_case_only": 9,
+    "equivalence_network": 3,
+    "high_similarity_distinct": 7,
+    "unverified_claim_stress": 8
+  },
+  "fixtures": {
+    "FIX-001": "data/fixtures/FIX-001_malformed_goldbach.json（Schema 必须拒绝）",
+    "FIX-002": "data/fixtures/FIX-002_prompt_injection_sample.json（注入抵抗样本）",
+    "FIX-003": "data/fixtures/FIX-003_robin_equivalence_dedup.json（等价去重样本，指向 OP-000001）"
+  },
+  "cards": [
+    {
+      "problem_id": "OP-000001",
+      "title": "黎曼假设（Riemann Hypothesis）",
+      "primary_domain": "number-theory",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "unverified_claim_stress",
+        "equivalence_network"
+      ],
+      "category_note": "黎曼假设（Robin 判据等价，FIX-003 指向）"
+    },
+    {
+      "problem_id": "OP-000002",
+      "title": "哥德巴赫猜想（Goldbach Conjecture）",
+      "primary_domain": "number-theory",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "confirmed_open_reference"
+      ]
+    },
+    {
+      "problem_id": "OP-000003",
+      "title": "科拉茨猜想 / 3x+1 问题（Collatz Conjecture）",
+      "primary_domain": "number-theory",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "confirmed_open_reference"
+      ]
+    },
+    {
+      "problem_id": "OP-000004",
+      "title": "孪生素数猜想（Twin Prime Conjecture）",
+      "primary_domain": "number-theory",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "confirmed_open_reference"
+      ]
+    },
+    {
+      "problem_id": "OP-000005",
+      "title": "abc 猜想（abc Conjecture）",
+      "primary_domain": "number-theory",
+      "open_status": "status_uncertain",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "unverified_claim_stress"
+      ]
+    },
+    {
+      "problem_id": "OP-000006",
+      "title": "Erdős–Straus 猜想",
+      "primary_domain": "number-theory",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "unverified_claim_stress",
+        "high_similarity_distinct",
+        "special_case_only"
+      ],
+      "category_note": "Erdős–Straus vs Brocard 问题（同上）"
+    },
+    {
+      "problem_id": "OP-000007",
+      "title": "奇完全数的存在（Odd Perfect Number Problem）",
+      "primary_domain": "number-theory",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "confirmed_open_reference"
+      ]
+    },
+    {
+      "problem_id": "OP-000008",
+      "title": "Legendre 猜想（Legendre's Conjecture）",
+      "primary_domain": "number-theory",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "special_case_only"
+      ]
+    },
+    {
+      "problem_id": "OP-000009",
+      "title": "Brocard 问题（Brocard's Problem）",
+      "primary_domain": "number-theory",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "high_similarity_distinct",
+        "special_case_only"
+      ],
+      "category_note": "Brocard 问题 vs Erdős–Straus（同为丢番图方程小解搜索族）"
+    },
+    {
+      "problem_id": "OP-000010",
+      "title": "Fermat 素数的有限性（是否存在 n>4 使 F_n=2^{2^n}+1 为素数）",
+      "primary_domain": "number-theory",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "special_case_only"
+      ]
+    },
+    {
+      "problem_id": "OP-000011",
+      "title": "Singmaster 猜想（Singmaster's Conjecture）",
+      "primary_domain": "number-theory",
+      "open_status": "likely_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "unverified_claim_stress"
+      ]
+    },
+    {
+      "problem_id": "OP-000012",
+      "title": "π+e 的无理性（Irrationality of π+e）",
+      "primary_domain": "analysis",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "equivalence_network",
+        "high_similarity_distinct"
+      ],
+      "category_note": "π+e 无理性 vs π 正规性（同上）"
+    },
+    {
+      "problem_id": "OP-000013",
+      "title": "π 的正规性（Normality of π）",
+      "primary_domain": "analysis",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "high_similarity_distinct"
+      ],
+      "category_note": "π 正规性 vs π+e 无理性（同为常数超越/正规性族，命题不同）"
+    },
+    {
+      "problem_id": "OP-000014",
+      "title": "Schanuel 猜想（Schanuel's Conjecture）",
+      "primary_domain": "analysis",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "unverified_claim_stress",
+        "equivalence_network"
+      ],
+      "category_note": "Schanuel 猜想（蕴含 π+e / Lindemann–Weierstrass 推广族）"
+    },
+    {
+      "problem_id": "OP-000015",
+      "title": "Jacobi 猜想（Jacobian Conjecture）",
+      "primary_domain": "algebra",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "confirmed_open_reference"
+      ]
+    },
+    {
+      "problem_id": "OP-000016",
+      "title": "Sendov 猜想（Sendov's Conjecture）",
+      "primary_domain": "algebra",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "special_case_only"
+      ]
+    },
+    {
+      "problem_id": "OP-000017",
+      "title": "Casas–Alvero 猜想（Casas–Alvero Conjecture）",
+      "primary_domain": "algebra",
+      "open_status": "status_uncertain",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "unverified_claim_stress"
+      ]
+    },
+    {
+      "problem_id": "OP-000018",
+      "title": "平面色数问题（Hadwiger–Nelson Problem）",
+      "primary_domain": "combinatorics-and-graph-theory",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "high_similarity_distinct",
+        "special_case_only"
+      ],
+      "category_note": "平面色数 vs Lonely Runner（同为距离/速度染色离散几何族）"
+    },
+    {
+      "problem_id": "OP-000019",
+      "title": "Frankl 并闭集猜想（Union-Closed Sets Conjecture）",
+      "primary_domain": "combinatorics-and-graph-theory",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "confirmed_open_reference"
+      ]
+    },
+    {
+      "problem_id": "OP-000020",
+      "title": "孤独跑者猜想（Lonely Runner Conjecture）",
+      "primary_domain": "combinatorics-and-graph-theory",
+      "open_status": "likely_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "unverified_claim_stress",
+        "high_similarity_distinct",
+        "special_case_only"
+      ],
+      "category_note": "Lonely Runner vs 平面色数（同上）"
+    },
+    {
+      "problem_id": "OP-000021",
+      "title": "Rota 基猜想（Rota's Basis Conjecture）",
+      "primary_domain": "combinatorics-and-graph-theory",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "confirmed_open_reference"
+      ]
+    },
+    {
+      "problem_id": "OP-000022",
+      "title": "优美树猜想（Graceful Tree Conjecture）",
+      "primary_domain": "combinatorics-and-graph-theory",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "confirmed_open_reference"
+      ]
+    },
+    {
+      "problem_id": "OP-000023",
+      "title": "五维接吻数的精确值（Kissing Number in Dimension 5）",
+      "primary_domain": "geometry",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "high_similarity_distinct",
+        "special_case_only"
+      ],
+      "category_note": "五维接吻数 vs 开普勒猜想（同为球堆积族，维度不同）"
+    },
+    {
+      "problem_id": "OP-000024",
+      "title": "Hilbert 第十六问题第二部分：极限环的个数上界",
+      "primary_domain": "pde-and-numerics",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "special_case_only"
+      ]
+    },
+    {
+      "problem_id": "OP-000025",
+      "title": "切片–带状猜想（Slice–Ribbon Conjecture）",
+      "primary_domain": "topology",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "confirmed_open_reference"
+      ]
+    },
+    {
+      "problem_id": "OP-000026",
+      "title": "Navier–Stokes 方程的整体正则性（3D）",
+      "primary_domain": "pde-and-numerics",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "unverified_claim_stress"
+      ]
+    },
+    {
+      "problem_id": "OP-000027",
+      "title": "P versus NP（P 与 NP 问题）",
+      "primary_domain": "logic-and-tcs",
+      "open_status": "confirmed_open",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "confirmed_open_reference"
+      ]
+    },
+    {
+      "problem_id": "OP-000028",
+      "title": "连续统假设（Continuum Hypothesis）",
+      "primary_domain": "logic-and-tcs",
+      "open_status": "resolved",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "resolved_misjudge_trap"
+      ]
+    },
+    {
+      "problem_id": "OP-000029",
+      "title": "Erdős 偏差问题（Erdős Discrepancy Problem）",
+      "primary_domain": "combinatorics-and-graph-theory",
+      "open_status": "resolved",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "resolved_misjudge_trap"
+      ]
+    },
+    {
+      "problem_id": "OP-000030",
+      "title": "开普勒猜想（Kepler Conjecture）",
+      "primary_domain": "geometry",
+      "open_status": "resolved",
+      "lifecycle_state": "scored",
+      "gold_categories": [
+        "resolved_misjudge_trap"
+      ],
+      "category_note": "开普勒猜想 vs 五维接吻数（同上；本卡另属 resolved 类）"
+    }
+  ]
+}

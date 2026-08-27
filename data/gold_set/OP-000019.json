@@ -1,0 +1,315 @@
+{
+  "problem_id": "OP-000019",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "Frankl 并闭集猜想（Union-Closed Sets Conjecture）",
+    "aliases": ["Frankl's union-closed sets conjecture", "union-closed conjecture"],
+    "slug": "union-closed-sets-conjecture",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "For every finite union-closed family of sets (other than the family containing only the empty set), there exists an element that belongs to at least half of the sets of the family.",
+      "latex": "\\forall \\mathcal{F} \\text{ 有限并闭}:\\ \\mathcal{F} \\neq \\{\\varnothing\\} \\implies \\exists x:\\ |\\{A \\in \\mathcal{F} : x \\in A\\}| \\ge \\tfrac{|\\mathcal{F}|}{2}",
+      "language": "en",
+      "source_id": "SRC-0009",
+      "source_location": "Open Problem Garden › Union-closed sets conjecture",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "对每个有限并闭集族 $\\mathcal{F}$（即对任意 $A, B \\in \\mathcal{F}$ 有 $A \\cup B \\in \\mathcal{F}$），若 $\\mathcal{F}$ 不是仅含空集的族，则存在元素 $x$ 属于 $\\mathcal{F}$ 中至少一半的集合，即 $|\\{A \\in \\mathcal{F} : x \\in A\\}| \\ge |\\mathcal{F}|/2$。",
+      "latex": "\\forall \\mathcal{F} \\text{ 有限}:\\ \\left(\\forall A, B \\in \\mathcal{F}:\\ A \\cup B \\in \\mathcal{F}\\right) \\wedge \\mathcal{F} \\neq \\{\\varnothing\\} \\implies \\exists x:\\ |\\{A \\in \\mathcal{F} : x \\in A\\}| \\ge \\tfrac{|\\mathcal{F}|}{2}",
+      "assumptions": [
+        "$\\mathcal{F}$ 为有限集族，并对并运算封闭",
+        "排除平凡族 $\\{\\varnothing\\}$（该族无元素可谈频率）",
+        "元素 $x$ 的取值范围为族中集合的成员元素，不限全域约定"
+      ],
+      "quantified_objects": [
+        "对每个非平凡有限并闭集族 F：存在元素 x 属于至少 |F|/2 个成员（∀族、∃元素）"
+      ],
+      "normalization_notes": [
+        "量词显式化：∀族、∃元素；「至少一半」即 ≥ |F|/2",
+        "平凡排除项 {∅} 与原文 other than the family containing only the empty set 对应"
+      ],
+      "semantic_risks": [
+        "频率按族中集合个数计（|{A∈F: x∈A}| / |F|），非加权变体",
+        "排除 {∅} 的约定必须显式；否则平凡族构成反例"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "任何有限并闭集族（除平凡族外）是否总有一个元素出现在至少一半的集合里？",
+      "short_background": "Frankl (1979) 提出的并闭集猜想：有限并闭集族中必有元素属于至少一半的集合。2022 年 Gilmer 用信息论/熵方法取得常数下界突破（存在元素属于约 1% 的集合，ε≈0.01），随后 Chase (2023) 等改进常数；小规模穷举未发现反例。Poonen (1992) 有综述；2026-08 仍有新部分结果预印本（如 arXiv:2608.25147，高度 4/5 结构归约）。",
+      "why_it_matters": "陈述初等精确、可完全形式化，小规模族可穷举搜索反例；但从常数比例到 1/2 的缺口正是熵方法（存在性软界）与精确断言之间的典型障碍。"
+    }
+  },
+  "classification": {
+    "primary_domain": "combinatorics-and-graph-theory",
+    "secondary_domains": [],
+    "topics": ["组合集合族"],
+    "problem_types": ["existence"],
+    "expected_output_types": ["proof", "counterexample"],
+    "mathematical_objects": ["并闭集族", "元素频率"]
+  },
+  "provenance": {
+    "original_proposer": ["Péter Frankl"],
+    "original_year": "1979",
+    "original_work": "Frankl (1979) 提出；Poonen (1992) 综述",
+    "source_urls": [
+      "https://www.openproblemgarden.org/op/union-closed_sets_conjecture",
+      "https://en.wikipedia.org/wiki/Union-closed_sets_conjecture"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "high",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000019-1",
+        "kind": "document_link",
+        "description": "Open Problem Garden 将并闭集猜想列为开放问题（2026-08-28 检索确认）。",
+        "url": "https://www.openproblemgarden.org/op/union-closed_sets_conjecture",
+        "source_id": "SRC-0009",
+        "tier": "A",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      },
+      {
+        "evidence_id": "EV-000019-2",
+        "kind": "document_link",
+        "description": "Wikipedia 将并闭集猜想列为开放问题（2026-08-28 检索确认）。",
+        "url": "https://en.wikipedia.org/wiki/Union-closed_sets_conjecture",
+        "source_id": "SRC-0006",
+        "tier": "D",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      },
+      {
+        "evidence_id": "EV-000019-3",
+        "kind": "document_link",
+        "description": "Gilmer (2022) 常数下界突破：存在元素属于至少 ε 比例（ε≈0.01）的集合。",
+        "url": "https://arxiv.org/abs/2212.00658",
+        "source_id": "SRC-0002",
+        "source_location": "arXiv:2212.00658",
+        "tier": "C",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "随后 Chase (2023) 等改进常数（改进值以文献为准）；2026-08 仍有新部分结果预印本（如 arXiv:2608.25147，高度 4/5 结构归约）。"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "Gilmer 常数比例界：存在元素属于至少 ε≈0.01 比例的集合（证据见 open_status EV-000019-3）。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "若干特殊族类（如 3-并闭族等）已知成立；保守表述，细节以文献复核为准。",
+        "status": "proven",
+        "evidence": []
+      }
+    ],
+    "best_known_bounds": [
+      {
+        "quantity": "可保证的最大元素频率比例",
+        "bound": "≥ ε ≈ 0.01（Gilmer 2022；Chase (2023) 等后续改进，改进值以文献为准）",
+        "evidence": [],
+        "notes": "证据见 open_status EV-000019-3；猜想目标为 1/2。"
+      }
+    ],
+    "attempted_methods": [
+      {
+        "method": "信息论 / 熵方法",
+        "outcome": "Gilmer (2022) 取得常数比例下界（ε≈0.01）；未达 1/2。",
+        "evidence": []
+      },
+      {
+        "method": "概率与随机族分析",
+        "outcome": "辅助常数改进（Chase 2023 等）；改进值以文献为准。",
+        "evidence": []
+      },
+      {
+        "method": "小规模穷举",
+        "outcome": "未发现反例。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "从常数比例到 1/2 的闭合缺口。",
+        "evidence": []
+      },
+      {
+        "obstacle": "熵方法给出的是存在性软界。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": []
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "Frankl (1979) 提出，近五十年未决；Poonen (1992) 综述为早期里程碑。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "2022 Gilmer 突破引发研究热潮；2026-08 仍有新部分结果预印本。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "信息论/熵方法接入组合集合族谱系；特殊族类结果持续积累。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "常数比例界已成为独立工具面；对并闭族相关问题的下游影响逐步形成。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "OPG/百科列为开放；Gilmer 突破与 Chase 等跟进构成显性社区投入。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "熵方法只能给出存在性软界而无法闭合到 1/2，显示精确断言的方法缺口。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 87,
+      "field_normalized_attention": 80,
+      "problem_genealogy": 65,
+      "downstream_impact": 55,
+      "explicit_expert_endorsement": 75,
+      "mathematical_substance": 70
+    },
+    "score_band": "medium_high",
+    "uncertainty": "低：开放状态、突破脉络与热度证据均明确。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述初等精确：并闭性与元素频率均为有限组合对象。",
+        "evidence": []
+      },
+      {
+        "claim": "小规模族可完全枚举搜索（反例检验）。",
+        "evidence": []
+      },
+      {
+        "claim": "信息论/熵方法工具箱新近活跃（Gilmer 2022 突破即来源于此）。",
+        "evidence": []
+      },
+      {
+        "claim": "上下文小。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "无穷全称断言：计算只覆盖小族。",
+        "evidence": []
+      },
+      {
+        "claim": "1/2 精度要求高于现有软方法可达精度。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [
+      "熵路线能否定量推进到 1/2"
+    ],
+    "feature_values": {
+      "statement_completeness": 95,
+      "verifiability": 85,
+      "finite_search": 70,
+      "generation_verification_gap": 55,
+      "decomposability": 65,
+      "tool_support": 75,
+      "context_size": 90,
+      "ai_precedent": 60,
+      "theory_dependency": 50
+    },
+    "score_band": "medium_high",
+    "uncertainty": "中低：枚举与熵工具两侧信号明确，结果对熵方法的定量潜力敏感。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "manual_curation 通道：从 Open Problem Garden 抽取原始陈述与元数据（Wikipedia 辅助）。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "量词显式化与假设外提。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "事实单未指定关系；关系字段全部留空待人工补充。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "web 检索 2026-08-28：OPG/Wikipedia 列为开放；Gilmer 突破入 supporting，Chase 改进与 2026-08 新预印本仅入 notes。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维重要性评分与证据映射。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "AI 可行性九维评估与 unknowns 记录。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

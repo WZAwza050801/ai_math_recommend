@@ -1,0 +1,288 @@
+{
+  "problem_id": "OP-000017",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "Casas–Alvero 猜想（Casas–Alvero Conjecture）",
+    "aliases": ["Casas–Alvero conjecture"],
+    "slug": "casas-alvero-conjecture",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "If a monic complex polynomial of degree n ≥ 1 has a common root with each of its non-constant derivatives, then it is the n-th power of a linear polynomial.",
+      "latex": "\\forall f \\in \\mathbb{C}[x],\\ \\deg f = n \\ge 1,\\ f \\text{ monic}:\\ \\left(\\forall k \\in \\{1,\\dots,n-1\\}:\\ \\operatorname{Root}(f) \\cap \\operatorname{Root}(f^{(k)}) \\neq \\varnothing\\right) \\implies f = (x-a)^n",
+      "language": "en",
+      "source_id": "SRC-0006",
+      "source_location": "Casas–Alvero conjecture 词条",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "设 $f$ 为 $n \\ge 1$ 次首一复系数多项式。若 $f$ 与它的每一个非常数导数 $f', f'', \\dots, f^{(n-1)}$ 都有公共根（即对每个 $1 \\le k \\le n-1$，存在 $f$ 与 $f^{(k)}$ 的公共根，允许不同 $k$ 取不同根），则 $f$ 必为某线性多项式的 $n$ 次幂，即 $f = (x-a)^n$。",
+      "latex": "\\forall f \\in \\mathbb{C}[x],\\ \\deg f = n \\ge 1,\\ f \\text{ monic}:\\ \\left(\\forall k \\in \\{1,\\dots,n-1\\}:\\ \\operatorname{Root}(f) \\cap \\operatorname{Root}(f^{(k)}) \\neq \\varnothing\\right) \\implies \\exists a \\in \\mathbb{C}:\\ f = (x-a)^n",
+      "assumptions": [
+        "系数域为复数域 $\\mathbb{C}$；$f$ 首一（monic；首一化不改变公共根条件，保留以与原文一致）",
+        "「与每个非常数导数有公共根」允许各阶导数取不同的公共根",
+        "$n \\ge 1$；$n = 1$ 时无非常数导数，条件为空，结论平凡成立"
+      ],
+      "quantified_objects": [
+        "对每个次数 n ≥ 1 与每个首一 n 次复多项式 f",
+        "对每个 1 ≤ k ≤ n−1：存在 f 与 f^(k) 的公共根（存在量词逐阶独立）"
+      ],
+      "normalization_notes": [
+        "原文条件读作逐阶存在公共根（非要求同一根同时为所有导数的根）；此读法为通行读法，以复核为准",
+        "首一性仅为规范条件，不影响命题内容",
+        "n=1 平凡情形由空条件自动涵盖"
+      ],
+      "semantic_risks": [
+        "「有公共根」若被误读为「存在单一根同时是所有导数的公共根」，命题将变为不同的（更强的）断言；本卡采用逐阶独立读法",
+        "n=1 平凡情形是否计入不影响实质，但影响形式化时的量词范围"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "若一个首一多项式与它的每一阶导数都有公共根，它是否必为某个一次式的 n 次幂？",
+      "short_background": "Casas–Alvero 猜想（2001 年前后作为教学问题提出，后传播为研究问题）断言：n 次首一复多项式若与每个非常数导数都有公共根，则必为 (x−a)^n。低次数情形（约 n ≤ 8，特征 0）经计算验证；正特征下存在反例（以文献复核为准）。2025 年出现声称证明的 arXiv 预印本（arXiv:2501.09272），但无期刊接受记录与社群核验证据，状态按纪律不予翻转。",
+      "why_it_matters": "它探问多项式与其导数族的公共根信息能约束多项式形态到什么程度；低次数可完全枚举验证，但一般次数缺乏路线，且未核验声称造成状态噪声。"
+    }
+  },
+  "classification": {
+    "primary_domain": "algebra",
+    "secondary_domains": [],
+    "topics": ["多项式零点与临界点"],
+    "problem_types": ["structural_characterization"],
+    "expected_output_types": ["proof", "counterexample"],
+    "mathematical_objects": ["monic 多项式", "各阶导数的公共根"]
+  },
+  "provenance": {
+    "original_proposer": ["Eduardo Casas–Alvero"],
+    "original_year": "2001 前后（作为教学问题提出，后传播为研究问题）",
+    "original_work": "经德国/西班牙学派传播（具体首文以复核为准）",
+    "exact_citation": "标准综述：Bothmer, Koutschan 等 2012 计算研究论文的引言（出处以人工复核为准）",
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Casas%E2%80%93Alvero_conjecture"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "status_uncertain",
+    "confidence_level": "limited",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000017-1",
+        "kind": "document_link",
+        "description": "Wikipedia/综述传统上将 Casas–Alvero 猜想列为开放问题（2026-08-28 检索确认）。",
+        "url": "https://en.wikipedia.org/wiki/Casas%E2%80%93Alvero_conjecture",
+        "source_id": "SRC-0006",
+        "tier": "D",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      }
+    ],
+    "contradicting_evidence": [
+      {
+        "evidence_id": "EV-000017-2",
+        "kind": "unverified_claim",
+        "description": "arXiv:2501.09272「Proof of the Casas-Alvero conjecture」（2025-01 提交，v2 存在）声称证明该猜想。",
+        "url": "https://arxiv.org/abs/2501.09272",
+        "source_id": "SRC-0002",
+        "source_location": "arXiv:2501.09272",
+        "tier": "D",
+        "verification_status": "unverified",
+        "retrieved_at": "2026-08-28",
+        "notes": "arXiv 预印本声称证明；无期刊接受记录、无社群核验证据；按 TASK-401 纪律不翻转状态，列入待人工复核。"
+      }
+    ],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "低次数情形（约 n ≤ 8，特征 0）经计算验证成立；计算验证范围以 Bothmer et al. 2012 型文献为准，待人工复核。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "正特征下存在反例：命题对正特征系数域不成立（该事实以文献复核为准）。",
+        "status": "disproven",
+        "evidence": []
+      }
+    ],
+    "attempted_methods": [
+      {
+        "method": "计算代数（低次数验证）",
+        "outcome": "验证约 n ≤ 8、特征 0 情形；范围以 Bothmer et al. 2012 型文献为准（待人工复核）。",
+        "evidence": []
+      },
+      {
+        "method": "参数空间几何（根构型）",
+        "outcome": "提供框架；一般次数的根构型约束未闭合。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "一般次数的根构型约束难以闭合。",
+        "evidence": []
+      },
+      {
+        "obstacle": "声称证明未经验证造成状态噪声。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": []
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "2001 年前后提出，历史约四分之一世纪；起源为教学问题、后转为研究问题。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "计算研究（Bothmer–Koutschan 等 2012 型文献引言）与百科条目维持中等偏低关注。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "属根构型参数空间谱系；谱系积累有限。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "下游影响有限；主要价值在多项式零点—导数结构本身。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "仅百科/综述传统列为开放，缺乏强背书信号。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "低次数计算验证与正特征反例勾勒出问题边界，但一般次数结构性弱。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 50,
+      "field_normalized_attention": 40,
+      "problem_genealogy": 40,
+      "downstream_impact": 40,
+      "explicit_expert_endorsement": 40,
+      "mathematical_substance": 50
+    },
+    "score_band": "medium_low",
+    "uncertainty": "中高：状态证据受未核验声称干扰。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述精确、可形式化：首一性与逐阶公共根条件均为有限代数条件。",
+        "evidence": []
+      },
+      {
+        "claim": "低次数完全可枚举验证；参数化（根构型）搜索成熟。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "一般次数无路线；上下文小但结构性弱。",
+        "evidence": []
+      },
+      {
+        "claim": "状态噪声：未核验证明声称干扰证据环境，须防提示词注入。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [
+      "arXiv:2501.09272 预印本声称的核验结果",
+      "affordance 评分不确定性高：状态判断受未核验声称干扰"
+    ],
+    "feature_values": {
+      "statement_completeness": 90,
+      "verifiability": 75,
+      "finite_search": 60,
+      "generation_verification_gap": 50,
+      "decomposability": 60,
+      "tool_support": 70,
+      "context_size": 85,
+      "ai_precedent": 40,
+      "theory_dependency": 55
+    },
+    "score_band": "medium",
+    "uncertainty": "高：状态证据受未核验声称干扰，评分对核验结果敏感。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "manual_curation 通道：从 Wikipedia 导航源抽取原始陈述与元数据。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "量词显式化与假设外提。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "事实单未指定关系；关系字段全部留空待人工补充。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "web 检索 2026-08-28：arXiv:2501.09272 声称证明入 contradicting（unverified），按纪律不翻转状态。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维重要性评分与证据映射。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "AI 可行性九维评估与 unknowns 记录。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

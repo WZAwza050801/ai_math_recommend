@@ -1,0 +1,296 @@
+{
+  "problem_id": "OP-000021",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "Rota 基猜想（Rota's Basis Conjecture）",
+    "aliases": ["Rota's basis conjecture", "RBC"],
+    "slug": "rotas-basis-conjecture",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "Given n bases B_1,...,B_n of an n-dimensional vector space, one can decompose their union into n disjoint sets ('rainbow bases'), each containing exactly one vector from each B_i, and each itself a basis.",
+      "latex": "\\bigsqcup_{j=1}^{n} R_j = B_1 \\cup \\cdots \\cup B_n,\\quad |R_j \\cap B_i| = 1,\\quad R_j \\text{ 为 } V \\text{ 的基}",
+      "language": "en",
+      "source_id": "SRC-0006",
+      "source_location": "Rota's basis conjecture 词条",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "设 $V$ 为 $n$ 维向量空间，$B_1, \\dots, B_n$ 为 $V$ 的 $n$ 组基。则它们的并可被划分为 $n$ 个两两不交的子集 $R_1, \\dots, R_n$（「彩虹基」），每个 $R_j$ 恰含来自每个 $B_i$ 的一个向量，且每个 $R_j$ 本身是 $V$ 的基。",
+      "latex": "\\forall n \\ge 1,\\ \\forall \\text{ 基 } B_1,\\dots,B_n \\text{ of } V\\ (\\dim V = n):\\ \\exists R_1,\\dots,R_n:\\ \\bigsqcup_{j=1}^{n} R_j = B_1 \\cup \\cdots \\cup B_n,\\ |R_j \\cap B_i| = 1,\\ R_j \\text{ 为基}",
+      "assumptions": [
+        "$V$ 为 $n$ 维向量空间（域不限，按原文任意域）",
+        "$B_1, \\dots, B_n$ 为 $V$ 的基（各含 $n$ 个向量）",
+        "「彩虹基」指恰从每个 $B_i$ 各取一个向量且自身为基的子集",
+        "诸基含公共向量时，并集按带重数的并处理，划分按出现次数分配（该读法待复核）"
+      ],
+      "quantified_objects": [
+        "对每个 n 维空间 V 与其任意 n 组基 B_1,…,B_n：存在划分 R_1,…,R_n，每个 R_j 恰含每个 B_i 的一个向量且为基（∀n、∀(B_i)、∃划分）"
+      ],
+      "normalization_notes": [
+        "量词显式化：∀n、∀(B_i)、∃划分",
+        "「decompose their union into n disjoint sets」读作两两不交且并为全并集的划分"
+      ],
+      "semantic_risks": [
+        "诸基含公共向量时「union」的读法（集合并 vs 多重集并）影响退化情形；本卡采用多重集并读法并显式记录待复核",
+        "基作为有序组还是无序集不影响「各取一个」的条件；形式化时须固定一种约定"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "n 维空间的 n 组基，能否重排成 n 个「彩虹基」——每组各含每条原基的一个向量且自身也是基？",
+      "short_background": "Rota (1989) 提出的基猜想：n 个基的并可划分为 n 个两两不交的彩虹基。小 n 逐个验证；素数幂维数与特定结构的部分情形有结果（保守表述）。2025 年 Montgomery–Sauermann 在渐近方向取得重大进展（渐近紧的横截基打包/覆盖结果，arXiv 2025-08）。Alon–Tarsi 常数与多项式法、拟阵推广（Onn 2000s 综述）是主要路线。",
+      "why_it_matters": "它是组合矩阵论与横截理论的枢纽问题，与 Alon–Tarsi 常数、拟阵推广谱系深度关联；小 n 完全可判定使计算验证可行，但符号型障碍（组合常数奇偶性）属理论困难。"
+    }
+  },
+  "classification": {
+    "primary_domain": "combinatorics-and-graph-theory",
+    "secondary_domains": ["algebra"],
+    "topics": ["组合矩阵论", "横截理论"],
+    "problem_types": ["structural_characterization"],
+    "expected_output_types": ["proof"],
+    "mathematical_objects": ["向量空间的基", "彩虹基/横截"]
+  },
+  "provenance": {
+    "original_proposer": ["Gian-Carlo Rota"],
+    "original_year": "1989",
+    "original_work": "Rota (1989) 提出；Onn (2000s) 拟阵推广综述（Huang–Sulanke 传统）",
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Rota%27s_basis_conjecture"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "moderate",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000021-1",
+        "kind": "document_link",
+        "description": "Wikipedia 将 Rota 基猜想列为开放问题（2025 重大进展但未解决；2026-08-28 检索确认）。",
+        "url": "https://en.wikipedia.org/wiki/Rota%27s_basis_conjecture",
+        "source_id": "SRC-0006",
+        "tier": "D",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      },
+      {
+        "evidence_id": "EV-000021-2",
+        "kind": "document_link",
+        "description": "Montgomery–Sauermann (2025) 重大进展：渐近紧的横截基打包/覆盖结果。",
+        "url": "https://arxiv.org/abs/2508.05601",
+        "source_id": "SRC-0002",
+        "source_location": "arXiv:2508.05601",
+        "tier": "C",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "arXiv 2025-08；以正式发表版复核为准。"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "小 n 逐个验证成立。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "素数幂维数与特定结构的部分情形有结果（保守表述，细节待复核）。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "Montgomery–Sauermann (2025) 渐近紧的横截基打包/覆盖结果（证据见 open_status EV-000021-2）。",
+        "status": "proven",
+        "evidence": []
+      }
+    ],
+    "attempted_methods": [
+      {
+        "method": "代数方法（Alon–Tarsi 常数与多项式法）",
+        "outcome": "连接到组合常数符号障碍；一般 n 未突破。",
+        "evidence": []
+      },
+      {
+        "method": "拟阵推广",
+        "outcome": "推广命题框架；未解决原问题。",
+        "evidence": []
+      },
+      {
+        "method": "渐近打包路线",
+        "outcome": "Montgomery–Sauermann (2025) 得到渐近紧的横截基打包/覆盖结果；精确情形仍开放。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "多项式法对一般 n 的组合常数符号障碍。",
+        "evidence": []
+      },
+      {
+        "obstacle": "精确与渐近之间的差距。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": []
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "Rota (1989) 提出，至今近四十年；Alon–Tarsi/拟阵谱系持续投入。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "2025 Montgomery–Sauermann 渐近突破带动复苏。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "Alon–Tarsi 常数、多项式法与拟阵推广谱系深厚。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "横截/彩虹结构在组合矩阵论中的应用面。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "百科/综述列为开放；2025 重大进展有 arXiv 记录。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "精确与渐近的差距、组合常数符号障碍构成实质困难。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 76,
+      "field_normalized_attention": 70,
+      "problem_genealogy": 75,
+      "downstream_impact": 55,
+      "explicit_expert_endorsement": 65,
+      "mathematical_substance": 70
+    },
+    "score_band": "medium_high",
+    "uncertainty": "中低：谱系与进展证据明确；2025 结果待正式发表版复核。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述精确可形式化：基、划分、线性无关均为有限线性代数对象。",
+        "evidence": []
+      },
+      {
+        "claim": "小 n 完全可计算验证（彩虹基存在性可判定）；线性代数工具链成熟。",
+        "evidence": []
+      },
+      {
+        "claim": "上下文中等偏小。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "全称 n 断言，无有限搜索面。",
+        "evidence": []
+      },
+      {
+        "claim": "符号/代数障碍（Alon–Tarsi 常数奇偶性）是理论型而非计算型困难。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [],
+    "feature_values": {
+      "statement_completeness": 90,
+      "verifiability": 80,
+      "finite_search": 55,
+      "generation_verification_gap": 55,
+      "decomposability": 60,
+      "tool_support": 80,
+      "context_size": 65,
+      "ai_precedent": 45,
+      "theory_dependency": 50
+    },
+    "score_band": "medium",
+    "uncertainty": "中：计算验证端强，但核心障碍属符号/代数型，计算路线未必触及。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "manual_curation 通道：从 Wikipedia 导航源抽取原始陈述与元数据。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "量词显式化与假设外提；公共向量并集读法显式记录待复核。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "事实单未指定关系；关系字段全部留空待人工补充。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "web 检索 2026-08-28：Wikipedia 列为开放；Montgomery–Sauermann 2025 渐近进展入 supporting，待正式发表版复核。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维重要性评分与证据映射。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "AI 可行性九维评估与 unknowns 记录。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

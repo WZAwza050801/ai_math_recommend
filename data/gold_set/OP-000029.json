@@ -1,0 +1,283 @@
+{
+  "problem_id": "OP-000029",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "Erdős 偏差问题（Erdős Discrepancy Problem）",
+    "aliases": ["Erdős discrepancy problem", "EDP"],
+    "slug": "erdos-discrepancy-problem",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "For any infinite sequence x_1, x_2, ... with each x_n ∈ {+1, −1} and completely multiplicative, the discrepancy sup over d, n of |Σ_{i=1}^{n} x_{id}| is unbounded. (Erdős 1932 conjectured unbounded discrepancy for arbitrary ±1 sequences; the completely multiplicative case suffices.)",
+      "latex": "\\forall x: \\mathbb{N} \\to \\{+1,-1\\} \\text{（完全乘性）}:\\ \\sup_{d,n} \\left| \\sum_{i=1}^{n} x_{id} \\right| = \\infty",
+      "language": "en",
+      "source_id": "SRC-0003",
+      "source_location": "T. Tao, The Erdős discrepancy problem (2015-09 论文与博客公告)；Annals of Mathematics 183 (2016)",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "任意完全乘性的 \\pm 1 序列 (x_n)（即 x_{mn} = x_m x_n）沿等差数列的偏差 \\sup_{d,n} |\\sum_{i=1}^{n} x_{id}| 无界。Erdős 于 1932 年前后对任意 \\pm 1 序列猜想偏差无界，完全乘性情形足以给出肯定答案；Tao (2015) 证明了完全乘性情形，从而关闭原问题。",
+      "latex": "\\sup_{d \\ge 1,\\ n \\ge 1} \\left| \\sum_{i=1}^{n} x_{id} \\right| = \\infty \\quad (x_{mn} = x_m x_n,\\ x_n \\in \\{+1,-1\\})",
+      "assumptions": [
+        "序列为无穷序列且每项取值 \\{+1,-1\\}",
+        "\"完全乘性\"指对所有正整数 m,n 有 x_{mn} = x_m x_n",
+        "偏差对公差 d 与长度 n 二者取上确界，求和沿等差数列 x_d, x_{2d}, \\ldots, x_{nd} 进行"
+      ],
+      "quantified_objects": [
+        "对任意完全乘性 \\pm 1 序列（全称量词覆盖全部此类序列）：其沿等差数列的偏差上确界为无穷大"
+      ],
+      "normalization_notes": [
+        "原始陈述把 Tao 已证明的完全乘性命题与 Erdős 1932 年原始猜想（任意 \\pm 1 序列）并列；规范化按\"完全乘性情形的证明蕴含原始问题\"的蕴含关系整合",
+        "问题的\"解决\"状态针对 Erdős 原始问题整体：完全乘性情形被 Tao (2015) 证明"
+      ],
+      "semantic_risks": [
+        "EDP 在文献中有\"任意 \\pm 1 序列\"与\"完全乘性序列\"两种表述；本卡按原始陈述的蕴含结构处理：Tao 证明的是完全乘性情形，其论证恰好关闭原始问题",
+        "偏差定义为 sup 而非 limsup；两种口径在\"无界\"断言下等价，但初学者易混淆"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "【已解决对照样本】完全乘性的正负 1 序列沿等差数列的偏差必然无界——Tao 2015 年关闭了这个 80 余年的 Erdős 老题；本卡作为对照样本，展示\"计算辅助 + 人类洞察\"如何合力解决一个曾被长期误判为开放的问题。",
+      "short_background": "Erdős 偏差问题问：±1 序列沿等差数列求和的偏差是否必然无界。Erdős 约 1932 年提出并悬赏。Polymath5（2010–2012）众包攻坚未果，但留下了 C=2 情形的 SAT 计算验证（Konev–Lisitsa 2014）。2015 年 Tao 用解析组合（Elliott 猜想层面的估计 + 丢番图逼近新组合引理）证明完全乘性情形偏差无界，论文发表于 Annals of Mathematics 183 (2016)；证明部分依赖 Polymath5 的计算机辅助结果。",
+      "why_it_matters": "作为方法论对照样本，它是\"AI/计算工作流直接先例\"的范式案例：有限前缀可 SAT 检验、众包与个人洞察接力、最终由解析证明收尾——本系统的验证分级与计算证据通道正可参照此生命周期。"
+    }
+  },
+  "classification": {
+    "primary_domain": "combinatorics-and-graph-theory",
+    "secondary_domains": ["number-theory"],
+    "topics": ["加性组合"],
+    "problem_types": ["bound_improvement"],
+    "expected_output_types": ["proof"],
+    "mathematical_objects": ["完全乘性序列 ±1", "沿等差数列的偏差"]
+  },
+  "provenance": {
+    "original_proposer": ["Paul Erdős（约 1932 年提出）"],
+    "original_year": "1932 前后",
+    "original_work": "Erdős 提出于 1930 年代初；Polymath5 (2010–2012) 攻坚未果（computational C=2 情形）",
+    "exact_citation": "T. Tao, The Erdős discrepancy problem, arXiv:1509.05363 (2015)；正式发表于 Annals of Mathematics 183 (2016)；问题由 P. Erdős 约 1932 年提出。",
+    "source_urls": [
+      "https://terrytao.wordpress.com/2015/09/20/the-erdos-discrepancy-problem/",
+      "https://arxiv.org/abs/1509.05363"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "resolved",
+    "confidence_level": "high",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000029-1",
+        "kind": "document_link",
+        "description": "Tao 的论文预印本 arXiv:1509.05363：证明所有完全乘性 ±1 序列沿等差数列的偏差无界，关闭 Erdős 原始问题。",
+        "url": "https://arxiv.org/abs/1509.05363",
+        "source_id": "SRC-0002",
+        "source_location": "arXiv:1509.05363",
+        "tier": "C",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "证明部分依赖计算机辅助验证（Polymath5 的 C=2 情形 SAT 结果，Konev–Lisitsa 2014，按事实单以 notes 记录、不单设证据条目）。"
+      },
+      {
+        "evidence_id": "EV-000029-2",
+        "kind": "source_quote",
+        "description": "正式发表记录：Annals of Mathematics 183 (2016) 刊出 Tao 的 The Erdős discrepancy problem。",
+        "source_id": "SRC-0014",
+        "source_location": "Annals of Mathematics 183 (2016)",
+        "tier": "B",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "同行评议期刊发表记录（SRC-0014 期刊源），无 URL。"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": "完全解决：Tao 2015 证明所有完全乘性 ±1 序列偏差无界（这蕴含 Erdős 原始问题的肯定答案）；证明部分依赖计算机辅助验证（Polymath5 的 C=2 SAT 结果）。",
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "C=2 情形经 SAT 编码计算解决（Konev–Lisitsa 2014；Polymath5 线索，2010–2012）。",
+        "status": "proven",
+        "evidence": []
+      }
+    ],
+    "attempted_methods": [
+      {
+        "method": "Polymath5 众包攻坚（2010–2012）",
+        "outcome": "分析了大量计算数据，未解决一般情形，但为后续证明准备了计算素材。",
+        "evidence": []
+      },
+      {
+        "method": "SAT 编码（有限前缀/部分情形）",
+        "outcome": "Konev–Lisitsa 2014 解决 C=2 情形，构成最终证明的计算机辅助成分之一。",
+        "evidence": []
+      },
+      {
+        "method": "Tao 的解析组合（Elliott 估计 + 丢番图逼近新组合引理）",
+        "outcome": "完成完全乘性情形偏差无界的完整证明（2015），关闭问题。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [],
+    "known_equivalences": [],
+    "best_known_bounds": []
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": [
+      {
+        "target": "external:Erdős 问题库（erdosproblems.com，SRC-0010）",
+        "evidence": [],
+        "notes": "Erdős 问题体系的代表条目。"
+      }
+    ]
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "1932 年前后提出，2015 年解决，悬置 83 年。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "Erdős 悬赏问题中的知名条目；Polymath5 众包攻坚放大了社区关注度。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "与乘性序列、解析数论（Elliott 估计谱系）紧密相连。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "其解决技术（丢番图逼近新组合引理）进入加性组合工具箱。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "Erdős 悬赏 + Tao/Polymath 攻坚谱系的双重背书。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "解决过程横跨 SAT 计算、众包数据与解析组合，是跨方法实质成果。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 88,
+      "field_normalized_attention": 80,
+      "problem_genealogy": 70,
+      "downstream_impact": 60,
+      "explicit_expert_endorsement": 80,
+      "mathematical_substance": 85
+    },
+    "score_band": "high",
+    "uncertainty": "低：悬赏、Polymath 谱系与 Annals 发表证据直接。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述初等、可形式化：±1 序列与偏差定义均为初等组合对象。",
+        "evidence": []
+      },
+      {
+        "claim": "有限前缀可 SAT 检验——存在直接先例（Polymath5/Konev–Lisitsa 的 C=2 情形）。",
+        "evidence": []
+      },
+      {
+        "claim": "反例侧可计算：有限前缀的反例搜索可程序化。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "已解决：作为\"待尝试问题\"已无剩余面。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [],
+    "feature_values": {
+      "statement_completeness": 100,
+      "verifiability": 95,
+      "finite_search": 85,
+      "generation_verification_gap": 70,
+      "decomposability": 80,
+      "tool_support": 90,
+      "context_size": 90,
+      "ai_precedent": 95,
+      "theory_dependency": 55
+    },
+    "score_band": "high",
+    "uncertainty": "低；需说明：本卡的 ai_affordance 属\"方法论对照\"性质——评估的是\"计算辅助 + 人类洞察\"组合关闭 80 年老题的先例价值（SAT 检验 + 众包 + 解析证明收尾），而非剩余求解空间。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "按事实单抽取原始陈述；source 记 SRC-0003（Tao 博客公告）。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "整合完全乘性命题与 Erdős 原始猜想的蕴含结构；标注两种表述口径风险。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "按事实单建立 related_to 外部 Erdős 问题库（SRC-0010）。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "判 resolved：arXiv:1509.05363 + Annals 183 (2016) 两条 verified 证据支撑。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "Erdős 悬赏 + Polymath/Tao 谱系支撑 high。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "方法论对照定位写入 uncertainty；SAT 先例支撑 high band。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

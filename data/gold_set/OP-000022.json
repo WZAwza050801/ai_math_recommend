@@ -1,0 +1,297 @@
+{
+  "problem_id": "OP-000022",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "优美树猜想（Graceful Tree Conjecture）",
+    "aliases": ["graceful tree conjecture", "Ringel–Kotzig conjecture"],
+    "slug": "graceful-tree-conjecture",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "Every tree with m edges admits a graceful labeling: an injection f from its vertices to {0,1,...,m} such that the induced edge labels |f(u)−f(v)| are all distinct (hence exactly {1,...,m}).",
+      "latex": "\\forall T\\ (\\text{树},\\ |E(T)|=m):\\ \\exists f: V(T) \\hookrightarrow \\{0,1,\\dots,m\\},\\ \\{|f(u)-f(v)| : uv \\in E(T)\\} = \\{1,\\dots,m\\}",
+      "language": "en",
+      "source_id": "SRC-0008",
+      "source_location": "google-deepmind/formal-conjectures 仓库 graceful tree conjecture 条目（2025 年新增）",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "每棵具有 $m$ 条边的树 $T$ 都存在优美标号：一个从顶点集 $V(T)$ 到 $\\{0, 1, \\dots, m\\}$ 的单射 $f$，使得诱导边标号 $|f(u) - f(v)|$（对每条边 $uv \\in E(T)$）两两不同，从而恰为 $\\{1, \\dots, m\\}$。",
+      "latex": "\\forall T\\ (\\text{树},\\ |E(T)| = m):\\ \\exists f: V(T) \\hookrightarrow \\{0,1,\\dots,m\\}\\ \\text{单射}:\\ \\{|f(u)-f(v)| : uv \\in E(T)\\} = \\{1,2,\\dots,m\\}",
+      "assumptions": [
+        "$T$ 为简单无向树，边数 $m \\ge 1$（顶点数 $m+1$，与取值集大小一致，单射即到 $\\{0,\\dots,m\\}$ 的双射）",
+        "边标号为两端顶点标号之差的绝对值",
+        "优美标号取 Rosa (1967) β-标号意义的上述定义"
+      ],
+      "quantified_objects": [
+        "对每棵 m 边树 T：存在优美标号 f（∀树、∃f）"
+      ],
+      "normalization_notes": [
+        "顶点标号 m+1 个取自 m+1 个值，单射即满；m 条边标号为 {1,…,m} 内两两不同的整数，故恰为全集合（原文 hence exactly {1,…,m} 已含此推论）",
+        "与 Ringel 分解猜想（K_{2n+1} 分解）的关系为同族问题而非本命题内容（见 known_results）"
+      ],
+      "semantic_risks": [
+        "顶点标号自 0 起（含 0）；与「1 起」的其他标号体系区分",
+        "「graceful」一词在不同文献或指更强/更弱条件；本卡固定为上述 β-标号定义"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "每棵树是否都能「优美标号」——顶点标 0..m，使 m 条边的标号差恰好是 1..m？",
+      "short_background": "优美树猜想：每棵 m 边树存在顶点标号 f: V→{0,…,m} 使边差恰为 1..m。Ringel (1963) 提出分解问题，Kotzig (1966) 给出优美标号等价形式，Rosa (1967) 系统化为 β-标号。路径、毛虫树等树类已证；一定规模内经计算验证（上限以文献为准）。2025 年 google-deepmind/formal-conjectures 仓库将其在 Lean 中形式化为开放猜想。同族的 Ringel 分解猜想（K_{2n+1} 分解）2020 年前后对大 n/有界度取得渐近进展（Montgomery–Pokrovskiy–Sudakov），但与优美标号猜想非等价。",
+      "why_it_matters": "陈述初等且已有 Lean 形式化先例，逐树验证与 SAT/搜索工具成熟；但一般树的统一标号机制多年未现，穷举规模指数增长。"
+    }
+  },
+  "classification": {
+    "primary_domain": "combinatorics-and-graph-theory",
+    "secondary_domains": [],
+    "topics": ["图分解与标号"],
+    "problem_types": ["existence", "structural_characterization"],
+    "expected_output_types": ["proof"],
+    "mathematical_objects": ["树", "优美标号 f: V→{0..m}"]
+  },
+  "provenance": {
+    "original_proposer": ["Gerhard Ringel（分解问题）", "Anton Kotzig（标号形式）"],
+    "original_year": "1963/1966",
+    "original_work": "Ringel (1963) 分解猜想；Kotzig (1966) 优美标号等价形式；A. Rosa (1967) 系统化（β-标号）",
+    "source_urls": [
+      "https://github.com/google-deepmind/formal-conjectures",
+      "https://en.wikipedia.org/wiki/Graceful_labeling"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "moderate",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000022-1",
+        "kind": "document_link",
+        "description": "google-deepmind/formal-conjectures 仓库于 2025 年将优美树猜想作为开放猜想形式化（Lean）。",
+        "url": "https://github.com/google-deepmind/formal-conjectures",
+        "source_id": "SRC-0008",
+        "source_location": "graceful tree conjecture 条目（2025 年新增）",
+        "tier": "A",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "路径、毛虫树（caterpillar）、特定直径/度数类已证（保守表述）。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "有限规模计算验证：所有树至一定规模（数十顶点内）已验证成立；具体上限以文献为准。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "相关进展：Ringel 分解猜想（K_{2n+1} 分解为任意 n 边树的 2n+1 个拷贝）在 2020 年前后对大 n/有界度取得渐近解决（Montgomery–Pokrovskiy–Sudakov）；与优美标号猜想非等价，属同族进展。",
+        "status": "proven",
+        "evidence": []
+      }
+    ],
+    "attempted_methods": [
+      {
+        "method": "归纳构造（子树嫁接）",
+        "outcome": "证明若干树类（路径、毛虫树等）；一般树停滞。",
+        "evidence": []
+      },
+      {
+        "method": "计算穷举（规模上限推进）",
+        "outcome": "数十顶点规模内验证成立；规模指数增长限制推进。",
+        "evidence": []
+      },
+      {
+        "method": "代数/计数启发",
+        "outcome": "未形成一般机制。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "一般树的组合结构无统一标号机制。",
+        "evidence": []
+      },
+      {
+        "obstacle": "穷举规模指数增长。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": []
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "Ringel (1963) / Kotzig (1966) 提出，逾六十年；Rosa (1967) 系统化。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "中等热度；2025 年 Lean 形式化条目新增。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "图分解/标号谱系（Ringel 分解、Rosa β-标号体系）。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "同族分解问题（K_{2n+1} 分解）近年渐近进展为谱系注入活力，但与本猜想非等价。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "formal-conjectures 仓库 2025 年将其形式化为开放猜想；百科汇总持续收录。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "人类归纳构造多年停滞、穷举指数爆炸，显示一般机制的缺失。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 84,
+      "field_normalized_attention": 60,
+      "problem_genealogy": 65,
+      "downstream_impact": 50,
+      "explicit_expert_endorsement": 60,
+      "mathematical_substance": 60
+    },
+    "score_band": "medium_high",
+    "uncertainty": "低：谱系与形式化证据明确。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述初等完全可形式化：已在 Lean 中形式化（formal-conjectures 仓库，2025）。",
+        "evidence": [
+          {
+            "evidence_id": "EV-000022-4",
+            "kind": "document_link",
+            "description": "Lean 形式化先例：该猜想已进入 google-deepmind/formal-conjectures 仓库（2025 年新增条目）。",
+            "url": "https://github.com/google-deepmind/formal-conjectures",
+            "source_id": "SRC-0008",
+            "tier": "A",
+            "verification_status": "verified",
+            "retrieved_at": "2026-08-28",
+            "notes": "形式化生态成熟度是结构信号，不是解决概率声明。"
+          }
+        ]
+      },
+      {
+        "claim": "逐树验证算法平凡；SAT/搜索工具成熟。",
+        "evidence": []
+      },
+      {
+        "claim": "上下文小。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "全部树的全称断言；穷举对一般树指数爆炸。",
+        "evidence": []
+      },
+      {
+        "claim": "人类归纳构造多年停滞。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [],
+    "feature_values": {
+      "statement_completeness": 95,
+      "verifiability": 90,
+      "finite_search": 65,
+      "generation_verification_gap": 55,
+      "decomposability": 60,
+      "tool_support": 85,
+      "context_size": 90,
+      "ai_precedent": 70,
+      "theory_dependency": 60
+    },
+    "score_band": "medium_high",
+    "uncertainty": "低：形式化与搜索工具证据明确。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "manual_curation 通道：从 formal-conjectures 仓库（2025 新增条目）抽取原始陈述，Wikipedia 辅助。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "量词显式化与假设外提。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "事实单未指定关系；关系字段全部留空待人工补充。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "web 检索 2026-08-28：formal-conjectures 2025 形式化条目确认开放状态；计算验证上限与 Ringel 分解渐近进展仅入 notes。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维重要性评分与证据映射。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "AI 可行性九维评估与 unknowns 记录。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

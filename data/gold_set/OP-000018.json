@@ -1,0 +1,303 @@
+{
+  "problem_id": "OP-000018",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "平面色数问题（Hadwiger–Nelson Problem）",
+    "aliases": ["Hadwiger–Nelson problem", "chromatic number of the plane"],
+    "slug": "hadwiger-nelson-problem",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "Determine the chromatic number of the Euclidean plane: how many colors are needed to color every point of the plane so that no two points at distance exactly 1 receive the same color? It is known to be between 5 and 7.",
+      "latex": "\\chi(\\mathbb{R}^2) = \\min\\{k : \\exists c: \\mathbb{R}^2 \\to \\{1,\\dots,k\\},\\ \\forall x,y\\ (\\|x-y\\| = 1 \\implies c(x) \\neq c(y))\\}, \\quad 5 \\le \\chi(\\mathbb{R}^2) \\le 7",
+      "language": "en",
+      "source_id": "SRC-0006",
+      "source_location": "Hadwiger–Nelson problem 词条",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "求欧氏平面的色数 $\\chi(\\mathbb{R}^2)$：给平面上每一点染色，使得任意距离恰为 1 的两点颜色不同，所需最少颜色数。已知 $5 \\le \\chi(\\mathbb{R}^2) \\le 7$。",
+      "latex": "\\chi(\\mathbb{R}^2) = \\min\\{k : \\exists c: \\mathbb{R}^2 \\to \\{1,\\dots,k\\},\\ \\forall x, y \\in \\mathbb{R}^2\\ (\\|x - y\\| = 1 \\implies c(x) \\neq c(y))\\}, \\quad 5 \\le \\chi(\\mathbb{R}^2) \\le 7",
+      "assumptions": [
+        "距离为标准欧氏距离，且禁用的是距离恰等于 1（非 ≤ 1）",
+        "平面上所有点（连续统）均需染色；经 de Bruijn–Erdős 定理问题等价于有限单位距离图的色数（见 provenance）",
+        "目标为确定最少颜色数的确切值"
+      ],
+      "quantified_objects": [
+        "对所有点染色方案：存在性最小化（∃c 使全部距离 1 点对异色）",
+        "对平面上任意距离恰为 1 的点对 x, y：c(x) ≠ c(y)"
+      ],
+      "normalization_notes": [
+        "原文以问句 + 已知界形式给出；规范化将「确定色数」作为目标、已知界 5 ≤ χ ≤ 7 作为现状",
+        "有限图等价形式经由 de Bruijn–Erdős 定理（事实单 provenance 记录）"
+      ],
+      "semantic_risks": [
+        "「距离恰为 1」是仅禁止单一距离同色，而非禁止 ≤ 1（后者为不同变体）；变体结果不得计入主命题"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "给平面染色，使距离恰为 1 的点对不同色，最少需要几种颜色？已知答案在 5 与 7 之间。",
+      "short_background": "Hadwiger–Nelson 问题问欧氏平面的色数 χ(R²)。de Bruijn–Erdős 定理保证它等价于有限单位距离图的色数问题。下界 5 来自 de Grey (2018) 构造的 1581 顶点单位距离图（后续经 Polymath/Exoo–Ismailescu 缩小至数百顶点量级）；上界 7 来自经典六边形铺砌的 7 色染色。Nelson (1950) 提出、Hadwiger 1945 有相关传统，经 Gardner (1960, Scientific American 专栏) 传播。",
+      "why_it_matters": "它是离散几何与图染色的交界问题，SAT/整数规划搜索管线成熟且有成功先例（2018 突破即计算+构造）；但下界推进到 6 所需图规模可能爆炸，上界降到 6 无任何构造思路。"
+    }
+  },
+  "classification": {
+    "primary_domain": "combinatorics-and-graph-theory",
+    "secondary_domains": ["geometry"],
+    "topics": ["图染色", "离散几何"],
+    "problem_types": ["computational_determination", "bound_improvement"],
+    "expected_output_types": ["proof", "computational_evidence"],
+    "mathematical_objects": ["单位距离图", "平面染色"]
+  },
+  "provenance": {
+    "original_proposer": ["Hugo Hadwiger（1945 汇编）", "Edward Nelson（1950 提出）"],
+    "original_year": "1950（Nelson）；Hadwiger 1945 相关传统",
+    "original_work": "经 Gardner (1960, Scientific American 专栏) 传播；de Bruijn–Erdős 定理保证有限图等价",
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Hadwiger%E2%80%93Nelson_problem"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "high",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000018-1",
+        "kind": "document_link",
+        "description": "Wikipedia 将 Hadwiger–Nelson 问题列为开放问题，已知界 5 ≤ χ ≤ 7（2026-08-28 检索确认）。",
+        "url": "https://en.wikipedia.org/wiki/Hadwiger%E2%80%93Nelson_problem",
+        "source_id": "SRC-0006",
+        "tier": "D",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      },
+      {
+        "evidence_id": "EV-000018-2",
+        "kind": "document_link",
+        "description": "下界 5：Aubrey de Grey (2018) 构造 1581 顶点单位距离图需要 5 色；Polymath/Exoo–Ismailescu 后续缩小图规模。",
+        "url": "https://arxiv.org/abs/1804.02385",
+        "source_id": "SRC-0002",
+        "source_location": "arXiv:1804.02385",
+        "tier": "C",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "Polymath/Exoo–Ismailescu 后续缩小图（细节以 Polymath 记录为准）。"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "de Grey 图（2018，1581 顶点）及后续 Polymath/Exoo–Ismailescu 缩小至约数百顶点量级；细节以 Polymath 记录为准。",
+        "status": "proven",
+        "evidence": []
+      }
+    ],
+    "best_known_bounds": [
+      {
+        "quantity": "平面色数 χ(R²)",
+        "bound": "5 ≤ χ(R²) ≤ 7",
+        "evidence": [
+          {
+            "evidence_id": "EV-000018-3",
+            "kind": "document_link",
+            "description": "变体结果：区间禁距变体的色数 ≥ 7（2023）。",
+            "url": "https://arxiv.org/abs/2304.10163",
+            "source_id": "SRC-0002",
+            "source_location": "arXiv:2304.10163",
+            "tier": "C",
+            "verification_status": "verified",
+            "retrieved_at": "2026-08-28",
+            "notes": "这是变体（禁距区间），不是原问题。"
+          }
+        ],
+        "notes": "下界 5 的证据见 open_status EV-000018-2（de Grey 2018 + 后续简化）；上界 7 来自经典六边形铺砌的 7 色染色（古典构造，无独立 URL 记录）。变体结果（不计入主命题）：可测色数 ≥ 5；区间禁距变体色数 ≥ 7（2023，见 EV-000018-3——这是变体（禁距区间），不是原问题）。"
+      }
+    ],
+    "attempted_methods": [
+      {
+        "method": "SAT / 整数规划搜索小单位距离图",
+        "outcome": "推进下界至 5（de Grey 2018 即计算+构造）；后续工作缩小图规模。",
+        "evidence": []
+      },
+      {
+        "method": "染色构造（六边形铺砌染色）",
+        "outcome": "给出上界 7；未获得 6 色构造。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "下界 6 需要的图规模可能爆炸增长。",
+        "evidence": []
+      },
+      {
+        "obstacle": "上界降到 6 无任何构造思路。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": []
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "Nelson (1950) 提出、Hadwiger 1945 相关传统，七十余年未决。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "2018 年 de Grey 突破引发复苏；Polymath 协作与后续缩小图工作保持热度。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "经 de Bruijn–Erdős 定理接入有限图染色谱系；单位距离图研究传统深厚。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "有限图等价使其成为 SAT/组合搜索的基准问题；变体族（可测色数、禁距区间）活跃。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "百科/综述列为开放；2018 突破与 Polymath 跟进是显性社区投入信号。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "上界侧（6 色构造）无任何思路、下界侧所需图规模可能爆炸，双向僵持显示问题实质深度。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 76,
+      "field_normalized_attention": 85,
+      "problem_genealogy": 70,
+      "downstream_impact": 55,
+      "explicit_expert_endorsement": 70,
+      "mathematical_substance": 65
+    },
+    "score_band": "medium_high",
+    "uncertainty": "低：开放状态与两侧已知界均有直接文献证据。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "精确定义且经 de Bruijn–Erdős 定理等价于有限单位距离图问题。",
+        "evidence": []
+      },
+      {
+        "claim": "SAT/ILP/Ramsey 搜索管线成熟且有成功先例：de Grey 2018 即计算+构造的完整链路。",
+        "evidence": []
+      },
+      {
+        "claim": "顶点数可扩展推进：1581 顶点至数百顶点量级的缩小过程显示增量工作模式。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "下界 6 所需图可能极大超出当前 SAT 能力。",
+        "evidence": []
+      },
+      {
+        "claim": "上界侧纯构造无搜索面。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [
+      "6 色不可行/可行的计算证据边界"
+    ],
+    "feature_values": {
+      "statement_completeness": 95,
+      "verifiability": 85,
+      "finite_search": 80,
+      "generation_verification_gap": 65,
+      "decomposability": 75,
+      "tool_support": 85,
+      "context_size": 85,
+      "ai_precedent": 75,
+      "theory_dependency": 60
+    },
+    "score_band": "high",
+    "uncertainty": "中低：计算端证据充分，风险集中在上界侧无搜索面。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "manual_curation 通道：从 Wikipedia 导航源抽取原始陈述与元数据。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "量词显式化与假设外提。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "事实单未指定关系；关系字段全部留空待人工补充。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "web 检索 2026-08-28：5 ≤ χ ≤ 7 现状确认；de Grey 下界入 supporting，变体结果仅入 notes 不计入主命题。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维重要性评分与证据映射。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "AI 可行性九维评估与 unknowns 记录。"
+      }
+    ],
+    "human_reviews": []
+  }
+}
