@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数学问题抽卡 · AI Math Draw</title>
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --ink: #1f2933; --muted: #6b7280;
+  --accent: #8b5cf6; --accent-soft: #ede9fe; --gold: #b45309; --gold-soft: #fef3c7;
+  --teal: #0f766e; --teal-soft: #ccfbf1; --rose: #be123c; --rose-soft: #ffe4e6;
+  --line: #e5e1d8; --radius: 14px;
+  --shadow: 0 1px 3px rgba(31,41,51,.08), 0 8px 24px rgba(31,41,51,.06);
+}
+* { box-sizing: border-box; margin: 0; }
+body {
+  font-family: "Source Han Serif SC", "Noto Serif CJK SC", Georgia, "Songti SC", serif;
+  background: var(--bg); color: var(--ink); line-height: 1.65;
+}
+header {
+  position: sticky; top: 0; z-index: 10; background: rgba(247,245,240,.92);
+  backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; gap: 20px; padding: 12px 28px; flex-wrap: wrap;
+}
+header h1 { font-size: 19px; letter-spacing: .12em; }
+header h1 small { color: var(--muted); font-size: 12px; letter-spacing: .05em; margin-left: 8px; }
+nav { display: flex; gap: 4px; margin-left: auto; }
+nav button {
+  border: none; background: transparent; padding: 8px 14px; font-size: 15px;
+  cursor: pointer; border-radius: 9px; color: var(--muted); font-family: inherit;
+}
+nav button.active { background: var(--ink); color: #fff; }
+nav button:hover:not(.active) { background: #edeae2; }
+main { max-width: 1080px; margin: 0 auto; padding: 26px 20px 80px; }
+
+/* ---------- 抽卡视图 ---------- */
+.hero { text-align: center; padding: 34px 0 10px; }
+.hero .sigil { font-size: 40px; }
+.hero h2 { font-size: 26px; margin: 10px 0 6px; letter-spacing: .06em; }
+.hero p { color: var(--muted); font-size: 14.5px; max-width: 640px; margin: 0 auto; }
+.draw-controls { display: flex; gap: 10px; justify-content: center; align-items: center; flex-wrap: wrap; margin: 24px 0; }
+.mode-switch { display: inline-flex; border: 1px solid var(--line); border-radius: 11px; overflow: hidden; background: var(--panel); }
+.mode-switch button { border: none; padding: 9px 16px; background: transparent; cursor: pointer; font-family: inherit; font-size: 14px; color: var(--muted); }
+.mode-switch button.active { background: var(--accent); color: #fff; }
+#draw-btn {
+  font-family: inherit; font-size: 17px; letter-spacing: .2em; padding: 13px 44px;
+  border-radius: 999px; border: none; cursor: pointer;
+  background: radial-gradient(120% 160% at 30% 20%, #a78bfa, #7c3aed 70%);
+  color: #fff; box-shadow: 0 6px 20px rgba(124,58,237,.35); transition: transform .12s;
+}
+#draw-btn:hover { transform: translateY(-2px); }
+#draw-btn:disabled { opacity: .55; cursor: wait; transform: none; }
+.mix-note { font-size: 12.5px; color: var(--muted); margin-top: 6px; text-align: center; }
+.results { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin-top: 26px; }
+.pcard {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 18px 18px 14px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 8px;
+  animation: rise .35s ease both;
+}
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.pcard .top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.pcard .pid { font-size: 11px; color: var(--muted); letter-spacing: .08em; }
+.radius { font-size: 11px; padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+.radius.relevance { background: var(--accent-soft); color: var(--accent); }
+.radius.adjacent { background: var(--teal-soft); color: var(--teal); }
+.radius.distant { background: var(--gold-soft); color: var(--gold); }
+.pcard h3 { font-size: 17px; line-height: 1.4; cursor: pointer; }
+.pcard h3:hover { color: var(--accent); }
+.pcard .one { font-size: 13.5px; color: #374151; flex: 1; }
+.badges { display: flex; flex-wrap: wrap; gap: 6px; }
+.badge { font-size: 11px; padding: 2px 8px; border-radius: 6px; background: #f1efe9; color: var(--muted); }
+.badge.band-high { background: #fde8e8; color: #b91c1c; }
+.badge.band-medium_high { background: var(--gold-soft); color: var(--gold); }
+.badge.domain { background: var(--teal-soft); color: var(--teal); }
+.badge.status { background: #e8edf7; color: #4338ca; }
+.badge.status.resolved { background: #dcfce7; color: #15803d; }
+
+/* ---------- 列表/来源视图 ---------- */
+.toolbar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; align-items: center; }
+select, input[type=text] {
+  font-family: inherit; font-size: 14px; padding: 8px 12px; border: 1px solid var(--line);
+  border-radius: 9px; background: var(--panel); color: var(--ink);
+}
+table.src { width: 100%; border-collapse: collapse; background: var(--panel); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); font-size: 13.5px; }
+table.src th { text-align: left; padding: 10px 12px; background: #f1efe9; color: var(--muted); font-weight: 600; }
+table.src td { padding: 9px 12px; border-top: 1px solid var(--line); }
+.dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; }
+.dot.on { background: #22c55e; } .dot.off { background: #d1d5db; }
+.pill { font-size: 11px; padding: 1px 8px; border-radius: 999px; background: #f1efe9; }
+#lib-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 14px; }
+
+/* ---------- 详情抽屉 ---------- */
+#overlay { position: fixed; inset: 0; background: rgba(24,20,14,.45); z-index: 50; display: none; }
+#overlay.open { display: block; }
+#detail {
+  position: fixed; right: 0; top: 0; bottom: 0; width: min(720px, 96vw); z-index: 60;
+  background: var(--panel); box-shadow: -12px 0 40px rgba(0,0,0,.18); overflow-y: auto;
+  transform: translateX(102%); transition: transform .28s ease;
+}
+#detail.open { transform: none; }
+#detail .inner { padding: 28px 30px 60px; }
+#detail .close { position: sticky; top: 10px; float: right; border: none; background: #f1efe9; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 16px; }
+#detail h2 { font-size: 22px; margin: 6px 0 4px; padding-right: 44px; }
+#detail .sub { color: var(--muted); font-size: 13px; margin-bottom: 16px; }
+.layer { border: 1px solid var(--line); border-radius: 12px; margin: 12px 0; overflow: hidden; }
+.layer > summary {
+  cursor: pointer; padding: 12px 16px; background: #faf8f3; font-size: 14.5px;
+  display: flex; align-items: center; gap: 10px; list-style: none;
+}
+.layer > summary::-webkit-details-marker { display: none; }
+.layer > summary .tag { font-size: 10.5px; padding: 1px 8px; border-radius: 999px; letter-spacing: .05em; }
+.tag.l1 { background: var(--accent-soft); color: var(--accent); }
+.tag.l2 { background: var(--teal-soft); color: var(--teal); }
+.tag.l3 { background: var(--gold-soft); color: var(--gold); }
+.layer .body { padding: 14px 18px; font-size: 14px; }
+.layer .body h4 { font-size: 13px; color: var(--muted); margin: 12px 0 4px; font-weight: 600; letter-spacing: .04em; }
+.evi { border-left: 3px solid var(--line); padding: 6px 12px; margin: 8px 0; background: #fafaf7; border-radius: 0 8px 8px 0; font-size: 13px; }
+.evi .head { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.evi a { color: var(--teal); word-break: break-all; font-size: 12px; }
+.tier { font-size: 10.5px; padding: 0 7px; border-radius: 5px; }
+.tier.A { background: #dcfce7; color: #166534; } .tier.B { background: #dbeafe; color: #1e40af; }
+.tier.C { background: #fef9c3; color: #854d0e; } .tier.D { background: #fee2e2; color: #991b1b; }
+.vs-verified { color: #15803d; } .vs-unverified, .vs-disputed { color: #b45309; }
+.gate { border: 1px dashed var(--rose); background: var(--rose-soft); border-radius: 10px; padding: 10px 14px; font-size: 13px; margin-top: 14px; color: #7f1d1d; }
+.muted { color: var(--muted); } .mono { font-family: ui-monospace, Consolas, monospace; font-size: 12.5px; }
+footer { text-align: center; color: var(--muted); font-size: 12px; padding: 30px 0 40px; }
+.empty { text-align: center; color: var(--muted); padding: 60px 0; }
+.empty .big { font-size: 34px; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>数学问题抽卡<small>AI Math Open Problem Draw</small></h1>
+  <nav>
+    <button data-view="draw" class="active">抽卡</button>
+    <button data-view="library">问题库</button>
+    <button data-view="sources">数据源</button>
+  </nav>
+</header>
+
+<main id="view-draw">
+  <div class="hero">
+    <div class="sigil">⋇</div>
+    <h2>今晚，抽一个问题</h2>
+    <p>从经过核验的开放数学问题池中受控探索：大部分贴合你的领域，留一点近邻，留一点远方。</p>
+  </div>
+  <div class="draw-controls">
+    <div class="mode-switch" id="mode-switch">
+      <button data-mode="steady">稳健</button>
+      <button data-mode="balanced" class="active">平衡</button>
+      <button data-mode="adventurous">冒险</button>
+    </div>
+    <button id="draw-btn">抽 卡</button>
+  </div>
+  <div class="mix-note" id="mix-note">混合比例：80% 高相关 · 15% 邻近探索 · 5% 远距离偶遇</div>
+  <div class="results" id="results"><div class="empty"><div class="big">❋</div>点击「抽卡」开始</div></div>
+</main>
+
+<main id="view-library" style="display:none">
+  <div class="toolbar">
+    <select id="f-domain"><option value="">全部领域</option></select>
+    <select id="f-status">
+      <option value="">全部状态</option>
+      <option value="confirmed_open">confirmed_open</option>
+      <option value="likely_open">likely_open</option>
+      <option value="status_uncertain">status_uncertain</option>
+      <option value="resolved">resolved（对照）</option>
+    </select>
+    <input type="text" id="f-q" placeholder="搜索标题…">
+    <span class="muted" id="lib-count" style="margin-left:auto;font-size:13px"></span>
+  </div>
+  <div id="lib-list"></div>
+</main>
+
+<main id="view-sources" style="display:none">
+  <p class="muted" style="margin-bottom:14px;font-size:14px">全部登记数据源（42 源）。绿点 = 已启用；分级 A–D 为信任层级；P0/P1/P2/观察 为接入优先级。</p>
+  <table class="src"><thead><tr><th>状态</th><th>ID</th><th>名称</th><th>优先级</th><th>信任级</th><th>类型</th></tr></thead><tbody id="src-body"></tbody></table>
+</main>
+
+<div id="overlay"></div>
+<aside id="detail"><div class="inner" id="detail-inner"></div></aside>
+
+<footer>Phase 0–3 原型 · 全部卡片处于 scored / 待人工核验状态 · 系统不自动发布任何内容</footer>
+
+<script>
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+const DOMAIN_NAMES = {
+  "number-theory":"数论","analysis":"分析","algebra":"代数","algebraic-geometry":"代数几何",
+  "combinatorics-and-graph-theory":"组合与图论","geometry":"几何","topology":"拓扑",
+  "pde-and-numerics":"PDE 与数值","logic-and-tcs":"逻辑与计算复杂性"
+};
+const BAND_NAMES = {high:"S",medium_high:"A",medium:"B",medium_low:"C",low:"D",insufficient_evidence:"—"};
+const MODE_MIX = {steady:"90% 高相关 · 8% 邻近 · 2% 远遇",balanced:"80% 高相关 · 15% 邻近 · 5% 远遇",adventurous:"65% 高相关 · 25% 邻近 · 10% 远遇"};
+const RADIUS_NAMES = {relevance:"高相关",adjacent:"邻近探索",distant:"远距离偶遇"};
+let mode = "balanced";
+
+async function api(path, opts) {
+  const r = await fetch(path, opts);
+  if (!r.ok) { const t = await r.text(); throw new Error(`${r.status} ${t.slice(0,200)}`); }
+  return r.json();
+}
+
+/* ---------- 视图切换 ---------- */
+$$("nav button").forEach(b => b.onclick = () => {
+  $$("nav button").forEach(x => x.classList.remove("active")); b.classList.add("active");
+  ["draw","library","sources"].forEach(v => $("#view-"+v).style.display = v===b.dataset.view ? "" : "none");
+  if (b.dataset.view==="library") loadLibrary();
+  if (b.dataset.view==="sources") loadSources();
+});
+
+/* ---------- 抽卡 ---------- */
+$$("#mode-switch button").forEach(b => b.onclick = () => {
+  $$("#mode-switch button").forEach(x => x.classList.remove("active")); b.classList.add("active");
+  mode = b.dataset.mode; $("#mix-note").textContent = "混合比例：" + MODE_MIX[mode];
+});
+$("#draw-btn").onclick = async () => {
+  const btn = $("#draw-btn"); btn.disabled = true; btn.textContent = "抽取中…";
+  try {
+    const d = await api(`/api/draw?mode=${mode}&n=6`);
+    $("#results").innerHTML = d.draws.map(drawCardHTML).join("");
+    $$("#results .pcard h3").forEach(h => h.onclick = () => openDetail(h.dataset.pid));
+  } catch (e) { $("#results").innerHTML = `<div class="empty">抽取失败：${e.message}<br><span class="muted">请确认后端已启动并已导入金标准集</span></div>`; }
+  btn.disabled = false; btn.textContent = "抽 卡";
+};
+function drawCardHTML(c) {
+  return `<div class="pcard">
+    <div class="top"><span class="pid">${c.problem_id}</span><span class="radius ${c.radius}">${RADIUS_NAMES[c.radius]||c.radius}</span></div>
+    <h3 data-pid="${c.problem_id}">${esc(c.title)}</h3>
+    <div class="one">${esc(c.one_sentence||"")}</div>
+    <div class="badges">
+      <span class="badge domain">${DOMAIN_NAMES[c.primary_domain]||c.primary_domain}</span>
+      <span class="badge status ${c.open_status}">${statusName(c.open_status)}</span>
+      ${c.importance_band?`<span class="badge band-${c.importance_band}">重要性 ${BAND_NAMES[c.importance_band]||c.importance_band}</span>`:""}
+      ${c.affordance_band?`<span class="badge">AI 友好 ${BAND_NAMES[c.affordance_band]||c.affordance_band}</span>`:""}
+    </div>
+  </div>`;
+}
+function statusName(s){return {confirmed_open:"已确认开放",likely_open:"很可能开放",status_uncertain:"状态存疑",partially_resolved:"部分解决",resolved:"已解决（对照）",withdrawn_or_malformed:"已撤回"}[s]||s;}
+
+/* ---------- 问题库 ---------- */
+async function loadLibrary() {
+  const d = await api(`/api/cards?page_size=100&status=${$("#f-status").value}&domain=${$("#f-domain").value}&q=${encodeURIComponent($("#f-q").value)}`);
+  if (!$("#f-domain").options.length>1) {
+    [...new Set(d.items.map(i=>i.primary_domain))].forEach(dom => {
+      const o=document.createElement("option"); o.value=dom; o.textContent=DOMAIN_NAMES[dom]||dom; $("#f-domain").appendChild(o);
+    });
+  }
+  $("#lib-count").textContent = `共 ${d.total} 张`;
+  $("#lib-list").innerHTML = d.items.map(drawCardHTML).join("") || '<div class="empty">无匹配卡片</div>';
+  $$("#lib-list .pcard h3").forEach(h => h.onclick = () => openDetail(h.dataset.pid));
+}
+["#f-domain","#f-status","#f-q"].forEach(s => $(s).onchange = loadLibrary);
+$("#f-q").oninput = (() => { let t; return e => { clearTimeout(t); t=setTimeout(loadLibrary,300); }; })();
+
+/* ---------- 数据源 ---------- */
+async function loadSources() {
+  const d = await api("/api/sources");
+  $("#src-body").innerHTML = d.items.map(s => `<tr>
+    <td><span class="dot ${s.enabled?"on":"off"}"></span>${s.enabled?"启用":"待批"}</td>
+    <td class="mono">${s.source_id}</td>
+    <td>${esc(s.name)}</td>
+    <td><span class="pill">${s.priority_tier||"—"}</span></td>
+    <td><span class="tier ${s.trust_tier}">${s.trust_tier}</span></td>
+    <td class="muted">${esc(s.source_type)}</td></tr>`).join("");
+}
+
+/* ---------- 详情抽屉（三层阅读） ---------- */
+async function openDetail(pid) {
+  const c = await api("/api/cards/"+pid);
+  $("#detail-inner").innerHTML = detailHTML(c);
+  $("#overlay").classList.add("open"); $("#detail").classList.add("open");
+  $("#detail .close").onclick = closeDetail;
+}
+function closeDetail(){ $("#overlay").classList.remove("open"); $("#detail").classList.remove("open"); }
+$("#overlay").onclick = closeDetail;
+function detailHTML(c) {
+  const st=c.statements||{}, rs=st.reader_summary||{}, nm=st.normalized||{}, og=st.original||{};
+  const imp=c.importance_assessment||{}, ai=c.ai_affordance_assessment||{}, os=c.open_status||{}, pub=c.publication||{};
+  const evi=(os.supporting_evidence||[]).map(e=>eviHTML(e,"支撑")).concat((os.contradicting_evidence||[]).map(e=>eviHTML(e,"矛盾/争议")));
+  return `<button class="close">✕</button>
+  <h2>${esc(c.identity?.title||pid)}</h2>
+  <div class="sub">${pid} · ${DOMAIN_NAMES[c.classification?.primary_domain]||""} · ${statusName(os.status)} · 置信 ${os.confidence_level||"—"} · 最近核验 ${os.last_checked_at||"—"}</div>
+  <details class="layer" open><summary><span class="tag l1">第一层</span>导览（给赶时间的你）</summary><div class="body">
+    <p>${esc(rs.one_sentence||"")}</p>
+    ${rs.short_background?`<h4>背景</h4><p>${esc(rs.short_background)}</p>`:""}
+    ${rs.why_it_matters?`<h4>为什么重要</h4><p>${esc(rs.why_it_matters)}</p>`:""}
+  </div></details>
+  <details class="layer"><summary><span class="tag l2">第二层</span>规范化陈述（量词显式）</summary><div class="body">
+    <p>${esc(nm.text||"")}</p>
+    ${nm.latex?`<h4>LaTeX</h4><p class="mono">${esc(nm.latex)}</p>`:""}
+    ${nm.assumptions?.length?`<h4>假设</h4><ul>${nm.assumptions.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
+    ${nm.quantified_objects?.length?`<h4>量词对象</h4><ul>${nm.quantified_objects.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
+    ${nm.semantic_risks?.length?`<h4>语义风险</h4><ul>${nm.semantic_risks.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
+  </div></details>
+  <details class="layer"><summary><span class="tag l3">第三层</span>原始陈述与证据链</summary><div class="body">
+    <h4>原始陈述（${og.language||"en"}，不可变）</h4>
+    <p>${esc(og.text||"")}</p>
+    ${og.source_location?`<p class="muted">出处定位：${esc(og.source_location)}</p>`:""}
+    <h4>证据（${evi.length} 条）</h4>
+    ${evi.join("")||'<p class="muted">无证据条目</p>'}
+    <h4>已知结果与界</h4>
+    ${knownResultsHTML(c)}
+  </div></details>
+  <div class="gate">🔒 生命周期 <b>${pub.lifecycle_state}</b> · ${pub.publishable?"可发布":"不可发布"} —— ${pub.publish_blockers?.length?esc(pub.publish_blockers.join("；")):"等待人工审核（gate-p7）"}</div>`;
+}
+function eviHTML(e, side) {
+  return `<div class="evi"><div class="head">
+    <span class="tier ${e.tier||""}">${e.tier||"?"}</span>
+    <span class="vs-${e.verification_status}">${e.verification_status||""}</span>
+    <span class="muted">${e.kind||""} · ${side}</span></div>
+    <div>${esc(e.description||"")}</div>
+    ${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.url)}</a>`:""}
+    ${e.quote?`<div class="muted">“${esc(e.quote)}”</div>`:""}
+    ${e.notes?`<div class="muted">注：${esc(e.notes)}</div>`:""}
+  </div>`;
+}
+function knownResultsHTML(c){
+  const kr=c.known_results||{}; const parts=[];
+  (kr.best_known_bounds||[]).forEach(b=>parts.push("界："+esc(b.statement||b.description||"")));
+  (kr.special_cases||[]).forEach(s=>parts.push("特例："+esc(s.statement||s.description||"")+(s.status?`（${s.status}）`:"")));
+  return parts.length?`<ul>${parts.map(p=>`<li>${p}</li>`).join("")}</ul>`:'<p class="muted">见卡内 known_results</p>';
+}
+function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));}
+</script>
+</body>
+</html>
