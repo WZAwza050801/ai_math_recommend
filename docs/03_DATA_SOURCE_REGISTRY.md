@@ -106,7 +106,7 @@ notes:
 
 ### 4.2 Phase 0 登记现状（2026-08-28 过夜执行后更新）
 
-`data/source_registry/` 已登记 **14 个种子源**（SRC-0001..SRC-0014，逐条符合 source_registry Schema v1.0.0）：
+`data/source_registry/` 已登记 **42 个源**（SRC-0001..SRC-0042，逐条符合 source_registry Schema v1.1.0）。其中 **11 个 P0 免鉴权源已启用**（2026-08-28 用户一揽子批准，ADR-013）：arXiv、formal-conjectures、Open Problem Garden、erdosproblems.com、OpenAlex、MathOverflow、AIM Problem Lists、AIM Workshop、GitHub 公共 API、zbMATH Open、Crossref。2026-08-28 实测注记：OPG 索引被 SEO 垃圾污染（待人工裁决去留）；erdosproblems.com 为纯 SPA 暂不可采集（诚实失败，详见注册表 notes 与 `data/raw/_smoke_summary.json`）。原 14 源种子格局（ADR-011 时期）如下表留存：
 
 | 分级 | 已登记条目 |
 |---|---|
@@ -123,6 +123,6 @@ notes:
 
 以下问题在拆分时发现；其中第 1 项已由 ADR-011 裁决，第 2/3 项转 ADR Backlog（`docs/adr/BACKLOG.md` B-11）：
 
-1. ~~种子数据源尚未登记~~ → **已裁决（ADR-011）**：14 个种子源登记完毕，全部 `enabled:false` 待人工批准；批准流程（顺序/负责人/批准人）属 P0 人工环节，留待人工执行。
+1. ~~种子数据源尚未登记~~ → **已裁决（ADR-011）**：14 个种子源登记完毕；~~~~ **P0 批准已裁决（ADR-013，2026-08-28）**：用户按优先级清单一揽子批准，11 个 P0 免鉴权源 `enabled:true`，需 Key 的源（Semantic Scholar、CORE）保持禁用待凭据；其余 P1/P2/观察源待第二批；批准流程（顺序/负责人/批准人）留待人工执行。
 2. `internal` 信任等级空白：仓库 Schema 的 `trust_tier` 允许 `internal`（课题组内部材料，与 evidence 条目 `tier` 枚举一致），而设计规范 §8.1 分级表仅定义 A–D 四级。**Phase 0 裁定**（并入 ADR-011 后果）：`internal` 仅用于系统内部派生数据（computed_metric 类），不用于外部来源；本批 14 源未使用。
 3. "仅用于监测"如何表达：Zenodo 的"仅监测未核验声称"限制暂以条目 `notes` + `usage_restrictions` 文本承载；`allowed_usage` 枚举扩展（如 `unverified_claim_monitoring`）记入 Backlog B-11，Phase 1 裁决。

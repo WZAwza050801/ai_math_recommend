@@ -21,7 +21,7 @@
   "rate_limit_notes": "普通网页，低频抓取。",
   "last_successful_sync": null,
   "owner": "curator",
-  "notes": "§8.1 列为 A 级示例来源；内容质量不一，仍走标准核验流程。",
+  "notes": "§8.1 列为 A 级示例来源；内容质量不一，仍走标准核验流程。 | 2026-08-28 实测：站点 /api 与 /op/ 索引均 404，且索引被 SEO 垃圾内容污染（抽样 5 条中 4 条为游戏攻略页）。Connector 经首页回退仍可取到部分真实条目；【待人工裁决】是否保持 enabled（建议：降为观察源或改为逐条白名单采集）。",
   "enabled": true,
   "priority_tier": "P0",
   "connector_name": "OpenProblemGardenConnector"

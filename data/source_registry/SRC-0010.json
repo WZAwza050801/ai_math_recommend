@@ -20,7 +20,7 @@
   "rate_limit_notes": "普通网页，低频抓取。",
   "last_successful_sync": null,
   "owner": "curator",
-  "notes": "T. Bloom 维护的 Erdős 问题库，含状态更新注释，维护活跃。",
+  "notes": "T. Bloom 维护的 Erdős 问题库，含状态更新注释，维护活跃。 | 2026-08-28 实测：站点为纯 SPA（无服务端渲染数据），/api/problems 404，HTML 无 /problems/<id> 链接；Connector 无法采集（诚实失败 0/5）。【待人工裁决】联系站方获取数据接口，或降级为人工导入渠道。",
   "enabled": true,
   "priority_tier": "P0",
   "connector_name": "ErdosProblemsConnector"

@@ -205,7 +205,7 @@ withdrawn_or_malformed
 
 ### 3.2 六族 Schema 清单
 
-本仓库以六族 JSON Schema 覆盖领域契约，均位于 `schemas/<族名>/schema.json`，版本均为 v1.0.0：
+本仓库以六族 JSON Schema 覆盖领域契约，均位于 `schemas/<族名>/schema.json`（目录内文件恒为最新版）。除 source_registry 已升 **v1.1.0**（ADR-013：新增可选 `priority_tier` 与 `connector_name`，v1.0.0 实例全部兼容）外，其余五族均为 v1.0.0：
 
 | 族 | 路径 | 作用 |
 |---|---|---|

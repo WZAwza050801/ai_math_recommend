@@ -1,4 +1,4 @@
-# 过夜标准化执行日志（Phase 0 + 仓库标准化）
+# 过夜标准化执行日志（Phase 0 + 仓库标准化 + Phase 1–3 第二夜）
 
 - 执行开始：2026-08-28 00:43 (+08:00)
 - 依据文档：《AI_Math_Problem_Draw_Agent_Design_Spec_v0.1（设计基线 / 可进入原型开发）》
@@ -45,6 +45,42 @@
 2. 30 张金标准卡的专家核验与发布裁决（全部 scored/publishable=false；gate-p7 拦截中）。
 3. 各卡"待人工复核"注记（见子代理汇报与各卡 notes/unknowns）：如 OP-000015 的 EV-000015-2 tier 与 SRC-0014 注册等级不一致、OP-000016 Tao 结果覆盖界、OP-000023 的 44.65 型上界、OP-000030 Flyspeck 发表出处等。
 4. ADR Backlog（docs/adr/BACKLOG.md）15 项进入 Phase 1 前逐项裁决。
+
+## 第二夜：Phase 1–3 开发（2026-08-28 深夜起，用户授权"能批准的肯定批准"）
+
+| 时间 (+08:00) | 事件 |
+|---|---|
+| 22:30 | 用户提供平台接入优先级清单（P0/P1/P2/观察源，九大类）+ 一揽子批准 |
+| 22:40 | GitHub 私有仓库创建并推送（gh 已登录 WZAwza050801） |
+| 23:10 | Source Registry 14→42 源；启用 11 个 P0 免鉴权源；schema v1.1.0（ADR-013） |
+| 23:40 | 抽卡前端（apps/web/index.html 单文件）+ 规则式候选 Worker 落盘并提交 |
+| 00:00+ | 派发 API 后端子代理 + Connectors 子代理并行开发（进行中） |
+
+### 第二夜账号/凭据现实约束（如实记录）
+
+- 用户提供邮箱 3230101115@zju.edu.cn / 3116809059@qq.com 并授权代办注册；但第三方注册需密码簿与邮箱验证码（Agent 不可读取），自动化注册亦受平台条款限制 → **未代办任何第三方注册**，Semantic Scholar/CORE Key 列入 MORNING_CHECKLIST.md。
+- GitHub 仓库经本机既有 gh 凭据创建（私有），未触碰账号设置。
+
+### 第二夜交付总览（最终）
+
+| 阶段 | 交付 | 提交 |
+|---|---|---|
+| 注册表 | 14→42 源，11 个 P0 启用，schema v1.1.0 | 5a18e13 |
+| Phase 3 前端 | apps/web/index.html（抽卡/库/源三视图，三层阅读） | 8cd7023 |
+| Phase 2 worker | 规则式候选流水线（不猜领域，Schema 强校验） | 8cd7023 |
+| Phase 1 后端 | apps/api（13 文件，22 项 API 测试，发布门禁端到端） | a25ea9b |
+| Phase 2 连接器 | 8 个 P0 源礼貌采集（54 项测试，35 条真实快照） | f4a8802 |
+| 文档 | ADR-013/014、README、docs/02/03 同步、MORNING_CHECKLIST | 本提交 |
+
+**终验（2026-08-29）**：`python -m pytest` **161 passed**；`validate_gold_set.py` **30/30 PASS**；
+端到端：uvicorn 8902/8903 实测 health→import 30→前端托管（draw 按钮+三层标记）→
+draw balanced/adventurous 比例正确（weights ranking-weights-v0.1）→ publish OP-000003 **422**（gate-p7 拦截）。
+
+**采集现场情报（如实记录，供人工裁决）**：
+- OPG（SRC-0009）：/api 与 /op/ 均 404；索引被 SEO 垃圾污染（抽样 5 条中 4 条游戏攻略）；
+- erdosproblems（SRC-0010）：纯 SPA 不可采集（诚实失败 0/5）；
+- formal-conjectures（SRC-0008）：仓库已重组（conjectures/→FormalConjectures/ErdosProblems），连接器已自适应；
+- worker 规则式候选因"领域未映射即跳过"纪律，本夜 0 产出（正确行为；LLM 抽取接入后解锁）。
 
 ## 状态核验摘记（证据详见各卡 `open_status.supporting_evidence`）
 
