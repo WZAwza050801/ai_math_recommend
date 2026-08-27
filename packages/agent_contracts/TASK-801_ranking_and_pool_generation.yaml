@@ -1,0 +1,46 @@
+task_id: TASK-801
+task_name: ranking_and_pool_generation
+task_version: 1.0.0
+purpose: 由确定性 Ranking Service 基于已发布问题、用户画像与卡池策略生成有限推荐集合与解释（设计规范 §12 P8、§13）。纯程序任务，无 LLM 判断。
+inputs:
+  required:
+    - 已发布问题集合（lifecycle_state=published）
+    - 用户偏好档案
+    - 卡池策略参数
+  optional:
+    - 探索比例配置
+allowed_sources: []
+allowed_tools:
+  - ranking_engine
+  - exploration_sampler
+forbidden_actions:
+  - 不得使用未发布问题
+  - 不得用点击率改写重要性权重（§12 P9）
+  - 不得输出无解释的纯分数
+procedure:
+  - 计算 S_core = sqrt(I * A)（几何平均基线，ranking-weights-v0.1）
+  - 个性化重排 S_user = S_core * (0.7 + 0.3*P/100) * (0.6 + 0.4*C/100)
+  - 按卡池类型（高期望/高风险高价值/快速反馈/反例与构造/个人领域/邻近领域/远距离偶遇）选卡
+  - 混合策略默认 80% 高相关 / 15% 邻近探索 / 5% 远距离偶遇；按用户模式（稳健/平衡/冒险）调整
+  - 为每张卡生成 recommendation_reasons 与 evidence_confidence
+output_schema:
+  format: json
+  ref: "docs/05_SCORING_AND_RANKING_SPEC.md（Draw API 响应含 recommendation_reasons、evidence_confidence）"
+evidence_requirements:
+  - 每张推荐卡必须能展开其 I/A/P/C 四维依据
+hard_fail_conditions:
+  - 推荐集合含未发布问题
+  - 权重版本未登记
+soft_fail_conditions:
+  - 某卡池候选不足（降级到相邻池并在解释中说明）
+human_review_required_when:
+  - 权重或混合策略变更（需 ADR + 版本号）
+quality_checks:
+  - 探索比例守恒检查
+  - 重复推荐排除（exclude_problem_ids）
+  - 权重版本化记录
+retry_policy:
+  max_retries: 1
+  backoff: fixed
+logging_requirements:
+  - 权重版本、策略参数、抽卡输入输出、时间戳

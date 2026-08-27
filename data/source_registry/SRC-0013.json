@@ -1,0 +1,23 @@
+{
+  "source_id": "SRC-0013",
+  "name": "Naukas（科学报道博客）",
+  "source_type": "blog",
+  "base_url": "https://francis.naukas.com",
+  "access_method": "web_page",
+  "license": "以站点声明为准",
+  "attribution_required": true,
+  "refresh_policy": "manual",
+  "trust_tier": "D",
+  "connector_version": "none",
+  "content_formats": [
+    "html"
+  ],
+  "allowed_usage": [
+    "source_link"
+  ],
+  "rate_limit_notes": "普通网页。",
+  "last_successful_sync": null,
+  "owner": "curator",
+  "notes": "2026-07 报道 LANA（Mochizuki IUT 形式化项目）失败，作为 abc 猜想争议证据之一。",
+  "enabled": false
+}

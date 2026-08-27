@@ -1,0 +1,51 @@
+task_id: TASK-301
+task_name: dedup_and_relation
+task_version: 1.0.0
+purpose: 识别重复、等价、一般/特殊、蕴含与相关关系；产出关系候选或确认唯一问题实体（设计规范 §12 P3）。严禁因文本相似度或 embedding 高而自动合并。
+inputs:
+  required:
+    - Normalized Problem Card
+    - 现有问题库（含规范化陈述与 embedding）
+  optional:
+    - 问题族提示
+allowed_sources:
+  - 本地问题库
+  - 原候选已绑定来源
+allowed_tools:
+  - embedding_recall
+  - exact_text_match
+  - alias_lookup
+  - web_search
+forbidden_actions:
+  - 不得自动合并问题实体（合并=人工操作）
+  - 不得无证据断言 equivalent / implies / special_case_of
+  - 不得删除任何已有关系记录
+  - 不得覆盖不可变字段（原始陈述与已绑定证据记录只增不删改）
+procedure:
+  - 规则召回（精确文本、别名、别名表）
+  - embedding 召回（余弦相似阈值召回，仅产生候选对）
+  - 对每个候选对判断关系类型：exact_duplicate / equivalent_statement / special_case_of / generalization_of / implies / related_but_distinct / uncertain
+  - 每个关系判断绑定证据（等价证明文献或原文比对）
+  - 无充分证据时输出 uncertain 并转人工
+output_schema:
+  format: json
+  ref: https://ai-math-recommend.dev/schemas/problem_card/v1.0.0/schema.json
+  # 填充 relationships.*，每项带 evidence
+evidence_requirements:
+  - equivalent/implies/special_case_of 必须给出文献或可检验论证定位
+  - 相似度分数必须记录（作为信号而非证据）
+hard_fail_conditions:
+  - 相似度候选无法定位原文对照
+soft_fail_conditions:
+  - 关系判断置信不足 → uncertain
+human_review_required_when:
+  - 所有 equivalent / exact_duplicate 判定（合并为人工专属操作）
+  - 关系证据存在矛盾
+quality_checks:
+  - 关系无自环、无方向冲突（A implies B 且 B implies A 但未标 equivalent 时人工复核）
+  - "所有 target 为库内 ID 或显式 external: 前缀"
+retry_policy:
+  max_retries: 2
+  backoff: exponential
+logging_requirements:
+  - 模型版本、提示词版本、召回分数、对照原文定位、时间戳

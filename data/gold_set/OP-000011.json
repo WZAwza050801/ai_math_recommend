@@ -1,0 +1,274 @@
+{
+  "problem_id": "OP-000011",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "Singmaster 猜想（Singmaster's Conjecture）",
+    "aliases": ["Singmaster's conjecture", "Pascal triangle multiplicity"],
+    "slug": "singmaster-conjecture",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "There is a constant M such that no positive integer occurs more than M times in Pascal's triangle; conjecturally every integer n>1 occurs at most 8 times... more precisely the number of solutions of binomial(x,y)=n is bounded.",
+      "latex": "\\exists M : \\forall n \\ge 1,\\ \\#\\{(x,y): \\binom{x}{y}=n\\} \\le M; \\quad \\text{conjecturally } M = 8 \\ (n>1)",
+      "language": "en",
+      "source_id": "SRC-0006",
+      "source_location": "Wikipedia：Singmaster's conjecture 词条",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "存在绝对常数 M，使得任何正整数 n 在 Pascal 三角（即二项式系数 \\binom{x}{y} 构成的三角表）中出现的次数不超过 M。Singmaster 进一步猜测可取 M = 8，即每个整数 n > 1 在 Pascal 三角中至多出现 8 次。（本卡主命题：出现次数存在与 n 无关的一致上界。）",
+      "latex": "\\exists M \\in \\mathbb{N}:\\ \\forall n \\ge 1,\\ \\#\\{(x,y): \\binom{x}{y}=n\\} \\le M; \\qquad \\text{猜测可取 } M = 8",
+      "assumptions": [
+        "『出现次数』指二项式系数 \\binom{x}{y} = n 在 Pascal 三角中作为项出现的次数（即方程 \\binom{x}{y} = n 的解数）",
+        "M 为与 n 无关的绝对常数；主命题是『次数有界』，M = 8 是加强猜测"
+      ],
+      "quantified_objects": [
+        "存在量词：存在绝对常数 M；全称量词：对任意正整数 n，其出现次数 ≤ M"
+      ],
+      "normalization_notes": [
+        "原文将『存在常数 M』与『猜测 M=8』两个强度不同的命题并列；规范化时明确区分：主命题为有界性（M 存在），加强猜测为具体值 M=8",
+        "原文省略号后的精确化表述（『binomial(x,y)=n 的解数有界』）作为主命题的严格形式"
+      ],
+      "semantic_risks": [
+        "同一数值因对称性 \\binom{x}{y} = \\binom{x}{x-y} 在三角中的位置计数口径可能不同，影响『8 次』的具体含义；本卡以 \\binom{x}{y}=n 的解数为准，口径统一待人工复核"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "Pascal 三角里同一个数最多会出现多少次？Singmaster 猜测答案是 8，但连『存在某个固定上限』都还没有被证明。",
+      "short_background": "1971 年 Singmaster 提出。目前已知的最好界是对数型有限界（具体作者与常数待人工复核）。2025 年 Zenodo 上存在声称解决该猜想的预印本，但未经同行评审，按纪律不翻转开放状态。",
+      "why_it_matters": "问题触及二项式系数重叠结构的刚性：如果连『重复次数有界』都证不出，说明我们对 Pascal 三角中数值分布的理解仍有实质缺口。"
+    }
+  },
+  "classification": {
+    "primary_domain": "number-theory",
+    "topics": ["计算数论", "组合数论"],
+    "problem_types": ["bound_improvement"],
+    "expected_output_types": ["proof"],
+    "mathematical_objects": ["二项式系数", "Pascal 三角"]
+  },
+  "provenance": {
+    "original_proposer": ["David Singmaster"],
+    "original_year": "1971",
+    "original_work": "Singmaster (1971), Research Problems: How often does an integer occur as a binomial coefficient?",
+    "exact_citation": "Singmaster, D. (1971). Research Problems: How often does an integer occur as a binomial coefficient? 引自 Wikipedia Singmaster's conjecture 词条（SRC-0006）。",
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Singmaster%27s_conjecture"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "likely_open",
+    "confidence_level": "limited",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000011-1",
+        "kind": "document_link",
+        "description": "Wikipedia Singmaster's conjecture 词条将该猜想列为开放问题，并汇总已知结果；本卡未发现期刊接受的解决文献。",
+        "url": "https://en.wikipedia.org/wiki/Singmaster%27s_conjecture",
+        "source_id": "SRC-0006",
+        "tier": "D",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "『已知最好界为对数型』这一点的具体作者与常数以人工复核为准，暂不附证据条目（tier C 级常识，保守写法）。"
+      }
+    ],
+    "contradicting_evidence": [
+      {
+        "evidence_id": "EV-000011-2",
+        "kind": "unverified_claim",
+        "description": "Zenodo 预印本（2025）声称解决 Singmaster 猜想，标题形如 \"A Resolution of Singmaster's Conjecture...\"。",
+        "source_id": "SRC-0007",
+        "tier": "D",
+        "verification_status": "unverified",
+        "retrieved_at": "2026-08-28",
+        "notes": "Zenodo 无同行评审；按 TASK-401 纪律不翻转状态；记录以供状态监控。（无 URL，未采集链接。）"
+      }
+    ],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [],
+    "best_known_bounds": [
+      {
+        "quantity": "整数 n 在 Pascal 三角中出现次数的上界",
+        "bound": "已知存在对数级有限上界（出现次数为 O(log n) 级别；具体作者与常数以人工复核为准）",
+        "evidence": [],
+        "notes": "保守写法：对数界来自 p-adic 估计与 Lucas 定理型分析；文献细节待人工复核后再固化。"
+      }
+    ],
+    "known_equivalences": [],
+    "attempted_methods": [
+      {
+        "method": "p-adic 估计与 Lucas 定理型分析",
+        "outcome": "给出对数型上界的来源；尚未推进到绝对常数界。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "从对数界到绝对常数界无已知机制。",
+        "evidence": []
+      },
+      {
+        "obstacle": "二项式系数的重叠结构缺乏下界侧的刚性。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": []
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "1971 年提出，逾 50 年未解。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "Wikipedia 及数论问题综述持续收录；关注度中等。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "与二项式系数算术性质的问题簇相关联；已知对数界来自 Lucas 定理型技术传统。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "解决将确定 Pascal 三角中数值重复次数的最终上界。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "未采集到悬赏或顶级问题清单背书的具体证据。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "陈述初等但触及二项式系数重叠结构的深层刚性；现有 p-adic/Lucas 型技术不足以给出常数界。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 70,
+      "field_normalized_attention": 45,
+      "problem_genealogy": 50,
+      "downstream_impact": 40,
+      "explicit_expert_endorsement": 45,
+      "mathematical_substance": 55
+    },
+    "score_band": "medium",
+    "uncertainty": "中：存在 2025 年未核验解决声称（Zenodo），状态判断保持保守。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述初等、完全可形式化。",
+        "evidence": []
+      },
+      {
+        "claim": "二项式系数计算与检索工具成熟；有限高度的 Pascal 三角完全可枚举。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "常数界的证明需要新的结构定理，超出数值枚举能力。",
+        "evidence": []
+      },
+      {
+        "claim": "数值枚举对一般 n 无效（n 无穷多且解的位置无先验界）。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [
+      "Zenodo 声称（2025 预印本）的核验状态。"
+    ],
+    "feature_values": {
+      "statement_completeness": 85,
+      "verifiability": 70,
+      "finite_search": 50,
+      "generation_verification_gap": 45,
+      "decomposability": 55,
+      "tool_support": 70,
+      "context_size": 85,
+      "ai_precedent": 35,
+      "theory_dependency": 55
+    },
+    "score_band": "medium",
+    "uncertainty": "中：受未核验解决声称与对数界文献待复核影响。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "manual_curation 通道：从 Wikipedia 词条抽取原始英文陈述。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "区分主命题（有界性）与加强猜测（M=8）；计数口径写入 semantic_risks。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "无库内重复；事实单未指定关系，不自动建立。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "web 检索 2026-08-28：Wikipedia 仍列为开放；Zenodo 2025 解决声称入 contradicting（unverified，不翻转）。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维评分，band=medium；对数界文献细节待人工复核。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "九维评分，band=medium。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

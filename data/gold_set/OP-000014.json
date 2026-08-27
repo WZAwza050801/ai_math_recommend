@@ -1,0 +1,303 @@
+{
+  "problem_id": "OP-000014",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "Schanuel 猜想（Schanuel's Conjecture）",
+    "aliases": ["Schanuel's conjecture"],
+    "slug": "schanuel-conjecture",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "If α_1,...,α_n are complex numbers linearly independent over Q, then the field Q(α_1,...,α_n, e^{α_1},...,e^{α_n}) has transcendence degree at least n over Q.",
+      "latex": "\\alpha_1,\\dots,\\alpha_n \\in \\mathbb{C} \\text{ 在 } \\mathbb{Q} \\text{ 上线性无关} \\implies \\operatorname{trdeg}_{\\mathbb{Q}}\\, \\mathbb{Q}(\\alpha_1,\\dots,\\alpha_n, e^{\\alpha_1},\\dots,e^{\\alpha_n}) \\ge n",
+      "language": "en",
+      "source_id": "SRC-0014",
+      "source_location": "S. Lang, Algebra / Introduction to Transcendental Numbers 中标准陈述；原始归于 Schanuel 1960 年代（通信/演讲，未正式发表）",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "对任意正整数 n 与任意在 \\mathbb{Q} 上线性无关的复数 α_1, …, α_n，扩域 \\mathbb{Q}(α_1, …, α_n, e^{α_1}, …, e^{α_n}) 在 \\mathbb{Q} 上的超越次数至少为 n。",
+      "latex": "\\forall n \\ge 1,\\ \\forall \\alpha_1,\\dots,\\alpha_n \\in \\mathbb{C} \\text{ 在 } \\mathbb{Q} \\text{ 上线性无关}:\\ \\operatorname{trdeg}_{\\mathbb{Q}}\\, \\mathbb{Q}(\\alpha_1,\\dots,\\alpha_n, e^{\\alpha_1},\\dots,e^{\\alpha_n}) \\ge n",
+      "assumptions": [
+        "α_i 为复数；e^{·} 为复数域上的自然指数函数",
+        "超越次数（trdeg）按域扩张的代数无关极大组的基数理解"
+      ],
+      "quantified_objects": [
+        "全称量词：对一切正整数 n 与一切在 \\mathbb{Q} 上线性无关的 n 元复数组 (α_1, …, α_n)，超越次数不等式 trdeg ≥ n 成立"
+      ],
+      "normalization_notes": [
+        "原文为条件蕴含式；规范化保留『线性无关』前提与『trdeg ≥ n』结论的精确量词结构",
+        "n = 1 情形对应 Hermite–Lindemann 型结论（见 special_cases），用于标示猜想与已知定理的接壤处"
+      ],
+      "semantic_risks": [
+        "『在 Q 上线性无关』的独立性针对 α_i 本身（而非 e^{α_i}）而言；前提读错会改变命题强度",
+        "\\mathbb{Q}(α_i, e^{α_i}) 按域生成理解；生成元列举顺序无关性需在形式化时固定"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "超越数论的大统一猜想：把一组线性无关的复数与它们的指数一起放进一个域，其代数无关程度至少等于个数——指数函数的『代数无关性守恒律』。",
+      "short_background": "Schanuel 于 1960 年代在纽约州立大学讨论班提出（未正式发表），经 Lang 教材与综述传播。它蕴含 Lindemann–Weierstrass 定理，并推出 π + e 无理、π 与 e 代数无关等一大批常数问题的答案。微分代数版本（Ax–Schanuel，1971）已证，但数域版本未被覆盖。2026 年 Zenodo 存在声称统一解决 Schanuel 与 Zilber 猜想的预印本，未经同行评审，按纪律不翻转状态。",
+      "why_it_matters": "它是超越数论最重要的条件性工具：一旦证明，一整批关于基本常数的代数无关性问题将同时解锁；模型论谱系（Zilber 伪指数等）亦以它为核心节点。"
+    }
+  },
+  "classification": {
+    "primary_domain": "analysis",
+    "topics": ["超越数论"],
+    "problem_types": ["structural_characterization", "equivalence_or_implication"],
+    "expected_output_types": ["proof"],
+    "mathematical_objects": ["代数无关性", "Q 上线性无关的 n 元复数组", "超越次数"]
+  },
+  "provenance": {
+    "original_proposer": ["Stephen Schanuel"],
+    "original_year": "1960 年代",
+    "original_work": "Schanuel 在纽约州立大学讨论班提出（未正式发表）；经 Lang 教材与综述传播",
+    "exact_citation": "S. Lang, Algebra / Introduction to Transcendental Numbers 中的标准陈述；原始归于 Schanuel 1960 年代（通信/演讲，未正式发表）（SRC-0014 / SRC-0006）。",
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Schanuel%27s_conjecture"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "high",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000014-1",
+        "kind": "source_quote",
+        "description": "超越数论标准文献（Lang《Algebra》/《Introduction to Transcendental Numbers》等）将 Schanuel 猜想列为开放。",
+        "source_id": "SRC-0014",
+        "source_location": "S. Lang 教材标准陈述处",
+        "tier": "B",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "原始提出未正式发表，陈述以教材与综述传播。"
+      }
+    ],
+    "contradicting_evidence": [
+      {
+        "evidence_id": "EV-000014-2",
+        "kind": "unverified_claim",
+        "description": "Zenodo 2026 存在声称『统一解决 Schanuel 与 Zilber 猜想』的预印本（标题形如 \"A Unified Functorial Resolution ... Agnostic Replication Kit\"）。",
+        "source_id": "SRC-0007",
+        "tier": "D",
+        "verification_status": "unverified",
+        "retrieved_at": "2026-08-28",
+        "notes": "无同行评审；按 TASK-401 纪律不翻转状态。（无 URL，未采集链接。）"
+      }
+    ],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "n = 1 情形部分由 Hermite–Lindemann 定理覆盖：α 非零代数 ⇒ e^α 超越。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "Gelfond–Schneider 定理为相关特例。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "Ax–Schanuel 定理（函数域/微分代数版本）已证（Ax 1971）。",
+        "status": "proven",
+        "evidence": []
+      }
+    ],
+    "best_known_bounds": [],
+    "known_equivalences": [
+      {
+        "statement": "Schanuel 猜想蕴含 Lindemann–Weierstrass 定理（已知特例）。",
+        "direction": "implies",
+        "evidence": []
+      },
+      {
+        "statement": "Schanuel 猜想 ⇒ π + e 无理（OP-000012）、π 与 e 代数无关、e^e 的代数无关性等大量推论。",
+        "direction": "implies",
+        "evidence": []
+      }
+    ],
+    "attempted_methods": [
+      {
+        "method": "指数代数的一般化（Ax–Schanuel 型微分代数方法）",
+        "outcome": "函数域/微分代数版本已证（Ax 1971）；数域版本（原猜想）未被覆盖。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "数域版本（原猜想）超出 Ax 的微分代数方法适用范围。",
+        "evidence": []
+      },
+      {
+        "obstacle": "无已知部分路线。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": []
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "1960 年代提出，逾 60 年未解；超越数论与模型论两个社群持续投入。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "超越数论与模型论交汇处的核心问题；教材与综述的标准引用对象。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "Ax–Schanuel（1971）、Zilber 伪指数、模型论谱系的核心节点。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "解决即解锁一整批常数代数无关性问题（π + e 无理、π 与 e 代数无关、e^e 代数无关等）。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "作为标准条件性工具假设被教材与综述普遍列为开放猜想。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "统一指数函数的代数无关性行为；已知特例（Hermite–Lindemann、Gelfond–Schneider、Ax–Schanuel）勾画出其边界。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 80,
+      "field_normalized_attention": 70,
+      "problem_genealogy": 90,
+      "downstream_impact": 95,
+      "explicit_expert_endorsement": 75,
+      "mathematical_substance": 95
+    },
+    "score_band": "high",
+    "uncertainty": "低：状态与谱系均有稳定文献支撑。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述精确、可形式化。",
+        "evidence": []
+      },
+      {
+        "claim": "Ax–Schanuel 已证版本提供理论与形式化抓手。",
+        "evidence": []
+      },
+      {
+        "claim": "模型论/代数上下文紧凑。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "数域版本无任何技术路线。",
+        "evidence": []
+      },
+      {
+        "claim": "非计算问题（无穷结构断言），无搜索面。",
+        "evidence": []
+      },
+      {
+        "claim": "预期需要根本性新方法。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [
+      "Ax–Schanuel 到数域版本的技术桥是否存在。"
+    ],
+    "feature_values": {
+      "statement_completeness": 90,
+      "verifiability": 35,
+      "finite_search": 10,
+      "generation_verification_gap": 25,
+      "decomposability": 30,
+      "tool_support": 35,
+      "context_size": 55,
+      "ai_precedent": 25,
+      "theory_dependency": 15
+    },
+    "score_band": "low",
+    "uncertainty": "中：band 受『非计算、无搜索面』压低；若出现 Ax–Schanuel 到数域版本的理论桥，评分可能显著上修。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "manual_curation 通道：从 Lang 教材标准陈述（经 SRC-0014/SRC-0006 定位）抽取原始英文陈述。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "全称量词显式化；线性无关前提的对象写入 semantic_risks。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "无库内重复；与 OP-000012 的 implied_by 关系已从对侧建立，本卡不重复。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "web 检索 2026-08-28：标准文献列为开放；Zenodo 2026 统一解决声称入 contradicting（unverified，不翻转）。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维评分，band=high。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "九维评分，band=low。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

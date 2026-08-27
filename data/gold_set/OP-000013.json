@@ -1,0 +1,284 @@
+{
+  "problem_id": "OP-000013",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "π 的正规性（Normality of π）",
+    "aliases": ["normality of pi", "π is normal"],
+    "slug": "normality-of-pi",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "It is not known whether π is normal: it is not even known whether any single digit appears infinitely often in the decimal expansion of π.",
+      "latex": "\\pi \\text{ 正规 }\\ ? \\quad (\\text{更强：任一数字是否在 } \\pi \\text{ 的十进制展开中无穷次出现亦未知})",
+      "language": "en",
+      "source_id": "SRC-0006",
+      "source_location": "Wikipedia：Normal number 词条 / π 相关节",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "判定 π（在任意进制 b 下）是否为正规数：即每个长度为 k 的数字串以渐近频率 b^{-k} 出现于 π 的 b 进制展开。更强的现状刻画：目前连『7（或任一固定数字）是否在 π 的十进制展开中无穷次出现』都未知。（本卡命题：π 是正规数。）",
+      "latex": "\\forall k \\ge 1,\\ \\forall w \\in \\{0,\\dots,b-1\\}^{k}:\\ \\lim_{N \\to \\infty} \\frac{\\#\\{w \\text{ 出现在 } \\pi \\text{ 的 } b \\text{ 进制展开前 } N \\text{ 位}\\}}{N} = b^{-k}\\ ?",
+      "assumptions": [
+        "正规性按 Borel 意义：在固定进制 b 下，所有等长数字串的频率均匀（每个长 k 数字串频率 b^{-k}）",
+        "进制未指定时规范化为『任意固定进制 b ≥ 2』；十进制为原文强调的情形"
+      ],
+      "quantified_objects": [
+        "全称量词：正规性要求每个长度 k 的数字串 w 的频率极限存在且等于 b^{-k}",
+        "未定的存在性子命题：是否存在（哪怕一个）数字在 π 的十进制展开中无穷次出现，目前未知"
+      ],
+      "normalization_notes": [
+        "原文以否定式（『不知道是否正规』）给出；本卡取正向命题『π 是正规数』为待证命题",
+        "原文强调的『任一数字无穷出现』为比正规性弱得多的必要条件，随原文保留以标示问题现状之薄弱"
+      ],
+      "semantic_risks": [
+        "正规性依赖进制选择：不同进制下的正规性是不同命题；本卡统一表述为『任意固定进制 b』，该口径与原文的对应关系待人工复核",
+        "频率极限的精确定义（沿位序的自然密度）需在形式化时固定，避免渐近记号歧义"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "π 的小数位里，0 到 9 是不是均匀地出现？连『有没有哪个数字最终永远不再出现』都不知道。",
+      "short_background": "Borel 1909 年建立正规数理论并证明几乎所有实数都是正规的，π 的正规性自此成为标志性问题。π 的无理性（Lambert 1761）与超越性（Lindemann 1882）均已知，但与正规性之间隔着巨大鸿沟。高精度位计算（BBP 公式等）给出的统计均衡性——如 Bailey–Borwein 的 10^13+ 位统计——只是数值证据，不构成证明。",
+      "why_it_matters": "『几乎所有实数正规』与『验证不出任何一个自然常数正规』之间的反差，标志着位分布理论的现状；证明 π 正规将是首个自然常数的正规性判据。"
+    }
+  },
+  "classification": {
+    "primary_domain": "analysis",
+    "topics": ["常数的算术性质", "遍历理论"],
+    "problem_types": ["structural_characterization"],
+    "expected_output_types": ["proof"],
+    "mathematical_objects": ["十进制展开", "正规数"]
+  },
+  "provenance": {
+    "original_proposer": ["Émile Borel（1909 正规数概念；『几乎所有实数正规』）"],
+    "original_year": "1909",
+    "original_work": "Borel (1909) 建立正规数理论；π 的正规性成为标志性问题",
+    "exact_citation": "π 正规性的标准开放问题表述；见 Wikipedia Normal number 词条 / π 相关节（SRC-0006）。",
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Normal_number",
+      "https://en.wikipedia.org/wiki/Pi"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "moderate",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000013-1",
+        "kind": "document_link",
+        "description": "Wikipedia Normal number 词条将 π 的正规性列为开放问题。",
+        "url": "https://en.wikipedia.org/wiki/Normal_number",
+        "source_id": "SRC-0006",
+        "tier": "D",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "相关数值统计（Bailey–Borwein 的 10^13+ 位统计均衡）为计算证据，不构成正规性证明。"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "π 是无理数（Lambert 1761）。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "π 是超越数（Lindemann 1882）。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "几乎所有实数（Lebesgue 测度意义）是正规的（Borel 测度论结果）。",
+        "status": "proven",
+        "evidence": []
+      }
+    ],
+    "best_known_bounds": [],
+    "known_equivalences": [],
+    "attempted_methods": [
+      {
+        "method": "高精度位计算与统计检验（BBP 公式等）",
+        "outcome": "获得大范围位的统计均衡数值证据（Bailey–Borwein 的 10^13+ 位统计均衡），不构成证明。",
+        "evidence": []
+      },
+      {
+        "method": "正规性证明的既有技术",
+        "outcome": "只覆盖人工构造数（如 Champernowne 型常数），不适用于 π 这类自然常数。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "无理/超越与正规之间存在现有理论鸿沟：无任何『自然常数正规』的一般机制。",
+        "evidence": []
+      },
+      {
+        "obstacle": "π 的位生成无已知的遍历模型。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": [
+      {
+        "target": "OP-000012",
+        "evidence": [],
+        "notes": "同为 π 的算术性质，相互独立。"
+      }
+    ]
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "正规数概念由 Borel 1909 年引入后，π 的正规性即成标志性问题，逾百年未解。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "大众与教材双重知名：正规性通俗叙述与遍历理论教材均以 π 为标志性例子。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "Borel 正规数理论谱系；与遍历理论、位分布研究相连。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "解决即首次回答自然常数的正规性，方法可望迁移到其它自然常数。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "作为标准开放问题进入正规数与遍历理论教材叙述。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "暴露『无理性/超越性已知』与『位分布未知』之间的理论断层；数值统计与证明之间的方法鸿沟清晰可见。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 78,
+      "field_normalized_attention": 65,
+      "problem_genealogy": 60,
+      "downstream_impact": 55,
+      "explicit_expert_endorsement": 65,
+      "mathematical_substance": 60
+    },
+    "score_band": "medium",
+    "uncertainty": "低：状态判定依赖标准共识。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述可形式化（频率极限表述明确）。",
+        "evidence": []
+      },
+      {
+        "claim": "大规模位计算与统计管线成熟；BBP 型位提取算法存在。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "无结构路线：正规性是关于全部位的全局性质，计算永远不充分。",
+        "evidence": []
+      },
+      {
+        "claim": "对 π 特有的位生成机制一无所知。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [],
+    "feature_values": {
+      "statement_completeness": 85,
+      "verifiability": 30,
+      "finite_search": 15,
+      "generation_verification_gap": 25,
+      "decomposability": 20,
+      "tool_support": 65,
+      "context_size": 80,
+      "ai_precedent": 30,
+      "theory_dependency": 30
+    },
+    "score_band": "low",
+    "uncertainty": "中：计算端工具强与理论端几乎无路线并存，band 对『理论机制出现与否』敏感。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "manual_curation 通道：从 Wikipedia Normal number 词条抽取原始英文陈述。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "频率极限表述显式化；进制口径写入 assumptions/semantic_risks。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "建立 related_to OP-000012（π 算术性质族，相互独立）。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "web 检索 2026-08-28：Wikipedia 仍列为开放；数值统计仅作证据性注记，不构成状态变化。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维评分，band=medium。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "九维评分，band=low。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

@@ -1,0 +1,43 @@
+task_id: TASK-701
+task_name: expert_review_routing
+task_version: 1.0.0
+purpose: 将完成 P1–P6 的问题卡路由进专家审核队列，并登记专家有限枚举决定（陈述忠实性/开放状态/重要性/AI 友好性/成对偏好）（设计规范 §12 P7）。本契约为确定性程序任务：路由与记录，不做数学判断。
+inputs:
+  required:
+    - lifecycle_state=scored 的问题卡
+  optional:
+    - 审核者领域专长档案
+allowed_sources: []
+allowed_tools:
+  - review_queue_api
+  - state_machine_guard
+forbidden_actions:
+  - 不得让 Agent 代替专家作出 Review Decision
+  - 不得覆盖专家原始决定（§12 P7）
+  - 不得跳过发布门禁
+procedure:
+  - 校验卡片处于 scored 且证据完备
+  - 按领域与队列容量路由到审核者队列（容量上限防淹没，§19.2）
+  - 呈现原文与规范化并排 diff、状态证据时间线、疑似重复对、双评估证据
+  - 记录专家决定（有限枚举+可选文字说明）为 Review Record
+  - 高价值判断优先（importance high 的卡插队）
+output_schema:
+  format: json
+  ref: https://ai-math-recommend.dev/schemas/review/v1.0.0/schema.json
+evidence_requirements:
+  - 每条 Review Decision 必须绑定其审核的问题卡版本号
+hard_fail_conditions:
+  - 卡片未处于 scored 状态
+  - 队列超过容量上限（拒绝入队并告警，不得静默丢弃）
+soft_fail_conditions:
+  - 无可用领域审核者（挂起并通知管理员）
+human_review_required_when:
+  - 本任务本身即人工核验环节
+quality_checks:
+  - 决定枚举合法性
+  - "reviewer 必须为 human: 前缀账户"
+retry_policy:
+  max_retries: 0
+  backoff: none
+logging_requirements:
+  - 路由决定、队列位置、审核耗时、版本号、时间戳

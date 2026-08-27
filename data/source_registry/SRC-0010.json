@@ -1,0 +1,25 @@
+{
+  "source_id": "SRC-0010",
+  "name": "Erdős Problems (erdosproblems.com)",
+  "source_type": "problem_list",
+  "base_url": "https://www.erdosproblems.com",
+  "access_method": "web_page",
+  "license": "以站点声明为准",
+  "attribution_required": true,
+  "refresh_policy": "monthly",
+  "trust_tier": "B",
+  "connector_version": "none",
+  "content_formats": [
+    "html"
+  ],
+  "allowed_usage": [
+    "metadata",
+    "statement",
+    "source_link"
+  ],
+  "rate_limit_notes": "普通网页，低频抓取。",
+  "last_successful_sync": null,
+  "owner": "curator",
+  "notes": "T. Bloom 维护的 Erdős 问题库，含状态更新注释，维护活跃。",
+  "enabled": false
+}

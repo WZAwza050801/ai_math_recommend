@@ -1,0 +1,50 @@
+task_id: TASK-000
+task_name: source_registration
+task_version: 1.0.0
+purpose: 将候选数据源登记入 Source Registry，确认身份、许可、访问方式与信任等级；未经登记的来源内容不得进入任何问题卡证据（设计规范 §8.2、§12 P0）。
+inputs:
+  required:
+    - 候选来源 URL 或仓库地址
+    - 许可与署名信息
+  optional:
+    - API 文档链接
+    - 样本响应
+allowed_sources: []   # 登记任务本身不采集内容
+allowed_tools:
+  - web_fetch
+  - license_checklist
+forbidden_actions:
+  - 不得在未完成人工批准前启用自动同步
+  - 不得采集未登记来源的内容
+  - 不得覆盖已有登记条目的 last_successful_sync
+procedure:
+  - 确认来源身份与稳定 URL
+  - 确认许可、署名、访问限制和速率限制
+  - 确定数据格式与更新机制
+  - 指定信任等级（A/B/C/D/internal）
+  - 建立 Connector（Phase 1+；Phase 0 为 none）
+  - 保存样本响应或内容指纹
+  - 完成连接器契约测试（Phase 1+）
+  - 提交人工批准后置 enabled=true
+output_schema:
+  format: json
+  ref: https://ai-math-recommend.dev/schemas/source_registry/v1.0.0/schema.json
+evidence_requirements:
+  - 必须保存样本响应或内容指纹
+  - 许可结论必须附来源页面定位
+hard_fail_conditions:
+  - 来源身份不明（无稳定 URL 或身份存疑）
+  - 许可不允许本项目用途
+  - 无法保存原始证据
+soft_fail_conditions:
+  - 速率限制信息缺失（按保守默认处理并标注）
+human_review_required_when:
+  - 所有登记条目（人工批准为启用前置条件）
+quality_checks:
+  - JSON Schema 校验通过（source_registry v1.0.0）
+  - source_id 唯一性检查
+retry_policy:
+  max_retries: 1
+  backoff: fixed
+logging_requirements:
+  - 记录操作者、时间戳、许可确认依据 URL

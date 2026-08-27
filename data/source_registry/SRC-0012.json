@@ -1,0 +1,25 @@
+{
+  "source_id": "SRC-0012",
+  "name": "MathOverflow / Stack Exchange API",
+  "source_type": "community_qa",
+  "base_url": "https://api.stackexchange.com",
+  "access_method": "http_api",
+  "license": "CC-BY-SA 4.0（帖子内容）",
+  "attribution_required": true,
+  "refresh_policy": "monthly",
+  "trust_tier": "D",
+  "connector_version": "none",
+  "content_formats": [
+    "json"
+  ],
+  "allowed_usage": [
+    "metadata",
+    "statement",
+    "source_link"
+  ],
+  "rate_limit_notes": "遵守 Stack Exchange API 配额（默认 300/日，可申请提高）。",
+  "last_successful_sync": null,
+  "owner": "curator",
+  "notes": "D 级待核验；高票数学答案可作线索来源，须绑定可核验文献。",
+  "enabled": false
+}

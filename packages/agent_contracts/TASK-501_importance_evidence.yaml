@@ -1,0 +1,49 @@
+task_id: TASK-501
+task_name: importance_evidence
+task_version: 1.0.0
+purpose: 为通过状态核验的问题卡提取重要性证据束（Evidence Bundle）：历史持续性、领域归一化关注度、问题谱系、下游影响、专家明确认可、数学实质（设计规范 §12 P5、§13.4）。
+inputs:
+  required:
+    - 通过状态核验的问题卡
+  optional:
+    - OpenAlex 引用指标
+    - 问题族文献
+allowed_sources:
+  - Source Registry 中 enabled=true 的来源
+allowed_tools:
+  - openalex_query
+  - web_search
+  - citation_metrics_pipeline
+forbidden_actions:
+  - 不得用提出者荣誉主导评分（名人偏见，§19.2）
+  - 不得跨领域直接比较原始引用数
+  - 不得无证据给出高重要性分
+procedure:
+  - 历史持续性：提出年代、跨世纪存续证据
+  - 领域归一化关注度：引用/综述密度按领域与年份归一化
+  - 问题谱系：派生问题、等价问题、特殊情形族规模
+  - 下游影响：解决后已知会推出的结果清单
+  - 专家明确认可：千禧奖/Erdős问题编号/权威综述中的显著位置
+  - 数学实质与理论障碍：为何难、卡在哪里
+  - 汇总 feature_values（0–100）与 score_band，标注 rubric_version
+output_schema:
+  format: json
+  ref: https://ai-math-recommend.dev/schemas/problem_card/v1.0.0/schema.json
+  # 填充 importance_assessment
+evidence_requirements:
+  - 六个维度每维至少一条证据或显式 unknown
+  - "『菲尔兹奖得主引用了包含该问题的论文』只可作为极弱间接信号"
+hard_fail_conditions:
+  - 全部维度无证据（输出 insufficient_evidence 而非编造）
+soft_fail_conditions:
+  - 单维度证据不足 → 该维 unknown，评分降置信
+human_review_required_when:
+  - score_band=high（高价值判断优先人工抽检）
+quality_checks:
+  - 引用指标必须标注归一化方法
+  - rubric_version 必须为登记版本（importance-rubric-v0.1+）
+retry_policy:
+  max_retries: 2
+  backoff: exponential
+logging_requirements:
+  - 模型版本、rubric 版本、指标查询参数与返回快照、时间戳

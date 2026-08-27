@@ -1,0 +1,303 @@
+{
+  "problem_id": "OP-000012",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "π+e 的无理性（Irrationality of π+e）",
+    "aliases": ["irrationality of pi plus e"],
+    "slug": "irrationality-of-pi-plus-e",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "It is not known whether π+e (or π−e, or π·e) is irrational.",
+      "latex": "\\pi + e \\notin \\mathbb{Q}\\ ? \\quad (\\text{同理 } \\pi - e,\\ \\pi \\cdot e)",
+      "language": "en",
+      "source_id": "SRC-0006",
+      "source_location": "Wikipedia：Irrational number 词条 Open questions 节 / 'pi plus e' 相关",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "判定 π + e 是否为无理数（本卡命题：π + e 是无理数）。原文同时指出 π − e 与 π · e 的无理性亦未知，作为同族问题保留于背景。",
+      "latex": "\\pi + e \\notin \\mathbb{Q}\\ ? \\qquad (\\text{同族： } \\pi - e \\notin \\mathbb{Q}\\ ?,\\ \\pi \\cdot e \\notin \\mathbb{Q}\\ ?)",
+      "assumptions": [
+        "π 与 e 取通常的圆周率与自然对数底（实数）",
+        "无理性按实数意义理解：不属于有理数域 \\mathbb{Q}"
+      ],
+      "quantified_objects": [
+        "单点判定命题：常数 π + e 是否属于 \\mathbb{Q}（命题不含自由变元，量词结构退化为对具体常数的判定）"
+      ],
+      "normalization_notes": [
+        "原文以否定式（『不知道是否无理』）给出；本卡取正向命题『π + e 是无理数』为待证命题",
+        "π − e、π · e 的无理性为同族问题，随原文保留于背景，不并入主命题"
+      ],
+      "semantic_risks": [
+        "『π + e 无理』与『π · e 无理』是不同命题，不能混同；已知二者至少一个无理，但单独哪一个均未定"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "两个最著名的数学常数相加，是不是无理数？没有人知道。",
+      "short_background": "π 与 e 各自的超越性早已证明（Hermite 1873、Lindemann 1882），但经典超越数论工具处理不了两个独立超越常数之和。已知的事实只有：π + e 与 π · e 至少一个无理（否则 π、e 将是某个二次方程的根，与二者超越性矛盾）。若 Schanuel 猜想成立，则 π + e 无理。",
+      "why_it_matters": "它是超越数论工具边界的试金石：连最基本的两常数之和都够不着，说明现有理论存在明确缺口；解决它预期需要 Schanuel 级别的新理论。"
+    }
+  },
+  "classification": {
+    "primary_domain": "analysis",
+    "topics": ["常数的算术性质", "超越数论"],
+    "problem_types": ["existence"],
+    "expected_output_types": ["proof"],
+    "mathematical_objects": ["π", "e", "无理性"]
+  },
+  "provenance": {
+    "original_proposer": ["（作为 Schanuel 猜想与超越数论的自然基础问题；无单一提出者）"],
+    "original_year": "20 世纪（伴随超越数论成形）",
+    "original_work": "标准超越数论教材的标准开放问题清单（如 Lang《Algebra》讨论）",
+    "exact_citation": "π + e（及 π − e、π · e）无理性的标准开放问题表述；见 Wikipedia Irrational number 词条 Open questions 节（SRC-0006）。",
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Irrational_number",
+      "https://en.wikipedia.org/wiki/Transcendental_number"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "moderate",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000012-1",
+        "kind": "document_link",
+        "description": "Wikipedia Irrational number 词条 Open questions 节将 π + e（及 π − e、π · e）的无理性列为开放问题。",
+        "url": "https://en.wikipedia.org/wiki/Irrational_number",
+        "source_id": "SRC-0006",
+        "tier": "D",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      },
+      {
+        "evidence_id": "EV-000012-2",
+        "kind": "document_link",
+        "description": "Wikipedia Transcendental number 词条作为背景来源：π、e 的超越性已知，而二者之和/之积的算术性质未知。",
+        "url": "https://en.wikipedia.org/wiki/Transcendental_number",
+        "source_id": "SRC-0006",
+        "tier": "D",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "π 是超越数（Lindemann 1882）。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "e 是超越数（Hermite 1873）。",
+        "status": "proven",
+        "evidence": []
+      },
+      {
+        "statement": "π + e 与 π · e 至少一个无理：若二者皆有理，则 π、e 为二次方程 x² − (π+e)x + πe = 0 的根，与 π、e 的超越性矛盾（初等论证）。",
+        "status": "proven",
+        "evidence": []
+      }
+    ],
+    "best_known_bounds": [],
+    "known_equivalences": [
+      {
+        "statement": "Schanuel 猜想（OP-000014）蕴含 π + e 无理且 π、e 代数无关。",
+        "direction": "implied_by",
+        "evidence": []
+      }
+    ],
+    "attempted_methods": [
+      {
+        "method": "Gelfond–Schneider / Lindemann–Weierstrass 框架",
+        "outcome": "不覆盖两个超越数之和的情形。",
+        "evidence": []
+      },
+      {
+        "method": "Schanuel 猜想路线（条件性）",
+        "outcome": "在 Schanuel 猜想下可得 π + e 无理，但 Schanuel 猜想本身未证（见 OP-000014）。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "经典超越工具只处理『代数系数指数/对数值』，对两个独立超越常数之和无输入。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [
+      {
+        "target": "OP-000014",
+        "evidence": [],
+        "notes": "Schanuel 猜想蕴含 π + e 无理（及 π、e 代数无关）。"
+      }
+    ],
+    "related_to": [
+      {
+        "target": "OP-000013",
+        "evidence": [],
+        "notes": "同为 π 的算术性质但相互独立的问题——π 正规性与 π + e 无理性无蕴含关系。"
+      }
+    ]
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "伴随超越数论在 20 世纪成形而成为标准开放问题；Hermite（1873）、Lindemann（1882）之后无实质推进。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "大众与教材双重著名：标准教材问题清单与通俗叙述均广泛引用。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "Schanuel 猜想谱系的核心推论（OP-000014）。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "解决即判定 π + e 的有理性，并可为 π · e、π − e 同族问题提供方法。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "作为标准开放问题进入主流教材与综述（如 Lang《Algebra》讨论）。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "问题精确暴露经典超越数论工具（Lindemann–Weierstrass 型）的作用边界。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 65,
+      "field_normalized_attention": 60,
+      "problem_genealogy": 70,
+      "downstream_impact": 65,
+      "explicit_expert_endorsement": 60,
+      "mathematical_substance": 60
+    },
+    "score_band": "medium",
+    "uncertainty": "低：状态判定依赖标准文献共识，分歧空间小。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述极简、可形式化。",
+        "evidence": []
+      },
+      {
+        "claim": "上下文小（问题不依赖庞杂理论背景即可完整陈述）。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "无任何部分结果路线。",
+        "evidence": []
+      },
+      {
+        "claim": "证明预期需要 Schanuel 级别的新理论。",
+        "evidence": []
+      },
+      {
+        "claim": "无计算可检验的中间目标：无理性命题不产生可搜索的反例。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [],
+    "feature_values": {
+      "statement_completeness": 95,
+      "verifiability": 40,
+      "finite_search": 15,
+      "generation_verification_gap": 30,
+      "decomposability": 25,
+      "tool_support": 30,
+      "context_size": 90,
+      "ai_precedent": 20,
+      "theory_dependency": 15
+    },
+    "score_band": "medium_low",
+    "uncertainty": "中：陈述端极强而求解端几乎空白，band 对『理论突破时点』高度敏感。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "manual_curation 通道：从 Wikipedia Irrational number 词条 Open questions 节抽取原始英文陈述。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "否定式改写为正向命题；π−e、π·e 保留为同族背景。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "建立 implied_by OP-000014（Schanuel）与 related_to OP-000013（π 正规性）。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "web 检索 2026-08-28：Wikipedia 相关词条仍列为开放；无解决声称记录。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维评分，band=medium。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "九维评分，band=medium_low。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

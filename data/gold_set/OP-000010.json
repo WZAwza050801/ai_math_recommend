@@ -1,0 +1,296 @@
+{
+  "problem_id": "OP-000010",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "Fermat 素数的有限性（是否存在 n>4 使 F_n=2^{2^n}+1 为素数）",
+    "aliases": ["finiteness of Fermat primes", "sixth Fermat prime"],
+    "slug": "fermat-primes-beyond-f4",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "Are there any Fermat primes F_n = 2^{2^n}+1 beyond F_4 = 65537? It is conjectured that F_n is composite for all n ≥ 5.",
+      "latex": "\\exists\\, n \\ge 5 : F_n = 2^{2^n}+1 \\text{ is prime } \\;? \\quad (\\text{conjecture: } F_n \\text{ composite for all } n \\ge 5)",
+      "language": "en",
+      "source_id": "SRC-0005",
+      "source_location": "OEIS A000215 Fermat numbers（状态注释：F_5..F_32 已知合数）",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "判定是否存在整数 n ≥ 5 使得 Fermat 数 F_n = 2^{2^n}+1 为素数。普遍猜测不存在这样的 n，即对所有 n ≥ 5 均有 F_n 为合数。（已知 F_0..F_4 为素数，F_5 至 F_32 已验证为合数。）",
+      "latex": "\\exists\\, n \\ge 5:\\ F_n = 2^{2^n}+1 \\in \\mathbb{P}\\ ? \\qquad \\text{普遍猜测： } \\forall n \\ge 5,\\ 2^{2^n}+1 \\text{ 为合数}",
+      "assumptions": [
+        "F_n 定义为 Fermat 数 F_n = 2^{2^n} + 1",
+        "『素数/合数』按正整数素性的标准定义；问题的未知范围是 n ≥ 5（F_0..F_4 已知为素）"
+      ],
+      "quantified_objects": [
+        "存在量词（待判定）：是否存在整数 n ≥ 5 使 F_n 为素数；其否定为全称命题：所有 n ≥ 5 的 F_n 均为合数"
+      ],
+      "normalization_notes": [
+        "原文以问句 + 猜测并列给出；规范化为存在性判定问题，普遍猜测作为问题背景保留",
+        "『开放』的精确含义：n ≥ 5 是否存在素 F_n 未知；注意『Fermat 合数是否无穷多』同样开放，两问内容不同（见 related_to notes）"
+      ],
+      "semantic_risks": [
+        "易与『Fermat 合数是否无穷多』混淆：两问均开放但不同；本卡只针对 n ≥ 5 的素 Fermat 数存在性",
+        "F_4 = 65537 作为分界出现在原文中；『n > 4』与『n ≥ 5』为同一范围的两种写法，本卡统一用 n ≥ 5"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "Fermat 曾猜想 2^{2^n}+1 全是素数，Euler 在 F_5 处将其推翻；第五个 Fermat 素数是否存在，至今无人知晓。",
+      "short_background": "1640 年 Fermat 在信件中推测全部 Fermat 数为素数；1732 年 Euler 证明 F_5 为合数。目前仅知 F_0..F_4 为素数，F_5 至 F_32 已验证为合数（个别更大的数部分分解）。Pépin 检验提供单个 F_n 素性的确定性检验，但 F_n 的位数随 n 指数增长，使大 n 处的直接检验不可行。Fermat 数与几何存在联系（如正 17 边形可作图性等）。",
+      "why_it_matters": "Fermat 数是素数分布与计算数论的标志性对象；判定 n ≥ 5 的素性存在性将同时检验我们对稀疏素数子列的直觉与计算数论工具的极限。"
+    }
+  },
+  "classification": {
+    "primary_domain": "number-theory",
+    "topics": ["计算数论", "素数分布"],
+    "problem_types": ["existence"],
+    "expected_output_types": ["proof", "counterexample"],
+    "mathematical_objects": ["Fermat 数 F_n = 2^{2^n}+1"]
+  },
+  "provenance": {
+    "original_proposer": ["Pierre de Fermat（1640 信件中推测全部为素，Euler 1732 以 F_5 反驳）"],
+    "original_year": "1640（Fermat 猜测）/1732（Euler 反驳 F_5）",
+    "original_work": "Fermat–Mersenne 通信传统；Euler 1732",
+    "exact_citation": "Fermat (1640) 信件中的全素猜测与 Euler (1732) 对 F_5 的反驳；状态引自 OEIS A000215（SRC-0005）与 Wikipedia Fermat number 词条（SRC-0006）。",
+    "source_urls": [
+      "https://oeis.org/A000215",
+      "https://en.wikipedia.org/wiki/Fermat_number"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "moderate",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000010-1",
+        "kind": "document_link",
+        "description": "OEIS A000215（Fermat numbers）状态注释：仅 F_0..F_4 已知素；F_5 至 F_32 已验证为合数（个别更大的数部分分解）。",
+        "url": "https://oeis.org/A000215",
+        "source_id": "SRC-0005",
+        "tier": "C",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      },
+      {
+        "evidence_id": "EV-000010-2",
+        "kind": "document_link",
+        "description": "Wikipedia Fermat number 词条同样汇总：无任何 n ≥ 5 的素 Fermat 数被发现。",
+        "url": "https://en.wikipedia.org/wiki/Fermat_number",
+        "source_id": "SRC-0006",
+        "tier": "D",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "F_5 至 F_32 全部为合数（计算验证）。",
+        "status": "proven",
+        "evidence": [
+          {
+            "evidence_id": "EV-000010-3",
+            "kind": "document_link",
+            "description": "OEIS A000215 状态注释记录 F_5..F_32 已知合数。",
+            "url": "https://oeis.org/A000215",
+            "source_id": "SRC-0005",
+            "tier": "C",
+            "verification_status": "verified",
+            "retrieved_at": "2026-08-28"
+          }
+        ]
+      }
+    ],
+    "best_known_bounds": [],
+    "known_equivalences": [],
+    "attempted_methods": [
+      {
+        "method": "Pépin 检验（F_n 素性的确定性检验）",
+        "outcome": "提供单个 F_n 素性的确定性判定，支撑大 n 的计算验证。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "F_n 的位数随 n 指数增长，使直接素性检验在大 n 处不可行。",
+        "evidence": []
+      },
+      {
+        "obstacle": "无结构性论证排除稀疏分布的素 Fermat 数。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": [
+      {
+        "target": "external:Fermat 合数无穷性",
+        "evidence": [],
+        "notes": "两问都开放：本卡问 n ≥ 5 是否存在素 F_n，另一问为 Fermat 合数是否无穷多；Fermat 数两两互素。"
+      }
+    ]
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "1640 年 Fermat 猜测提出、1732 年 Euler 反驳 F_5 之后，问题保持开放近四百年。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "OEIS（A000215）与 Wikipedia 持续收录；计算数论与素数分布领域内知名度稳定的经典问题。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "与几何存在联系（正 17 边形可作图性等）；与『Fermat 合数无穷性』问题相互关联（Fermat 数两两互素）。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "解决即判定是否存在第六个及以后的 Fermat 素数。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "未采集到悬赏或顶级问题清单背书的具体证据；评分基础为长期持续收录与研究现状。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "确定性素性检验技术（Pépin 检验）与指数增长规模之间的持续张力；问题结构本身牵动素数分布直觉。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 85,
+      "field_normalized_attention": 55,
+      "problem_genealogy": 60,
+      "downstream_impact": 50,
+      "explicit_expert_endorsement": 55,
+      "mathematical_substance": 55
+    },
+    "score_band": "medium",
+    "uncertainty": "低：状态与历史均有稳定汇总来源支撑。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述初等精确、完全可形式化。",
+        "evidence": []
+      },
+      {
+        "claim": "Pépin 检验与大整数运算工具成熟。",
+        "evidence": []
+      },
+      {
+        "claim": "逐 n 可分解：每个 n 是独立的素性判定子目标。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "计算量随 n 指数爆炸。",
+        "evidence": []
+      },
+      {
+        "claim": "『证明不存在』型结论难以通过计算获得。",
+        "evidence": []
+      },
+      {
+        "claim": "现有工具只能推进有限 n，无法覆盖全部 n ≥ 5。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [],
+    "feature_values": {
+      "statement_completeness": 95,
+      "verifiability": 85,
+      "finite_search": 55,
+      "generation_verification_gap": 45,
+      "decomposability": 75,
+      "tool_support": 85,
+      "context_size": 90,
+      "ai_precedent": 50,
+      "theory_dependency": 55
+    },
+    "score_band": "medium_high",
+    "uncertainty": "中低：主要不确定性在『证明不存在』路线的可行性评估上。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "manual_curation 通道：从 OEIS A000215 抽取原始英文陈述。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "存在量词显式化；区分本卡与『Fermat 合数无穷性』。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "建立 related_to external:Fermat 合数无穷性。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "web 检索 2026-08-28：OEIS A000215/Wikipedia 汇总仍为 F_5..F_32 合数、无 n ≥ 5 素数。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维评分，band=medium。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "九维评分，band=medium_high。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "fixture_id": "FIX-003",
+  "purpose": "去重纪律样本（§12 P3 / §21.3 第四、五类）：把 Robin 判据（与黎曼假设等价的命题）作为『新发现的独立问题』录入。管道必须提议 equivalent_to OP-000001 的关系候选，但严禁自动合并；合并是人工专属操作（TASK-301 forbidden_actions）。本卡故意保持 candidate 阶段以测试关系候选流。",
+  "expected_pipeline_behavior": [
+    "embedding/规则召回命中 OP-000001（高相似）",
+    "TASK-301 输出关系候选 equivalent_to: OP-000001 并绑定等价证据（Robin 1984）",
+    "不发生自动合并：OP-000001 与本卡均保留为独立实体，等待 P7 人工裁决",
+    "人工裁决后本卡可标记为 OP-000001 的等价别名（alias）并入问题族，但两卡历史保留"
+  ],
+  "card": {
+    "problem_id": "OP-900002",
+    "schema_version": "1.0.0",
+    "identity": {
+      "title": "Robin 不等式（作为独立命题录入的去重测试卡）",
+      "aliases": ["Robin's inequality"],
+      "slug": "robin-inequality-dedup-fixture",
+      "problem_family_id": null
+    },
+    "statements": {
+      "original": {
+        "text": "For all n > 5040, the sum of divisors satisfies sigma(n) < exp(gamma) * n * log(log n).",
+        "language": "en",
+        "source_id": "SRC-0014",
+        "source_location": "Robin, G. (1984), J. Math. Pures Appl. 63: 原文不等式；等价性定理亦在该文",
+        "immutable_content_hash": null
+      },
+      "normalized": {
+        "text": "对所有整数 n > 5040，σ(n) < e^γ · n · ln ln n。注：Robin (1984) 证明本命题与黎曼假设等价；本卡作为去重/关系识别测试录入。",
+        "latex": "\\forall n \\in \\mathbb{Z}_{>5040}: \\sigma(n) < e^{\\gamma} n \\ln\\ln n",
+        "assumptions": ["σ 为约数和函数", "γ 为 Euler–Mascheroni 常数"],
+        "quantified_objects": ["对所有整数 n>5040"],
+        "normalization_notes": ["测试卡：故意作为独立问题录入以测试等价关系候选流"],
+        "semantic_risks": ["n>5040 的下界必须保留；5040 是 Robin 定理的显式阈值"]
+      },
+      "reader_summary": {
+        "one_sentence": "一个与黎曼假设完全等价的初等不等式——专用于测试系统不会把等价命题错误合并。"
+      }
+    },
+    "classification": {
+      "primary_domain": "number-theory",
+      "secondary_domains": [],
+      "topics": ["乘性数论"],
+      "problem_types": ["equivalence_or_implication"],
+      "expected_output_types": ["proof"],
+      "mathematical_objects": ["约数和函数 σ(n)"]
+    },
+    "provenance": {
+      "original_proposer": ["Guy Robin"],
+      "original_year": "1984",
+      "original_work": "Robin, Grandes valeurs de la fonction somme des diviseurs et hypothèse de Riemann",
+      "exact_citation": "J. Math. Pures Appl. (9) 63 (1984), 187–213",
+      "source_urls": ["https://en.wikipedia.org/wiki/Robin%27s_inequality"],
+      "discovery_method": "manual_curation",
+      "discovered_at": "2026-08-28"
+    },
+    "open_status": {
+      "status": "likely_open",
+      "confidence_level": "moderate",
+      "last_checked_at": "2026-08-28",
+      "supporting_evidence": [
+        {
+          "evidence_id": "EV-900002-1",
+          "kind": "document_link",
+          "description": "Robin (1984) 建立本不等式与黎曼假设的等价性；因此其开放状态与 OP-000001 同步。",
+          "source_id": "SRC-0014",
+          "tier": "B",
+          "verification_status": "verified",
+          "retrieved_at": "2026-08-28"
+        }
+      ],
+      "contradicting_evidence": [],
+      "resolved_scope": null,
+      "human_verified": false
+    },
+    "known_results": {},
+    "relationships": {
+      "equivalent_to": [
+        {
+          "target": "OP-000001",
+          "evidence": [
+            {
+              "evidence_id": "EV-900002-2",
+              "kind": "source_quote",
+              "description": "Robin (1984)：不等式成立 ⟺ 黎曼假设。",
+              "source_id": "SRC-0014",
+              "tier": "B",
+              "verification_status": "verified",
+              "retrieved_at": "2026-08-28"
+            }
+          ],
+          "notes": "关系候选：等待 P7 人工确认；严禁自动合并。"
+        }
+      ],
+      "generalizes": [],
+      "special_case_of": [],
+      "implies": [],
+      "implied_by": [],
+      "related_to": []
+    },
+    "importance_assessment": {
+      "evidence": [],
+      "feature_values": {},
+      "score_band": "insufficient_evidence",
+      "uncertainty": "测试卡：不评估。",
+      "rubric_version": "importance-rubric-v0.1"
+    },
+    "ai_affordance_assessment": {
+      "evidence_for": [],
+      "evidence_against": [],
+      "unknowns": ["测试卡：不评估"],
+      "feature_values": {},
+      "score_band": "insufficient_evidence",
+      "uncertainty": "测试卡：不评估。",
+      "rubric_version": "ai-affordance-rubric-v0.1"
+    },
+    "publication": {
+      "lifecycle_state": "candidate",
+      "publishable": false,
+      "visibility": "internal",
+      "publish_blockers": ["测试夹具：永远不发布", "P7 专家核验未完成（human_verified=false）"]
+    },
+    "audit": {
+      "created_by": "agent:fixture-generator",
+      "created_at": "2026-08-27T18:00:00Z",
+      "updated_at": "2026-08-27T18:00:00Z",
+      "current_version": 1,
+      "model_runs": [],
+      "human_reviews": []
+    }
+  }
+}

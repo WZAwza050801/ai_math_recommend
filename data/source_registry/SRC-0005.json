@@ -1,0 +1,25 @@
+{
+  "source_id": "SRC-0005",
+  "name": "OEIS (On-Line Encyclopedia of Integer Sequences)",
+  "source_type": "encyclopedia",
+  "base_url": "https://oeis.org",
+  "access_method": "http_api",
+  "license": "CC-BY-NC 4.0（序列数据；以站点声明为准）",
+  "attribution_required": true,
+  "refresh_policy": "quarterly",
+  "trust_tier": "C",
+  "connector_version": "none",
+  "content_formats": [
+    "json",
+    "html"
+  ],
+  "allowed_usage": [
+    "metadata",
+    "source_link"
+  ],
+  "rate_limit_notes": "礼貌使用 API，避免批量高频。",
+  "last_successful_sync": null,
+  "owner": "curator",
+  "notes": "序列事实与验证记录（如 Brocard 问题已知解、3x+1 验证界）引用来源。",
+  "enabled": false
+}

@@ -1,0 +1,24 @@
+{
+  "source_id": "SRC-0007",
+  "name": "Zenodo",
+  "source_type": "preprint_server",
+  "base_url": "https://zenodo.org",
+  "access_method": "web_page",
+  "license": "各异（逐条确认）",
+  "attribution_required": true,
+  "refresh_policy": "manual",
+  "trust_tier": "D",
+  "connector_version": "none",
+  "content_formats": [
+    "pdf"
+  ],
+  "allowed_usage": [
+    "metadata",
+    "source_link"
+  ],
+  "rate_limit_notes": "普通网页。",
+  "last_successful_sync": null,
+  "owner": "curator",
+  "notes": "无同行评审预印本仓库。仅用于监测『声称已解决』的未核验样本；任何内容默认 unverified，不得翻转开放状态。",
+  "enabled": false
+}

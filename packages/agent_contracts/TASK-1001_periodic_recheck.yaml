@@ -1,0 +1,42 @@
+task_id: TASK-1001
+task_name: periodic_recheck
+task_version: 1.0.0
+purpose: 对已发布或已过期问题周期复核开放状态，更新状态或生成人工复核任务（设计规范 §12 P10）。
+inputs:
+  required:
+    - 待复核问题卡（published / stale / 高关注）
+  optional:
+    - 上次核验证据
+allowed_sources:
+  - Source Registry 中 enabled=true 的来源
+allowed_tools:
+  - web_search
+  - openalex_query
+  - scheduler
+forbidden_actions:
+  - 不得直接把复核结果写入已发布卡（须走版本化更新流程，不得覆盖不可变字段与原始证据）
+  - 不得忽略显著新论文信号
+procedure:
+  - 调度：高关注每月；普通每季度；状态不确定优先；超期未核验转 Stale
+  - 按 TASK-401 流程复核
+  - 检测到显著新论文（声称解决/反例）→ 立即触发优先复核
+  - 更新 open_status 或创建人工复核任务
+output_schema:
+  format: json
+  ref: https://ai-math-recommend.dev/schemas/problem_card/v1.0.0/schema.json
+evidence_requirements:
+  - 与 TASK-401 相同
+hard_fail_conditions:
+  - 与 TASK-401 相同
+soft_fail_conditions:
+  - 复核超时 → 保持原状态并转 Stale 候选
+human_review_required_when:
+  - 状态拟变更（尤其拟改为 resolved）
+quality_checks:
+  - 复核间隔策略合规
+  - Stale 降级有据可查
+retry_policy:
+  max_retries: 2
+  backoff: exponential
+logging_requirements:
+  - 调度记录、检索记录、状态变更版本链、时间戳

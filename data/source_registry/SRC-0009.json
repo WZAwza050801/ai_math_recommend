@@ -1,0 +1,26 @@
+{
+  "source_id": "SRC-0009",
+  "name": "Open Problem Garden",
+  "source_type": "problem_list",
+  "base_url": "https://www.openproblemgarden.org",
+  "access_method": "web_page",
+  "license": "CC-BY-SA（以站点声明为准）",
+  "attribution_required": true,
+  "refresh_policy": "quarterly",
+  "trust_tier": "A",
+  "connector_version": "none",
+  "content_formats": [
+    "html",
+    "latex"
+  ],
+  "allowed_usage": [
+    "metadata",
+    "statement",
+    "source_link"
+  ],
+  "rate_limit_notes": "普通网页，低频抓取。",
+  "last_successful_sync": null,
+  "owner": "curator",
+  "notes": "§8.1 列为 A 级示例来源；内容质量不一，仍走标准核验流程。",
+  "enabled": false
+}

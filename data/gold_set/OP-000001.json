@@ -1,0 +1,430 @@
+{
+  "problem_id": "OP-000001",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "黎曼假设（Riemann Hypothesis）",
+    "aliases": ["Riemann Hypothesis", "RH", "Riemann zeta hypothesis"],
+    "slug": "riemann-hypothesis",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "The non-trivial zeros of the Riemann zeta function ζ(s) all have real part equal to 1/2.",
+      "latex": "\\zeta(s) = 0 \\implies \\operatorname{Re}(s) = \\tfrac{1}{2} \\quad (0 < \\operatorname{Re}(s) < 1)",
+      "language": "en",
+      "source_id": "SRC-0001",
+      "source_location": "Clay Mathematics Institute, Millennium Problems: The Riemann Hypothesis（问题陈述页）；原始文献：Riemann (1859), Über die Anzahl der Primzahlen unter einer gegebenen Größe",
+      "immutable_content_hash": "9f2ad8f6fe1e53cb25f48d6d34ce266f59077a3f6cf9d12ee1bcbe243a31d02a4"
+    },
+    "normalized": {
+      "text": "黎曼 zeta 函数 ζ(s) 在临界带 0 < Re(s) < 1 内的所有非平凡零点 s 均满足 Re(s) = 1/2。（等价地：ζ(s) 解析延拓后，其全部非平凡零点位于临界线 Re(s)=1/2 上。）",
+      "latex": "\\forall s \\in \\mathbb{C}: \\left( 0 < \\operatorname{Re}(s) < 1 \\wedge \\zeta(s) = 0 \\right) \\implies \\operatorname{Re}(s) = \\tfrac{1}{2}",
+      "assumptions": [
+        "ζ(s) 取其经由解析延拓得到的值，而非仅 Dirichlet 级数定义（级数仅在 Re(s)>1 收敛）",
+        "\"非平凡零点\"指临界带 0<Re(s)<1 内的零点，排除负偶数处的平凡零点"
+      ],
+      "quantified_objects": [
+        "对任意复数 s：若 s 为 ζ 的非平凡零点，则 Re(s)=1/2"
+      ],
+      "normalization_notes": [
+        "原文为 Clay 问题页的标准现代英文表述；Riemann 1859 原始德文论述以猜测形式给出，数学内容一致",
+        "量词结构显式化：全称量词覆盖临界带内全部非平凡零点"
+      ],
+      "semantic_risks": [
+        "平凡零点与非平凡零点的区分依赖教材惯例；本卡将负偶数零点明确排除，与原文一致"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "素数分布的核心钥匙——ζ 函数的所有复零点是否都落在一条特定的直线上。",
+      "short_background": "ζ(s)=Σn^{-s} 经解析延拓后有深刻零点结构；其零点位置直接控制素数计数函数 π(x) 的误差项。RH 断言所有非平凡零点实部恰为 1/2。它等价于素数定理的最优误差界 π(x)=Li(x)+O(√x·log x) 量级，并与数十个分布于解析数论、随机矩阵、代数几何的命题等价。1859 年由 Riemann 提出，1900 年列入 Hilbert 第八问题，2000 年成为 Clay 千禧奖问题。",
+      "why_it_matters": "解决它将同时定素数分布的最终精度、解锁大量等价命题，并为整个解析数论提供纲领性工具；是数学界公认的最重要的未解问题。"
+    }
+  },
+  "classification": {
+    "primary_domain": "number-theory",
+    "secondary_domains": ["analysis"],
+    "topics": ["素数分布", "解析数论", "模形式与自守形式"],
+    "problem_types": ["structural_characterization", "bound_improvement"],
+    "expected_output_types": ["proof", "disproof", "counterexample"],
+    "mathematical_objects": ["黎曼 zeta 函数", "解析延拓", "临界带零点", "素数计数函数"]
+  },
+  "provenance": {
+    "original_proposer": ["Bernhard Riemann"],
+    "original_year": "1859",
+    "original_work": "Über die Anzahl der Primzahlen unter einer gegebenen Größe, Monatsberichte der Königlichen Preußischen Akademie der Wissenschaften zu Berlin",
+    "exact_citation": "Riemann, G. F. B. (1859). Über die Anzahl der Primzahlen unter einer gegebenen Größe. 引自 Clay Mathematics Institute 千禧奖问题页（SRC-0001）。",
+    "source_urls": [
+      "https://www.claymath.org/millennium-problems/riemann-hypothesis",
+      "https://www.claymath.org/sites/default/files/riemann1859.pdf"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "high",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000001-1",
+        "kind": "document_link",
+        "description": "Clay 数学研究所千禧奖问题页将黎曼假设列为未解决的七大千禧奖问题之一（2026-08 检索确认仍在列）。",
+        "url": "https://www.claymath.org/millennium-problems/riemann-hypothesis",
+        "source_id": "SRC-0001",
+        "tier": "A",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      },
+      {
+        "evidence_id": "EV-000001-2",
+        "kind": "source_quote",
+        "description": "零点数值验证仅覆盖有限高度（前 10^13 个零点均在临界线上，Platt–Trudgian 2021），与问题开放状态一致。",
+        "url": "https://arxiv.org/abs/1804.05339",
+        "source_id": "SRC-0002",
+        "source_location": "Platt, D. & Trudgian, T. (2021). The Riemann hypothesis is true up to 3·10^12. Bull. LMS / arXiv:1804.05339（后续更新至 10^13 量级）",
+        "tier": "C",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "数值验证不能证明 RH，仅说明无早期反例。"
+      }
+    ],
+    "contradicting_evidence": [
+      {
+        "evidence_id": "EV-000001-3",
+        "kind": "unverified_claim",
+        "description": "2025–2026 年间 Zenodo/Cambridge Engage 等平台存在多篇声称证明 RH 的预印本（如 'A Curvature-Homology Proof of the Riemann Hypothesis'），均无期刊接受或社群核验记录。",
+        "url": "https://www.cambridge.org/engage/coe/article-details/6a43d3b14770e67d926bdd2f",
+        "source_id": "SRC-0007",
+        "tier": "D",
+        "verification_status": "unverified",
+        "retrieved_at": "2026-08-28",
+        "notes": "按 TASK-401 纪律：未核验声称不得翻转状态；记录以供注入抵抗与状态监控。"
+      }
+    ],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "函数域类比：曲线（亏格 g≥1）上的黎曼假设已由 Weil (1948) 证明，后由 Deligne (1974) 推广到任意代数簇的 Weil 猜想。",
+        "status": "proven",
+        "evidence": [
+          {
+            "evidence_id": "EV-000001-4",
+            "kind": "document_link",
+            "description": "Weil 猜想（含函数域 RH）的解决是 20 世纪代数几何里程碑，标准文献可查。",
+            "url": "https://en.wikipedia.org/wiki/Weil_conjectures",
+            "source_id": "SRC-0006",
+            "tier": "D",
+            "verification_status": "verified",
+            "retrieved_at": "2026-08-28"
+          }
+        ]
+      },
+      {
+        "statement": "临界线上零点密度：Hardy (1914) 证明临界线上有无穷多零点；Conrey (1989) 证明至少 40% 的非平凡零点在临界线上。",
+        "status": "proven",
+        "evidence": [
+          {
+            "evidence_id": "EV-000001-5",
+            "kind": "source_quote",
+            "description": "Conrey, B. (1989). More than two fifths of the zeros of the Riemann zeta function are on the critical line. Ann. of Math. (2) 130.",
+            "source_id": "SRC-0014",
+            "source_location": "Annals of Mathematics 130 (1989), no. 3",
+            "tier": "B",
+            "verification_status": "verified",
+            "retrieved_at": "2026-08-28"
+          }
+        ]
+      }
+    ],
+    "best_known_bounds": [
+      {
+        "quantity": "数值验证高度（前 N 个零点均在临界线）",
+        "bound": "N ≥ 3·10^12（Platt–Trudgian 2021 界；后续计算至 10^13 量级）",
+        "evidence": [
+          {
+            "evidence_id": "EV-000001-6",
+            "kind": "document_link",
+            "description": "Platt & Trudgian: The Riemann hypothesis is true up to 3·10^12.",
+            "url": "https://arxiv.org/abs/1804.05339",
+            "source_id": "SRC-0002",
+            "tier": "C",
+            "verification_status": "verified",
+            "retrieved_at": "2026-08-28"
+          }
+        ],
+        "notes": "确切断言以原文为准；10^13 量级后续结果待人工复核后再更新。"
+      },
+      {
+        "quantity": "素数定理误差（无条件最好界）",
+        "bound": "π(x) = Li(x) + O(x·exp(-c(log x)^{3/5}(log log x)^{-1/5}))（Vinogradov–Korobov 型零点自由区）",
+        "evidence": []
+      }
+    ],
+    "known_equivalences": [
+      {
+        "statement": "Robin 判据：RH 等价于对所有 n>5040 有 σ(n) < e^γ·n·log log n（Robin 1984）。",
+        "direction": "equivalent",
+        "evidence": [
+          {
+            "evidence_id": "EV-000001-7",
+            "kind": "source_quote",
+            "description": "Robin, G. (1984). Grandes valeurs de la fonction somme des diviseurs et hypothèse de Riemann. J. Math. Pures Appl. 63.",
+            "source_id": "SRC-0014",
+            "tier": "B",
+            "verification_status": "verified",
+            "retrieved_at": "2026-08-28"
+          }
+        ]
+      },
+      {
+        "statement": "Lagarias 判据：RH 等价于对所有 n≥1 有 σ(n) ≤ H_n + exp(H_n)·log H_n（Lagarias 2002）。",
+        "direction": "equivalent",
+        "evidence": []
+      },
+      {
+        "statement": "Lindelöf 假设是 RH 的推论（RH ⇒ Lindelöf；反之未知）。",
+        "direction": "implies",
+        "evidence": []
+      }
+    ],
+    "attempted_methods": [
+      {
+        "method": "Hardy 空间 / Hilbert–Pólya 谱方法（寻找零点对应自伴算子的谱）",
+        "outcome": "与随机矩阵理论（GUE 统计）数值高度吻合，但未构造出算子。",
+        "evidence": []
+      },
+      {
+        "method": "de Branges 空间方法",
+        "outcome": "多次声称未获认可；主线未被社群接受。",
+        "evidence": []
+      },
+      {
+        "method": "Selberg 类 / 自守 L 函数普遍化（广义 RH 家族）",
+        "outcome": "将问题置于更大的自守框架，未解决原始情形。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "已知零点自由区方法（指数和估计）与临界线方法之间量级差距悬殊；缺乏把 40% 密度推到 100% 的机制。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [
+      {
+        "target": "external:广义黎曼假设（GRH，Dirichlet/自守 L 函数零点）",
+        "evidence": [],
+        "notes": "RH 是 GRH 的最简单非平凡特例；GRH 同样开放。"
+      }
+    ],
+    "implies": [
+      {
+        "target": "external:Lindelöf 假设",
+        "evidence": [],
+        "notes": "经典结果。"
+      }
+    ],
+    "implied_by": [],
+    "related_to": [
+      {
+        "target": "OP-000008",
+        "evidence": [],
+        "notes": "RH 给出相邻素数间隙 O(√p·log p)，接近但不蕴含 Legendre 猜想的 (x, x+2√x+1) 精度——related_but_distinct。"
+      }
+    ]
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "1859 年提出，跨越 167 年、数代数学家持续研究；Hilbert 第八问题与 Clay 千禧奖双冠。",
+        "evidence": [
+          {
+            "evidence_id": "EV-000001-8",
+            "kind": "document_link",
+            "description": "Clay 千禧奖问题页（历史沿革）。",
+            "url": "https://www.claymath.org/millennium-problems/riemann-hypothesis",
+            "source_id": "SRC-0001",
+            "tier": "A",
+            "verification_status": "verified",
+            "retrieved_at": "2026-08-28"
+          }
+        ]
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "解析数论最高关注度问题；教科书与综述（Titchmarsh《The Theory of the Riemann Zeta-Function》等）以之为中心。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "已知等价/蕴含命题数十个（Robin、Lagarias、Nyman–Beurling、Li 判据、素数误差界等），构成完整问题纲领。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "解决即得素数分布最优误差界，并同步解锁大量等价命题与密码学相关界（如素性/整数的分布界）。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "Clay 千禧奖 100 万美元悬赏；Hilbert 问题列表第 8 号。",
+        "evidence": [
+          {
+            "evidence_id": "EV-000001-9",
+            "kind": "document_link",
+            "description": "Clay 官方悬赏。",
+            "url": "https://www.claymath.org/millennium-problems/riemann-hypothesis",
+            "source_id": "SRC-0001",
+            "tier": "A",
+            "verification_status": "verified",
+            "retrieved_at": "2026-08-28"
+          }
+        ]
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "百年方法积累（解析、代数、随机矩阵、谱）均未攻破；难度结构本身定义了解析数论的边界。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 96,
+      "field_normalized_attention": 95,
+      "problem_genealogy": 93,
+      "downstream_impact": 95,
+      "explicit_expert_endorsement": 100,
+      "mathematical_substance": 95
+    },
+    "score_band": "high",
+    "uncertainty": "低：六维均有直接证据；唯一不确定性在于关注度归一化方法（v0.1 采用定性+代表文献密度）。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述完全精确、可形式化（一阶量词结构清晰），Lean/mathlib 已具备 ζ 函数相关基础定义。",
+        "evidence": [
+          {
+            "evidence_id": "EV-000001-10",
+            "kind": "document_link",
+            "description": "Lean mathlib 已包含黎曼 ζ 函数定义与部分解析数论基础设施（持续扩展中）。",
+            "url": "https://github.com/google-deepmind/formal-conjectures",
+            "source_id": "SRC-0008",
+            "tier": "A",
+            "verification_status": "verified",
+            "retrieved_at": "2026-08-28",
+            "notes": "形式化生态成熟度是结构信号，不是解决概率声明。"
+          }
+        ]
+      },
+      {
+        "claim": "数值验证基础设施成熟：零点高速计算与检验（Platt 等人的高精度验证管线），候选『反例』可程序核验。",
+        "evidence": []
+      },
+      {
+        "claim": "可分解性中等：存在大量等价命题，可分头形式化与数值探索（如 Robin 判据的有限验证段）。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "无有限搜索空间：零点无穷多，数值验证永远不能证明；反例若存在也在极高高度之外。",
+        "evidence": []
+      },
+      {
+        "claim": "证明预期需要概念性新工具（现有零点自由区/密度方法量级不足），属于新理论依赖。",
+        "evidence": []
+      },
+      {
+        "claim": "上下文规模大：主流尝试依赖整个解析数论工具箱与随机矩阵直觉，文献体量庞大。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [
+      "形式化验证路线（Lean 端解析数论完备度）能否在合理工程量内覆盖关键引理，尚无评估",
+      "AI 系统在长链解析估计上的可靠性先例不足"
+    ],
+    "feature_values": {
+      "statement_completeness": 95,
+      "verifiability": 70,
+      "finite_search": 25,
+      "generation_verification_gap": 35,
+      "decomposability": 45,
+      "tool_support": 75,
+      "context_size": 45,
+      "ai_precedent": 30,
+      "theory_dependency": 25
+    },
+    "score_band": "medium",
+    "uncertainty": "中：陈述与工具端强、搜索与理论依赖端弱，两端拉扯；band 对『形式化路线工程量』这一未知项敏感。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-captain",
+    "created_at": "2026-08-27T17:30:00Z",
+    "updated_at": "2026-08-27T17:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T17:30:00Z",
+        "notes": "manual_curation 通道：从 Clay 问题页人工抽取原始陈述。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T17:30:00Z",
+        "notes": "量词显式化与假设外提。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T17:30:00Z",
+        "notes": "与库内卡 OP-000008 建立 related_to；与外部 GRH/Lindelöf 建立层级关系。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T17:30:00Z",
+        "notes": "web 检索 2026-08-28：Clay 页仍列为未解决；未核验声称入 contradicting_evidence。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T17:30:00Z",
+        "notes": ""
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T17:30:00Z",
+        "notes": ""
+      }
+    ],
+    "human_reviews": []
+  }
+}

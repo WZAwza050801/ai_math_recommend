@@ -1,0 +1,26 @@
+{
+  "source_id": "SRC-0008",
+  "name": "DeepMind formal-conjectures",
+  "source_type": "structured_repository",
+  "base_url": "https://github.com/google-deepmind/formal-conjectures",
+  "access_method": "git",
+  "license": "Apache-2.0",
+  "attribution_required": true,
+  "refresh_policy": "weekly",
+  "trust_tier": "A",
+  "connector_version": "none",
+  "content_formats": [
+    "lean",
+    "markdown"
+  ],
+  "allowed_usage": [
+    "metadata",
+    "statement",
+    "source_link"
+  ],
+  "rate_limit_notes": "git clone，无速率问题。",
+  "last_successful_sync": null,
+  "owner": "curator",
+  "notes": "A 级结构化猜想库（Lean 形式化）；含 Erdős 问题子集。",
+  "enabled": false
+}

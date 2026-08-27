@@ -1,0 +1,48 @@
+task_id: TASK-201
+task_name: normalization
+task_version: 1.0.0
+purpose: 将 Candidate Problem 规范化为 Normalized Problem Card：原样保存原始陈述，提取假设/量词/对象/符号，生成规范化陈述与研究者短摘要，列出规范化差异与语义风险（设计规范 §12 P2）。
+inputs:
+  required:
+    - Candidate Problem（含原文与上下文）
+  optional:
+    - 符号定义段
+    - 领域惯例说明
+allowed_sources:
+  - 仅限该候选已绑定的来源文档
+allowed_tools:
+  - latex_syntax_check
+  - schema_validator
+forbidden_actions:
+  - 不得覆盖原始陈述（不可变字段，ADR-004）
+  - 不得静默改写量词、假设或范围
+  - 不得补全原文没有的条件
+procedure:
+  - 原样保存原始陈述（含 immutable_content_hash）
+  - 提取假设、量词、对象、目标和符号
+  - 生成规范化陈述（中文+LaTeX，量词显式）
+  - 生成面向研究者的一句话陈述与短背景
+  - 列出规范化差异（normalization_notes）
+  - 标记任何可能改变语义的地方（semantic_risks）
+  - 运行 Schema 与 LaTeX 基础校验
+output_schema:
+  format: json
+  ref: https://ai-math-recommend.dev/schemas/problem_card/v1.0.0/schema.json
+evidence_requirements:
+  - 符号解释必须绑定原文出处（定义位置）
+  - 规范化差异逐条列出
+hard_fail_conditions:
+  - 原始陈述缺失或被改写
+  - LaTeX 语法校验失败且无法修复
+soft_fail_conditions:
+  - 符号歧义（标记 ambiguity，转人工门禁）
+human_review_required_when:
+  - 存在隐含条件、领域惯例或符号歧义时（§12 P2 人工门禁）
+quality_checks:
+  - normalized.text 非空且含量词
+  - semantic_risks 与 normalization_notes 完备性抽查
+retry_policy:
+  max_retries: 2
+  backoff: exponential
+logging_requirements:
+  - 模型版本、提示词版本（normalization-v0.1）、原文哈希、时间戳

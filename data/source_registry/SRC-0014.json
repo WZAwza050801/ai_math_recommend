@@ -1,0 +1,26 @@
+{
+  "source_id": "SRC-0014",
+  "name": "学术期刊（Annals of Mathematics 等）",
+  "source_type": "journal",
+  "base_url": "https://annals.math.princeton.edu",
+  "access_method": "pdf",
+  "license": "各异（出版社版权；研究性使用+订阅访问）",
+  "attribution_required": true,
+  "refresh_policy": "manual",
+  "trust_tier": "B",
+  "connector_version": "none",
+  "content_formats": [
+    "pdf",
+    "latex"
+  ],
+  "allowed_usage": [
+    "metadata",
+    "statement",
+    "source_link"
+  ],
+  "rate_limit_notes": "人工获取，无批量抓取。",
+  "last_successful_sync": null,
+  "owner": "curator",
+  "notes": "已发表证明/反驳的一手记录（如 Hales 开普勒猜想、Tao Erdős 偏差）。",
+  "enabled": false
+}

@@ -1,0 +1,24 @@
+{
+  "source_id": "SRC-0011",
+  "name": "OpenAlex API",
+  "source_type": "scholarly_graph",
+  "base_url": "https://api.openalex.org",
+  "access_method": "http_api",
+  "license": "CC0",
+  "attribution_required": false,
+  "refresh_policy": "weekly",
+  "trust_tier": "B",
+  "connector_version": "none",
+  "content_formats": [
+    "json"
+  ],
+  "allowed_usage": [
+    "metadata",
+    "citation_metrics"
+  ],
+  "rate_limit_notes": "官方建议带 mailto 参数，限 10 req/s，日限 100k。",
+  "last_successful_sync": null,
+  "owner": "curator",
+  "notes": "引用指标（P5 引用指标管道）主数据源；DOI/arXiv/OpenAlex ID 对齐。",
+  "enabled": false
+}

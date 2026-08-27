@@ -1,0 +1,111 @@
+{
+  "$comment": "AI 数学抽卡系统 · 数学领域 taxonomy v1.0.0（ADR-010）。primary_domain 的取值必须在本文件登记；卡片 classification.primary_domain 引用此处 id。topics 为推荐词表（非穷尽），卡片可自由使用但应优先复用。",
+  "taxonomy_version": "math-taxonomy-v1.0.0",
+  "decided_by": "ADR-010",
+  "primary_domains": [
+    {
+      "id": "number-theory",
+      "label_zh": "数论",
+      "topics": [
+        "素数分布", "解析数论", "代数数论", "丢番图方程", "加性数论", "乘性数论", "计算数论",
+        "模形式与自守形式", "超越数论", "算术组合", "有限域上的数论", "有理点与整点"
+      ],
+      "domain_plugin_fields": ["整数搜索范围", "局部—整体结构", "数据库支持（OEIS/LMFDB）"]
+    },
+    {
+      "id": "analysis",
+      "label_zh": "分析学",
+      "topics": [
+        "实分析", "复分析", "调和分析", "泛函分析", "测度论", "逼近论", "特殊函数与常数",
+        "常数的算术性质", "位势论", "遍历理论"
+      ],
+      "domain_plugin_fields": []
+    },
+    {
+      "id": "algebra",
+      "label_zh": "代数学",
+      "topics": [
+        "群论", "环与模", "域论与伽罗瓦理论", "李代数与表示论", "交换代数", "多项式动力学",
+        "多项式零点与临界点", "矩阵与线性代数", "同调代数"
+      ],
+      "domain_plugin_fields": []
+    },
+    {
+      "id": "algebraic-geometry",
+      "label_zh": "代数几何",
+      "topics": [
+        "曲线与阿贝尔簇", "有理映射与双有理几何", "模空间", "特征 p 几何", "算术几何",
+        " motive 与上同调理论"
+      ],
+      "domain_plugin_fields": ["基域", "特征", "模空间", "计算代数支持（Magma/SageMath）"]
+    },
+    {
+      "id": "combinatorics-and-graph-theory",
+      "label_zh": "组合与图论",
+      "topics": [
+        "极值组合", "拉姆齐理论", "图染色", "图分解与标号", "加性组合", "离散几何",
+        "组合集合族", "超图", "设计理论", "组合矩阵论"
+      ],
+      "domain_plugin_fields": ["有限规模验证", "极值界", "构造编码"]
+    },
+    {
+      "id": "geometry",
+      "label_zh": "几何学",
+      "topics": [
+        "凸几何与离散几何", "填充与堆积", "欧氏几何经典问题", "微分几何", "几何测度论", "计算几何"
+      ],
+      "domain_plugin_fields": ["维数", "不变量", "分类范围"]
+    },
+    {
+      "id": "topology",
+      "label_zh": "拓扑学",
+      "topics": [
+        "低维拓扑", "纽结理论", "三维流形", "四维流形", "代数拓扑", "几何群论", "动力系统与拓扑"
+      ],
+      "domain_plugin_fields": ["低维特殊情形", "不变量计算（SnapPy 等）"]
+    },
+    {
+      "id": "pde-and-numerics",
+      "label_zh": "偏微分方程与数值计算",
+      "topics": [
+        "椭圆方程正则性", "抛物与流体方程", "非线性色散方程", "解的整体存在性与爆破",
+        "数值验证与区间算术", "计算证明"
+      ],
+      "domain_plugin_fields": ["函数空间", "正则性条件", "边界条件", "数值证据"]
+    },
+    {
+      "id": "logic-and-tcs",
+      "label_zh": "数理逻辑与理论计算机",
+      "topics": [
+        "计算复杂性", "可判定性", "集合论与独立性", "模型论", "证明论", "形式化验证（Lean/Coq）",
+        "算法设计与分析", "自动定理证明"
+      ],
+      "domain_plugin_fields": []
+    }
+  ],
+  "cross_domain_note": "跨领域问题（如算术几何）选择主要贡献领域为 primary_domain，其余进 secondary_domains；跨领域分数不可直接比较（设计规范 §19.1 P0）。",
+  "problem_type_vocabularies": {
+    "$comment": "与 schemas/problem_card 中 problem_types / expected_output_types 枚举一一对应，此处给出中文释义。",
+    "problem_types": {
+      "existence": "存在性",
+      "classification": "分类",
+      "bound_improvement": "界改进",
+      "equivalence_or_implication": "等价或蕴含",
+      "algorithmic_decidability": "算法可判定性",
+      "computational_determination": "计算确定（如具体数值/维数）",
+      "structural_characterization": "结构刻画",
+      "counterexample_search": "反例搜索"
+    },
+    "expected_output_types": {
+      "proof": "证明",
+      "disproof": "反驳",
+      "counterexample": "反例",
+      "improved_bound": "改进界",
+      "special_case": "特殊情形解决",
+      "lemma": "新引理或可复用技术",
+      "computational_evidence": "可信计算证据",
+      "structural_conjecture": "结构猜想",
+      "classification": "分类结果"
+    }
+  }
+}

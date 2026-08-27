@@ -1,0 +1,47 @@
+{
+  "fixture_id": "FIX-001",
+  "purpose": "Schema 校验 + 陈述缺条件样本：一张故意残缺的哥德巴赫候选卡。缺少 source_id（应触发 Schema 校验失败）且规范化陈述丢失量词 'n>2'（Schema 通过但人工门禁应拦截——测试 §12 P2 的 malformed_suspected 流程）。",
+  "expected_validation": "fail",
+  "expected_fail_reasons": [
+    "statements.original.source_id 缺失 → required 字段违反",
+    "normalized.quantified_objects 为空 → 仅人工门禁可检（记录用）"
+  ],
+  "card": {
+    "problem_id": "OP-900001",
+    "schema_version": "1.0.0",
+    "identity": { "title": "哥德巴赫猜想（残缺测试卡）", "slug": "goldbach-malformed-fixture" },
+    "statements": {
+      "original": { "text": "Every even number is the sum of two primes.", "language": "en" },
+      "normalized": {
+        "text": "每个偶数都是两个素数之和。",
+        "assumptions": [],
+        "quantified_objects": [],
+        "normalization_notes": [],
+        "semantic_risks": []
+      },
+      "reader_summary": { "one_sentence": "故意残缺：未限定 n>2 的量词。" }
+    },
+    "classification": { "primary_domain": "number-theory" },
+    "provenance": {
+      "source_urls": ["https://example.invalid/goldbach"],
+      "discovery_method": "pipeline_extraction",
+      "discovered_at": "2026-08-28"
+    },
+    "open_status": {
+      "status": "status_uncertain",
+      "confidence_level": "none",
+      "last_checked_at": "2026-08-28",
+      "supporting_evidence": [],
+      "human_verified": false
+    },
+    "publication": { "lifecycle_state": "candidate", "publishable": false, "visibility": "internal" },
+    "audit": {
+      "created_by": "agent:fixture-generator",
+      "created_at": "2026-08-27T18:00:00Z",
+      "updated_at": "2026-08-27T18:00:00Z",
+      "current_version": 1,
+      "model_runs": [],
+      "human_reviews": []
+    }
+  }
+}

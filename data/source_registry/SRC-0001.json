@@ -1,0 +1,25 @@
+{
+  "source_id": "SRC-0001",
+  "name": "Clay Mathematics Institute Millennium Problems",
+  "source_type": "prize_problem_page",
+  "base_url": "https://www.claymath.org/millennium-problems",
+  "access_method": "web_page",
+  "license": "proprietary (站点内容版权归 Clay Mathematics Institute；研究性短引+回链)",
+  "attribution_required": true,
+  "refresh_policy": "quarterly",
+  "trust_tier": "A",
+  "connector_version": "none",
+  "content_formats": [
+    "html"
+  ],
+  "allowed_usage": [
+    "metadata",
+    "statement",
+    "source_link"
+  ],
+  "rate_limit_notes": "普通网页，礼貌抓取，避免高频请求。",
+  "last_successful_sync": null,
+  "owner": "curator",
+  "notes": "千禧奖七大问题官方页；陈述权威；仅作陈述与状态证据来源。",
+  "enabled": false
+}

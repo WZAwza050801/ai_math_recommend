@@ -1,0 +1,46 @@
+task_id: TASK-601
+task_name: ai_affordance_assessment
+task_version: 1.0.0
+purpose: 评估问题在当前 AI 与工具生态下的结构友好性（AI Affordance）：陈述完整性、结果可验证性、有限搜索性、生成—验证差距、可分解性、计算工具支持、上下文规模、相似 AI 成功先例、新理论依赖（设计规范 §12 P6、§13.5）。禁止称为真实"可解概率"（§3.5、ADR-005）。
+inputs:
+  required:
+    - 规范化问题卡
+    - 已知结果（special_cases / attempted_methods / blocking_obstacles）
+  optional:
+    - 工具可用性清单（SageMath/SAT/ILP/区间算术/Lean）
+allowed_sources:
+  - 问题卡内证据
+  - Source Registry 中 enabled=true 的来源
+allowed_tools:
+  - web_search
+  - rubric_engine
+forbidden_actions:
+  - 不得输出任何概率语义的表述（"解决概率 X%"）
+  - 不得混淆"可验证"与"可生成"（§19.2）
+  - 不得无证据抬高或压低 band
+procedure:
+  - 逐维评估 §13.5 九个维度，每维给出支持/反对证据
+  - 汇总 evidence_for / evidence_against / unknowns（未知必须显式列出）
+  - 输出 feature_values 与 score_band，标注 rubric_version 与 uncertainty
+output_schema:
+  format: json
+  ref: https://ai-math-recommend.dev/schemas/problem_card/v1.0.0/schema.json
+  # 填充 ai_affordance_assessment
+evidence_requirements:
+  - evidence_for 与 evidence_against 至少各一条（或显式说明为空的原因）
+  - unknowns 非空时必须在 uncertainty 说明影响
+hard_fail_conditions:
+  - 无法读取规范化陈述
+soft_fail_conditions:
+  - 工具可用性未知 → tool_support 维 unknown
+human_review_required_when:
+  - score_band=high（高 AI 友好性判断将影响抽卡池，需人工抽检）
+  - 与已知 AI 成功/失败先例类比存疑
+quality_checks:
+  - 禁用词扫描：输出不得包含"概率%/probability of solving"
+  - rubric_version 必须为登记版本（ai-affordance-rubric-v0.1+）
+retry_policy:
+  max_retries: 2
+  backoff: exponential
+logging_requirements:
+  - 模型版本、rubric 版本、证据来源定位、时间戳

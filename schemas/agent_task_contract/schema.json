@@ -27,7 +27,7 @@
   "properties": {
     "task_id": {
       "type": "string",
-      "pattern": "^TASK-[0-9]{3}$",
+      "pattern": "^TASK-[0-9]{3,4}$",
       "description": "任务编号，对应流水线阶段（TASK-101=P1 类）。"
     },
     "task_name": {

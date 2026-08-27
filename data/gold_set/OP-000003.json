@@ -1,0 +1,325 @@
+{
+  "problem_id": "OP-000003",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "科拉茨猜想 / 3x+1 问题（Collatz Conjecture）",
+    "aliases": ["3x+1 problem", "Collatz conjecture", "Ulam conjecture", "Syracuse problem"],
+    "slug": "collatz-conjecture",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "Consider the map that sends n to n/2 when n is even and to 3n+1 when n is odd. The conjecture asserts that iterating this map from any positive integer eventually reaches 1.",
+      "latex": "T(n) = \\begin{cases} n/2, & n \\text{ even} \\\\ 3n+1, & n \\text{ odd} \\end{cases}; \\quad \\forall n_0 \\in \\mathbb{Z}_{>0}: \\; \\exists k: \\; T^k(n_0) = 1",
+      "language": "en",
+      "source_id": "SRC-0014",
+      "source_location": "J. C. Lagarias, The 3x+1 problem and its generalizations, American Mathematical Monthly 92 (1985), 3–23",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "对任意正整数 n₀，迭代映射 T 的轨道 T^k(n₀) 最终到达 1，其中 T(n) = n/2（n 为偶数），T(n) = (3n+1)/2（n 为奇数）。",
+      "latex": "\\forall n_0 \\in \\mathbb{Z}_{>0}: \\; \\exists k \\in \\mathbb{N}: \\; T^{k}(n_0) = 1, \\quad T(n) = \\begin{cases} n/2, & n \\text{ 偶} \\\\ (3n+1)/2, & n \\text{ 奇} \\end{cases}",
+      "assumptions": [
+        "T 采用事实单给出的合成步定义：n 为偶数时 T(n) = n/2，n 为奇数时 T(n) = (3n+1)/2",
+        "正整数指 n ≥ 1；'最终到达 1' 指存在有限步 k 使 T^k(n₀) = 1，到达之后的行为不在断言范围内"
+      ],
+      "quantified_objects": [
+        "对任意正整数起点 n₀：存在非负整数 k 使 T^k(n₀) = 1（∀n₀ ∃k，k 无步数上界）",
+        "被迭代的对象：正整数在 T 作用下的整条轨道"
+      ],
+      "normalization_notes": [
+        "原文逐步描述映射（奇数取 3n+1）；规范化采用事实单给出的合并步 T(n) = (3n+1)/2（奇数情形），两种步进仅影响步数计数、不影响'是否到达 1'的判定（该等价性说明待专家核验）",
+        "反例形态：发散轨道，或不进入 1-4-2 循环的其他循环轨道（见 ai_affordance_assessment）"
+      ],
+      "semantic_risks": [
+        "eventually reaches 1 中的'最终'无步数上界——存在量词 ∃k 无界，验证语义依赖该无界量词",
+        "原步（3n+1 后继续迭代）与合并步（(3n+1)/2）混用会改变停止时间等辅助量的定义，但不改变'到达 1'判定；本卡统一采用事实单的合并步定义"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "任取一个正整数，反复'取半或三倍加一'，是否总会落回 1——表述极简却自 1937 年悬置至今的迭代之谜。",
+      "short_background": "Collatz 映射对偶数取一半、对奇数取三倍加一（规范化采用合成步 (3n+1)/2）。猜想断言从任何正整数出发的轨道最终到达 1。数值收敛验证已推进至约 2^71（具体最新界待人工复核）；Tao (2019) 证明了'几乎所有轨道几乎有界'的几乎处处结果，但完整猜想仍无证明路线。",
+      "why_it_matters": "该映射混合乘性与除性结构、缺少不变量，现有数论工具缺位，成为检验迭代动力学与计算数论方法边界的标志性问题。"
+    }
+  },
+  "classification": {
+    "primary_domain": "number-theory",
+    "topics": ["整数迭代映射", "计算数论"],
+    "problem_types": ["structural_characterization"],
+    "expected_output_types": ["proof", "counterexample"],
+    "mathematical_objects": ["正整数轨道", "Collatz 映射 T(n)=n/2 (n 偶), (3n+1)/2 (n 奇)"]
+  },
+  "provenance": {
+    "original_proposer": ["Lothar Collatz"],
+    "original_year": "1937",
+    "original_work": "口头提出（约 1950 年代流传）；首次系统综述 Lagarias 1985",
+    "exact_citation": "Lagarias, J. C. (1985). The 3x+1 problem and its generalizations. American Mathematical Monthly 92, 3–23（陈述来源综述定位）",
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Collatz_conjecture"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "high",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000003-1",
+        "kind": "source_quote",
+        "description": "Lagarias 1985 综述及其后续 annotated bibliography 将 3x+1 问题列为开放。",
+        "source_id": "SRC-0014",
+        "source_location": "American Mathematical Monthly 92 (1985), 3–23",
+        "tier": "B",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      },
+      {
+        "evidence_id": "EV-000003-2",
+        "kind": "source_quote",
+        "description": "收敛性已数值验证至约 2^71（D. Barina, Journal of Supercomputing (2020) 及后续更新），未发现反例。",
+        "source_id": "SRC-0014",
+        "source_location": "Barina, Convergence verification of the Collatz problem, J. Supercomputing 79 (2021)",
+        "tier": "C",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "具体最新验证界以人工复核为准；数值验证不构成证明。"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "几乎所有轨道几乎有界：Tao (2019) 证明对几乎所有正整数 n，轨道最小值低于任意给定的增长函数（几乎处处结果，非完整证明）。",
+        "status": "proven",
+        "evidence": [
+          {
+            "evidence_id": "EV-000003-3",
+            "kind": "document_link",
+            "description": "Tao 2019 几乎所有轨道几乎有界的结果（arXiv:1907.00778）。",
+            "url": "https://arxiv.org/abs/1907.00778",
+            "source_id": "SRC-0002",
+            "tier": "C",
+            "verification_status": "verified",
+            "retrieved_at": "2026-08-28"
+          }
+        ]
+      }
+    ],
+    "best_known_bounds": [
+      {
+        "quantity": "数值收敛验证范围（无反例）",
+        "bound": "约 2^71 以内的全部正整数起点均已验证最终到达 1（Barina 2020 及后续更新）",
+        "evidence": [
+          {
+            "evidence_id": "EV-000003-4",
+            "kind": "source_quote",
+            "description": "Barina 收敛验证管线（J. Supercomputing 79 (2021)）。",
+            "source_id": "SRC-0014",
+            "source_location": "Barina, Convergence verification of the Collatz problem, J. Supercomputing 79 (2021)",
+            "tier": "C",
+            "verification_status": "verified",
+            "retrieved_at": "2026-08-28",
+            "notes": "具体最新验证界以人工复核为准；计算证据不构成证明。"
+          }
+        ]
+      }
+    ],
+    "known_equivalences": [],
+    "attempted_methods": [
+      {
+        "method": "数值收敛验证",
+        "outcome": "验证规模达约 2^71 仍无反例；无证明力。",
+        "evidence": []
+      },
+      {
+        "method": "遍历论与 2-adic 分析",
+        "outcome": "给出迭代动力学的结构刻画，而非证明。",
+        "evidence": []
+      },
+      {
+        "method": "停止时间统计",
+        "outcome": "得到几乎处处结果（如 Tao 2019 几乎所有轨道几乎有界，见 special_cases）。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "迭代映射混合乘性（×3+1）与除性（/2）结构，缺少不变量或递降泛函。",
+        "evidence": []
+      },
+      {
+        "obstacle": "与数论主流工具脱节（Erdős 有广为流传的评述：'数学还没有为这类问题做好准备'——此为广为流传的转述，非精确文献引文）。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": []
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "1937 年提出，近 90 年未解，方法积累未见突破口。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "高关注度：大众与学界双重知名、长期出现于科普与数论讨论中（定性评定 85）。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "存在推广族（3x+d、mx+n），构成迭代映射问题谱系。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "整数迭代映射与计算数论方向的代表性开放问题（定性评定 65）。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "大众与学界双重著名（定性评定 80）。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "遍历论、2-adic 分析、停止时间统计等方法长期积累仍未攻克（定性评定 80）。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 88,
+      "field_normalized_attention": 85,
+      "problem_genealogy": 75,
+      "downstream_impact": 65,
+      "explicit_expert_endorsement": 80,
+      "mathematical_substance": 80
+    },
+    "score_band": "medium_high",
+    "uncertainty": "低：各维度为定性评定，无争议状态干扰。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述初等、可完全形式化（迭代映射+到达条件）。",
+        "evidence": []
+      },
+      {
+        "claim": "单点反例（发散轨道或不进入 1-4-2 循环的轨道）可由程序模拟检验，但无有限判据。",
+        "evidence": []
+      },
+      {
+        "claim": "逐起点可分解：轨道模拟天然按起点并行。",
+        "evidence": []
+      },
+      {
+        "claim": "上下文极小：不依赖高深前置理论即可理解与模拟。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "无已知不变量路线，生成端缺位。",
+        "evidence": []
+      },
+      {
+        "claim": "反例不可有限排除：发散轨道的无界验证不完备，模拟永远只能覆盖有限步。",
+        "evidence": []
+      },
+      {
+        "claim": "理论工具缺位：现有数论主流方法与该映射结构脱节。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [
+      "是否存在可判定的'发散性证书'（用于有限步内判定某起点发散），无已知答案"
+    ],
+    "feature_values": {
+      "statement_completeness": 95,
+      "verifiability": 60,
+      "finite_search": 45,
+      "generation_verification_gap": 40,
+      "decomposability": 60,
+      "tool_support": 70,
+      "context_size": 95,
+      "ai_precedent": 35,
+      "theory_dependency": 40
+    },
+    "score_band": "medium",
+    "uncertainty": "中：模拟与分解端可用，但反例无有限判据、生成端缺不变量，两端拉扯。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "从事实单抽取英文原始陈述与 Lagarias 综述来源定位。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "采用事实单的合并步映射定义，量词显式化并标注无界存在量词风险。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "事实单未指定关系，关系区留空。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "Lagarias 综述与 Barina 计算验证支撑开放状态；2^71 验证界标注待人工复核。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维重要性按 importance-rubric-v0.1 评定（band medium_high）。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "九维 AI 可供性按 ai-affordance-rubric-v0.1 评定（band medium）。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "source_id": "SRC-0004",
+  "name": "Polymath Projects Wiki",
+  "source_type": "community_qa",
+  "base_url": "https://polymathprojects.org",
+  "access_method": "web_page",
+  "license": "CC-BY（以站点声明为准）",
+  "attribution_required": true,
+  "refresh_policy": "quarterly",
+  "trust_tier": "D",
+  "connector_version": "none",
+  "content_formats": [
+    "html"
+  ],
+  "allowed_usage": [
+    "metadata",
+    "statement",
+    "source_link"
+  ],
+  "rate_limit_notes": "普通网页。",
+  "last_successful_sync": null,
+  "owner": "curator",
+  "notes": "Polymath 协作记录（如 Polymath8 素数间隙界 246）。",
+  "enabled": false
+}

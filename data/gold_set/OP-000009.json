@@ -1,0 +1,291 @@
+{
+  "problem_id": "OP-000009",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "Brocard 问题（Brocard's Problem）",
+    "aliases": ["Brocard's problem", "Brown numbers problem"],
+    "slug": "brocard-problem",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "Find all integer solutions of n! + 1 = m².",
+      "latex": "n! + 1 = m^2",
+      "language": "en",
+      "source_id": "SRC-0005",
+      "source_location": "OEIS 中 Brocard 问题相关序列（已知解 4,5,7；搜索 'Brocard'）",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "求全部正整数对 (n, m) 使得 n! + 1 = m²。（已知解为 n = 4, 5, 7，即 (n,m) = (4,5), (5,11), (7,71)；是否存在更多解未知。）",
+      "latex": "\\text{求全部 } (n,m) \\in \\mathbb{Z}_{>0} \\times \\mathbb{Z}_{>0} \\text{ 使得 } n! + 1 = m^2",
+      "assumptions": [
+        "原文 'integer solutions' 按该问题的通行约定规范化为正整数对 (n,m)：n! 仅在非负整数处定义，且已知解表 (4,5),(5,11),(7,71) 均为正整数",
+        "『平方数』指完全平方数 m²，其中 m 为整数"
+      ],
+      "quantified_objects": [
+        "求全部解型命题：在全体整数对 (n,m) 中刻画满足 n!+1=m² 的解集；已知部分答案 n=4,5,7，解集是否就此穷尽未定"
+      ],
+      "normalization_notes": [
+        "原文为祈使句 'Find all integer solutions'；规范化为解集的完整刻画问题，量词结构显式化",
+        "已知解 n=4,5,7 作为部分答案显式保留，不冒充完整解"
+      ],
+      "semantic_risks": [
+        "若把 'integer' 读作包含 0 与负整数，需先约定 n! 的定义域与 m 的符号；本卡按正整数解处理，与已知解表口径一致"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "阶乘加一何时恰好是完全平方数？n!+1=m² 目前只知道三个解，是否还有更多无人知晓。",
+      "short_background": "Brocard 于 1876 年（1885 年再次）提出，Ramanujan 1913 年独立重提。已知解只有 (n,m)=(4,5),(5,11),(7,71)；大规模计算搜索未发现新解。在 abc 猜想成立的条件下可以推出解只有有限多个，但 abc 猜想本身尚未解决。",
+      "why_it_matters": "陈述只需阶乘与平方数两个初等对象，却自 1876 年悬置至今；连『解是否只有有限多个』这一最弱目标也依赖未证的 abc 型输入，是初等表述与深层困难反差的典型样本。"
+    }
+  },
+  "classification": {
+    "primary_domain": "number-theory",
+    "topics": ["丢番图方程", "计算数论"],
+    "problem_types": ["existence", "classification"],
+    "expected_output_types": ["proof", "counterexample", "classification"],
+    "mathematical_objects": ["阶乘", "平方数"]
+  },
+  "provenance": {
+    "original_proposer": ["Henri Brocard"],
+    "original_year": "1876/1885（Brocard 提出；Ramanujan 1913 独立重提）",
+    "original_work": "Brocard (1876, 1885)；Ramanujan 1913（发表于 Journal of the Indian Mathematical Society 的提问栏传统）",
+    "exact_citation": "n!+1=m² 的求解问题；已知解 (4,5),(5,11),(7,71)。引自 OEIS（SRC-0005）与 Wikipedia Brocard's problem 词条（SRC-0006）。",
+    "source_urls": [
+      "https://oeis.org",
+      "https://en.wikipedia.org/wiki/Brocard%27s_problem"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "moderate",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000009-1",
+        "kind": "document_link",
+        "description": "OEIS（Brocard 问题相关序列条目，检索 'Brocard'）将问题汇总为开放，已知解仅 4,5,7。",
+        "url": "https://oeis.org",
+        "source_id": "SRC-0005",
+        "source_location": "OEIS 中 Brocard 问题相关序列（搜索 'Brocard'）",
+        "tier": "C",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      },
+      {
+        "evidence_id": "EV-000009-2",
+        "kind": "document_link",
+        "description": "Wikipedia Brocard's problem 词条同样将问题汇总为开放，并列出已知三解 (4,5),(5,11),(7,71)。",
+        "url": "https://en.wikipedia.org/wiki/Brocard%27s_problem",
+        "source_id": "SRC-0006",
+        "tier": "D",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "已知解：n = 4, 5, 7，即 (n,m) = (4,5), (5,11), (7,71)。",
+        "status": "proven",
+        "evidence": [
+          {
+            "evidence_id": "EV-000009-3",
+            "kind": "document_link",
+            "description": "OEIS 中 Brocard 问题相关序列条目记录已知解 4,5,7。",
+            "url": "https://oeis.org",
+            "source_id": "SRC-0005",
+            "tier": "C",
+            "verification_status": "verified",
+            "retrieved_at": "2026-08-28"
+          }
+        ]
+      }
+    ],
+    "best_known_bounds": [
+      {
+        "quantity": "计算搜索验证范围（在此范围内无新解）",
+        "bound": "计算搜索已推进至 10^9 以上量级（具体最大界以文献为准）",
+        "evidence": [],
+        "notes": "具体最大搜索界待人工复核后再固化；数值验证不排除更高处的解。"
+      }
+    ],
+    "known_equivalences": [
+      {
+        "statement": "在 abc 猜想成立的条件下，Brocard 问题的解只有有限多个（external:abc 猜想 ⇒ Brocard 问题解有限）。",
+        "direction": "implied_by",
+        "evidence": []
+      }
+    ],
+    "attempted_methods": [
+      {
+        "method": "大规模计算搜索",
+        "outcome": "在已验证范围内未发现新解（已知解仍仅 4,5,7）。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "无条件方法缺失；abc 型输入不可用（abc 猜想本身未解决）。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": []
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "1876 年提出，跨越约 150 年持续未解；Ramanujan 1913 年独立重提显示问题自身的吸引力。",
+        "evidence": []
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "OEIS 与 Wikipedia 等汇总持续收录；属著名的初等数论开放问题，关注度中等。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "与 abc 猜想存在条件蕴含关系：abc ⇒ 解有限，构成清晰的问题谱系分支。",
+        "evidence": []
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "解决即完整确定 n!+1=m² 的全部整数解。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "未采集到悬赏或顶级问题清单背书的具体证据；评分基础为长期持续收录与研究现状。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "初等陈述与深层困难并存：有限性依赖 abc 型输入，完全求解需要超越计算的新思想。",
+        "evidence": []
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 82,
+      "field_normalized_attention": 45,
+      "problem_genealogy": 50,
+      "downstream_impact": 40,
+      "explicit_expert_endorsement": 50,
+      "mathematical_substance": 50
+    },
+    "score_band": "medium",
+    "uncertainty": "低：六维判定主要依赖汇总型来源与问题结构本身，分歧空间小。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述初等、完全可形式化，上下文极小（仅需阶乘与平方数概念）。",
+        "evidence": []
+      },
+      {
+        "claim": "逐 n 检验平凡可自动化；反例型解答（新解）可即时核验。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "求全部解需要超越计算的新思想。",
+        "evidence": []
+      },
+      {
+        "claim": "与 abc 猜想的依赖关系使『解有限』本身未定。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [],
+    "feature_values": {
+      "statement_completeness": 95,
+      "verifiability": 92,
+      "finite_search": 75,
+      "generation_verification_gap": 50,
+      "decomposability": 80,
+      "tool_support": 80,
+      "context_size": 95,
+      "ai_precedent": 45,
+      "theory_dependency": 60
+    },
+    "score_band": "medium_high",
+    "uncertainty": "低：各维判定直接来自问题结构，分歧空间小。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "manual_curation 通道：从 OEIS 相关条目抽取原始英文陈述。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "量词显式化与解的口径（正整数对）外提。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "无库内重复；按事实单不建立库内关系，仅记录 abc 条件蕴含于 known_equivalences。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "web 检索 2026-08-28：OEIS/Wikipedia 汇总仍列为开放；搜索界细节待人工复核。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维评分，band=medium。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "九维评分，band=medium_high。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

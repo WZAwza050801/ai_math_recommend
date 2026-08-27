@@ -1,0 +1,24 @@
+{
+  "source_id": "SRC-0006",
+  "name": "Wikipedia",
+  "source_type": "encyclopedia",
+  "base_url": "https://en.wikipedia.org",
+  "access_method": "web_page",
+  "license": "CC-BY-SA 4.0",
+  "attribution_required": true,
+  "refresh_policy": "monthly",
+  "trust_tier": "D",
+  "connector_version": "none",
+  "content_formats": [
+    "html"
+  ],
+  "allowed_usage": [
+    "metadata",
+    "source_link"
+  ],
+  "rate_limit_notes": "遵守 robots 与 API 条款。",
+  "last_successful_sync": null,
+  "owner": "curator",
+  "notes": "只作导航与背景；不作为数学判断的终审证据。",
+  "enabled": false
+}

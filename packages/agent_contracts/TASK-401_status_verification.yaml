@@ -1,0 +1,53 @@
+task_id: TASK-401
+task_name: status_verification
+task_version: 1.0.0
+purpose: 核验问题当前开放状态，产出 Open Status Assessment（状态+置信等级+最后核验时间+支持/反对证据）（设计规范 §12 P4）。开放状态核验是最高风险环节（§28）。
+inputs:
+  required:
+    - 问题卡（含规范化陈述与已知结果）
+  optional:
+    - 问题族相关文献
+    - 上次核验记录
+allowed_sources:
+  - Source Registry 中 enabled=true 的来源
+allowed_tools:
+  - web_search
+  - citation_lookup
+  - openalex_query
+forbidden_actions:
+  - 不得因未检索到解答而断言问题开放（硬性规则）
+  - 不得将未核验证明声称（预印本/博客/Zenodo）作为翻转依据
+  - 不得把特殊情形的解决当作完整解决
+procedure:
+  - 检查原始问题来源（状态陈述原文）
+  - 检索最近综述、专著和维护中的问题列表
+  - 检索后续引用与明确状态陈述
+  - 用 solved / resolved / counterexample / proof / disproved 等状态词定向检索
+  - 检查是否只解决特殊情形；若有，写入 resolved_scope
+  - 保存支持证据与反对证据（未核验声称入 contradicting_evidence 且标 unverified）
+  - 输出状态、置信等级与 last_checked_at
+output_schema:
+  format: json
+  ref: https://ai-math-recommend.dev/schemas/problem_card/v1.0.0/schema.json
+  # 填充 open_status 全字段
+evidence_requirements:
+  - 状态结论至少一条非反例类证据（来源原文/综述/问题库状态行）
+  - 反对证据（含未核验声称）必须逐条记录来源与检索时间
+hard_fail_conditions:
+  - 发现可信的已解决证据但来源无法定位
+  - 状态证据相互矛盾且无法分级
+soft_fail_conditions:
+  - 检索覆盖不足 → confidence_level=limited 并注明缺口
+  - 状态存疑 → status_uncertain（宁存疑不武断）
+human_review_required_when:
+  - status != confirmed_open（所有降级状态需人工确认）
+  - 存在争议性证明声称（disputed）
+  - 拟输出 resolved（必须人工确认+二级来源）
+quality_checks:
+  - last_checked_at 为当日
+  - supporting_evidence 非空
+retry_policy:
+  max_retries: 2
+  backoff: exponential
+logging_requirements:
+  - 模型版本、提示词版本（status_verification-v0.1）、全部检索查询词与命中 URL、时间戳

@@ -1,0 +1,358 @@
+{
+  "problem_id": "OP-000002",
+  "schema_version": "1.0.0",
+  "identity": {
+    "title": "哥德巴赫猜想（Goldbach Conjecture）",
+    "aliases": ["Goldbach conjecture", "strong Goldbach conjecture", "binary Goldbach conjecture"],
+    "slug": "goldbach-conjecture",
+    "problem_family_id": null
+  },
+  "statements": {
+    "original": {
+      "text": "Every even integer greater than 2 can be written as the sum of two primes.",
+      "latex": "\\forall n \\in \\mathbb{Z}: \\; n > 2 \\wedge 2 \\mid n \\implies \\exists \\text{ primes } p, q: \\; n = p + q",
+      "language": "en",
+      "source_id": "SRC-0009",
+      "source_location": "Open Problem Garden › Goldbach's Conjecture 条目",
+      "immutable_content_hash": null
+    },
+    "normalized": {
+      "text": "对每个偶整数 n > 2，存在素数 p ≤ q 使得 n = p + q。（等价地：任一大于 2 的偶数均可写成两个素数之和。）",
+      "latex": "\\forall n \\in \\mathbb{Z}: \\left( n > 2 \\wedge 2 \\mid n \\right) \\implies \\exists \\text{ 素数 } p \\le q: \\; n = p + q",
+      "assumptions": [
+        "素数按标准定义（大于 1 且正因数仅 1 与自身）；p、q 允许相等（记号 p ≤ q 允许取等号）",
+        "量词范围：n 取全体大于 2 的偶整数（即 n ≥ 4），2 与负偶数不在断言范围内"
+      ],
+      "quantified_objects": [
+        "对任意偶整数 n > 2：存在素数 p ≤ q 使 n = p + q（∀n ∃p, q；反例形态为单个不满足分解的偶数）"
+      ],
+      "normalization_notes": [
+        "原文为存在性表述；规范化显式写出全称量词 ∀n 与存在量词 ∃p, q",
+        "规范化引入有序表示 p ≤ q：同一分解的两种书写顺序视为同一个表示，不改变数学内容"
+      ],
+      "semantic_risks": [
+        "原文 sum of two primes 不要求两素数不同；p = q 情形（记号 p ≤ q 取等号）包含在断言内，与原文一致",
+        "greater than 2 的边界按字面理解（最小情形 n = 4），未引入额外例外"
+      ]
+    },
+    "reader_summary": {
+      "one_sentence": "每个大于 2 的偶数是否都能写成两个素数之和——加性数论最著名的未解问题。",
+      "short_background": "1742 年 Goldbach 与 Euler 的通信给出了现代形式：任一偶整数 n > 2 都可写成两个素数之和。问题至今开放：弱（三元）形式——每个大于 5 的奇数为三素数之和——已于 2013 年由 Helfgott 证明，圆法与筛法积累了大量结构性结果；强形式的数值验证已推进至 4×10^18，但仍无证明。",
+      "why_it_matters": "它是偶数素数加性表示的中心问题；弱形式的解决展示了圆法/筛法工具链的能力与边界，强形式的攻克将标志加性素数理论的重大跃迁。"
+    }
+  },
+  "classification": {
+    "primary_domain": "number-theory",
+    "topics": ["素数分布", "加性数论"],
+    "problem_types": ["existence"],
+    "expected_output_types": ["proof", "counterexample"],
+    "mathematical_objects": ["偶数", "素数加性表示"]
+  },
+  "provenance": {
+    "original_proposer": ["Christian Goldbach", "Leonhard Euler"],
+    "original_year": "1742",
+    "original_work": "Goldbach–Euler 1742 年通信；现代形式由 Euler 回信确认",
+    "exact_citation": "Goldbach 致 Euler 信（1742-06-07）及 Euler 回信",
+    "source_urls": [
+      "https://www.openproblemgarden.org/op/goldbachs_conjecture",
+      "https://en.wikipedia.org/wiki/Goldbach_conjecture"
+    ],
+    "discovery_method": "manual_curation",
+    "discovered_at": "2026-08-28"
+  },
+  "open_status": {
+    "status": "confirmed_open",
+    "confidence_level": "high",
+    "last_checked_at": "2026-08-28",
+    "supporting_evidence": [
+      {
+        "evidence_id": "EV-000002-1",
+        "kind": "document_link",
+        "description": "Open Problem Garden 的 Goldbach's Conjecture 条目将该问题列为开放（2026-08-28 检索确认仍在列）。",
+        "url": "https://www.openproblemgarden.org/op/goldbachs_conjecture",
+        "source_id": "SRC-0009",
+        "tier": "A",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28"
+      },
+      {
+        "evidence_id": "EV-000002-2",
+        "kind": "source_quote",
+        "description": "强哥德巴赫猜想已数值验证至 4×10^18（Oliveira e Silva, Herzog, Pardi, Mathematics of Computation 83 (2014)），无反例；数值验证不构成证明。",
+        "source_id": "SRC-0014",
+        "source_location": "Math. Comp. 83 (2014), 2033–2060",
+        "tier": "B",
+        "verification_status": "verified",
+        "retrieved_at": "2026-08-28",
+        "notes": "计算证据支撑'无早期反例'，与问题开放状态一致。"
+      }
+    ],
+    "contradicting_evidence": [],
+    "resolved_scope": null,
+    "human_verified": false
+  },
+  "known_results": {
+    "special_cases": [
+      {
+        "statement": "弱（三元）哥德巴赫猜想：每个大于 5 的奇数为三个素数之和——已由 Helfgott (2013) 证明。",
+        "status": "proven",
+        "evidence": [
+          {
+            "evidence_id": "EV-000002-3",
+            "kind": "document_link",
+            "description": "Helfgott 2013 对弱哥德巴赫猜想的证明（arXiv 预印本 1312.7748）。",
+            "url": "https://arxiv.org/abs/1312.7748",
+            "source_id": "SRC-0002",
+            "tier": "C",
+            "verification_status": "verified",
+            "retrieved_at": "2026-08-28"
+          }
+        ]
+      }
+    ],
+    "best_known_bounds": [
+      {
+        "quantity": "数值验证范围（强形式无反例）",
+        "bound": "4 < n ≤ 4×10^18 的全部偶数均已逐一验证存在素数对分解（Oliveira e Silva, Herzog, Pardi 2014）",
+        "evidence": [
+          {
+            "evidence_id": "EV-000002-4",
+            "kind": "source_quote",
+            "description": "数值验证至 4×10^18 的文献记录（Mathematics of Computation 83 (2014)）。",
+            "source_id": "SRC-0014",
+            "source_location": "Math. Comp. 83 (2014), 2033–2060",
+            "tier": "B",
+            "verification_status": "verified",
+            "retrieved_at": "2026-08-28",
+            "notes": "计算证据不构成证明。"
+          }
+        ]
+      }
+    ],
+    "known_equivalences": [],
+    "attempted_methods": [
+      {
+        "method": "圆法（circle method）",
+        "outcome": "证明了弱（三元）形式（Helfgott 2013，见 special_cases）；对强形式的主弧控制不足，例外集之外的估计不达所需量级。",
+        "evidence": []
+      },
+      {
+        "method": "筛法与计算验证",
+        "outcome": "给出辅助性分布结果；数值验证（至 4×10^18）为结构性验证而非证明。",
+        "evidence": []
+      }
+    ],
+    "blocking_obstacles": [
+      {
+        "obstacle": "圆法在强形式下例外集之外的主弧下界不足。",
+        "evidence": []
+      },
+      {
+        "obstacle": "加性结构与素数局部障碍相互作用。",
+        "evidence": []
+      }
+    ]
+  },
+  "relationships": {
+    "equivalent_to": [],
+    "generalizes": [],
+    "special_case_of": [],
+    "implies": [],
+    "implied_by": [],
+    "related_to": [
+      {
+        "target": "OP-000004",
+        "evidence": [],
+        "notes": "同为加性素数经典问题，互不蕴含。"
+      }
+    ]
+  },
+  "importance_assessment": {
+    "evidence": [
+      {
+        "dimension": "historical_persistence",
+        "finding": "1742 年 Goldbach–Euler 通信起源，至今 284 年、跨越数代数学家。",
+        "evidence": [
+          {
+            "evidence_id": "EV-000002-5",
+            "kind": "source_quote",
+            "description": "1742 年通信起源的文献记录（SRC-0014 学术综述）。",
+            "source_id": "SRC-0014",
+            "tier": "B",
+            "verification_status": "verified",
+            "retrieved_at": "2026-08-28"
+          }
+        ]
+      },
+      {
+        "dimension": "field_normalized_attention",
+        "finding": "数论长期最高关注度问题之一（定性评定 90）。",
+        "evidence": []
+      },
+      {
+        "dimension": "problem_genealogy",
+        "finding": "弱（三元）形式已解决（Helfgott 2013），强/弱两级的谱系完整，构成加性素数问题族的参照系。",
+        "evidence": [
+          {
+            "evidence_id": "EV-000002-6",
+            "kind": "document_link",
+            "description": "Helfgott 2013 弱哥德巴赫证明（arXiv:1312.7748）。",
+            "url": "https://arxiv.org/abs/1312.7748",
+            "source_id": "SRC-0002",
+            "tier": "C",
+            "verification_status": "verified",
+            "retrieved_at": "2026-08-28"
+          }
+        ]
+      },
+      {
+        "dimension": "downstream_impact",
+        "finding": "加性数论中心问题；解决即确定全体偶数的素数加性表示（定性评定 80）。",
+        "evidence": []
+      },
+      {
+        "dimension": "explicit_expert_endorsement",
+        "finding": "最著名未解问题之一，教材级经典并收录于权威问题列表（定性评定 90）。",
+        "evidence": []
+      },
+      {
+        "dimension": "mathematical_substance",
+        "finding": "圆法/筛法长期积累仍未攻克强形式；数值验证至 4×10^18 无反例，体现计算可检验性与证明难度的并存。",
+        "evidence": [
+          {
+            "evidence_id": "EV-000002-7",
+            "kind": "source_quote",
+            "description": "数值验证至 4×10^18（Math. Comp. 83 (2014)）。",
+            "source_id": "SRC-0014",
+            "source_location": "Math. Comp. 83 (2014), 2033–2060",
+            "tier": "B",
+            "verification_status": "verified",
+            "retrieved_at": "2026-08-28"
+          }
+        ]
+      }
+    ],
+    "feature_values": {
+      "historical_persistence": 96,
+      "field_normalized_attention": 90,
+      "problem_genealogy": 85,
+      "downstream_impact": 80,
+      "explicit_expert_endorsement": 90,
+      "mathematical_substance": 85
+    },
+    "score_band": "high",
+    "uncertainty": "低：起源、弱形式解决与数值验证均有直接文献支撑；关注度归一化仍依赖定性方法（v0.1）。",
+    "rubric_version": "importance-rubric-v0.1"
+  },
+  "ai_affordance_assessment": {
+    "evidence_for": [
+      {
+        "claim": "陈述初等且可完全形式化（一阶量词结构清晰：∀n ∃p, q）。",
+        "evidence": []
+      },
+      {
+        "claim": "反例（不满足 n = p + q 的偶数）可由程序即时核验。",
+        "evidence": []
+      },
+      {
+        "claim": "按 n 逐点可分解：验证与搜索可天然并行。",
+        "evidence": []
+      },
+      {
+        "claim": "PARI/SageMath 等数论工具与筛法基础设施成熟。",
+        "evidence": []
+      },
+      {
+        "claim": "上下文极小：陈述自足，不依赖高深前置理论即可理解与检验。",
+        "evidence": []
+      }
+    ],
+    "evidence_against": [
+      {
+        "claim": "证明需要超越现有圆法/筛法的加性结构控制，生成端无已知路线。",
+        "evidence": []
+      },
+      {
+        "claim": "验证容易与生成证明之间差距大：逐点核验不能覆盖无穷多偶数。",
+        "evidence": []
+      }
+    ],
+    "unknowns": [
+      "圆法精细化路线能否覆盖主弧下界（现有评估无法判定）"
+    ],
+    "feature_values": {
+      "statement_completeness": 90,
+      "verifiability": 88,
+      "finite_search": 55,
+      "generation_verification_gap": 45,
+      "decomposability": 70,
+      "tool_support": 85,
+      "context_size": 85,
+      "ai_precedent": 50,
+      "theory_dependency": 45
+    },
+    "score_band": "medium_high",
+    "uncertainty": "中：验证端与工具端强、生成端依赖未知的加性结构突破，两端拉扯。",
+    "rubric_version": "ai-affordance-rubric-v0.1"
+  },
+  "publication": {
+    "lifecycle_state": "scored",
+    "publishable": false,
+    "visibility": "internal",
+    "publish_blockers": [
+      "P7 专家核验未完成（human_verified=false）",
+      "发布门禁要求人工确认（§10.2）"
+    ]
+  },
+  "audit": {
+    "created_by": "agent:overnight-card-writer",
+    "created_at": "2026-08-27T18:30:00Z",
+    "updated_at": "2026-08-27T18:30:00Z",
+    "current_version": 1,
+    "model_runs": [
+      {
+        "task_name": "TASK-101_candidate_extraction",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "extraction-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "从事实单抽取英文原始陈述、来源定位与出处信息。"
+      },
+      {
+        "task_name": "TASK-201_normalization",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "normalization-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "中文化+LaTeX 规范化，量词显式化并外提假设。"
+      },
+      {
+        "task_name": "TASK-301_dedup_and_relation",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "dedup-relation-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "仅按事实单建立关系：related_to OP-000004（互不蕴含）。"
+      },
+      {
+        "task_name": "TASK-401_status_verification",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "status_verification-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "OPG 列为开放，数值验证（4×10^18）不构成证明；无矛盾声称。"
+      },
+      {
+        "task_name": "TASK-501_importance_evidence",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "importance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "六维重要性按 importance-rubric-v0.1 评定并绑定证据条目。"
+      },
+      {
+        "task_name": "TASK-601_ai_affordance_assessment",
+        "model": "glm-5.3 (DSH overnight session)",
+        "prompt_version": "ai-affordance-rubric-v0.1",
+        "executed_at": "2026-08-27T18:30:00Z",
+        "notes": "九维 AI 可供性按 ai-affordance-rubric-v0.1 评定。"
+      }
+    ],
+    "human_reviews": []
+  }
+}

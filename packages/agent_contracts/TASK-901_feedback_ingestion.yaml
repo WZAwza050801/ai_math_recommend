@@ -1,0 +1,44 @@
+task_id: TASK-901
+task_name: feedback_ingestion
+task_version: 1.0.0
+purpose: 将用户与问题卡的交互转为结构化反馈事件，支持撤销与去重，为未来学习闭环积累数据（设计规范 §12 P9、ADR-008）。确定性程序任务。
+inputs:
+  required:
+    - 用户动作事件（draw/open/save/add_to_pool/skip/not_my_field/too_much_background/importance_disputed/ai_affordance_disputed/possibly_resolved/statement_error/pairwise_preference/undo）
+    - problem_id 或 draw_id
+  optional:
+    - 低负担原因标注
+allowed_sources: []
+allowed_tools:
+  - feedback_service
+  - audit_log
+forbidden_actions:
+  - 不得把点击率直接解释为数学重要性
+  - 不得把兴趣标签写入重要性维度（三类标签分离，§19.2）
+  - 不得静默丢弃纠错类反馈（statement_error / possibly_resolved 必须生成审核任务）
+procedure:
+  - 校验动作枚举与目标存在性
+  - 幂等去重（同用户同目标同动作短窗口折叠）
+  - undo 计算逆事件而非删除记录
+  - 纠错类反馈路由至审核/状态复核队列
+  - 写入审计日志
+output_schema:
+  format: json
+  ref: "docs/07_UX_AND_INTERACTION_SPEC.md §P9 动作枚举"
+evidence_requirements:
+  - 事件必须带时间戳、用户、目标、动作、来源页面
+hard_fail_conditions:
+  - 动作枚举非法
+  - 目标问题卡不存在
+soft_fail_conditions:
+  - 重复事件（折叠并记录）
+human_review_required_when:
+  - statement_error / possibly_resolved 触发人工核验任务
+quality_checks:
+  - 枚举合法性
+  - undo 配对完整性
+retry_policy:
+  max_retries: 1
+  backoff: fixed
+logging_requirements:
+  - 事件流水、去重折叠记录、时间戳

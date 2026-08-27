@@ -1,0 +1,26 @@
+{
+  "source_id": "SRC-0003",
+  "name": "Terence Tao blog (What's new)",
+  "source_type": "blog",
+  "base_url": "https://terrytao.wordpress.com",
+  "access_method": "web_page",
+  "license": "CC-BY-NC-SA（以站点声明为准）",
+  "attribution_required": true,
+  "refresh_policy": "monthly",
+  "trust_tier": "D",
+  "connector_version": "none",
+  "content_formats": [
+    "html",
+    "latex"
+  ],
+  "allowed_usage": [
+    "metadata",
+    "statement",
+    "source_link"
+  ],
+  "rate_limit_notes": "普通网页。",
+  "last_successful_sync": null,
+  "owner": "curator",
+  "notes": "作者为顶尖专家的博客；D 级默认但专家作者性强，如 Erdős 偏差问题解决公告。",
+  "enabled": false
+}

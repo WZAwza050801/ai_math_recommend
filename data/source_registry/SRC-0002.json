@@ -1,0 +1,28 @@
+{
+  "source_id": "SRC-0002",
+  "name": "arXiv",
+  "source_type": "preprint_server",
+  "base_url": "https://arxiv.org",
+  "access_method": "http_api",
+  "license": "各异（arXiv 非独占许可 / CC，逐篇确认）",
+  "attribution_required": true,
+  "refresh_policy": "weekly",
+  "trust_tier": "C",
+  "connector_version": "none",
+  "content_formats": [
+    "latex",
+    "pdf",
+    "json"
+  ],
+  "allowed_usage": [
+    "metadata",
+    "statement",
+    "source_link",
+    "full_text_index"
+  ],
+  "rate_limit_notes": "官方 API：建议 1 请求/3 秒，遵循接口条款。",
+  "last_successful_sync": null,
+  "owner": "curator",
+  "notes": "论文正文中的猜想为 C 级来源；预印本声称证明一律视为 unverified。",
+  "enabled": false
+}
