@@ -1,0 +1,23 @@
+{
+  "external_id": "1262.42012",
+  "fetched_at": "2026-08-27T21:16:33+00:00",
+  "meta": {
+    "authors": [
+      "Casazza, Peter G."
+    ],
+    "document_index": 0,
+    "document_type": "serial article",
+    "links": [
+      "https://doi.org/10.1007/978-0-8176-8373-3_11"
+    ],
+    "msc_codes": [
+      "42C15"
+    ],
+    "source": "Casazza, Peter G. (ed.) et al., Finite frames. Theory and applications. Boston, MA: Birkhäuser (ISBN 978-0-8176-8372-6/hbk; 978-0-8176-8373-3/ebook). Applied and Numerical Harmonic Analysis, 381-413 (2013).",
+    "year": "2013"
+  },
+  "source_id": "SRC-0020",
+  "text": "zbMATH Open Web Interface contents unavailable due to conflicting licenses.",
+  "title": "The Kadison-Singer and Paulsen problems in finite frame theory",
+  "url": "https://zbmath.org/6149149"
+}

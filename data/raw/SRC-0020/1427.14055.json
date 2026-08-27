@@ -1,0 +1,22 @@
+{
+  "external_id": "1427.14055",
+  "fetched_at": "2026-08-27T21:16:33+00:00",
+  "meta": {
+    "authors": [
+      "Oort, Frans"
+    ],
+    "document_index": 1,
+    "document_type": "serial article",
+    "links": [],
+    "msc_codes": [
+      "14H10",
+      "14C34"
+    ],
+    "source": "Oort, Frans (ed.), Open problems in arithmetic algebraic geometry. Based on the presentations at the conference `Arithmetic and geometry of abelian varieties', 1995. With appendices by Frans Oort. Somerville, MA: International Press; Beijing: Higher Education Press. Adv. Lect. Math. (ALM) 46, 71-93 (2019).",
+    "year": "2019"
+  },
+  "source_id": "SRC-0020",
+  "text": "Summary: A conjecture by \\textit{R. F. Coleman} [Torsion points on curves. Adv. Stud. Pure Math. 12, 235--247 (1987; Zbl 0653.14015)], still unsolved, can be studied by geometric means by considering the moduli space of Jacobians (called the Torelli locus) inside the moduli space of principally polarized abelian varieties. Using the André-Oort conjecture, now,a theorem in this case, see Chapter 3, this leads to the study of special subvarieties generically contained in the open Torelli locus, see Expectation 2.3 in this chapter. Both this expectation and the Coleman conjecture are challenging open problems.\n\nFor the entire collection see [Zbl 1425.14002].",
+  "title": "Special subvarieties in the Torelli locus",
+  "url": "https://zbmath.org/7128850"
+}

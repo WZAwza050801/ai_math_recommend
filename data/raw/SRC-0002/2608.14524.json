@@ -1,0 +1,19 @@
+{
+  "external_id": "2608.14524",
+  "fetched_at": "2026-08-27T21:15:34+00:00",
+  "meta": {
+    "authors": [
+      "Santiago Radi"
+    ],
+    "categories": [
+      "math.NT",
+      "math.GR"
+    ],
+    "matched_keyword": "open problem",
+    "published": "2026-08-14T17:43:43Z"
+  },
+  "source_id": "SRC-0002",
+  "text": "In 1985, Odoni initiated the study of arboreal representations and the fixed-point proportion, motivated by prime density problems in arithmetic dynamics. Since then, many questions regarding the connection between the dynamics of rational functions and the Galois groups associated to their dynamics (iterated Galois groups) have been posed. In this article, we give several contributions to this connection with the introduction of the concept of virtually mixing groups. This new concept is related to the capability of self-replication of the iterated Galois groups, and when it fails to be completely self-replicated, the failure is always by a finite index normal subgroup. It turns out that the quotient by this subgroup contains valuable information of the properties of the rational function. First, we investigate the inverse Galois problem, showing that iterated Galois groups of rational functions are always virtually mixing and the failure (the quotient by this finite-index subgroup) is related to geometric properties of the rational function. As a consequence, we prove that the rational function is induced by an endomorphism of an algebraic curve (dynamical pullback) if and only if this failure is non-trivial. Finally, we solve the main open problem of the fixed-point proportion of geometric iterated Galois groups of rational functions, by showing that the fixed-point proportion is zero when the map is not a dynamical pullback. This result has direct applications to prime density problems, proportion of periodic points in the reduction of maps and proportion of periodic points over finite fields. The proofs in this article rely on a combination of techniques and results from group theory, ergodic theory, probability, number theory, complex dynamics, energy transport in graphs, arithmetic dynamics and algebraic geometry.",
+  "title": "The inverse Galois problem of iterated Galois groups and their fixed-point proportion",
+  "url": "https://arxiv.org/abs/2608.14524"
+}

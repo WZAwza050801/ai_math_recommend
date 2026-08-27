@@ -1,0 +1,19 @@
+{
+  "external_id": "2608.22635",
+  "fetched_at": "2026-08-27T21:15:34+00:00",
+  "meta": {
+    "authors": [
+      "Ana Jurasić",
+      "Matej Jurasić"
+    ],
+    "categories": [
+      "math.NT"
+    ],
+    "matched_keyword": "open problem",
+    "published": "2026-08-23T22:39:40Z"
+  },
+  "source_id": "SRC-0002",
+  "text": "A set $\\{a,b,c\\}$ of distinct positive integers is called a Diophantine triple if $ab+1$, $ac+1$, and $bc+1$ are perfect squares. Dujella formulated the conjecture that the only integral $x$-coordinates on the attached elliptic curve $$y^2=(ax+1)(bx+1)(cx+1)$$ are $0,d_-,d_+$, together with $-1$ when the triple contains $1$, where $d_{\\pm}=a+b+c+2abc \\pm2\\sqrt{(ab+1)(ac+1)(bc+1)}$. The weaker question was stated as Problem 4.8 in Dujella's list of open problems: must every integral point with $x\\ne-1$ make $ax+1$, $bx+1$, and $cx+1$ all perfect squares? We construct infinitely many triples $\\{5,115,c\\}$ admitting an integral point with $x\\ne-1$ for which all three factors are nonsquares.",
+  "title": "Counterexamples to Dujella's conjecture on integral points on the elliptic curve attached to a Diophantine triple",
+  "url": "https://arxiv.org/abs/2608.22635"
+}

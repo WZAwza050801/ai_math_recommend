@@ -1,0 +1,19 @@
+{
+  "external_id": "2608.15903",
+  "fetched_at": "2026-08-27T21:15:34+00:00",
+  "meta": {
+    "authors": [
+      "Robin Visser",
+      "Volker Ziegler"
+    ],
+    "categories": [
+      "math.NT"
+    ],
+    "matched_keyword": "open problem",
+    "published": "2026-08-16T19:39:45Z"
+  },
+  "source_id": "SRC-0002",
+  "text": "Let $K$ be a number field of degree $D$ with maximal order $\\mathcal{O}_K$. We show that under certain conditions on $K$, which in particular are always satisfied if $D$ is odd or if $D \\geq 3$ and $K$ is primitive, the set of positive integers $N_K$ that can be expressed as a sum of two units in $\\mathcal{O}_K^*$ is a finite effectively computable set. This result partially resolves an open problem posed by Tinková, Yatsyna, and the first author. We illustrate our method by explicitly computing $N_K$ for the smallest totally real quintic field $K$ with Galois group $S_5$.",
+  "title": "On integers that are representable as the sum of two units",
+  "url": "https://arxiv.org/abs/2608.15903"
+}

@@ -1,0 +1,14 @@
+{
+  "external_id": "W4401543614",
+  "fetched_at": "2026-08-27T21:16:12+00:00",
+  "meta": {
+    "cited_by_count": 3,
+    "doi": "https://doi.org/10.1109/tit.2024.3443090",
+    "openalex_id": "W4401543614",
+    "publication_year": 2024
+  },
+  "source_id": "SRC-0011",
+  "text": "Carlet et al. showed that for$q\\gt 2$, there exists a q-ary linear complementary pair (LCP) of codes whose security parameter is as good as the minimum distance of the best linear code with the same length and dimension. In this paper, we study the best security parameters of binary LCPs of codes. As a result, we solve an open problem proposed by Carlet et al. (IEEE Trans. Inf. Theory 65(3): 1694-1704, 2019) and a conjecture proposed by Choi et al. (Cryptogr. Commun. 15(2): 469-486, 2023).",
+  "title": "An Open Problem and a Conjecture on Binary Linear Complementary Pairs of Codes",
+  "url": "https://doi.org/10.1109/tit.2024.3443090"
+}

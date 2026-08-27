@@ -1,0 +1,15 @@
+{
+  "external_id": "10.31219/osf.io/dr5w2_v1",
+  "fetched_at": "2026-08-27T21:16:37+00:00",
+  "meta": {
+    "container_title": "",
+    "doi": "10.31219/osf.io/dr5w2_v1",
+    "is_referenced_by_count": 0,
+    "issued_year": 2025,
+    "type": "posted-content"
+  },
+  "source_id": "SRC-0021",
+  "text": "Collatz conjecture, a longstanding problem in number theory, has intrigued mathematicians due to its simple formulation yet complex behavior. In this study, Moussa Model of Positive Integers is introduced, a novel mathematical framework that extends and generalizes the Collatz conjecture. This model classifies integers into distinct sets, including decaying sequences, keys, subkeys, and their multiples, each following specific transformation rules. Moussa conjecture is introduced, which postulates that an infinite number of possible functions-each with distinct formulations and variations-converge to 1, thereby providing a broader perspective on integer dynamics. To validate this model, a computational approach using Python was employed, testing the framework across a defined numerical range. The results confirm that all tested integers adhere to Moussa model, reinforcing its structural validity. Additionally, multiple variations of transformation rules are explored, demonstrating that different formulations consistently align with the proposed model. A significant outcome of this study is that if Moussa conjecture is proven, the Collatz conjecture would be directly established as a special case within this generalized framework. This study suggests potential applications of Moussa model in cryptography, steganography, and encryption systems, particularly through the representation of keys as infinite structured sets. By approaching number theory through this innovative perspective, new mathematical problems may be addressed, and additional research directions may emerge.",
+  "title": "Moussa Conjecture: Insights on the Dynamics of 3n + 1 Problem with a Proposal of a Novel Representation of Positive Integers",
+  "url": "https://doi.org/10.31219/osf.io/dr5w2_v1"
+}

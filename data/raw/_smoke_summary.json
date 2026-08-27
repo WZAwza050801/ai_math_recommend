@@ -1,0 +1,135 @@
+{
+  "generated_at": "2026-08-27T21:16:37+00:00",
+  "limit_per_source": 5,
+  "results": [
+    {
+      "source_id": "SRC-0002",
+      "connector": "ArxivConnector",
+      "count": 5,
+      "expected_limit": 5,
+      "duration_seconds": 2.58,
+      "errors": [],
+      "files": [
+        "data\\raw\\SRC-0002\\2608.24948.json",
+        "data\\raw\\SRC-0002\\2608.22635.json",
+        "data\\raw\\SRC-0002\\2608.15903.json",
+        "data\\raw\\SRC-0002\\2608.14524.json",
+        "data\\raw\\SRC-0002\\2608.01327.json"
+      ]
+    },
+    {
+      "source_id": "SRC-0008",
+      "connector": "FormalConjecturesConnector",
+      "count": 5,
+      "expected_limit": 5,
+      "duration_seconds": 14.55,
+      "errors": [
+        "list_dir conjectures: HTTP 404 after 1 attempt(s): https://api.github.com/repos/google-deepmind/formal-conjectures/contents/conjectures"
+      ],
+      "files": [
+        "data\\raw\\SRC-0008\\1.lean.json",
+        "data\\raw\\SRC-0008\\10.lean.json",
+        "data\\raw\\SRC-0008\\100.lean.json",
+        "data\\raw\\SRC-0008\\1000.lean.json",
+        "data\\raw\\SRC-0008\\1002.lean.json"
+      ]
+    },
+    {
+      "source_id": "SRC-0009",
+      "connector": "OpenProblemGardenConnector",
+      "count": 5,
+      "expected_limit": 5,
+      "duration_seconds": 12.02,
+      "errors": [
+        "api 端点不可用（回退索引页）: HTTP 404 after 1 attempt(s): https://www.openproblemgarden.org/api",
+        "/op/ 索引页: HTTP 404 after 1 attempt(s): https://www.openproblemgarden.org/op/"
+      ],
+      "files": [
+        "data\\raw\\SRC-0009\\is_dragon_ball_legends_safe_account_security_guide_avoid_bans_scams_hacks_2026.json",
+        "data\\raw\\SRC-0009\\dragon_ball_legends_pvp_team_building_guide_tags_synergy_win_conditions_2026.json",
+        "data\\raw\\SRC-0009\\dragon_ball_legends_free_chrono_crystals_legit_methods_that_actually_work_2026_0.json",
+        "data\\raw\\SRC-0009\\dragon_ball_legends_free_chrono_crystals_legit_methods_that_actually_work_2026.json",
+        "data\\raw\\SRC-0009\\nowhere_zero_flows.json"
+      ]
+    },
+    {
+      "source_id": "SRC-0010",
+      "connector": "ErdosProblemsConnector",
+      "count": 0,
+      "expected_limit": 5,
+      "duration_seconds": 5.24,
+      "errors": [
+        "api 端点不可用（回退 HTML）: HTTP 404 after 1 attempt(s): https://www.erdosproblems.com/api/problems",
+        "index: HTML 未解析出 /problems/<id> 链接，返回空列表"
+      ],
+      "files": []
+    },
+    {
+      "source_id": "SRC-0011",
+      "connector": "OpenAlexConnector",
+      "count": 5,
+      "expected_limit": 5,
+      "duration_seconds": 5.21,
+      "errors": [],
+      "files": [
+        "data\\raw\\SRC-0011\\W4390659634.json",
+        "data\\raw\\SRC-0011\\W4405921842.json",
+        "data\\raw\\SRC-0011\\W4403429228.json",
+        "data\\raw\\SRC-0011\\W4394621978.json",
+        "data\\raw\\SRC-0011\\W4401543614.json"
+      ]
+    },
+    {
+      "source_id": "SRC-0019",
+      "connector": "GithubConnector",
+      "count": 5,
+      "expected_limit": 5,
+      "duration_seconds": 10.16,
+      "errors": [],
+      "files": [
+        "data\\raw\\SRC-0019\\1.lean.json",
+        "data\\raw\\SRC-0019\\10.lean.json",
+        "data\\raw\\SRC-0019\\100.lean.json",
+        "data\\raw\\SRC-0019\\1000.lean.json",
+        "data\\raw\\SRC-0019\\1002.lean.json"
+      ]
+    },
+    {
+      "source_id": "SRC-0020",
+      "connector": "ZbMathConnector",
+      "count": 5,
+      "expected_limit": 5,
+      "duration_seconds": 10.27,
+      "errors": [],
+      "files": [
+        "data\\raw\\SRC-0020\\1262.42012.json",
+        "data\\raw\\SRC-0020\\1427.14055.json",
+        "data\\raw\\SRC-0020\\1518.15012.json",
+        "data\\raw\\SRC-0020\\1543.11060.json",
+        "data\\raw\\SRC-0020\\1158.37007.json"
+      ]
+    },
+    {
+      "source_id": "SRC-0021",
+      "connector": "CrossrefConnector",
+      "count": 5,
+      "expected_limit": 5,
+      "duration_seconds": 4.18,
+      "errors": [],
+      "files": [
+        "data\\raw\\SRC-0021\\10.31219_osf.io_xs5ju.json",
+        "data\\raw\\SRC-0021\\10.1515_9783112236185-018.json",
+        "data\\raw\\SRC-0021\\10.1515_9783112236185-019.json",
+        "data\\raw\\SRC-0021\\10.1515_9783112236185-012.json",
+        "data\\raw\\SRC-0021\\10.31219_osf.io_dr5w2_v1.json"
+      ]
+    }
+  ],
+  "totals": {
+    "sources": 8,
+    "ok": 5,
+    "partial": 2,
+    "failed": 1,
+    "documents": 35
+  }
+}

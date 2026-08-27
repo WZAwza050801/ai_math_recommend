@@ -1,0 +1,19 @@
+{
+  "external_id": "2608.01327",
+  "fetched_at": "2026-08-27T21:15:34+00:00",
+  "meta": {
+    "authors": [
+      "Li Zhu",
+      "Hongfeng Wu"
+    ],
+    "categories": [
+      "math.NT"
+    ],
+    "matched_keyword": "open problem",
+    "published": "2026-08-02T15:47:45Z"
+  },
+  "source_id": "SRC-0002",
+  "text": "In this note we study binomial orders and coefficient criteria for primitive quadratic polynomials over finite fields. First, we introduce Lucas sequences associated with irreducible quadratic polynomials and prove that their first zero terms determine both the binomial order and the order of the polynomial, thereby confirming a conjecture of Vega. Next, by computing the numbers of irreducible and primitive quadratic polynomials with a fixed primitive constant term, we completely classify the finite fields for which Vega's coefficient criterion $b^2\\neq2c$ is valid, answering another open problem posed by Vega. Finally, for finite fields satisfying $q+1=2^mπ$, where $π$ is an odd prime, we establish a unified coefficient criterion for primitive quadratic polynomials in terms of a recursively defined family of exceptional polynomials, extending the previously known criteria for $q+1=2π$ and $q+1=4π$.",
+  "title": "On binomial order and primitivity of irreducible quadratic polynomials over finite fields",
+  "url": "https://arxiv.org/abs/2608.01327"
+}

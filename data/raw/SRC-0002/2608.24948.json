@@ -1,0 +1,20 @@
+{
+  "external_id": "2608.24948",
+  "fetched_at": "2026-08-27T21:15:34+00:00",
+  "meta": {
+    "authors": [
+      "Dawid Tarłowski"
+    ],
+    "categories": [
+      "math.NT",
+      "math.CO",
+      "math.PR"
+    ],
+    "matched_keyword": "open problem",
+    "published": "2026-08-24T18:10:24Z"
+  },
+  "source_id": "SRC-0002",
+  "text": "Let $s(n)$ denote the number of ones in the binary expansion of an integer $n\\in\\mathbb{N}$, and let $μ_t$ be the probability measure on $\\mathbb{Z}$ defined by the asymptotic densities of the level sets of the function $\\mathbb{N}\\ni n\\mapsto s(n+t)-s(n)\\in\\mathbb{Z}$. Let $P_t$ be the family of finitely supported measures defined by the convolution $μ_t=μ_1*P_t$. Recently, Tarlowski (2026) has shown that the family $P_t$ may be represented as a recursively grown binary tree $T_t$, and that the Cusick's conjecture - $μ_t(\\mathbb{N})>\\frac12$, $t\\in\\mathbb{N}$, - follows from the asymmetry property of the family $T_t$, which was posed there as an open problem. Next, Cheng (2026) has provided the combinatorial description of the family $T_t$ in the language of principal subsequence ideals, and proved both conjectures. Both of these problems are directly related to the problem of determining the zeros of the function $\\mathbb{N}\\ni t \\mapsto P_t(\\mathbb{N})-\\frac12\\in[0,\\tfrac12]$, a problem left open by Cheng (2026) as a saturation problem, and previously analyzed only numerically. In this paper we solve this problem completely. Writing an odd integer $t\\ge3$ as $t=(1\\,w\\,1)_2$ with $w\\in\\{0,1\\}^{\\star}$, we show that $P_t(\\mathbb{N})=\\frac12$ if and only if $w$ is \\emph{saturated} in the following sense: in the block decomposition $w=1^{a_0}\\,0\\,1^{a_1}\\,0\\cdots0\\,1^{a_k}$ with exactly $k$ zeros, every block of \"1\" satisfies $a_i\\ge k$. Additionally, we show that the lower bound for $P_t(\\mathbb{N})$ established by Cheng for $0$-initial words holds true for all non-saturated words.",
+  "title": "The equality cases $P_t(\\mathbb{N})=\\tfrac12$ for the deconvolved sum-of-digits measures",
+  "url": "https://arxiv.org/abs/2608.24948"
+}

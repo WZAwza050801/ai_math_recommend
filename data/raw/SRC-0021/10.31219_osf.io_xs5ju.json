@@ -1,0 +1,15 @@
+{
+  "external_id": "10.31219/osf.io/xs5ju",
+  "fetched_at": "2026-08-27T21:16:37+00:00",
+  "meta": {
+    "container_title": "",
+    "doi": "10.31219/osf.io/xs5ju",
+    "is_referenced_by_count": 0,
+    "issued_year": 2017,
+    "type": "posted-content"
+  },
+  "source_id": "SRC-0021",
+  "text": "I published some solutions a time ago to Goldbach Conjecture, Collatz Problem and Twin Primes; but I noticed that there were some serious logic voids to explain the problems. After that I made some corrections in my another article; but still there were some mistakes. Even so, I can say it easily that here I brought exact solutions for them out by new methods back to the drawing board.",
+  "title": "Brief Solutions to Collatz Problem, Goldbach Conjecture and Twin Primes",
+  "url": "https://doi.org/10.31219/osf.io/xs5ju"
+}
