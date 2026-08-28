@@ -2,15 +2,15 @@
   "source_id": "SRC-0010",
   "name": "Erdős Problems (erdosproblems.com)",
   "source_type": "problem_list",
-  "base_url": "https://www.erdosproblems.com",
-  "access_method": "web_page",
-  "license": "以站点声明为准",
+  "base_url": "https://github.com/teorth/erdosproblems",
+  "access_method": "git",
+  "license": "Apache-2.0",
   "attribution_required": true,
   "refresh_policy": "monthly",
-  "trust_tier": "B",
+  "trust_tier": "A",
   "connector_version": "0.1.0",
   "content_formats": [
-    "html"
+    "yaml"
   ],
   "allowed_usage": [
     "metadata",
@@ -20,7 +20,7 @@
   "rate_limit_notes": "普通网页，低频抓取。",
   "last_successful_sync": null,
   "owner": "curator",
-  "notes": "T. Bloom 维护的 Erdős 问题库，含状态更新注释，维护活跃。 | 2026-08-28 实测：站点为纯 SPA（无服务端渲染数据），/api/problems 404，HTML 无 /problems/<id> 链接；Connector 无法采集（诚实失败 0/5）。【待人工裁决】联系站方获取数据接口，或降级为人工导入渠道。",
+  "notes": "2026-08-29 修正：站点为纯 SPA 不可抓取，但数据后端为 teorth/erdosproblems 开源仓库（Tao 维护，Apache-2.0）。data/problems.yaml 为唯一真相源：1217 题，自带 status（proved/disproved/open）、悬赏、Lean 形式化标签、OEIS 链接。接入方式=Git 拉 YAML 解析，比网页抓取更干净。原『待人工裁决』撤销。",
   "enabled": true,
   "priority_tier": "P0",
   "connector_name": "ErdosProblemsConnector"
