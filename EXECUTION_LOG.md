@@ -91,3 +91,34 @@ draw balanced/adventurous 比例正确（weights ranking-weights-v0.1）→ publ
 - 孪生素数：最佳无条件间隙界仍为 246（Polymath8）→ 开放。
 - 黎曼假设 / Goldbach / 3x+1 / Navier–Stokes / P vs NP / Schanuel：截至 2026-08 无可信解决证据（Zenodo 上多处声称均为未核验预印本）→ 开放。
 - 已解决对照卡：Erdős 偏差问题（Tao 2015）、开普勒猜想（Hales 1998/Flyspeck 2014）、连续统假设（ZFC 独立性，Gödel 1940 / Cohen 1963）。
+
+## 第三工作日（2026-08-29 白天）：方向定调 + 标准化扩展
+
+### 主人定调（关键决策输入）
+1. 主人身份定位：数据科学家；研究重点 = ①排序算法科学性 ②数据库技术；
+2. 明确质疑当前排序"不太科学"（有效质疑：当前 I/A 为单标注员 LLM 先验、9 维等权无依据、
+   √(I·A) 无验证、P/C 硬编码常数、引用数据未入管道）——Wave B 数据科学主线由此立题；
+3. 求解系统不做，但"AI 上手做"（attempt 记录）要做（Wave E）；
+4. 商业数据库（MathSciNet/Scopus）主人去问学院老师（人工轨道，不阻塞主线）；
+5. 未来一切开放数据集统一走标准化接入，不做一次性脚本。
+
+### 本日产出
+| 产出 | 提交 | 说明 |
+|---|---|---|
+| ROADMAP_PHASE1_PLUS.md | f9d99de | 五波次工程规划（A 智能核心→B 数据科学→C 数据库深化→D agent 编队→E attempt）+ 速赢清单 + 研究空白 9 项 |
+| SRC-0010 起死回生 | f9d99de | erdosproblems.com 为 SPA，但数据真身 = teorth/erdosproblems 开源仓库（Tao 维护，Apache-2.0，data/problems.yaml，1217 题带状态/悬赏/Lean 形式化标签）→ 注册表升级 git/A 级 |
+| DATASET_INGESTION_SOP.md + TASK-002 契约 | a72957a | 数据集批量接入标准化：八步流水线、全局状态映射保守表（proved≠直接 resolved，人工把关）、D1–D15 四梯队积压清单、实例模板、四道准入检查；契约测试同步（161 passed） |
+
+### 系统当前排名方法记录（供审查）
+公式 S_core=√(I·A)、S_user=S_core×(0.7+0.3P)×(0.6+0.4C)，P=50/C=75 常数；
+I/A 各 9 子维等权均值，金标准卡上为 LLM 量表先验（已知局限 = Wave B 重构目标）。
+当前 Top5：哥德巴赫 59.1、平面色数 56.7、孪生素数 56.5、Frankl 并闭集 55.0、黎曼 52.6。
+分歧记录：按"机器可攻性"重排，五维接吻数/平面色数/Erdős–Straus 应居首——
+构念（价值 vs 可攻性）未分离的直接证据，亦是 B4 排序 v0.2 的动机。
+
+### 新 session / 审查入口
+- 工程全景：README.md → docs/ROADMAP_PHASE1_PLUS.md → docs/DATASET_INGESTION_SOP.md
+- 决策链：docs/adr/（ADR-001..014 + BACKLOG）；纪律：AGENTS.md（硬边界 + 红线 + 验证命令）
+- 人工待办：MORNING_CHECKLIST.md；完整时间线：本文件
+- 下一步施工首选：速赢 Q1（erdős YAML 导入 = SOP D1 实例，首验整条流水线）
+- 验证基线：`python -m pytest` 161 passed；`python scripts/validate_gold_set.py` 30/30 PASS
