@@ -1,0 +1,60 @@
+task_id: TASK-002
+task_name: dataset_bulk_ingest
+task_version: 1.0.0
+purpose: 标准化批量数据集接入。将一个已登记、许可明确的结构化开放数据集（YAML/JSON/API/Git）整批转换为候选问题卡；每个数据集是本契约的一次参数化实例（实例清单见 docs/DATASET_INGESTION_SOP.md 附录 A）。本契约是 TASK-101 单文档抽取的批量化变体，纪律完全一致。
+inputs:
+  required:
+    - source_id（已 enabled 的 Source Registry 条目）
+    - 数据集快照路径或 API 端点（先落 raw/ 再处理，禁止边抓边写卡）
+    - 字段映射表（数据集字段 → 问题卡字段；含 status 词表映射与 domain 映射）
+  optional:
+    - 增量游标（last_cursor / ETag / 文件 hash）
+    - 预估条数与抽样核对记录
+allowed_sources: []   # 由实例参数指定，不在此固定
+allowed_tools:
+  - connector 或 bulk fetcher
+  - jsonschema 校验器
+  - 去重预检（标题/嵌入相似度候选对，仅标记不合并）
+forbidden_actions:
+  - 不得覆盖不可变字段（statements.original、已绑定 evidence 只增不删改）
+  - 不得将映射不上的字段强行猜测填充（领域/状态映射失败即跳过并记录，绝不默认值顶替）
+  - 不得绕过生命周期状态机（批量产出只能停在 candidate）
+  - 不得在无人工审核下把批量结果置为 scored/published
+  - 不得跳过 Schema 校验直接落盘
+  - 不得修改原始快照文件（raw/ 一次写入不可变）
+procedure:
+  - 前置检查：source enabled、许可覆盖批量用途、快照完整落盘 raw/
+  - 探测数据集 schema（字段清单、枚举值、条数），产出探测报告
+  - 套用字段映射表：仅确定性映射（等值/查表）；语义字段留空待 TASK-201/501/601
+  - status 词表映射：数据集状态 → open_status（proved→resolved 不适用：resolved_scope 语义由人工把关；映射歧义一律 status_uncertain）
+  - domain 映射：数据集分类 → taxonomy primary_domain；未命中即跳过该条并计数
+  - 批量生成候选卡（problem_id 8xxxxx 序列），全部过 problem_card Schema
+  - 去重预检：对既有池做标题相似 + 嵌入候选对标记（TASK-301 的输入，不合并）
+  - 产出接入报告：成功/跳过/失败计数、字段覆盖率、样本对照
+  - 记账：更新 last_successful_sync 与增量游标
+output_schema:
+  format: json
+  ref: https://ai-math-recommend.dev/schemas/problem_card/v1.0.0/schema.json
+evidence_requirements:
+  - 每张候选卡至少一条 document_link 证据（链接存在性 verified，内容核验状态如实标注）
+  - 探测报告与映射表随产物归档
+hard_fail_conditions:
+  - 快照不完整或校验和不一致
+  - 许可不允许批量用途
+  - Schema 校验失败率超过实例声明阈值（默认 5%）
+soft_fail_conditions:
+  - 个别字段覆盖率低（记录，不阻塞）
+  - 增量游标不可用（降级为全量比对）
+human_review_required_when:
+  - 首批接入任何新数据集（抽样 20 张人工过目后才能放量）
+  - status 映射存在歧义的条目
+  - 去重候选对（合并永远是人工操作）
+quality_checks:
+  - 100% 候选过 problem_card Schema
+  - 跳过率与原因分布报告
+  - 与既有池的重复率估计
+retry_policy:
+  max_retries: 2
+  backoff: exponential
+logging_requirements:
+  - 记录 source_id、快照 hash、映射表版本、批次统计

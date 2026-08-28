@@ -31,7 +31,7 @@ class TestSchemaCompliance:
 
     def test_pipeline_coverage_p0_to_p10(self):
         expected_tasks = {
-            "TASK-000", "TASK-101", "TASK-201", "TASK-301",
+            "TASK-000", "TASK-002", "TASK-101", "TASK-201", "TASK-301",
             "TASK-401", "TASK-501", "TASK-601",
             "TASK-701", "TASK-801", "TASK-901", "TASK-1001",
         }
@@ -44,7 +44,7 @@ class TestDisciplineInvariants:
     def test_agent_tasks_forbid_immutable_overwrite(self):
         """Agent 类任务必须禁止覆盖不可变字段。"""
         for name, doc in load_contracts().items():
-            if name in {"TASK-101", "TASK-201", "TASK-301", "TASK-401", "TASK-501", "TASK-601", "TASK-1001"}:
+            if name in {"TASK-002", "TASK-101", "TASK-201", "TASK-301", "TASK-401", "TASK-501", "TASK-601", "TASK-1001"}:
                 joined = " ".join(doc["forbidden_actions"])
                 assert ("不可变" in joined) or ("覆盖" in joined) or ("原文" in joined), (
                     f"{name} 禁令未覆盖不可变字段保护"
